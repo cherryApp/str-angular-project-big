@@ -34,6 +34,8 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/css/google-fonts-icons.css",
+              "node_modules/font-awesome/css/font-awesome.min.css",
               "src/assets/css/material-dashboard.min.css",
               "src/styles.scss"
             ],
