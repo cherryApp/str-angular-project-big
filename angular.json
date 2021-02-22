@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "1f5209c4-27c6-4088-8f82-9e1c2b78fc6c"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -31,6 +34,7 @@
               "src/assets"
             ],
             "styles": [
+              "src/assets/css/material-dashboard.min.css",
               "src/styles.scss"
             ],
             "scripts": []
