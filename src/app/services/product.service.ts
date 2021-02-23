@@ -57,4 +57,6 @@ export class ProductService {
     );
     this.toastr.warning('The product has been deleted.', 'DELETED');
   }
+
+  
 }

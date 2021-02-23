@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'app/model/product';
+import { Product, ProductAttributes } from 'app/model/product';
 import { ProductService } from 'app/services/product.service';
 import { BehaviorSubject } from 'rxjs';
 
@@ -9,8 +9,14 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  
+
   productList$: BehaviorSubject<Product[]> = this.productService.list$;
+
+  phrase: string = '';
+  filterKey = 'name';
+
+  attributes = new ProductAttributes();
+
 
   constructor(private productService: ProductService) { }
 
@@ -20,7 +26,18 @@ export class ProductListComponent implements OnInit {
 
   onDelete(product: Product): void {
     this.productService.remove(product);
-}
+  }
 
+  onChangePhrase(event: Event): void {
+    this.phrase = (event.target as HTMLInputElement).value;
+  }
+
+  onChangeKey(event: Event): void {
+    this.filterKey = (event.target as HTMLInputElement).value;
+  }
+
+  setDefault(key):boolean {
+    return key === "name" ? true : false;
+  }
 
 }
