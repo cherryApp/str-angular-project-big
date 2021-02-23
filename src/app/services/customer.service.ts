@@ -9,7 +9,7 @@ import { tap } from 'rxjs/operators';
 })
 export class CustomerService {
 
-  costumerUrl: string = `http://localhost:3000/costumer`;
+  customerUrl: string = `http://localhost:3000/customer`;
 
   list$: BehaviorSubject<Customer[]> = new BehaviorSubject<Customer[]>([]);
 
@@ -19,19 +19,19 @@ export class CustomerService {
 
   getAll(): void {
     this.list$.next([]);    // üres lista, hogy ne látszódjon az előzőleg betöltött lista, amíg a listát újra nem tölti
-    this.http.get<Customer[]>(this.costumerUrl).subscribe(
-      Customers => this.list$.next(Customers)
+    this.http.get<Customer[]>(this.customerUrl).subscribe(
+      customers => this.list$.next(customers)
     );
   }
 
   get(id: number | string): Observable<Customer> {
     id = parseInt(('' + id), 10);
-    return this.http.get<Customer>(`${this.costumerUrl}/${id}`);
+    return this.http.get<Customer>(`${this.customerUrl}/${id}`);
   }
 
   create(Customer: Customer): void {
     this.http.post<Customer>(
-      `${this.costumerUrl}`, Customer         // elküldjük az új értéket
+      `${this.customerUrl}`, Customer         // elküldjük az új értéket
     ).subscribe(                              // feliratkozunk
       () => this.getAll()                     // ha végzett a mentéssel, újból lekérjük az adatokat a servertől
     );
@@ -39,7 +39,7 @@ export class CustomerService {
 
   update(Customer: Customer): Observable<Customer> {
     return this.http.patch<Customer>(
-      `${this.costumerUrl}/${Customer.id}`, Customer
+      `${this.customerUrl}/${Customer.id}`, Customer
     ).pipe(
       tap( () => this.getAll() )
     );
@@ -47,7 +47,7 @@ export class CustomerService {
 
   remove(Customer: Customer): void {
     this.http.delete<Customer>(
-      `${this.costumerUrl}/${Customer.id}`
+      `${this.customerUrl}/${Customer.id}`
     ).subscribe(
       () => this.getAll()
     );

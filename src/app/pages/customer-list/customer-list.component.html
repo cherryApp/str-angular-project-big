@@ -1,0 +1,57 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title ">Customers</h4>
+                        <p class="card-category">List of customers.</p>
+                    </div>
+                    <div class="card my-0 px-3">
+                        <button [routerLink]="" class="btn btn-primary my-3">
+                            Create new customer
+                        </button>
+                    </div>
+                    <div class="card-body col-6 d-flex">
+                        <input name="phrase" (keyup)="onChangePhrase($event)" class="form-control" type="text"
+                            placeholder="Enter filtering phrase...">
+                        <select class="custom-select ml-2" (change)="onChangeKey($event)">
+                            <option *ngFor="let attribute of attributes | keyvalue:originalOrder"
+                                [value]="attribute.key" [selected]="setDefault(attribute.key)">Filter by
+                                {{attribute.value.title}}</option>
+                        </select>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="text-primary">
+                                    <th *ngFor="let attribute of attributes | keyvalue:originalOrder">
+                                        {{attribute.value.title}}</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let customer of customerList$ | async | filter:phrase:filterKey">
+                                        <td *ngFor="let attribute of attributes | keyvalue:originalOrder">
+                                            <span *ngIf="attribute.value.type==='text' && !attribute.value.obj">{{customer[attribute.key]}}</span>
+                                            <span *ngIf="attribute.value.type==='text' && attribute.value.obj">{{customer[attribute.value.obj][attribute.key]}}</span>
+                                            <span *ngIf="attribute.value.type==='check' && customer[attribute.key]" class="material-icons">done</span>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button [routerLink]="" class="btn btn-info">
+                                                    <i class="fa fa-pencil"></i>
+                                                </button>
+                                                <button class="btn btn-danger" (click)="onDelete(customer)">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
