@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Customer } from '../model/customer';
+import { Product } from '../model/product';
 
 @Injectable({
   providedIn: 'root'
@@ -9,18 +10,28 @@ import { Customer } from '../model/customer';
 export class CustomerService {
   
   customersUrl: string = "http://localhost:3000/customers";
+  list$: BehaviorSubject<Customer[]> = new BehaviorSubject<Customer[]>([]);
 
   constructor( private http: HttpClient) {
   
   }
 
-   getAll(): Observable<Customer[]> {
-     return this.http.get<Customer[]>(this.customersUrl);
-   }
+  getAll(): void {
+    this.list$.next([]);
+    this.http.get<Customer[]>(this.customersUrl).subscribe(customers => this.list$.next(customers));
+  }
 
-   get(customer: Customer): Observable<Customer> {
+   /* getAll(): Observable<Customer[]> {
+     return this.http.get<Customer[]>(this.customersUrl);
+   } */
+
+   get(id: number): Observable<Customer> {
+    return Number(id) === 0 ? of(new Customer()) : this.http.get<Customer>(`${this.customersUrl}/${Number(id)}`);
+  }
+
+   /* get(customer: Customer): Observable<Customer> {
      return this.http.get<Customer>(`${this.customersUrl}/${customer.id}`)
-   }
+   } */
 
    create(customer: Customer): Observable<Customer> {
     return this.http.post<Customer>(this.customersUrl, customer)
