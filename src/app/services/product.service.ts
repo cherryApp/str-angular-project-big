@@ -55,6 +55,8 @@ export class ProductService {
     ).subscribe(
       () => this.getAll()
     );
-    this.toastr.warning('The product has been deleted.', 'DELETED');
+    this.toastr.error('The product has been deleted.', 'DELETED');
   }
+
+  
 }

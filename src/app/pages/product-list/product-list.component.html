@@ -7,56 +7,42 @@
                         <h4 class="card-title ">Products</h4>
                         <p class="card-category">List of products currently on stock.</p>
                     </div>
+                    <div class="card my-0 px-3">
+                        <button [routerLink]="" class="btn btn-primary my-3">
+                            Create new product
+                        </button>
+                    </div>
+                    <div class="card-body col-6 d-flex">
+                        <input name="phrase" (keyup)="onChangePhrase($event)" class="form-control" type="text"
+                            placeholder="Enter filtering phrase...">
+                        <select class="custom-select ml-2" (change)="onChangeKey($event)">
+                            <option *ngFor="let attribute of attributes | keyvalue:originalOrder"
+                                [value]="attribute.key" [selected]="setDefault(attribute.key)">Filter by
+                                {{attribute.value}}</option>
+                        </select>
+                    </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class="text-primary">
-                                    <th>
-                                        ID
-                                    </th>
-                                    <th>
-                                        Name
-                                    </th>
-                                    <th>
-                                        Type
-                                    </th>
-                                    <th>
-                                        Category ID
-                                    </th>
-                                    <th>
-                                        Description
-                                    </th>
-                                    <th>
-                                        Price
-                                    </th>
-                                    <th>
-                                        Featured
-                                    </th>
-                                    <th>
-                                        Active
-                                    </th>
+                                    <th *ngFor="let attribute of attributes | keyvalue:originalOrder">
+                                        {{attribute.value}}</th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let product of productList$ | async">
-                                        <td>{{product.id}}</td>
-                                        <td>{{product.name}}</td>
-                                        <td>{{product.type}}</td>
-                                        <td>{{product.catID}}</td>
-                                        <td>{{product.description}}</td>
-                                        <td>{{product.price}}</td>
-                                        <td>{{product.featured}}</td>
-                                        <td>{{product.active}}</td>
+                                    <tr *ngFor="let product of productList$ | async | filter:phrase:filterKey">
+                                        <td *ngFor="let attribute of attributes | keyvalue:originalOrder">
+                                            {{product[attribute.key]}}</td>
                                         <td>
-                                          <div class="btn-group">
-                                            <button [routerLink]="" class="btn btn-info px-3 mx-1">
-                                              <i class="fa fa-pencil"></i>
-                                            </button>
-                                            <button class="btn btn-danger px-3 mx-1" (click)="onDelete(product)">
-                                              <i class="fa fa-trash"></i>
-                                            </button>
-                                          </div>
+                                            <div class="btn-group">
+                                                <button [routerLink]="" class="btn btn-info">
+                                                    <i class="fa fa-pencil"></i>
+                                                </button>
+                                                <button class="btn btn-danger" (click)="onDelete(product)">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </div>
                                         </td>
-                                      </tr>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
