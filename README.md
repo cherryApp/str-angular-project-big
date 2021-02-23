@@ -5,7 +5,7 @@
 ## A csapat
 
 A csapatunk összetételéről pár gondolat.
-A korábbi Fourkolók névre keresztelt egyes csapat, azaz Gabi, Matyi, Jenő és én egyben maradtunk. Zsolt és Simon egy másik, a záróprojekt érdekében feloszlatott csapatból érkeztek együtt, Csaba pedig egyedül érkezett egy másik felbontott csoportból.
+A korábbi Fourkolók névre keresztelt egyes csapat, azaz Gabi, Matyi, Jenő és Robi egyben maradtunk. Zsolt és Simon egy másik, a záróprojekt érdekében feloszlatott csapatból érkeztek együtt, Csaba pedig egyedül érkezett egy másik felbontott csoportból.
 A csapatunk többségében főállásban dolgozó személyekből áll, így sejthető volt, hogy a késő délutáni, esti órákban fogunk tudni kooperálni.
 
 ## A nap fejleményei:
@@ -41,8 +41,6 @@ Ezzel kapcsolatban történt egy kis előre dolgozás. Simon a saját branchébe
 Természetesen közösen átnéztük és a merget is közösen végeztük el.
 Az osztályok mindeegyike tartalmazta a kiírásban szereplő kulcsokat és a hozzájuk rendelt típusokat is megfelelőnek találtuk. Így mindenki elvégezhette a dev branch állapotáról a saját branchébe a merget.
 És hogy a tervezésben is előre dolgozzunk, kitűztünk pár további feladatot is, mint például a navbar és a routing komponensek.
-
-<img src=":/a33bf20e217447e3b52c7466b0897bbd" alt="d7a07996376a9ec5adedfa0675f5db6f.png" width="951" height="484">
 
 ### Kiosztott Feladatok    
 - classes - Kövesdi Simon - test
