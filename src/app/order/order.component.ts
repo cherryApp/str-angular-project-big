@@ -6,12 +6,12 @@ import { Order } from '../model/order';
 import { OrderService } from '../service/order.service';
 
 @Component({
-  selector: 'app-product',
+  selector: 'app-order',
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.scss'],
 })
 export class OrderComponent implements OnInit {
-  productList$: BehaviorSubject<Order[]> = this.orderService.list$;
+  orderList$: BehaviorSubject<Order[]> = this.orderService.list$;
 
   phraseControl: FormControl = new FormControl('');
   phrase: string = '';
