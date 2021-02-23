@@ -9,5 +9,10 @@ export class Bill {
     this.amount=amount;
     this.status=status;
   }
-
+}
+export class BillAttributes{
+  id: string= "ID";
+  orderID: string= "Order ID";
+  amount: string= "Amount";
+  status: string= "Status";
 }
