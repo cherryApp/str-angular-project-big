@@ -37,6 +37,7 @@
               "src/assets/css/google-fonts-icons.css",
               "node_modules/font-awesome/css/font-awesome.min.css",
               "src/assets/css/material-dashboard.min.css",
+              "node_modules/ngx-toastr/toastr.css",
               "src/styles.scss"
             ],
             "scripts": []
