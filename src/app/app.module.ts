@@ -10,13 +10,15 @@ import { AppComponent } from './app.component';
 import { FilterPipe } from './pipe/filter.pipe';
 import { SorterPipe } from './pipe/sorter.pipe';
 import { OrderComponent } from './order/order.component';
+import { ListingOrderComponent } from './page/listing/listing-order/listing-order.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FilterPipe,
     SorterPipe,
-    OrderComponent
+    OrderComponent,
+    ListingOrderComponent
   ],
   imports: [
     BrowserModule,
