@@ -6,4 +6,5 @@ export class Customer {
   lastName: string = '';
   email: string = '';
   address: Address = new Address();
+  active: boolean = false;
 }
