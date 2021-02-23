@@ -1,3 +1,4 @@
+import { KeyValue } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Product, ProductAttributes } from 'app/model/product';
 import { ProductService } from 'app/services/product.service';
@@ -40,4 +41,7 @@ export class ProductListComponent implements OnInit {
     return key === "name" ? true : false;
   }
 
+  originalOrder = (a: KeyValue<number,string>, b: KeyValue<number,string>): number => {
+    return 0;
+  }
 }
