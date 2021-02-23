@@ -3,3 +3,8 @@ export class Category {
   product: string='';
   description: string='';
 }
+export class CategoryAttributes{
+  id: string="ID";
+  product: string="Product";
+  description: string="Description";
+}
