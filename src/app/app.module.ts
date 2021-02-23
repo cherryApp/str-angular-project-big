@@ -10,13 +10,15 @@ import { AppComponent } from './app.component';
 import { FilterPipe } from './pipe/filter.pipe';
 import { SorterPipe } from './pipe/sorter.pipe';
 import { OrderComponent } from './order/order.component';
+import { EditProductComponent } from './page/edit/edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FilterPipe,
     SorterPipe,
-    OrderComponent
+    OrderComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,
