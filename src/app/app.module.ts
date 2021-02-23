@@ -13,6 +13,7 @@ import { OrderComponent } from './order/order.component';
 import { EditCustomerComponent } from './page/edit/edit-customer/edit-customer.component';
 import { ListingProductComponent } from './page/listing/listing-product/listing-product.component';
 import { ListingOrderComponent } from './page/listing/listing-order/listing-order.component';
+import { EditOrderComponent } from './page/edit/edit-order/edit-order.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { ListingOrderComponent } from './page/listing/listing-order/listing-orde
     EditCustomerComponent,
     ListingProductComponent,
     ListingOrderComponent,
+    EditOrderComponent,
   ],
   imports: [
     BrowserModule,
