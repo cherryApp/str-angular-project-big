@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-
-
+import { CommonModule } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 
@@ -19,10 +19,16 @@ import { IconsComponent } from './icons/icons.component';
 import { NotificationsComponent } from './notifications/notifications.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { ProductListComponent } from './pages/product-list/product-list.component';
 
 @NgModule({
   imports: [
     BrowserAnimationsModule,
+    CommonModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      preventDuplicates: true,
+    }),
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -33,6 +39,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+    ProductListComponent,
 
   ],
   providers: [],

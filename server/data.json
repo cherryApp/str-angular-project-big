@@ -1,42 +1,12 @@
 {
   "product": [
     {
-      "id": 1,
-      "name": "Camp de Thiaroye",
-      "type": "Drama|War",
-      "catID": 4,
-      "description": "in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer",
-      "price": 547,
-      "featured": true,
-      "active": true
-    },
-    {
-      "id": 2,
-      "name": "Island at the Top of the World, The",
-      "type": "Action|Adventure|Children",
-      "catID": 2,
-      "description": "dis parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien",
-      "price": 66457,
-      "featured": false,
-      "active": false
-    },
-    {
       "id": 3,
       "name": "Blood from the Mummy's Tomb",
       "type": "Horror",
       "catID": 5,
       "description": "leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras",
       "price": 30653,
-      "featured": true,
-      "active": false
-    },
-    {
-      "id": 4,
-      "name": "Dangerous Liaisons",
-      "type": "Drama|Mystery|Romance",
-      "catID": 5,
-      "description": "bibendum imperdiet nullam orci pede venenatis non sodales sed tincidunt eu felis fusce posuere felis",
-      "price": 23199,
       "featured": true,
       "active": false
     },
@@ -79,26 +49,6 @@
       "price": 51947,
       "featured": true,
       "active": false
-    },
-    {
-      "id": 9,
-      "name": "Human Touch",
-      "type": "Drama",
-      "catID": 2,
-      "description": "elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in",
-      "price": 93792,
-      "featured": true,
-      "active": false
-    },
-    {
-      "id": 10,
-      "name": "Return to House on Haunted Hill",
-      "type": "Horror|Thriller",
-      "catID": 1,
-      "description": "massa id lobortis convallis tortor risus dapibus augue vel accumsan tellus nisi eu orci",
-      "price": 45441,
-      "featured": true,
-      "active": true
     },
     {
       "id": 11,
