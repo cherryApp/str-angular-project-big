@@ -36,7 +36,7 @@
             </thead>
             <tbody>
               
-                <tr *ngFor="let product of productList | async | filter:phrase:filterKey  | sorter:columnKey:irany">
+               <tr *ngFor="let product of productList | async | filter:phrase:filterKey | sorter:columnKey">
                     <td>{{product.id}}</td>
                     <td>{{product.name}} </td>
                     <td>{{product.type}}</td>
