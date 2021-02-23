@@ -1,1 +1,41 @@
-<p>order works!</p>
+<div class="row">
+  <div class="col-4 offset-8 mt-3 mb-3">
+    <input
+      [formControl]="phraseControl"
+      type="text"
+      class="form-control"
+      placeholder="find product"
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Active</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of productList$ | async | filter: phrase">
+          <td>{{ product.id }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.active }}</td>
+          <td>
+            <div class="btn-group">
+              <button [routerLink]="[product.id]" class="btn btn-info">
+                <i class="fa fa-edit"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
