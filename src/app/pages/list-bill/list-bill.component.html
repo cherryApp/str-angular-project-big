@@ -27,10 +27,10 @@
                   </thead>
                   <tbody>
                     <tr *ngFor="let bill of billList$ | async">
-                      <td *ngFor="let col of cols">
+                      <td *ngFor="let item of bill | keyvalue : originalOrder">
                         <!-- <input [(ngModel)]="bill[key]" type="text"> -->
                         <span>
-                          {{ bill[col.key] }}
+                          {{item.value}}
                           
                         </span> 
                       </td>

@@ -1,3 +1,4 @@
+import { KeyValue } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Bill } from 'src/app/models/bill';
@@ -22,6 +23,10 @@ export class ListBillComponent implements OnInit {
 
   ngOnInit(): void {
     this.billService.getAll()
+  }
+
+  originalOrder = (a:any, b:any): number => {
+    return 0;
   }
 
 }
