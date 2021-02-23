@@ -32,11 +32,11 @@ export class ListingProductComponent implements OnInit {
     this.productService.remove(product.id),
       this.router.navigate([''])
   }
-  irany: boolean = false;
+
   columnKey: string = '';
   onColumnSelect(key: string): void {
     this.columnKey = key;
-    this.irany = !this.irany;
+
   }
 
   onChangePhrase(event: any): void {
