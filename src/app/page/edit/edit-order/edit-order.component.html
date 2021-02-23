@@ -1,1 +1,60 @@
-<p>edit-order works!</p>
+<div class="row">
+  <div class="col-6 offset-3">
+    <form #orderFrom="ngForm" (ngSubmit)="onFormSubmit(orderFrom)">
+      <div class="form-group">
+        <label>customerID</label>
+        <input
+          [(ngModel)]="order.customerID"
+          name="customer"
+          type="number"
+          class="form-control"
+          required
+        />
+        <!-- id: number = 0;
+  customerID: number = 0;
+  productID: number = 0;
+  amount: number = 0;
+  status: string = ''; -->
+      </div>
+      <div class="form-group">
+        <label>ProductID</label>
+        <input
+          [(ngModel)]="order.productID"
+          name="product"
+          type="number"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label>Amount</label>
+        <input
+          [(ngModel)]="order.amount"
+          name="amount"
+          type="text"
+          class="form-control"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label>Status</label>
+        <input
+          [(ngModel)]="order.status"
+          name="status"
+          type="text"
+          class="form-control"
+          required
+          pattern="^(new|shipped|paid)$"
+        />
+        <!-- new|shipped|paid -->
+      </div>
+      <button
+        [disabled]="orderFrom.invalid || updating"
+        class="btn btn-block btn-primary"
+      >
+        <i *ngIf="!updating" class="fa fa-save"></i>
+        <i *ngIf="updating" class="fa fa-refresh"></i>
+      </button>
+    </form>
+  </div>
+</div>
