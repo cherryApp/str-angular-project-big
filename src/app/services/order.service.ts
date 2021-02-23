@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
+import { tap } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 import { Order } from '../model/order';
 
 @Injectable({
@@ -8,39 +10,49 @@ import { Order } from '../model/order';
 })
 export class OrderService {
 
-  order$: BehaviorSubject<Order[]> = new BehaviorSubject<Order[]>([]);
-  dataUrl: string = "http://localhost:3000/order";
+  list$: BehaviorSubject<Order[]> = new BehaviorSubject<Order[]>([]);
+  serverUrl: string = "http://localhost:3000/order";
 
-  constructor(private http: HttpClient) {
-    this.getAll();
-  }
+  constructor(private http: HttpClient,  private toastr: ToastrService) { }
 
   getAll(): void {
-    this.http.get<Order[]>(this.dataUrl).subscribe(ev => this.order$.next(ev))
+    this.list$.next([]);
+    this.http.get<Order[]>(this.serverUrl).subscribe(
+    orders => this.list$.next(orders));
   }
 
-  get(id: number): Observable<order> {
-    id = typeof id === 'string' ? parseInt(id, 10) : id;
-    const ev: order | undefined = this.order$.value.find(item => item.id === id);
-    if (ev) {
-      return of(ev);
-    }
-    return of(new Order());
-  }
+  // get(id: number): Observable<Order> {
+  //   return Number(id) === 0 ? of(new Order()) : this.http.get<Order>(`${this.serverUrl}/${Number(id)}`);
+  // }
 
-  update(order: order): Observable<order> {
-    return this.http.patch<order>(`${this.dataUrl}/${order.id}`, order);
-  }
-
-  create(order: order): void {
-    this.http.post<order>(this.dataUrl, order).subscribe(
-      () => this.getAll()
+  update(order: Order): Observable<Order> {
+    return this.http.patch<Order>(
+      `${this.serverUrl}/${order.id}`,
+      order
+    ).pipe(
+      tap(() => {
+        this.getAll();
+        this.toastr.info('The order has been updated.', 'UPDATED');
+      })
     );
   }
 
-  remove(order: order): void {
-    this.http.delete(`${this.dataUrl}/${order.id}`).subscribe(
+  create(order: Order): void {
+    this.http.post<Order>(
+      `${this.serverUrl}`,
+      order
+    ).subscribe(
       () => this.getAll()
     );
+    this.toastr.success('A new order has been created.', 'NEW Order');
+  }
+
+  remove(order: Order): void {
+    this.http.delete<Order>(
+      `${this.serverUrl}/${order.id}`
+    ).subscribe(
+      () => this.getAll()
+    );
+    this.toastr.error('The order has been deleted.', 'DELETED');
   }
 }
