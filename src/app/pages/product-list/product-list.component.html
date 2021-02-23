@@ -1,0 +1,80 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title ">Products</h4>
+                        <p class="card-category">List of products currently on stock.</p>
+                    </div>
+                    <div class="card my-0 px-3">
+                        <button [routerLink]="" class="btn btn-primary my-3">
+                            Create new product
+                        </button>
+                    </div>
+                    <div class="card-body col-6 d-flex">
+                        <input name="phrase" (keyup)="onChangePhrase($event)" class="form-control" type="text"
+                            placeholder="Enter filtering phrase...">
+                        <select class="custom-select ml-2" (change)="onChangeKey($event)">
+                            <option *ngFor="let attribute of attributes | keyvalue" [value]="attribute.key" [selected]="setDefault(attribute.key)">Filter by {{attribute.value}}</option>
+                        </select>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="text-primary">
+                                    <th>
+                                        {{attributes.id}}
+                                    </th>
+                                    <th>
+                                        {{attributes.name}}
+                                    </th>
+                                    <th>
+                                        {{attributes.type}}
+                                    </th>
+                                    <th>
+                                        {{attributes.catID}}
+                                    </th>
+                                    <th>
+                                        {{attributes.description}}
+                                    </th>
+                                    <th>
+                                        {{attributes.price}}
+                                    </th>
+                                    <th>
+                                        {{attributes.featured}}
+                                    </th>
+                                    <th>
+                                        {{attributes.active}}
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let product of productList$ | async | filter:phrase:filterKey">
+                                        <td>{{product.id}}</td>
+                                        <td>{{product.name}}</td>
+                                        <td>{{product.type}}</td>
+                                        <td>{{product.catID}}</td>
+                                        <td>{{product.description}}</td>
+                                        <td>{{product.price}}</td>
+                                        <td>{{product.featured}}</td>
+                                        <td>{{product.active}}</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button [routerLink]="" class="btn btn-info">
+                                                    <i class="fa fa-pencil"></i>
+                                                </button>
+                                                <button class="btn btn-danger" (click)="onDelete(product)">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
