@@ -4,7 +4,7 @@
       [formControl]="phraseControl"
       type="text"
       class="form-control"
-      placeholder="find product"
+      placeholder="find order"
     />
   </div>
 </div>
@@ -15,21 +15,24 @@
       <thead>
         <tr>
           <th>#</th>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Active</th>
+          <th>CustomerID</th>
+          <th>ProductID</th>
+          <th>Amount</th>
+          <th>Status</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let product of productList$ | async | filter: phrase">
-          <td>{{ product.id }}</td>
-          <td>{{ product.name }}</td>
-          <td>{{ product.price }}</td>
-          <td>{{ product.active }}</td>
+        <!-- <tr *ngFor="let product of productList$ | async | filter: phrase:'no'"> -->
+        <tr *ngFor="let order of orderList$ | async">
+          <td>{{ order.id }}</td>
+          <td>{{ order.customerID }}</td>
+          <td>{{ order.productID }}</td>
+          <td>{{ order.amount }}</td>
+          <td>{{ order.status }}</td>
           <td>
             <div class="btn-group">
-              <button [routerLink]="[product.id]" class="btn btn-info">
+              <button [routerLink]="[order.id]" class="btn btn-info">
                 <i class="fa fa-edit"></i>
               </button>
             </div>
