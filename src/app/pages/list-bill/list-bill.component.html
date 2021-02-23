@@ -20,13 +20,19 @@
               <div class="table-responsive">
                 <table class="table">
                   <thead class=" text-primary">
+                    <tr>
                       <th *ngFor="let col of cols">{{ col.text }}</th>
+
+                    </tr>
                   </thead>
                   <tbody>
                     <tr *ngFor="let bill of billList$ | async">
                       <td *ngFor="let col of cols">
                         <!-- <input [(ngModel)]="bill[key]" type="text"> -->
-                        {{ bill[col.key] }}
+                        <span>
+                          {{ bill[col.key] }}
+                          
+                        </span> 
                       </td>
                     </tr>
                     
