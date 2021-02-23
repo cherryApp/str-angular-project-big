@@ -1,0 +1,65 @@
+<div class="row">
+  <div *ngIf="product" class="col-6 offset-3 mt-5">
+    <form #productForm="ngForm" (ngSubmit)="onUpdate(product)">
+      <div class="form-group">
+        <label for="">Név</label>
+        <input name="name" [(ngModel)]="product.name" type="text" class="form-control" required>
+        <div [hidden]="productForm.controls.name?.valid || productForm.controls.name?.pristine" class="error-message">
+          Hiányzó név!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Típus</label>
+        <input name="type" [(ngModel)]="product.type" type="text" class="form-control" required>
+        <div [hidden]="productForm.controls.type?.valid || productForm.controls.type?.pristine" class="error-message">
+          Hiányzó típus!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Kategória ID</label>
+        <input name="catId" [(ngModel)]="product.catId" type="number" class="form-control" required>
+        <div [hidden]="productForm.controls.catId?.valid || productForm.controls.catId?.pristine" class="error-message">
+          Hiányzó kategória ID!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Leírás</label>
+        <input name="description" [(ngModel)]="product.description" type="text" class="form-control" required>
+        <div [hidden]="productForm.controls.description?.valid || productForm.controls.description?.pristine" class="error-message">
+          Hiányzó leírás!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="">Ár</label>
+        <input name="price" [(ngModel)]="product.price" type="number" class="form-control" required>
+        <div [hidden]="productForm.controls.price?.valid || productForm.controls.price?.pristine" class="error-message">
+          Hiányzó ár!
+        </div>
+      </div>
+      <div class="form-check mt-3">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" name="featured" [(ngModel)]="product.featured">Kiemelt
+          <span class="form-check-sign">
+            <span class="check"></span>
+          </span>
+        </label>
+      </div>
+      <div class="form-check mb-3">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" name="active" [(ngModel)]="product.active">Aktív
+          <span class="form-check-sign">
+            <span class="check"></span>
+          </span>
+        </label>
+      </div>
+      <div class="form-group">
+        <label for="">Kép</label>
+        <input name="image" [(ngModel)]="product.image" type="text" class="form-control">
+      </div>
+      <button [disabled]="productForm.invalid || updating" type="submit" class="btn btn-primary btn-block btn-lg">
+        <i *ngIf="!updating" class="material-icons">save</i>
+        <i *ngIf="updating" class="material-icons">refresh</i>
+      </button>
+    </form>
+  </div>
+</div>
