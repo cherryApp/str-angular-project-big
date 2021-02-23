@@ -9,7 +9,7 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-  
+
   productList$: BehaviorSubject<Product[]> = this.productService.list$;
 
   constructor(private productService: ProductService) { }
@@ -20,7 +20,7 @@ export class ProductListComponent implements OnInit {
 
   onDelete(product: Product): void {
     this.productService.remove(product);
-}
+  }
 
 
 }
