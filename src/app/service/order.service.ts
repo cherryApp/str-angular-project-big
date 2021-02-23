@@ -10,18 +10,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { Product } from '../model/product';
-
-
+import { Order } from '../model/product';
 *******************
-
 @Injectable({
   providedIn: 'root',
 })
-export class ProductService {
-  apiUrl: string = 'http://localhost:3000/products';
+export class OrderService {
+  apiUrl: string = 'http://localhost:3000/orders';
 
-  // private list: Product[] = [
+  // private list: Order[] = [
   //   { id: 1, name: 'Bread', seoName: 'bread', price: 2, active: true },
   //   { id: 2, name: 'Cheese', seoName: 'cheese', price: 2, active: true },
   //   { id: 3, name: 'Egg', seoName: 'coutry-egg', price: 2, active: true },
@@ -43,42 +40,42 @@ export class ProductService {
   //   { id: 7, name: 'Pasta', seoName: 'italian-pasta', price: 2, active: true },
   // ];
 
-  list$: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
+  list$: BehaviorSubject<Order[]> = new BehaviorSubject<Order[]>([]);
 
   constructor(private http: HttpClient) {}
 
   getAll(): void {
     this.list$.next([]);
     this.http
-      .get<Product[]>(this.apiUrl)
-      .subscribe((products) => this.list$.next(products));
+      .get<Order[]>(this.apiUrl)
+      .subscribe((orders) => this.list$.next(orders));
   }
 
-  get(id: number | string): Observable<Product> {
+  get(id: number | string): Observable<Order> {
     id = parseInt('' + id, 10);
     // return of(this.list$.value.find((item) => item.id === id));
-    return this.http.get<Product>(`${this.apiUrl}/${id}`);
+    return this.http.get<Order>(`${this.apiUrl}/${id}`);
   }
 
-  create(product: Product): void {
+  create(order: Order): void {
     this.http
-      .post<Product>(this.apiUrl, product)
+      .post<Order>(this.apiUrl, product)
       .subscribe(() => this.getAll());
   }
 
-  update(product: Product): Observable<Product> {
+  update(product: Order): Observable<Order> {
     return this.http
-      .patch<Product>(`${this.apiUrl}/${product.id}`, product)
+      .patch<Order>(`${this.apiUrl}/${order.id}`, order)
       .pipe(tap(() => this.getAll()));
   }
 
-  remove(product: Product): void {
+  remove(order: Order): void {
     this.http
-      .delete<Product>(`${this.apiUrl}/${product.id}`)
+      .delete<Order>(`${this.apiUrl}/${order.id}`)
       .subscribe(() => this.getAll());
   }
 
-  // getBySeoName(name: string): Observable<Product | undefined> {
-  //   return of(this.list$.value.find((item) => item.seoName === name));
+  // getByOther(name: string): Observable<Order | undefined> {
+  //   return of(this.list$.value.find((item) => item.otherName === name));
   // }
 }
