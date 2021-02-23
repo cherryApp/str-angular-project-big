@@ -11,7 +11,7 @@ import { OrderService } from '../service/order.service';
   styleUrls: ['./order.component.scss'],
 })
 export class OrderComponent implements OnInit {
-  productList$: BehaviorSubject<Order[]> = this.orderService.list$;
+  orderList$: BehaviorSubject<Order[]> = this.orderService.list$;
 
   phraseControl: FormControl = new FormControl('');
   phrase: string = '';

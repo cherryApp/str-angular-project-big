@@ -11,6 +11,7 @@ import { FilterPipe } from './pipe/filter.pipe';
 import { SorterPipe } from './pipe/sorter.pipe';
 import { OrderComponent } from './order/order.component';
 import { EditCustomerComponent } from './page/edit/edit-customer/edit-customer.component';
+import { ListingOrderComponent } from './page/listing/listing-order/listing-order.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { EditCustomerComponent } from './page/edit/edit-customer/edit-customer.c
     SorterPipe,
     OrderComponent,
     EditCustomerComponent,
+    ListingOrderComponent,
   ],
   imports: [
     BrowserModule,
