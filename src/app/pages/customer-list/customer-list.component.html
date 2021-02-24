@@ -29,11 +29,11 @@
                                         {{attribute.value.title}}</th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let customer of customerList$ | async | filter:phrase:filterKey">
+                                    <tr *ngFor="let customer of customerList$ | async | filter:phrase:filterKey:filterSubKey">
                                         <td *ngFor="let attribute of attributes | keyvalue:originalOrder">
                                             <span *ngIf="attribute.value.type==='text' && !attribute.value.obj">{{customer[attribute.key]}}</span>
                                             <span *ngIf="attribute.value.type==='text' && attribute.value.obj">{{customer[attribute.value.obj][attribute.key]}}</span>
-                                            <span *ngIf="attribute.value.type==='check' && customer[attribute.key]" class="material-icons">done</span>
+                                            <span *ngIf="attribute.value.type==='check' && customer[attribute.key]" class="material-icons">check</span>
                                         </td>
                                         <td>
                                             <div class="btn-group">
