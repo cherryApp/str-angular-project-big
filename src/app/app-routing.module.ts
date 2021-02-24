@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { OrderComponent } from './order/order.component';
 import { DashboardComponent } from './page/dashboard/dashboard.component';
 import { EditOrderComponent } from './page/edit/edit-order/edit-order.component';
+import { EditProductComponent } from './page/edit/edit-product/edit-product.component';
 import { ListingOrderComponent } from './page/listing/listing-order/listing-order.component';
 import { ListingProductComponent } from './page/listing/listing-product/listing-product.component';
 import { NotfoundComponent } from './page/notfound/notfound.component';
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'products',
     component: ListingProductComponent
+  },
+  {
+    path: 'products/:id',
+    component: EditProductComponent
   },
   {
     path: 'orders',
