@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-4 offset-8 mt-3 mb-3">
+    <input
+      [formControl]="phraseControl"
+      type="text"
+      class="form-control"
+      placeholder="find order"
+    />
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>CustomerID</th>
+          <th>ProductID</th>
+          <th>Amount</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- <tr *ngFor="let product of productList$ | async | filter: phrase:'no'"> -->
+        <tr *ngFor="let order of orderList$ | async">
+          <td>{{ order.id }}</td>
+          <td>{{ order.customerID }}</td>
+          <td>{{ order.productID }}</td>
+          <td>{{ order.amount }}</td>
+          <td>{{ order.status }}</td>
+          <td>
+            <div class="btn-group">
+              <button [routerLink]="[order.id]" class="btn btn-info">
+                <i class="material-icons">manage_search</i>
+              </button>
+              <button [routerLink]="[order.id]" class="btn btn-danger">
+                <i class="material-icons">delete_outline</i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

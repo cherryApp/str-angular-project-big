@@ -1,0 +1,46 @@
+<div class="row">
+    <div *ngIf="customer" class="col-6 offset-3">
+      <form #customerForm="ngForm" (ngSubmit)="onUpdate(customerForm, customer)">
+        <div class="form-group">
+          <label for="">First Name</label>
+          <input name="firstname" [(ngModel)]="customer.firstName" type="text" class="form-control">
+          
+        </div>
+        <div class="form-group">
+          <label for="">Last Name</label>
+          <input name="lastname" [(ngModel)]="customer.lastName" type="text" class="form-control">          
+        </div>
+        <div class="form-group">
+          <label for="">Email</label>
+          <input name="email" [(ngModel)]="customer.email" type="email" class="form-control">        
+        </div>
+        <div class="form-group">
+          <label for="">Zip</label>
+          <input name="zip" [(ngModel)]="customer.address.zip" type="number" class="form-control">
+         
+        </div>
+        <div class="form-group">
+          <label for="">Country</label>
+          <input name="country" [(ngModel)]="customer.address.country" type="text" class="form-control">
+         
+        </div>
+        <div class="form-group">
+          <label for="">City</label>
+          <input name="city" [(ngModel)]="customer.address.city" type="text" class="form-control">          
+        </div>
+        <div class="form-group">
+          <label for="">Street</label>
+          <input name="street" [(ngModel)]="customer.address.street" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Notes</label>
+          <input name="notes" [(ngModel)]="customer.address.notes" type="text" class="form-control">
+        </div>
+        <div class="btn-group">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block btn-lg">
+          <i  class="fa fa-save"></i>
+        </button>
+      </form>
+    </div>
+  </div>
