@@ -55,10 +55,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'user-profile', component: UserProfileComponent },
     { path: 'table-list', component: TableListComponent },
     { path: 'product-list', component: ProductListComponent },
-<<<<<<< HEAD
     { path: 'order-list', component: OrderListComponent },
-=======
     { path: 'bill-list', component: BillListComponent },
->>>>>>> dev
     { path: 'customer-list', component: CustomerListComponent },
 ];
