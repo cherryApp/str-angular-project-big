@@ -20,16 +20,16 @@ export class DashboardComponent implements OnInit {
 
   productList$: BehaviorSubject<Product[]> = this.productService.list$;
   productDefaultContent: string = '0';
-  productDefaultFooter: string = '0';
+  productDefaultFooter: string = 'Featured Products: 0';
   customerList$: BehaviorSubject<Customer[]> = this.customerService.list$;
   customerDefaultContent: string = '0';
-  customerDefaultFooter: string = '0';
-  billList$: BehaviorSubject<Bill[]> = this.billService.list$;
-  billDefaultContent: string = '0';
-  billDefaultFooter: string = '0';
+  customerDefaultFooter: string = 'Customers from London: 0';
   orderList$: BehaviorSubject<Order[]> = this.orderService.list$;
   orderDefaultContent: string = '0';
-  orderDefaultFooter: string = '0';
+  orderDefaultFooter: string = 'New Orders: 0';
+  billList$: BehaviorSubject<Bill[]> = this.billService.list$;
+  billDefaultContent: string = '0';
+  billDefaultFooter: string = 'Paid Bills: 0';
 
 
 
@@ -45,21 +45,21 @@ export class DashboardComponent implements OnInit {
       title: 'Active Customers',
       content: this.customerDefaultContent,
       cardClass: 'card-header-success',
-      footer: 'ide is jöhet valami',
+      footer: this.customerDefaultFooter,
       icon: 'account_box'
     },
     {
       title: 'Unpaid Orders',
       content: this.orderDefaultContent,
       cardClass: 'card-header-info',
-      footer: 'ide is jöhet valami',
+      footer: this.orderDefaultFooter,
       icon: 'info_outline'
     },
     {
       title: 'Unpaid Bills',
       content: this.billDefaultContent,
       cardClass: 'card-header-danger',
-      footer: 'ide is jöhet valami',
+      footer: this.billDefaultFooter,
       icon: 'euro'
     },
   ]
