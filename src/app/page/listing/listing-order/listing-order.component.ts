@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Order } from 'src/app/model/order';
 import { OrderService } from 'src/app/service/order.service';
@@ -19,7 +20,8 @@ export class ListingOrderComponent implements OnInit {
   constructor(
     private orderService:OrderService,
     private router:Router,
-    private configService: ConfigService
+    private configService: ConfigService,
+    private toastr: ToastrService,
   ) { }
 
   filterKey: string = 'name';
@@ -34,10 +36,10 @@ export class ListingOrderComponent implements OnInit {
   onColumnSelect(key: string): void {
     this.columnKey = key;
   }
-  // onRemove(order: Order): void {
-  // this.orderService.remove(order.id),
-  // this.router.navigate([''])
-  // }
+  onRemove(order: Order): void {
+  this.orderService.remove(order),
+  this.router.navigate([''])
+  }
 
 
   }

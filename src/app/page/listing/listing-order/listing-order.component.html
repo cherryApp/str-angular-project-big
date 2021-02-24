@@ -5,7 +5,7 @@
     </div>
     <div class="col-12">
       <button class="btn btn-success btn-block" [routerLink]="[0]">
-        <i class="material-icons"></i>
+        <i class="material-icons">add</i>
         Create a New Order
       </button>
     </div>
@@ -45,7 +45,7 @@
               <button [routerLink]="['order/' + order.id]" class="btn btn-info">
                 <i class="material-icons">manage_search</i>
               </button>
-              <button ([routerLink])="['order/' + order.id]" class="btn btn-danger">
+              <button (click)="onRemove(order)" [routerLink]="['order/' + order.id]" class="btn btn-danger">
                 <i class="material-icons">delete_outline</i>
               </button>
             </div>
