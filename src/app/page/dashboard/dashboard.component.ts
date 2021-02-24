@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InfoChart } from 'src/app/widget/chart/chart.component';
 import { InfoCard } from '../card/card.component';
 
 @Component({
@@ -39,6 +40,32 @@ export class DashboardComponent implements OnInit {
       content: 'Cash-desk',
       footer: 'footer text',
       footIcon: 'text-danger',
+    },
+  ];
+  charts: InfoChart[] = [
+    {
+      chartClass: 'card-header-success',
+      id: 'dailySalesChart',
+      title: 'Completed Tasks',
+      category: 'Last Campaign Performance',
+      footIcon: 'access_time',
+      footer: 'campaign sent 2 days ago',
+    },
+    {
+      chartClass: 'card-header-warning',
+      id: 'websiteViewsChart',
+      title: 'Completed Tasks',
+      category: 'Last Campaign Performance',
+      footIcon: 'access_time',
+      footer: 'campaign sent 3 days ago',
+    },
+    {
+      chartClass: 'card-header-danger',
+      id: 'completedTasksChart',
+      title: 'Completed Tasks',
+      category: 'Last Campaign Performance',
+      footIcon: 'access_time',
+      footer: 'campaign sent 4 days ago',
     },
   ];
 
