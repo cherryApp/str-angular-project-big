@@ -21,9 +21,9 @@ export class OrderService {
     orders => this.list$.next(orders));
   }
 
-  // get(id: number): Observable<Order> {
-  //   return Number(id) === 0 ? of(new Order()) : this.http.get<Order>(`${this.serverUrl}/${Number(id)}`);
-  // }
+  get(id: number): Observable<Order> {
+    return Number(id) === 0 ? of(new Order()) : this.http.get<Order>(`${this.serverUrl}/${Number(id)}`);
+  }
 
   update(order: Order): Observable<Order> {
     return this.http.patch<Order>(
@@ -55,4 +55,12 @@ export class OrderService {
     );
     this.toastr.error('The order has been deleted.', 'DELETED');
   }
+}
+
+export class ColumnSortOrder {
+  id = "none";
+  customerID = "none";
+  productID = "none";
+  amount = "none";
+  status = "none";
 }

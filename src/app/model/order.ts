@@ -1,18 +1,10 @@
 export class Order {
-  id: number;
-  customerID: number;
-  productID: number;
-  amount: number;
+  id: number = 0;
+  customerID: number = 0;
+  productID: number = 0;
+  amount: number = 0;
   status:string='new'||'shipped'||'paid'; 
-  constructor(id:number, customerID: number, productID: number, amount: number,
-    status:string='new'||'shipped'||'paid'){
-        this.id=id;
-        this.customerID=customerID;
-        this.productID=productID;
-        this.amount=amount;
-        this.status=status;
   }
-}
 export class OrderAttributes{
   id:string="ID";
   customerID:string="Customer ID";

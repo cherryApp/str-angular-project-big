@@ -16,24 +16,29 @@
                         <input name="phrase" (keyup)="onChangePhrase($event)" class="form-control" type="text"
                             placeholder="Enter filtering phrase...">
                         <select class="custom-select ml-2" (change)="onChangeKey($event)">
-                            <option *ngFor="let attribute of attributes | keyvalue:originalOrder"
-                                [value]="attribute.key" [selected]="setDefault(attribute.key)">Filter by
-                                {{attribute.value.title}}</option>
+                            <ng-container *ngFor="let attribute of attributes | keyvalue:originalOrder">
+                                <option *ngIf="attribute.value.type!='check'" [value]="attribute.key" [selected]="setDefault(attribute.key)">Filter by {{attribute.value.title}}</option>
+                                <option *ngIf="attribute.value.type==='check'" [value]="attribute.key+',1'" [selected]="setDefault(attribute.key)">{{attribute.value.title}} is true</option>
+                                <option *ngIf="attribute.value.type==='check'" [value]="attribute.key+',0'" [selected]="setDefault(attribute.key)">{{attribute.value.title}} is false</option>
+                            </ng-container>
                         </select>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class="text-primary">
-                                    <th *ngFor="let attribute of attributes | keyvalue:originalOrder">
-                                        {{attribute.value.title}}</th>
+                                    <th *ngFor="let attribute of attributes | keyvalue:originalOrder" (click)="onColumnSelect(attribute.key)">
+                                        {{attribute.value.title}}
+                                        <span *ngIf="attribute.value.order === 'ascending'"  class="material-icons"><i class="fa fa-angle-up"></i></span>
+                                        <span *ngIf="attribute.value.order === 'descending'" class="material-icons"><i class="fa fa-angle-down"></i></span>
+                                    </th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let customer of customerList$ | async | filter:phrase:filterKey">
+                                    <tr *ngFor="let customer of customerList$ | async | filter:phrase:filterKey:filterSubKey | sorter:sorterKey:sortDirection:sorterSubKey">
                                         <td *ngFor="let attribute of attributes | keyvalue:originalOrder">
                                             <span *ngIf="attribute.value.type==='text' && !attribute.value.obj">{{customer[attribute.key]}}</span>
                                             <span *ngIf="attribute.value.type==='text' && attribute.value.obj">{{customer[attribute.value.obj][attribute.key]}}</span>
-                                            <span *ngIf="attribute.value.type==='check' && customer[attribute.key]" class="material-icons">done</span>
+                                            <span *ngIf="attribute.value.type==='check' && customer[attribute.key]" class="material-icons">check</span>
                                         </td>
                                         <td>
                                             <div class="btn-group">
