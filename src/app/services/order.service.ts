@@ -8,7 +8,7 @@ import { Order } from '../models/order';
 })
 export class OrderService {
 
-  jsonUrl: string = 'http://localhost:3000/order_data';
+  jsonUrl: string = 'http://localhost:3000/orders';
 
   list$: BehaviorSubject<Order[]> = new BehaviorSubject<Order[]>([]);
 
