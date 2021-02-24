@@ -29,15 +29,17 @@ export class EditCustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.customerService.get(this.id).subscribe(
-      customer => console.log(customer)
+      customer => this.customer = customer
     );
+    this.activatedRoute.params.subscribe(params => this.id = params.id);
   }
 
   onUpdate(customer: Customer): void {
     this.updating = true;
     if (customer.id === 0) {
       this.customerService.create(customer).subscribe(
-        ev => this.router.navigate(['customers'])
+        ev => this.router.navigate(['customers']),
+        customer => console.log(customer)
       );
     } else
       this.customerService.update(customer).subscribe(
