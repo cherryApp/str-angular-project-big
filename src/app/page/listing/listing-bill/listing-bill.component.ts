@@ -15,15 +15,16 @@ export class ListingBillComponent implements OnInit {
   @Input() id: number = 0;
 
   billList: BehaviorSubject<Bill[]> = this.billService.list$;
+
   constructor(
     private billService: BillService,
     private router: Router,
-    private config: ConfigService,
+    private configService: ConfigService,
   ) { }
 
   filterKey: string = 'name';
   filterKeys: string[] = Object.keys(new Bill());
-  cols: ITableCol[] = this.config.billTableCols;
+  cols: ITableCol[] = this.configService.billTableCols;
 
   ngOnInit(): void {
     this.billService.getAll();
@@ -31,8 +32,8 @@ export class ListingBillComponent implements OnInit {
 
   onRemove(bill: Bill): void {
     this.billService.remove(bill),
-      console.log(bill);
-    this.router.navigate([''])
+      // console.log(bill);
+      this.router.navigate([''])
   }
 
   columnKey: string = '';
