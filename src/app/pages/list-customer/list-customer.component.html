@@ -1,1 +1,57 @@
-<p>list-customer works!</p>
+<div class="row">
+    <div class="col-md-10 offset-1">
+
+      <div class="input-group no-border col-md-5 pb-4">
+        <input [(ngModel)]="filterPhrase" type="text" value="" class="form-control" placeholder="Filter...">
+      </div>
+
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title ">Customer Table</h4>
+          <p class="card-category"> This is the Customer list</p>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+
+              <thead class=" text-primary">
+                <th>id</th>
+                <th>firstName</th>
+                <th>lastName</th>
+                <th>email</th>
+                <th>address</th>
+                <th>active</th>
+                <th>actions</th>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let customer of customerList$ | async | filter:filterPhrase:filterKey ">
+                  <td>{{ customer.id }}</td>
+                  <td>{{ customer.firstName }}</td>
+                  <td>{{ customer.lastName }}</td>
+                  <td>{{ customer.email }}</td>
+                  <td>
+                        {{ customer.address.zip+' '+customer.address.country+' '+customer.address.city+' '+customer.address.street }}<br />
+                        <small><i>{{ customer.address.notes }}</i></small>
+                  </td>
+                  <td>{{ customer.active }}</td>
+                  <td>
+                    <div class="btn-group" role="group">
+                      <button type="button" rel="tooltip" title="Edit Customer" class="btn btn-primary btn-link btn-sm">
+                        <i class="material-icons">edit</i>
+                      </button>
+                      <button type="button" rel="tooltip" title="Remove Customer" class="btn btn-danger btn-link btn-sm">
+                        <i class="material-icons">close</i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+              </tbody>
+
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+   

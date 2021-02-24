@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
@@ -15,6 +15,10 @@ import { ListOrderComponent } from './pages/list-order/list-order.component';
 import { EditOrderComponent } from './pages/edit-order/edit-order.component';
 import { ListBillComponent } from './pages/list-bill/list-bill.component';
 import { EditBillComponent } from './pages/edit-bill/edit-bill.component';
+import { NavbarComponent } from './common/navbar/navbar.component';
+import { SidebarComponent } from './common/sidebar/sidebar.component';
+import { FooterComponent } from './common/footer/footer.component';
+import { FilterPipe } from './pipe/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -29,12 +33,17 @@ import { EditBillComponent } from './pages/edit-bill/edit-bill.component';
     ListOrderComponent,
     EditOrderComponent,
     ListBillComponent,
-    EditBillComponent
+    EditBillComponent,
+    NavbarComponent,
+    SidebarComponent,
+    FooterComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
