@@ -14,7 +14,7 @@ export class OrderListComponent implements OnInit {
   orderList$: BehaviorSubject<Order[]> = this.orderService.list$;
 
   phrase: string = '';
-  filterKey = 'name';
+  filterKey = 'id';
 
   sorterKey: string ='';
 
@@ -40,7 +40,7 @@ export class OrderListComponent implements OnInit {
   }
 
   setDefault(key):boolean {
-    return key === "name" ? true : false;
+    return key === "id" ? true : false;
   }
 
   originalOrder = (a: KeyValue<number,string>, b: KeyValue<number,string>): number => {

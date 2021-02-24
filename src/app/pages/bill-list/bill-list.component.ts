@@ -15,7 +15,7 @@ export class BillListComponent implements OnInit {
   billList$: BehaviorSubject<Bill[]> = this.billService.list$;
 
   phrase: string = '';
-  filterKey = 'name';
+  filterKey = 'id';
 
   sorterKey: string ='';
 
@@ -39,8 +39,8 @@ export class BillListComponent implements OnInit {
     this.filterKey = (event.target as HTMLInputElement).value;
   }
 
-  setDefault(key):boolean {
-    return key === "name" ? true : false;
+  setDefault(key): boolean {
+    return key === "id" ? true : false;
   }
   
   originalOrder = (a: KeyValue<number,string>, b: KeyValue<number,string>): number => {
