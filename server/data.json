@@ -923,13 +923,6 @@
   ],
   "order": [
     {
-      "id": 1,
-      "customerID": 88,
-      "productID": 64,
-      "amount": 6,
-      "status": "new"
-    },
-    {
       "id": 2,
       "customerID": 9,
       "productID": 70,
@@ -1643,12 +1636,6 @@
       "status": "paid"
     },
     {
-      "id": 4,
-      "orderID": 57,
-      "amount": 6,
-      "status": "paid"
-    },
-    {
       "id": 5,
       "orderID": 28,
       "amount": 3,
@@ -2269,20 +2256,6 @@
       }
     },
     {
-      "id": 6,
-      "firstName": "Elonore",
-      "lastName": "Dumbare",
-      "email": "edumbare5@ucla.edu",
-      "active": true,
-      "address": {
-        "zip": "S33",
-        "country": "United Kingdom",
-        "city": "Sheffield",
-        "street": "Mallory, 813",
-        "notes": ""
-      }
-    },
-    {
       "id": 7,
       "firstName": "Keefe",
       "lastName": "Dryden",
@@ -2801,20 +2774,6 @@
       }
     },
     {
-      "id": 44,
-      "firstName": "Ashlie",
-      "lastName": "Fowlie",
-      "email": "afowlie17@google.co. uk",
-      "active": true,
-      "address": {
-        "zip": "PH43",
-        "country": "United Kingdom",
-        "city": "Kinloch",
-        "street": "Norway  Maple",
-        "notes": ""
-      }
-    },
-    {
       "id": 45,
       "firstName": "Marysa",
       "lastName": "January",
@@ -2825,20 +2784,6 @@
         "country": "United Kingdom",
         "city": "London",
         "street": "Victoria, 8330",
-        "notes": ""
-      }
-    },
-    {
-      "id": 46,
-      "firstName": "Iggy",
-      "lastName": "Amar",
-      "email": "iamar19@businessinsider.com",
-      "active": true,
-      "address": {
-        "zip": "NN4",
-        "country": "United Kingdom",
-        "city": "Wootton",
-        "street": "Delladonna, 633",
         "notes": ""
       }
     },

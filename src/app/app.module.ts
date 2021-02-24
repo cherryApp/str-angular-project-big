@@ -12,7 +12,6 @@ import { AppComponent } from './app.component';
 
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-import { TableListComponent } from './table-list/table-list.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { ProductListComponent } from './pages/product-list/product-list.component';
 import { OrderListComponent } from './pages/order-list/order-list.component';
