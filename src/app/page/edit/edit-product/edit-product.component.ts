@@ -26,15 +26,27 @@ export class EditProductComponent implements OnInit {
     this.productService.getOne(this.productId).subscribe(product => this.product = product);
   }
 
-  onUpdate(product: Product): void {
+  setProductToDatabase(product: Product): void {
     this.updating = true;
-    this.productService.update(product).subscribe(
-      () => {
-        this.toastr.success('Sikeresen frissítetted a terméket!', 'Siker!', { timeOut: 3000 });
-        this.updating = false;
-        this.router.navigate(['']);
-      },
-      error => this.toastr.error('Hiba történt frissítéskor!', 'Hiba!', { timeOut: 3000 })
-    )
+    if (product.id === 0) {
+      this.productService.create(product).subscribe(
+        () => {
+          this.toastr.success('Sikeres termék létrehozás!', 'Siker!', { timeOut: 3000 });
+          this.updating = false;
+          this.router.navigate(['products']);
+        },
+        error => this.toastr.error('Hiba a termék létrehozásakor!', 'Hiba!', { timeOut: 3000 })
+      )
+    }
+    else {
+      this.productService.update(product).subscribe(
+        () => {
+          this.toastr.success('Sikeresen frissítetted a terméket!', 'Siker!', { timeOut: 3000 });
+          this.updating = false;
+          this.router.navigate(['products']);
+        },
+        error => this.toastr.error('Hiba történt a termék frissítésekor!', 'Hiba!', { timeOut: 3000 })
+      )
+    }
   }
 }
