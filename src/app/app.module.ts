@@ -17,6 +17,7 @@ import { ListingOrderComponent } from './page/listing/listing-order/listing-orde
 import { EditOrderComponent } from './page/edit/edit-order/edit-order.component';
 import { NavComponent } from './nav/nav/nav.component';
 import { CardComponent } from './page/card/card.component';
+import { ListingCustomerComponent } from './page/listing/listing-customer/listing-customer.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { CardComponent } from './page/card/card.component';
     EditOrderComponent,
     NavComponent,
     CardComponent,
+    ListingCustomerComponent,
   ],
   imports: [
     BrowserModule,
