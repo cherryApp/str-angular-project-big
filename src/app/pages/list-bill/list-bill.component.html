@@ -1,1 +1,74 @@
-<p>list-bill works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <p>bill list component</p>
+            {{ billList$ | async | json }}
+
+        </div>
+    </div>
+</div>
+<div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title ">Simple Table</h4>
+              <p class="card-category"> Here is a subtitle for this table</p>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table">
+                  <thead class=" text-primary">
+                    <tr>
+                      <th *ngFor="let col of cols">{{ col.text }}</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let bill of billList$ | async">
+                      <td *ngFor="let item of bill | keyvalue : originalOrder">
+                        <!-- <input [(ngModel)]="bill[key]" type="text"> -->
+                        <span>
+                          {{item.value}}
+                          
+                        </span> 
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="card card-plain">
+            <div class="card-header card-header-primary">
+              <h4 class="card-title mt-0"> Table on Plain Background</h4>
+              <p class="card-category"> Here is a subtitle for this table</p>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead class="">
+                    <tr>
+                      <th *ngFor="let col of cols">
+                        {{col.text}}
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let bill of billList$ | async">
+                      <td *ngFor="let item of bill | keyvalue : originalOrder">
+                        {{item.value}}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
