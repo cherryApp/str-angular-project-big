@@ -20,6 +20,7 @@ import { FilterPipe } from './pipe/filter.pipe';
 import { SorterPipe } from './pipe/sorter.pipe';
 import { BillListComponent } from './pages/bill-list/bill-list.component';
 import { CustomerListComponent } from './pages/customer-list/customer-list.component';
+import { InfoCardComponent } from './common/info-card/info-card.component';
 
 @NgModule({
   imports: [
@@ -45,6 +46,8 @@ import { CustomerListComponent } from './pages/customer-list/customer-list.compo
     SorterPipe,
     BillListComponent,
     CustomerListComponent,
+    DashboardComponent,
+    InfoCardComponent,
 
   ],
   providers: [],
