@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Product } from 'src/app/model/product';
 import { ProductService } from 'src/app/service/product.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-product',
@@ -11,18 +11,19 @@ import { Router } from '@angular/router';
 })
 export class EditProductComponent implements OnInit {
 
-  @Input() productId: number = 0;
-
   product: Product = new Product();
+  productId: number = 0;
   updating: boolean = false;
 
   constructor(
     private productService: ProductService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.activatedRoute.params.subscribe(params => this.productId = params.id);
     this.productService.getOne(this.productId).subscribe(product => this.product = product);
   }
 
