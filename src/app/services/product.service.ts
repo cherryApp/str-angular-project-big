@@ -58,5 +58,15 @@ export class ProductService {
     this.toastr.error('The product has been deleted.', 'DELETED');
   }
 
-  
+}
+
+export class ColumnSortOrder {
+  id = "none";
+  name = "none";
+  type = "none";
+  catID: string = "none";
+  description: string = "none";
+  price: string = "none";
+  featured: string = "none";
+  active: string = "none";
 }

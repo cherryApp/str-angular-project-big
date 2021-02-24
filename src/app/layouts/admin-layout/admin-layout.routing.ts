@@ -10,6 +10,7 @@ import { NotificationsComponent } from '../../notifications/notifications.compon
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { ProductListComponent } from 'app/pages/product-list/product-list.component';
 import { BillListComponent } from 'app/pages/bill-list/bill-list.component';
+import { CustomerListComponent } from 'app/pages/customer-list/customer-list.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -59,6 +60,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'table-list', component: TableListComponent },
     { path: 'product-list', component: ProductListComponent },
     { path: 'bill-list', component: BillListComponent },
+    { path: 'customer-list', component: CustomerListComponent },
     { path: 'typography', component: TypographyComponent },
     { path: 'icons', component: IconsComponent },
     // { path: 'maps', component: MapsComponent },
