@@ -5,20 +5,23 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SorterPipe implements PipeTransform {
 
-  transform(value: any[] | null, key: string, sortOrder: string): any[] | null {
+  transform(value: any[] | null, key: string, sortOrder: string, subkey: string = ''): any[] | null {
     if (!Array.isArray(value) || key === '') {
       return value;
     }
-
+    
     if (sortOrder === "descending") {
 
       return value.sort(
         function (a: any, b: any): any {
-          if (typeof a[key] === 'number' && typeof b[key] === 'number') {
-            return b[key] - a[key];
+          const a_key = !subkey? a[key]: a[subkey][key];
+          const b_key = !subkey? b[key]: b[subkey][key];
+          
+          if (typeof a_key === 'number' && typeof b_key === 'number') {
+            return b_key - a_key;
           } else {
-            const strItemA: string = ('' + a[key]).toLowerCase();
-            const strItemB: string = ('' + b[key]).toLowerCase();
+            const strItemA: string = ('' + a_key).toLowerCase();
+            const strItemB: string = ('' + b_key).toLowerCase();
             return strItemB.localeCompare(strItemA);
           }
         }
@@ -28,12 +31,15 @@ export class SorterPipe implements PipeTransform {
 
       return value.sort(
         function (a: any, b: any): any {
-          if (typeof a[key] === 'number' && typeof b[key] === 'number') {
-            return a[key] - b[key];
+          const a_key = !subkey? a[key]: a[subkey][key];
+          const b_key = !subkey? b[key]: b[subkey][key];
+
+          if (typeof a_key === 'number' && typeof b_key === 'number') {
+            return a_key - b_key;
             
           } else {
-            const strItemA: string = ('' + a[key]).toLowerCase();
-            const strItemB: string = ('' + b[key]).toLowerCase();
+            const strItemA: string = ('' + a_key).toLowerCase();
+            const strItemB: string = ('' + b_key).toLowerCase();
             return strItemA.localeCompare(strItemB);
           }
         }

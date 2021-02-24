@@ -61,3 +61,10 @@ export class BillService {
 
 
 }
+
+export class ColumnSortOrder {
+  id = "none";
+  orderID = "none";
+  amount = "none";
+  status = "none";
+}

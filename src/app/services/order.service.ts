@@ -59,8 +59,8 @@ export class OrderService {
 
 export class ColumnSortOrder {
   id = "none";
-  customerID: "none";
-  productID: "none";
-  amount:  "none";
-  status: "none";
+  customerID = "none";
+  productID = "none";
+  amount = "none";
+  status = "none";
 }
