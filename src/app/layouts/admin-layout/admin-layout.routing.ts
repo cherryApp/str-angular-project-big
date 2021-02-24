@@ -9,11 +9,8 @@ import { IconsComponent } from '../../icons/icons.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { ProductListComponent } from 'app/pages/product-list/product-list.component';
-<<<<<<< HEAD
 import { OrderListComponent } from 'app/pages/order-list/order-list.component';
-=======
 import { BillListComponent } from 'app/pages/bill-list/bill-list.component';
->>>>>>> dev
 import { CustomerListComponent } from 'app/pages/customer-list/customer-list.component';
 
 export const AdminLayoutRoutes: Routes = [
