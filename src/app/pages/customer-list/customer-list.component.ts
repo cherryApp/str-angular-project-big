@@ -17,6 +17,10 @@ export class CustomerListComponent implements OnInit {
   filterKey = 'firstName';
   filterSubKey = '';
 
+  sorterKey = '';
+  sorterSubKey = '';
+  sortDirection = '';
+
   attributes = new CustomerAttributes();
 
   constructor(
@@ -46,6 +50,19 @@ export class CustomerListComponent implements OnInit {
 
   originalOrder = (a: KeyValue<number,string>, b: KeyValue<number,string>): number => {
     return 0;
+  }
+
+  onColumnSelect(key: string): void {
+    for(let k in this.attributes){
+      if(k===key){
+        this.attributes[k].order = ['','descending'].includes(this.attributes[k].order)? 'ascending': 'descending';
+        this.sorterKey = key;
+        this.sorterSubKey = this.attributes[key].obj;
+        this.sortDirection = this.attributes[key].order;
+      } else {
+        this.attributes[k].order = '';
+      }
+    }
   }
 
 }
