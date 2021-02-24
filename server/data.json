@@ -2255,34 +2255,6 @@
       }
     },
     {
-      "id": 3,
-      "firstName": "Fey",
-      "lastName": "Ygo",
-      "email": "fygo2@apache.org",
-      "active": false,
-      "address": {
-        "zip": "AB55",
-        "country": "United Kingdom",
-        "city": "Tullich",
-        "street": "Buell, 289",
-        "notes": ""
-      }
-    },
-    {
-      "id": 4,
-      "firstName": "Neilla",
-      "lastName": "Izon",
-      "email": "nizon3@si.edu",
-      "active": false,
-      "address": {
-        "zip": "NN11",
-        "country": "United Kingdom",
-        "city": "Norton",
-        "street": "Merry, 3428",
-        "notes": ""
-      }
-    },
-    {
       "id": 5,
       "firstName": "Danny",
       "lastName": "Woodrow",
