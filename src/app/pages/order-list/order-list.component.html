@@ -4,12 +4,12 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header card-header-info">
-                        <h4 class="card-title ">Products</h4>
-                        <p class="card-category">List of products currently on stock.</p>
+                        <h4 class="card-title ">Orders</h4>
+                        <p class="card-category">List of current orders.</p>
                     </div>
                     <div class="card my-0 px-3">
                         <button [routerLink]="" class="btn btn-primary my-3">
-                            Create new product
+                            Create new order
                         </button>
                     </div>
                     <div class="card-body col-6 d-flex">
@@ -25,16 +25,13 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class="text-primary">
-                                    <th *ngFor="let attribute of attributes | keyvalue:originalOrder" (click)="onColumnSelect(attribute.key)">
-                                        {{attribute.value}}
-                                        <span *ngIf="(sortOrder[attribute.key] === 'ascending' )"><i class="fa fa-angle-up"></i></span>
-                                        <span *ngIf="(sortOrder[attribute.key] === 'descending' )"><i class="fa fa-angle-down"></i></span>
-                                    </th>
+                                    <th *ngFor="let attribute of attributes | keyvalue:originalOrder">
+                                        {{attribute.value}}</th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let product of productList$ | async | filter:phrase:filterKey | sorter:sorterKey:sortDirection">
+                                    <tr *ngFor="let order of orderList$ | async | filter:phrase:filterKey">
                                         <td *ngFor="let attribute of attributes | keyvalue:originalOrder">
-                                            {{product[attribute.key]}}</td>
+                                            {{order[attribute.key]}}</td>
                                         <td>
                                             <div class="btn-group">
                                                 <button [routerLink]="" class="btn btn-info">
