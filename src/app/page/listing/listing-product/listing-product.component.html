@@ -1,13 +1,13 @@
 <div class="container">
     <div class="row">
         <div class="col-8 offset-2">
-            <h3>All products are listed below</h3>
+           <h2 class="text-center mb-5 mt-5">Összes termék</h2>
         </div>
 
         <div class="col-5">
-            <button class="btn btn-success btn-block" [routerLink]="[0]">
+            <button class="btn btn-primary btn-block" [routerLink]="[0]">
                 <i class="fa fa-edit"></i>
-                Create New Product
+                    Új tétel létrehozása
             </button>
         </div>
         <div class="col-3 ">
@@ -17,33 +17,37 @@
                 </option>
             </select>
         </div>
-        <div class="col-4">
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" (keyup)="onChangePhrase($event)">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+        <div class="search-bar">
+         <form class="form-inline my-2 my-lg-0 d-flex justify-content-center">
+            <input (keyup)='onChangePhrase($event)' class="form-control mr-sm-2" type="text" placeholder="Keresés" >
+                <button class="btn btn-primary mt-4 my-sm-0" type="button"> <i class="fa fa-search"></i> Keresés</button>
+        </form>
         </div>
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th (click)="onColumnSelect('id')">ID</th>
-                    <th (click)="onColumnSelect('name')">Name</th>
-                    <th (click)="onColumnSelect('type')">Type</th>
-                    <th (click)="onColumnSelect('catID')">CatID</th>
-                    <th (click)="onColumnSelect('description')">Description</th>
-                    <th (click)="onColumnSelect('price')">Price</th>
+                    <th (click)="onColumnSelect('id')"> <b>#</b></th>
+                    <th (click)="onColumnSelect('name')"><b>Name</b></th>
+                    <th (click)="onColumnSelect('type')"><b>Type</b></th>
+                    <!-- <th (click)="onColumnSelect('catID')">CatID</th> -->
+                    <th (click)="onColumnSelect('description')"><b>Description</b></th>
+                    <th (click)="onColumnSelect('price')"><b>Price</b></th>
                 </tr>
             </thead>
             <tbody>
               
                <tr *ngFor="let product of productList | async | filter:phrase:filterKey | sorter:columnKey">
-                    <td>{{product.id}}</td>
-                    <td>{{product.name}} </td>
-                    <td>{{product.type}}</td>
-                    <td>{{product.catID}}</td>
-                    <td>{{product.description}}</td>
-                    <td>{{product.price}}</td>
-                    <td>
+                  
+            <td>
+              <span>{{ product.id }}</span>
+            </td>
+            <td><input class="form-control form-control-sm" [(ngModel)]="product.name"></td>
+            <td><input class="form-control form-control-sm" [(ngModel)]="product.type"></td>
+            <!-- <td><input class="form-control form-control-sm" [(ngModel)]="product.catId"></td> -->
+            <td><input class="form-control form-control-sm" [(ngModel)]="product.description"></td>
+            <td><input class="form-control form-control-sm" [(ngModel)]="product.price"></td>
+            <td>
+
                         <div class="btn-group">
                             <button [routerLink]="[product.id]" class="btn btn-info">
                                 <i class="fa fa-pencil"></i>
