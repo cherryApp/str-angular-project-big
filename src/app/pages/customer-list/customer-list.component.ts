@@ -40,11 +40,18 @@ export class CustomerListComponent implements OnInit {
   }
 
   onChangeKey(event: Event): void {
-    this.filterKey = (event.target as HTMLInputElement).value;
+    if(this.attributes[this.filterKey].type==='check'){
+      this.phrase = '';
+    }
+    const value = (event.target as HTMLInputElement).value.split(',');
+    this.filterKey = value[0];
     this.filterSubKey = this.attributes[this.filterKey].obj;
+    if(value.length>1){
+      this.phrase = value[1]==='1'? 't': 'f';
+    } 
   }
 
-  setDefault(key):boolean {
+  setDefault(key: string):boolean {
     return key === "firstName" ? true : false;
   }
 
