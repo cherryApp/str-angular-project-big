@@ -23,9 +23,9 @@ export class BillService {
     );
   }
 
-  // get(id: number): Observable<Bill> {
-  //   return Number(id) === 0 ? of(new Bill()) : this.http.get<Bill>(`${this.serverUrl}/${Number(id)}`);
-  // }
+  get(id: number): Observable<Bill> {
+    return Number(id) === 0 ? of(new Bill()) : this.http.get<Bill>(`${this.serverUrl}/${Number(id)}`);
+  }
 
   update(bill: Bill): Observable<Bill> {
     return this.http.patch<Bill>(
