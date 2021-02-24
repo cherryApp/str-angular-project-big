@@ -11,6 +11,7 @@ export class ProductService {
   serverUrl: string = 'http://localhost:3000/products';
 
   list$: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
+  subscribe: any;
 
   constructor(private http: HttpClient) { }
 
