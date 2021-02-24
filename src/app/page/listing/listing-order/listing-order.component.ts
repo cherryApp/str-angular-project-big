@@ -10,7 +10,7 @@ import { OrderService } from 'src/app/service/order.service';
 })
 export class ListingOrderComponent implements OnInit {
   orderList$: BehaviorSubject<Order[]>= this.orderService.list$;
-
+  phrase: string='';
   constructor(
     private orderService:OrderService
   ) { }
