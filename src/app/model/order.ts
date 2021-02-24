@@ -1,8 +1,8 @@
 export class Order {
-  id: number;
-  customerID: number;
-  productID: number;
-  amount: number;
+  id: number = 0;
+  customerID: number = 0;
+  productID: number = 0;
+  amount: number = 0;
   status:string='new'||'shipped'||'paid'; 
   }
 export class OrderAttributes{

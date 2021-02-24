@@ -2,7 +2,7 @@ import { KeyValue } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Bill, BillAttributes } from 'app/model/bill';
 import { BillService } from 'app/services/bill.service';
-import { ColumnSortOrder } from 'app/services/product.service';
+import { ColumnSortOrder } from 'app/services/bill.service';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
