@@ -14,7 +14,8 @@ export class CustomerListComponent implements OnInit {
   customerList$: BehaviorSubject<Customer[]> = this.customerService.list$;
 
   phrase: string = '';
-  filterKey = 'name';
+  filterKey = 'firstName';
+  filterSubKey = '';
 
   attributes = new CustomerAttributes();
 
@@ -36,10 +37,11 @@ export class CustomerListComponent implements OnInit {
 
   onChangeKey(event: Event): void {
     this.filterKey = (event.target as HTMLInputElement).value;
+    this.filterSubKey = this.attributes[this.filterKey].obj;
   }
 
   setDefault(key):boolean {
-    return key === "name" ? true : false;
+    return key === "firstName" ? true : false;
   }
 
   originalOrder = (a: KeyValue<number,string>, b: KeyValue<number,string>): number => {
