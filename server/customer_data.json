@@ -2,351 +2,351 @@
     "customers": [
         {
             "id":1,
-            "first_name":"Holmes",
-            "last_name":"De Vaux",
+            "firstName":"Holmes",
+            "lastName":"De Vaux",
             "email":"hdevaux0@joomla.org",
             "address":  {
                             "zip":393917,
                             "country":"Russia",
                             "city":"Rybnoye",
                             "street":"16159 Sauthoff Hill",
-                            "notes":"phasellus in felis donec semper sapien"
+                            "notes":"Phasellus in felis donec semper sapien"
                         },
             "active":true
         },
         {
             "id":2,
-            "first_name":"Northrop",
-            "last_name":"Cana",
+            "firstName":"Northrop",
+            "lastName":"Cana",
             "email":"ncana1@samsung.com",
             "address":  {
                             "zip":8410205,
                             "country":"Japan",
                             "city":"Tosu",
                             "street":"1208 Browning Road",
-                            "notes":"donec vitae nisi nam ultrices"
+                            "notes":"Donec vitae nisi nam ultrices"
                         },
             "active":false
         },
         {
             "id":3,
-            "first_name":"Tarah",
-            "last_name":"MacSorley",
+            "firstName":"Tarah",
+            "lastName":"MacSorley",
             "email":"tmacsorley2@flickr.com",
             "address":  {
                             "zip":36660000,
                             "country":"Brazil",
                             "city":"Além Paraíba",
                             "street":"4269 Claremont Avenue",
-                            "notes":"aenean sit amet justo"
+                            "notes":"Aenean sit amet justo"
                         },
             "active":false
         },
         {
             "id":4,
-            "first_name":"Waverley",
-            "last_name":"Scirman",
+            "firstName":"Waverley",
+            "lastName":"Scirman",
             "email":"wscirman3@spiegel.de",
             "address":  {
                             "zip":4890561,
                             "country":"Portugal",
                             "city":"Além do Rio",
                             "street":"22 Sunfield Point",
-                            "notes":"velit nec nisi vulputate nonummy maecenas tincidunt"
+                            "notes":"Velit nec nisi vulputate nonummy maecenas tincidunt"
                         },
             "active":false
         },
         {
             "id":5,
-            "first_name":"Jarrad",
-            "last_name":"Deshon",
+            "firstName":"Jarrad",
+            "lastName":"Deshon",
             "email":"jdeshon4@wired.com",
             "address":  {
                             "zip":4580389,
                             "country":"Portugal",
                             "city":"Valinhos",
                             "street":"71 Maple Wood Center",
-                            "notes":"nisl ut volutpat sapien arcu sed"
+                            "notes":"Nisl ut volutpat sapien arcu sed"
                         },
             "active":true
         },
         {
             "id":6,
-            "first_name":"Stinky",
-            "last_name":"Birtchnell",
+            "firstName":"Stinky",
+            "lastName":"Birtchnell",
             "email":"sbirtchnell5@istockphoto.com",
             "address":  {
                             "zip":38524,
                             "country":"Poland",
                             "city":"Zarszyn",
                             "street":"39 Lakeland Drive",
-                            "notes":"aliquet maecenas leo odio"
+                            "notes":"Aliquet maecenas leo odio"
                         },
             "active":true
         },
         {
             "id":7,
-            "first_name":"Winnah",
-            "last_name":"Bresman",
+            "firstName":"Winnah",
+            "lastName":"Bresman",
             "email":"wbresman6@cmu.edu",
             "address":  {
                         "zip":48966,
                         "country":"Mexico",
                         "city":"Santa Rosa",
                         "street":"08835 Monument Road",
-                        "notes":"lectus pellentesque eget nunc"
+                        "notes":"Lectus pellentesque eget nunc"
                     },
             "active":true
         },
         {
             "id":8,
-            "first_name":"Yorke",
-            "last_name":"Tape",
+            "firstName":"Yorke",
+            "lastName":"Tape",
             "email":"ytape7@senate.gov",
             "address":  {
                             "zip":4808,
                             "country":"Norway",
                             "city":"Arendal",
                             "street":"5 Graceland Center",
-                            "notes":"convallis morbi odio odio elementum eu interdum"
+                            "notes":"Convallis morbi odio odio elementum eu interdum"
                         },
             "active":false
         },
         {
             "id":9,
-            "first_name":"Daryle",
-            "last_name":"Gavrielli",
+            "firstName":"Daryle",
+            "lastName":"Gavrielli",
             "email":"dgavrielli8@ox.ac.uk",
             "address":  {
                             "zip":13006,
                             "country":"Guatemala",
                             "city":"San Pedro Necta",
                             "street":"28438 Blue Bill Park Way",
-                            "notes":"sapien sapien non mi integer ac"
+                            "notes":"Sapien sapien non mi integer ac"
                         },
             "active":false
         },
         {
             "id":10,
-            "first_name":"Nicholas",
-            "last_name":"Plom",
+            "firstName":"Nicholas",
+            "lastName":"Plom",
             "email":"nplom9@reverbnation.com",
             "address":  {
                             "zip":78764,
                             "country":"United States",
                             "city":"Austin",
                             "street":"29 Loomis Trail",
-                            "notes":"tortor sollicitudin mi sit amet"
+                            "notes":"Tortor sollicitudin mi sit amet"
                         },
             "active":false
         },
         {
             "id":11,
-            "first_name":"Ted",
-            "last_name":"Brobeck",
+            "firstName":"Ted",
+            "lastName":"Brobeck",
             "email":"tbrobecka@cnbc.com",
             "address":  {
                             "zip":15640000,
                             "country":"Brazil",
                             "city":"Tomé Açu",
                             "street":"17186 Westridge Hill",
-                            "notes":"vestibulum sed magna at nunc commodo placerat"
+                            "notes":"Vestibulum sed magna at nunc commodo placerat"
                         },
             "active":true
         },
         {
             "id":12,
-            "first_name":"Serena",
-            "last_name":"Gabbat",
+            "firstName":"Serena",
+            "lastName":"Gabbat",
             "email":"sgabbatb@yahoo.com",
             "address":  {
                             "zip":4619,
                             "country":"Netherlands",
                             "city":"Bergen op Zoom",
                             "street":"951 Bluejay Terrace",
-                            "notes":"sed ante vivamus tortor duis mattis"
+                            "notes":"Sed ante vivamus tortor duis mattis"
                         },
             "active":true
         },
         {
             "id":13,
-            "first_name":"Burnard",
-            "last_name":"Lutton",
+            "firstName":"Burnard",
+            "lastName":"Lutton",
             "email":"bluttonc@usatoday.com",
             "address":  {
                             "zip":48320,
                             "country":"Poland",
                             "city":"Skoroszyce",
                             "street":"1804 Dahle Pass",
-                            "notes":"sapien non mi integer ac"
+                            "notes":"Sapien non mi integer ac"
                         },
             "active":true
         },
         {
             "id":14,
-            "first_name":"Cleo",
-            "last_name":"Klazenga",
+            "firstName":"Cleo",
+            "lastName":"Klazenga",
             "email":"cklazengad@dmoz.org",
             "address":  {
                             "zip":4002,
                             "country":"Guatemala",
                             "city":"San José Poaquil",
                             "street":"161 Forest Run Lane",
-                            "notes":"consequat in consequat ut nulla"
+                            "notes":"Consequat in consequat ut nulla"
                         },
             "active":false
         },
         {
             "id":15,
-            "first_name":"Guendolen",
-            "last_name":"Kindread",
+            "firstName":"Guendolen",
+            "lastName":"Kindread",
             "email":"gkindreade@eepurl.com",
             "address":  {
                             "zip":44240,
                             "country":"Sweden",
                             "city":"Kungälv",
                             "street":"07186 Dunning Point",
-                            "notes":"in leo maecenas pulvinar lobortis est"
+                            "notes":"In leo maecenas pulvinar lobortis est"
                         },
             "active":true
         },
         {
             "id":16
-            ,"first_name":"Cleopatra",
-            "last_name":"Swancott",
+            ,"firstName":"Cleopatra",
+            "lastName":"Swancott",
             "email":"cswancottf@vimeo.com",
             "address":  {
                             "zip":1066,
                             "country":"Philippines",
                             "city":"Taypano",
                             "street":"96071 Haas Avenue",
-                            "notes":"diam erat fermentum justo"
+                            "notes":"Diam erat fermentum justo"
                         },
             "active":false
         },
         {
             "id":17,
-            "first_name":"Jory",
-            "last_name":"Coonihan",
+            "firstName":"Jory",
+            "lastName":"Coonihan",
             "email":"jcoonihang@bravesites.com",
             "address":  {
                             "zip":7035,
                             "country":"Philippines",
                             "city":"New Cebu",
                             "street":"7 Pennsylvania Plaza",
-                            "notes":"dapibus at diam nam"
+                            "notes":"Dapibus at diam nam"
                         },
             "active":false
         },
         {
             "id":18,
-            "first_name":"Stephen",
-            "last_name":"MacNockater",
+            "firstName":"Stephen",
+            "lastName":"MacNockater",
             "email":"smacnockaterh@google.com.au",
             "address":  {
                             "zip":4371604,
                             "country":"Japan",
                             "city":"Ōyama",
                             "street":"9 Pine View Park",
-                            "notes":"eu sapien cursus vestibulum"
+                            "notes":"Eu sapien cursus vestibulum"
                         },
             "active":false
         },
         {
             "id":19,
-            "first_name":"Cherlyn",
-            "last_name":"Robbings",
+            "firstName":"Cherlyn",
+            "lastName":"Robbings",
             "email":"crobbingsi@tinypic.com",
             "address":  {
                             "zip":59311,
                             "country":"Pakistan",
                             "city":"Qādirpur Rān",
                             "street":"11774 Pierstorff Drive",
-                            "notes":"luctus nec molestie sed justo pellentesque viverra"
+                            "notes":"Luctus nec molestie sed justo pellentesque viverra"
                         },
             "active":false
         },
         {
             "id":20,
-            "first_name":"Kass",
-            "last_name":"Meace",
+            "firstName":"Kass",
+            "lastName":"Meace",
             "email":"kmeacej@flickr.com",
             "address":  {
                             "zip":10311,
                             "country":"Sweden",
                             "city":"Stockholm",
                             "street":"10 Mandrake Pass",
-                            "notes":"platea dictumst maecenas ut"
+                            "notes":"Platea dictumst maecenas ut"
                         },
             "active":false
         },
         {
             "id":21,
-            "first_name":"Robinett",
-            "last_name":"Bote",
+            "firstName":"Robinett",
+            "lastName":"Bote",
             "email":"rbotek@wunderground.com",
             "address":  {
                             "zip":98831,
                             "country":"New Caledonia",
                             "city":"Touho",
                             "street":"58780 Ilene Parkway",
-                            "notes":"nam congue risus semper porta volutpat quam"
+                            "notes":"Nam congue risus semper porta volutpat quam"
                         },
             "active":true
         },
         {
             "id":22,
-            "first_name":"Kristian",
-            "last_name":"Cruz",
+            "firstName":"Kristian",
+            "lastName":"Cruz",
             "email":"kcruzl@census.gov",
             "address":  {
                             "zip":18005,
                             "country":"Spain",
                             "city":"Granada",
                             "street":"198 Mallory Point",
-                            "notes":"morbi vel lectus in quam"
+                            "notes":"Morbi vel lectus in quam"
                         },
             "active":true
         },
         {
             "id":23,
-            "first_name":"Trisha",
-            "last_name":"Dearell",
+            "firstName":"Trisha",
+            "lastName":"Dearell",
             "email":"tdearellm@apple.com",
             "address":  {
                             "zip":881,
                             "country":"Ireland",
                             "city":"Farranacoush",
                             "street":"9 Shopko Parkway",
-                            "notes":"dui vel nisl duis ac"
+                            "notes":"Dui vel nisl duis ac"
                         },
             "active":false
         },
         {
             "id":24,
-            "first_name":"Stepha",
-            "last_name":"Cortin",
+            "firstName":"Stepha",
+            "lastName":"Cortin",
             "email":"scortinn@pagesperso-orange.fr",
             "address":  {
                             "zip":53345,
                             "country":"Czech Republic",
                             "city":"Opatovice nad Labem",
                             "street":"53 Esker Park",
-                            "notes":"libero rutrum ac lobortis vel"
+                            "notes":"Libero rutrum ac lobortis vel"
                         },
             "active":false
         },
         {
             "id":25,
-            "first_name":"Bernarr",
-            "last_name":"Byllam",
+            "firstName":"Bernarr",
+            "lastName":"Byllam",
             "email":"bbyllamo@princeton.edu",
             "address":  {
                             "zip":2089,
                             "country":"Bulgaria",
                             "city":"Anton",
                             "street":"100 Anhalt Circle",
-                            "notes":"sapien dignissim vestibulum vestibulum"
+                            "notes":"Sapien dignissim vestibulum vestibulum"
                         },
             "active":true
         }
