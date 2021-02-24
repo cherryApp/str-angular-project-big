@@ -16,9 +16,11 @@
                         <input name="phrase" (keyup)="onChangePhrase($event)" class="form-control" type="text"
                             placeholder="Enter filtering phrase...">
                         <select class="custom-select ml-2" (change)="onChangeKey($event)">
-                            <option *ngFor="let attribute of attributes | keyvalue:originalOrder"
-                                [value]="attribute.key" [selected]="setDefault(attribute.key)">Filter by
-                                {{attribute.value.title}}</option>
+                            <ng-container *ngFor="let attribute of attributes | keyvalue:originalOrder">
+                                <option *ngIf="attribute.value.type!='check'" [value]="attribute.key" [selected]="setDefault(attribute.key)">Filter by {{attribute.value.title}}</option>
+                                <option *ngIf="attribute.value.type==='check'" [value]="attribute.key+',1'" [selected]="setDefault(attribute.key)">{{attribute.value.title}} is true</option>
+                                <option *ngIf="attribute.value.type==='check'" [value]="attribute.key+',0'" [selected]="setDefault(attribute.key)">{{attribute.value.title}} is false</option>
+                            </ng-container>
                         </select>
                     </div>
                     <div class="card-body">
