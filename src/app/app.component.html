@@ -1,4 +1,18 @@
-<!-- ide jön a head -->
-<!-- ide jön a nav -->
+<div class="wrapper">
 
-<router-outlet></router-outlet>
+  <app-sidebar></app-sidebar>
+  
+  <div class="main-panel">
+
+    <app-navbar></app-navbar>
+
+    <div class="content">
+      <div class="container-fluid">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+
+    <app-footer></app-footer>
+
+  </div>
+</div>
