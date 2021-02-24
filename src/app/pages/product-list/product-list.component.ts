@@ -1,7 +1,7 @@
 import { KeyValue } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Product, ProductAttributes } from 'app/model/product';
-import { ProductService } from 'app/services/product.service';
+import { ColumnSortOrder, ProductService } from 'app/services/product.service';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
@@ -16,8 +16,9 @@ export class ProductListComponent implements OnInit {
   phrase: string = '';
   filterKey = 'name';
 
-  attributes = new ProductAttributes();
+  sorterKey: string ='';
 
+  attributes = new ProductAttributes();
 
   constructor(private productService: ProductService) { }
 
@@ -44,4 +45,41 @@ export class ProductListComponent implements OnInit {
   originalOrder = (a: KeyValue<number,string>, b: KeyValue<number,string>): number => {
     return 0;
   }
+
+  onColumnSelect(key: string) : void {
+    this.sorterKey = key;
+    let clicked = true;
+    
+    if (this.sortOrder[key] === "none" && clicked) {
+      this.erasesortDirections();
+      this.sortOrder[key] = "ascending"
+      clicked = false;
+    }
+
+    if (this.sortOrder[key] === "ascending" && clicked) {
+      this.erasesortDirections();
+      this.sortOrder[key] = "descending"
+      clicked = false;
+    }
+
+    if (this.sortOrder[key] === "descending" && clicked) {
+      this.erasesortDirections();
+      this.sortOrder[key] = "ascending"
+      clicked = false;
+    }
+
+    this.sortDirection = this.sortOrder[key];
+    console.log(this.sortDirection);
+  }
+  
+  erasesortDirections(): void {
+    for (let key in this.sortOrder) {
+      this.sortOrder[key] = "none";
+    }
+  }
+  
+  sortDirection = "none";
+  
+  sortOrder = new ColumnSortOrder();
+
 }
