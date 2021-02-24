@@ -5,13 +5,13 @@
         </div>
 
         <div class="col-5">
-            <button class="btn btn-success btn-block" [routerLink]="[0]">
+            <button class="btn btn-success btn-block">
                 <i class="material-icons">add</i>
                 Create a New Bill
             </button>
         </div>
         <div class="col-3 ">Select
-            <select class="form-control" [(ngModel)]="filterKey">
+            <select class="form-control">
                 <option *ngFor="let key of filterKeys" [value]="key">
                     {{ key }}
                 </option>
@@ -43,10 +43,10 @@
                     <td>{{bill.status}}</td>
                     <td>
                         <div class="btn-group">
-                            <button [routerLink]="['bill/' + bill.id]" class="btn btn-info">
+                            <button class="btn btn-info">
                                 <i class="material-icons">add</i>
                             </button>
-                            <button (click)="onRemove(bill)" [routerLink]="['bill/' + bill.id]" class="btn btn-danger">
+                            <button (click)="onRemove(bill)" class="btn btn-danger">
                                 <i class="material-icons">delete_outline</i>
                             </button>
                         </div>
