@@ -1,1 +1,48 @@
-<p>list-category works!</p>
+<div class="row">
+    <div class="col-md-10 offset-1">
+
+      <div class="input-group no-border col-md-5 pb-4">
+        <input [(ngModel)]="filterPhrase" type="text" value="" class="form-control" placeholder="Filter...">
+      </div>
+
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title ">Category Table</h4>
+          <p class="card-category"> This is the Category list</p>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+
+              <thead class=" text-primary">
+                <th>id</th>
+                <th>name</th>
+                <th>description</th>
+                <th>actions</th>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let category of categoryList$ | async | filter:filterPhrase:filterKey ">
+                  <td>{{ category.id }}</td>
+                  <td>{{ category.name }}</td>
+                  <td>{{ category.description }}</td>
+                  <td>
+                    <div class="btn-group" role="group">
+                      <button type="button" rel="tooltip" title="Edit Customer" class="btn btn-primary btn-link btn-sm">
+                        <i class="material-icons">edit</i>
+                      </button>
+                      <button type="button" rel="tooltip" title="Remove Customer" class="btn btn-danger btn-link btn-sm">
+                        <i class="material-icons">close</i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              
+              </tbody>
+
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+   
