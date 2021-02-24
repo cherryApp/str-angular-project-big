@@ -56,3 +56,11 @@ export class OrderService {
     this.toastr.error('The order has been deleted.', 'DELETED');
   }
 }
+
+export class ColumnSortOrder {
+  id = "none";
+  customerID: "none";
+  productID: "none";
+  amount:  "none";
+  status: "none";
+}
