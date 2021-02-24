@@ -20,6 +20,7 @@ import { CardComponent } from './page/card/card.component';
 import { ListingCustomerComponent } from './page/listing/listing-customer/listing-customer.component';
 import { DashboardComponent } from './page/dashboard/dashboard.component';
 import { NotfoundComponent } from './page/notfound/notfound.component';
+import { SidebarComponent } from './widget/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { NotfoundComponent } from './page/notfound/notfound.component';
     ListingCustomerComponent,
     DashboardComponent,
     NotfoundComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
