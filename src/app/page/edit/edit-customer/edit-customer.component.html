@@ -1,45 +1,66 @@
 <div class="row">
     <div *ngIf="customer" class="col-6 offset-3">
-      <form #customerForm="ngForm" (ngSubmit)="onUpdate(customerForm, customer)">
+      <form #customerForm="ngForm" (ngSubmit)="onUpdate(customer)">
         <div class="form-group">
-          <label for="">First Name</label>
-          <input name="firstname" [(ngModel)]="customer.firstName" type="text" class="form-control">
-          
+          <label for="">Keresztnév</label>
+          <input name="firstName" [(ngModel)]="customer.firstName" type="text" class="form-control" required>
+          <div [hidden]="customerForm.controls.firstName?.valid || customerForm.controls.firstName?.pristine" class="error-message">
+            Hiányzó adat!
+          </div>
         </div>
         <div class="form-group">
-          <label for="">Last Name</label>
-          <input name="lastname" [(ngModel)]="customer.lastName" type="text" class="form-control">          
+          <label for="">Vezetéknév</label>
+          <input name="lastName" [(ngModel)]="customer.lastName" type="text" class="form-control" required>   
+          <div [hidden]="customerForm.controls.lastName?.valid || customerForm.controls.lastName?.pristine" class="error-message">
+            Hiányzó adat!
+          </div>       
         </div>
         <div class="form-group">
           <label for="">Email</label>
-          <input name="email" [(ngModel)]="customer.email" type="email" class="form-control">        
+          <input name="email" [(ngModel)]="customer.email" type="email" class="form-control" required> 
+          <div [hidden]="customerForm.controls.email?.valid || customerForm.controls.email?.pristine" class="error-message">
+            Hiányzó adat!
+          </div>       
         </div>
         <div class="form-group">
-          <label for="">Zip</label>
-          <input name="zip" [(ngModel)]="customer.address.zip" type="number" class="form-control">
-         
+          <label for="">Irányítószám</label>
+          <input name="zip" [(ngModel)]="customer.address.zip" type="number" class="form-control" required>
+          <div [hidden]="customerForm.controls.zip?.valid || customerForm.controls.zip?.pristine" class="error-message">
+            Hiányzó adat!
+          </div>
         </div>
         <div class="form-group">
-          <label for="">Country</label>
-          <input name="country" [(ngModel)]="customer.address.country" type="text" class="form-control">
-         
+          <label for="">Ország</label>
+          <input name="country" [(ngModel)]="customer.address.country" type="text" class="form-control" required>
+          <div [hidden]="customerForm.controls.country?.valid || customerForm.controls.country?.pristine" class="error-message">
+            Hiányzó adat!
+          </div>
         </div>
         <div class="form-group">
-          <label for="">City</label>
-          <input name="city" [(ngModel)]="customer.address.city" type="text" class="form-control">          
+          <label for="">Város</label>
+          <input name="city" [(ngModel)]="customer.address.city" type="text" class="form-control" required>   
+          <div [hidden]="customerForm.controls.city?.valid || customerForm.controls.city?.pristine" class="error-message">
+            Hiányzó adat!
+          </div>       
         </div>
         <div class="form-group">
-          <label for="">Street</label>
-          <input name="street" [(ngModel)]="customer.address.street" type="text" class="form-control">
+          <label for="">Utca</label>
+          <input name="street" [(ngModel)]="customer.address.street" type="text" class="form-control" required>
+          <div [hidden]="customerForm.controls.street?.valid || customerForm.controls.street?.pristine" class="error-message">
+            Hiányzó adat!
+          </div>
         </div>
         <div class="form-group">
-          <label for="">Notes</label>
-          <input name="notes" [(ngModel)]="customer.address.notes" type="text" class="form-control">
+          <label for="">Megjegyzés</label>
+          <input name="notes" [(ngModel)]="customer.address.notes" type="text" class="form-control" required>
+          <div [hidden]="customerForm.controls.notes?.valid || customerForm.controls.notes?.pristine" class="error-message">
+            Hiányzó adat!
+          </div>
         </div>
         <div class="btn-group">
         </div>
         <button type="submit" class="btn btn-primary btn-block btn-lg">
-          <i  class="fa fa-save"></i>
+          <i  class="material-icons">save</i>
         </button>
       </form>
     </div>
