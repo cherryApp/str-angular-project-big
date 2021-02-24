@@ -22,6 +22,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { ProductListComponent } from './pages/product-list/product-list.component';
 import { FilterPipe } from './pipe/filter.pipe';
 import { SorterPipe } from './pipe/sorter.pipe';
+import { BillListComponent } from './pages/bill-list/bill-list.component';
 import { CustomerListComponent } from './pages/customer-list/customer-list.component';
 
 @NgModule({
@@ -45,6 +46,7 @@ import { CustomerListComponent } from './pages/customer-list/customer-list.compo
     ProductListComponent,
     FilterPipe,
     SorterPipe,
+    BillListComponent,
     CustomerListComponent,
 
   ],
