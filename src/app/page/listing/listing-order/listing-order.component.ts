@@ -35,8 +35,10 @@ export class ListingOrderComponent implements OnInit {
     this.columnKey = key;
   }
   // onRemove(order: Order): void {
-  //   this.orderService.remove(order.id),
-  //   this.router.navigate([''])
-  //  }
+  // this.orderService.remove(order.id),
+  // this.router.navigate([''])
+  // }
 
-}
+
+  }
+
