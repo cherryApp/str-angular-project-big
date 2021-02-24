@@ -1,53 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="col-4 offset-5">
+      <h3>Orders</h3>
+    </div>
+    <div class="col-12">
+      <button class="btn btn-success btn-block" [routerLink]="[0]">
+        <i class="material-icons"></i>
+        Create a New Order
+      </button>
+    </div>
+    <div class="col-3">Select category
+          <select [(ngModel)]="filterKey" class="form-control">
 
+        <option *ngFor="let key of filterKeys" [value]="key">
+            {{ key }}
+        </option>
+    </select>
 
-<div class="row">
-  <div class="col-4 offset-8 mt-3 mb-3">
-        <input [(ngModel)]="phrase" type="text" class= "form-control">
-  </div>
-<div class="col-6 offset-3">
-  <button class="btn btn-success bton-block" [routerLink]=[0]>
-    Create a new order.
-  </button>
-</div>
+    </div>
 
-  <div class="col-6 offset-3">
-    <h3>Orders</h3>
     <table class="table table-striped">
-      <thead>
+      <thead class="mat-sort-header">
         <tr>
-          <th>ID</th>
-          <th>Customer ID</th>
-          <th>Product ID</th>
-          <th>Amount</th>
-          <th>Status</th>
+          <th *ngFor="let col of cols">{{ col.text }}</th>
+          <!-- <th>Customer ID</th>
+           <th>Product ID</th>
+           <th>Amount</th>
+           <th>Status</th> -->
           <th></th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let order of orderList$ | async">
-
-          <td>{{order.id}}</td>
-          <td>{{order.customerID}}</td>
-          <td>{{order.productID}}</td>
-          <td>{{order.amount}}</td>
-          <td>{{order.status}}</td>
+        <tr
+          *ngFor="
+            let order of orderList$ | async"        >
+          <td>{{ order.id }}</td>
+          <td>{{ order.customerID }}</td>
+          <td>{{ order.productID }}</td>
+          <td>{{ order.amount }}</td>
+          <td>{{ order.status }}</td>
           <td>
             <div class="btn-group">
-              <button [class="btn btn-info">
-                Szerkesztés
+              <button [routerLink]="[order.id]" class="btn btn-info">
+                <i class="material-icons">manage_search</i>
               </button>
-              <button class="btn btn-danger">
-                Törlés
+              <button [routerLink]="[order.id]" class="btn btn-danger">
+                <i class="material-icons">delete_outline</i>
               </button>
             </div>
           </td>
         </tr>
       </tbody>
-
     </table>
-
   </div>
-
-
 </div>
