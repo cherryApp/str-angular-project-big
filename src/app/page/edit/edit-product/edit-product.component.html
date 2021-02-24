@@ -3,7 +3,7 @@
     <form #productForm="ngForm" (ngSubmit)="setProductToDatabase(product)">
       <div class="form-group">
         <label for="">Név:</label>
-        <input name="name" [(ngModel)]="product.name" type="text" class="form-control" required>
+        <input name="name" [(ngModel)]="product.name" type="text" class="form-control" required autofocus>
         <div [hidden]="productForm.controls.name?.valid || productForm.controls.name?.pristine" class="error-message">
           Hiányzó név!
         </div>
