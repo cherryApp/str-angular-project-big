@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/model/product';
 import { ProductService } from 'src/app/service/product.service';
 import { ToastrService } from 'ngx-toastr';
@@ -34,7 +34,7 @@ export class EditProductComponent implements OnInit {
         () => {
           this.toastr.success('Sikeres termék létrehozás!', 'Siker!', { timeOut: 3000 });
           this.updating = false;
-          this.router.navigate(['product']);
+          this.router.navigate(['products']);
         },
         error => this.toastr.error('Hiba a termék létrehozásakor!', 'Hiba!', { timeOut: 3000 })
       )
@@ -44,7 +44,7 @@ export class EditProductComponent implements OnInit {
         () => {
           this.toastr.success('Sikeresen frissítetted a terméket!', 'Siker!', { timeOut: 3000 });
           this.updating = false;
-          this.router.navigate(['product']);
+          this.router.navigate(['products']);
         },
         error => this.toastr.error('Hiba történt a termék frissítésekor!', 'Hiba!', { timeOut: 3000 })
       )
