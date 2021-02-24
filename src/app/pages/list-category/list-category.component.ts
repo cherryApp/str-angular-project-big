@@ -14,7 +14,7 @@ export class ListCategoryComponent implements OnInit {
   categoryList$: Observable<Category[]> = this.categoryService.getAll();
 
   filterPhrase: string = '';
-  filterKey: string = 'firstName';
+  filterKey: string = 'name';
 
   constructor(private categoryService: CategoryService) { }
 
