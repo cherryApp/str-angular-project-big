@@ -34,7 +34,7 @@ export class EditProductComponent implements OnInit {
         () => {
           this.toastr.success('Sikeres termék létrehozás!', 'Siker!', { timeOut: 3000 });
           this.updating = false;
-          this.router.navigate(['products']);
+          this.router.navigate(['product']);
         },
         error => this.toastr.error('Hiba a termék létrehozásakor!', 'Hiba!', { timeOut: 3000 })
       )
@@ -44,7 +44,7 @@ export class EditProductComponent implements OnInit {
         () => {
           this.toastr.success('Sikeresen frissítetted a terméket!', 'Siker!', { timeOut: 3000 });
           this.updating = false;
-          this.router.navigate(['products']);
+          this.router.navigate(['product']);
         },
         error => this.toastr.error('Hiba történt a termék frissítésekor!', 'Hiba!', { timeOut: 3000 })
       )
