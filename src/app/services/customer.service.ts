@@ -14,10 +14,8 @@ export class CustomerService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): void {
-    this.http.get<Customer[]>(this.apiUrl).subscribe(
-      data => this.customerList$.next(data)
-    )
+  getAll(): Observable<Customer[]> {
+    return this.http.get<Customer[]>(this.apiUrl);
   }
 
   getOneById(id: number | string): Observable<Customer> {
