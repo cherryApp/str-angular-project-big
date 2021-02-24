@@ -9,7 +9,11 @@ import { IconsComponent } from '../../icons/icons.component';
 import { NotificationsComponent } from '../../notifications/notifications.component';
 import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { ProductListComponent } from 'app/pages/product-list/product-list.component';
+<<<<<<< HEAD
 import { OrderListComponent } from 'app/pages/order-list/order-list.component';
+=======
+import { BillListComponent } from 'app/pages/bill-list/bill-list.component';
+>>>>>>> dev
 import { CustomerListComponent } from 'app/pages/customer-list/customer-list.component';
 
 export const AdminLayoutRoutes: Routes = [
@@ -59,7 +63,11 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'user-profile', component: UserProfileComponent },
     { path: 'table-list', component: TableListComponent },
     { path: 'product-list', component: ProductListComponent },
+<<<<<<< HEAD
     { path: 'order-list', component: OrderListComponent },
+=======
+    { path: 'bill-list', component: BillListComponent },
+>>>>>>> dev
     { path: 'customer-list', component: CustomerListComponent },
     { path: 'typography', component: TypographyComponent },
     { path: 'icons', component: IconsComponent },
