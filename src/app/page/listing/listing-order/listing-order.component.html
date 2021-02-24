@@ -1,1 +1,57 @@
-<p>listing-order works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-4 offset-5">
+      <h3>Orders</h3>
+    </div>
+    <div class="col-12">
+      <button class="btn btn-success btn-block" [routerLink]="[0]">
+        <i class="material-icons">add</i>
+        Create a New Order
+      </button>
+    </div>
+    <div class="col-3">Select category
+          <select [(ngModel)]="filterKey" class="form-control">
+
+        <option *ngFor="let key of filterKeys" [value]="key">
+            {{ key }}
+        </option>
+    </select>
+
+    </div>
+
+    <table class="table table-striped">
+      <thead class="mat-sort-header">
+        <tr>
+          <th *ngFor="let col of cols">{{ col.text }}</th>
+          <!-- <th>Customer ID</th>
+           <th>Product ID</th>
+           <th>Amount</th>
+           <th>Status</th> -->
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="
+            let order of orderList$ | async"        >
+          <td>{{ order.id }}</td>
+          <td>{{ order.customerID }}</td>
+          <td>{{ order.productID }}</td>
+          <td>{{ order.amount }}</td>
+          <td>{{ order.status }}</td>
+          <td>
+            <div class="btn-group">
+              <button [routerLink]="['order/' + order.id]" class="btn btn-info">
+                <i class="material-icons">manage_search</i>
+              </button>
+              <button (click)="onRemove(order)" [routerLink]="['order/' + order.id]" class="btn btn-danger">
+                <i class="material-icons">delete_outline</i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

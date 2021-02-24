@@ -9,7 +9,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FilterPipe } from './pipe/filter.pipe';
 import { SorterPipe } from './pipe/sorter.pipe';
-import { OrderComponent } from './order/order.component';
 import { EditProductComponent } from './page/edit/edit-product/edit-product.component';
 import { EditCustomerComponent } from './page/edit/edit-customer/edit-customer.component';
 import { ListingProductComponent } from './page/listing/listing-product/listing-product.component';
@@ -29,7 +28,6 @@ import { ListComponent } from './widget/list/list.component';
     AppComponent,
     FilterPipe,
     SorterPipe,
-    OrderComponent,
     EditProductComponent,
     EditCustomerComponent,
     ListingProductComponent,
