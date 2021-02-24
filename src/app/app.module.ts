@@ -19,6 +19,10 @@ import { NavComponent } from './nav/nav/nav.component';
 import { CardComponent } from './page/card/card.component';
 import { ListingCustomerComponent } from './page/listing/listing-customer/listing-customer.component';
 import { DashboardComponent } from './page/dashboard/dashboard.component';
+import { NotfoundComponent } from './page/notfound/notfound.component';
+import { SidebarComponent } from './widget/sidebar/sidebar.component';
+import { ChartComponent } from './widget/chart/chart.component';
+import { ListComponent } from './widget/list/list.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +39,10 @@ import { DashboardComponent } from './page/dashboard/dashboard.component';
     CardComponent,
     ListingCustomerComponent,
     DashboardComponent,
+    NotfoundComponent,
+    SidebarComponent,
+    ChartComponent,
+    ListComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,4 +56,4 @@ import { DashboardComponent } from './page/dashboard/dashboard.component';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

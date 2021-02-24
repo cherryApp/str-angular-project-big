@@ -1,8 +1,8 @@
 export class Product {
   id: number = 0;
   name: string = '';
-  type: string = '';
-  catId: number = 0;
+  type: string = 'film';
+  catId: number = 1;
   description: string = '';
   price: number = 0;
   featured: boolean = false;
