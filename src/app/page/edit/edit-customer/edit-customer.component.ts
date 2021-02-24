@@ -13,8 +13,8 @@ import { CustomerService } from 'src/app/service/customer.service';
 })
 export class EditCustomerComponent implements OnInit {
 
-@Input() id: number = 0;
-
+ @Input() id: number = 0; 
+  updating: boolean = false;
   customer: Customer = new Customer();
 
   /* customer$: Observable<Customer> = this.activatedRoute.params.pipe(
@@ -33,14 +33,15 @@ export class EditCustomerComponent implements OnInit {
     );
   }
 
-  onUpdate(form: NgForm, customer: Customer): void {
+  onUpdate(customer: Customer): void {
+    this.updating = true;
     if (customer.id === 0) {
       this.customerService.create(customer).subscribe(
-        ev => this.router.navigate([""])
+        ev => this.router.navigate(['customers'])
       );
     } else
       this.customerService.update(customer).subscribe(
-        ev => this.router.navigate([''])
+        ev => this.router.navigate(['customers'])
       );
   }
 
