@@ -1,37 +1,38 @@
-<div class="container">
+<p>számlák</p>
+<!-- <div class="container">
     <div class="row">
         <div class="col-8 offset-2">
             <h3>Bills</h3>
         </div>
 
         <div class="col-5">
-            <button class="btn btn-success btn-block" [routerLink]="[0]">
-                <i class="fa fa-edit"></i>
-                Create
+            <button class="btn btn-success btn-block">
+                <i class="material-icons">add</i>
+                Create a New Bill
             </button>
         </div>
-        <div class="col-3 ">
-            <select name="key" class="form-control" [(ngModel)]="filterKey">
+        <div class="col-3 ">Select
+            <select class="form-control">
                 <option *ngFor="let key of filterKeys" [value]="key">
                     {{ key }}
                 </option>
             </select>
-        </div>
-        <div class="col-4">
+        </div> -->
+
+        <!-- <div class="col-4">
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search" (keyup)="onChangePhrase($event)">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
-        </div>
-        <table class="table table-striped">
+        </div> -->
+
+        <!-- <table class="table table-striped">
             <thead>
-                <tr>
+                <tr *ngFor="let col of cols">{{ col.text }}>
                     <th (click)="onColumnSelect('id')">ID</th>
                     <th (click)="onColumnSelect('orderID')">Order ID</th>
                     <th (click)="onColumnSelect('amount')">Amount</th>
                     <th (click)="onColumnSelect('status')">Status</th>
-                    <th></th>
-                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -41,15 +42,13 @@
                     <td>{{bill.orderID}} </td>
                     <td>{{bill.amount}}</td>
                     <td>{{bill.status}}</td>
-                    <td></td>
-                    <td></td>
                     <td>
                         <div class="btn-group">
-                            <button [routerLink]="['bill/' + bill.id]" class="btn btn-info">
-                                <i class="fa fa-pencil"></i>
+                            <button class="btn btn-info">
+                                <i class="material-icons">add</i>
                             </button>
                             <button (click)="onRemove(bill)" class="btn btn-danger">
-                                <i class="fa fa-trash"></i>
+                                <i class="material-icons">delete_outline</i>
                             </button>
                         </div>
                     </td>
@@ -57,4 +56,4 @@
             </tbody>
         </table>
     </div>
-</div>
+</div> -->
