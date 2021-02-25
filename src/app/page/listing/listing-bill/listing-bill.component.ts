@@ -26,7 +26,7 @@ export class ListingBillComponent implements OnInit {
     private toastr: ToastrService,
   ) { }
 
-  filterKey: string = 'name';
+  filterKey: string = 'id';
   filterKeys: string[] = Object.keys(new Bill());
   cols: ITableCol[] = this.configService.billTableCols;
   currentSelectProperty: string = 'name';
@@ -69,9 +69,11 @@ export class ListingBillComponent implements OnInit {
     }
   }
 
+  direction: boolean = false;
   columnKey: string = '';
   onColumnSelect(key: string): void {
     this.columnKey = key;
+    this.direction = !this.direction;
 
   }
 
