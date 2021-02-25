@@ -38,7 +38,7 @@ export class CustomerService {
     ).pipe(
       tap( () => {
         this.getAll();                        // ha végzett a mentéssel, újból lekérjük az adatokat a servertől
-        this.toastr.success(`Customer ${customer.firstName} ${customer.lastName}  has been created.`, 'NEW Product');
+        this.toastr.success(`Customer ${customer.firstName} ${customer.lastName}  has been created.`, 'NEW Customer');
       })
     );
   }

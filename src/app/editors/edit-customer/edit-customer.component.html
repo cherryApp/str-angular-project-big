@@ -62,7 +62,10 @@
                                   </mat-form-field>
                                 </div>
                             </div>
-                            <button mat-raised-button [disabled]="customerFrom.invalid" class="btn btn-danger pull-right">Update Profile</button>
+                            <button mat-raised-button [disabled]="customerFrom.invalid" class="btn btn-danger pull-right">
+                                <span *ngIf="customer.id>0">Update Profile</span>
+                                <span *ngIf="customer.id==0">Create Profile</span>
+                            </button>
                             <div class="clearfix"></div>
                         </form>
                     </div>
