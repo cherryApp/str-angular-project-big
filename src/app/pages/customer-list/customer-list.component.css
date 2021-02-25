@@ -1,4 +1,20 @@
 th {
     cursor: pointer;
     user-select: none;
+    word-break: break-all;
+}
+td span {
+    /*word-wrap: break-word;*/
+    word-break: break-all;
+}
+table {
+    table-layout: 1fixed;
+}
+.btn-group.special {
+    display: flex;
+}
+.special .btn {
+    flex: 1;
+    padding-left: 0;
+    padding-right: 0;
 }

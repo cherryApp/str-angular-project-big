@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Customer } from 'app/model/customer';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class CustomerService {
 
   constructor(
     private http: HttpClient,
+    private toastr: ToastrService,
   ) { }
 
   getAll(): void {
@@ -27,31 +29,38 @@ export class CustomerService {
 
   get(id: number | string): Observable<Customer> {
     id = parseInt(('' + id), 10);
-    return this.http.get<Customer>(`${this.customerUrl}/${id}`);
+    return id>0? this.http.get<Customer>(`${this.customerUrl}/${id}`): of(new Customer());
   }
 
-  create(Customer: Customer): void {
-    this.http.post<Customer>(
-      `${this.customerUrl}`, Customer         // elküldjük az új értéket
-    ).subscribe(                              // feliratkozunk
-      () => this.getAll()                     // ha végzett a mentéssel, újból lekérjük az adatokat a servertől
-    );
-  }
-
-  update(Customer: Customer): Observable<Customer> {
-    return this.http.patch<Customer>(
-      `${this.customerUrl}/${Customer.id}`, Customer
+  create(customer: Customer): Observable<Customer> {
+    return this.http.post<Customer>(
+      `${this.customerUrl}`, customer         // elküldjük az új értéket
     ).pipe(
-      tap( () => this.getAll() )
+      tap( () => {
+        this.getAll();                        // ha végzett a mentéssel, újból lekérjük az adatokat a servertől
+        this.toastr.success(`Customer ${customer.firstName} ${customer.lastName}  has been created.`, 'NEW Customer');
+      })
     );
   }
 
-  remove(Customer: Customer): void {
+  update(customer: Customer): Observable<Customer> {
+    return this.http.patch<Customer>(
+      `${this.customerUrl}/${customer.id}`, customer
+    ).pipe(
+      tap( () => {
+        this.getAll();
+        this.toastr.info(`Customer #${customer.id}, ${customer.firstName} ${customer.lastName} has been updated.`, 'UPDATED');
+      })
+    );
+  }
+
+  remove(customer: Customer): void {
     this.http.delete<Customer>(
-      `${this.customerUrl}/${Customer.id}`
+      `${this.customerUrl}/${customer.id}`
     ).subscribe(
       () => this.getAll()
     );
+    this.toastr.error(`Customer #${customer.id}, ${customer.firstName} ${customer.lastName} has been deleted.`, 'DELETED');
   }
 
 }

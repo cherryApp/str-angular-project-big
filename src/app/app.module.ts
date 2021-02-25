@@ -22,6 +22,8 @@ import { CustomerListComponent } from './pages/customer-list/customer-list.compo
 import { InfoCardComponent } from './common/info-card/info-card.component';
 import { ChartComponent } from './common/chart/chart.component';
 import { ChartsModule } from 'ng2-charts';
+import { EditProductComponent } from './editors/edit-product/edit-product.component';
+import { EditCustomerComponent } from './editors/edit-customer/edit-customer.component';
 
 @NgModule({
   imports: [
@@ -51,6 +53,9 @@ import { ChartsModule } from 'ng2-charts';
     DashboardComponent,
     InfoCardComponent,
     ChartComponent,
+    EditProductComponent,
+    //EditCustomerComponent,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

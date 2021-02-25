@@ -8,7 +8,7 @@
                         <p class="card-category">List of products currently on stock.</p>
                     </div>
                     <div class="card my-0 px-3">
-                        <button [routerLink]="" class="btn btn-primary my-3">
+                        <button [routerLink]="['product/'+'0']" class="btn btn-primary my-3">
                             Create new product
                         </button>
                     </div>
@@ -25,19 +25,28 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class="text-primary">
-                                    <th *ngFor="let attribute of attributes | keyvalue:originalOrder" (click)="onColumnSelect(attribute.key)">
+                                    <th *ngFor="let attribute of attributes | keyvalue:originalOrder"
+                                        (click)="onColumnSelect(attribute.key)">
                                         {{attribute.value}}
-                                        <span *ngIf="(sortOrder[attribute.key] === 'ascending' )"><i class="fa fa-angle-up"></i></span>
-                                        <span *ngIf="(sortOrder[attribute.key] === 'descending' )"><i class="fa fa-angle-down"></i></span>
+                                        <span *ngIf="(sortOrder[attribute.key] === 'ascending' )"><i
+                                                class="fa fa-angle-up"></i></span>
+                                        <span *ngIf="(sortOrder[attribute.key] === 'descending' )"><i
+                                                class="fa fa-angle-down"></i></span>
                                     </th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngFor="let product of productList$ | async | filter:phrase:filterKey | sorter:sorterKey:sortDirection">
-                                        <td *ngFor="let attribute of attributes | keyvalue:originalOrder">
-                                            {{product[attribute.key]}}</td>
+                                    <tr
+                                        *ngFor="let product of productList$ | async | filter:phrase:filterKey | sorter:sorterKey:sortDirection">
+                                        <ng-container *ngFor="let attribute of attributes | keyvalue:originalOrder">
+                                            <td *ngIf="attribute.key!=='featured' && attribute.key!=='active'">{{product[attribute.key]}}</td>
+                                            <td *ngIf="attribute.key==='featured' && product[attribute.key]">Yes</td>
+                                            <td *ngIf="attribute.key==='featured' && !product[attribute.key]">No</td>
+                                            <td *ngIf="attribute.key==='active' && product[attribute.key]">Yes</td>
+                                            <td *ngIf="attribute.key==='active' && !product[attribute.key]">No</td>
+                                        </ng-container>
                                         <td>
                                             <div class="btn-group">
-                                                <button [routerLink]="" class="btn btn-info">
+                                                <button [routerLink]="['product/' + product.id]" class="btn btn-info">
                                                     <i class="fa fa-pencil"></i>
                                                 </button>
                                                 <button class="btn btn-danger" (click)="onDelete(product)">

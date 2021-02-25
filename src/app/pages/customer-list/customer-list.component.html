@@ -8,7 +8,7 @@
                         <p class="card-category">List of customers.</p>
                     </div>
                     <div class="card my-0 px-3">
-                        <button [routerLink]="" class="btn btn-primary my-3">
+                        <button [routerLink]="['/customer/0']" class="btn btn-primary my-3">
                             Create new customer
                         </button>
                     </div>
@@ -32,6 +32,7 @@
                                         <span *ngIf="attribute.value.order === 'ascending'"  class="material-icons"><i class="fa fa-angle-up"></i></span>
                                         <span *ngIf="attribute.value.order === 'descending'" class="material-icons"><i class="fa fa-angle-down"></i></span>
                                     </th>
+                                    <th>Buttons</th>
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let customer of customerList$ | async | filter:phrase:filterKey:filterSubKey | sorter:sorterKey:sortDirection:sorterSubKey">
@@ -41,8 +42,8 @@
                                             <span *ngIf="attribute.value.type==='check' && customer[attribute.key]" class="material-icons">check</span>
                                         </td>
                                         <td>
-                                            <div class="btn-group">
-                                                <button [routerLink]="" class="btn btn-info">
+                                            <div class="btn-group special">
+                                                <button [routerLink]="['/customer', customer.id]" class="btn btn-info">
                                                     <i class="fa fa-pencil"></i>
                                                 </button>
                                                 <button class="btn btn-danger" (click)="onDelete(customer)">
