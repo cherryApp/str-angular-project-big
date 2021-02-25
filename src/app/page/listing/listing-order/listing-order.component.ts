@@ -28,21 +28,18 @@ export class ListingOrderComponent implements OnInit {
   filterKey: string = 'name';
   filterKeys: string[] = Object.keys(new Order());
   currentSelectProperty: string = 'name';
-  productProperties: string[] = Object.keys(new Order());
+  orderProperties: string[] = Object.keys(new Order());
   sortedOrder = 'ASC';
   sortedColumn = 'id';
   sortedCount = 0;
   column: string = '';
+  irany: boolean = false;
+  columnKey: string = '';
 
-  @Output() onUpdate: EventEmitter<Order> = new EventEmitter();
-  @Output() onDelete: EventEmitter<Order> = new EventEmitter();
 
   ngOnInit(): void {
     this.orderService.getAll();
   }
-
-  irany: boolean = false;
-  columnKey: string = '';
 
   onColumnSelect(key: string): void {
     this.columnKey = key;
@@ -50,8 +47,7 @@ export class ListingOrderComponent implements OnInit {
   }
   onRemove(order: Order): void {
   this.orderService.remove(order),
-  this.router.navigate([''])
-
+  this.router.navigate(['/orders'])
   }
   onChangePhrase(event: any): void {
     this.phrase = (event.target as HTMLInputElement).value;
