@@ -21,6 +21,7 @@ import { BillListComponent } from './pages/bill-list/bill-list.component';
 import { CustomerListComponent } from './pages/customer-list/customer-list.component';
 import { InfoCardComponent } from './common/info-card/info-card.component';
 import { ChartComponent } from './common/chart/chart.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import { ChartComponent } from './common/chart/chart.component';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    ChartsModule
   ],
   declarations: [
     AppComponent,
@@ -49,7 +51,6 @@ import { ChartComponent } from './common/chart/chart.component';
     DashboardComponent,
     InfoCardComponent,
     ChartComponent,
-
   ],
   providers: [],
   bootstrap: [AppComponent]
