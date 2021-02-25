@@ -1,50 +1,51 @@
-<p>számlák</p>
-<!-- <div class="container">
+<div class="container">
     <div class="row">
-        <div class="col-8 offset-2">
+        <div class="col-3">
             <h3>Bills</h3>
         </div>
 
-        <div class="col-5">
-            <button class="btn btn-success btn-block">
+        <div class="col-12">
+            <button class="btn btn-success btn-block" [routerLink]="[0]">
                 <i class="material-icons">add</i>
                 Create a New Bill
             </button>
         </div>
-        <div class="col-3 ">Select
-            <select class="form-control">
+        <div class="col-3">Select bill
+            <select [(ngModel)]="filterKey" class="form-control">
                 <option *ngFor="let key of filterKeys" [value]="key">
                     {{ key }}
                 </option>
             </select>
-        </div> -->
+        </div>
 
-        <!-- <div class="col-4">
+        <div class="search-bar">
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search" (keyup)="onChangePhrase($event)">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <button class="btn btn-outline-success mt-4 my-2 my-sm-0" type="submit">
+                    Search</button>
             </form>
-        </div> -->
+        </div>
 
-        <!-- <table class="table table-striped">
-            <thead>
-                <tr *ngFor="let col of cols">{{ col.text }}>
-                    <th (click)="onColumnSelect('id')">ID</th>
+        <table class="table table-striped">
+            <thead class="mat-sort-header">
+                <tr>
+                    <th *ngFor="let col of cols">{{ col.text }}</th>
+                    <!-- <th (click)="onColumnSelect('id')">ID</th>
                     <th (click)="onColumnSelect('orderID')">Order ID</th>
                     <th (click)="onColumnSelect('amount')">Amount</th>
-                    <th (click)="onColumnSelect('status')">Status</th>
+                    <th (click)="onColumnSelect('status')">Status</th> -->
                 </tr>
             </thead>
             <tbody>
 
-                <tr *ngFor="let bill of billList | async | filter:phrase:filterKey | sorter:columnKey">
+                <tr *ngFor="let bill of billList$ | async | filter:phrase:filterKey | sorter:columnKey">
                     <td>{{bill.id}}</td>
                     <td>{{bill.orderID}} </td>
                     <td>{{bill.amount}}</td>
                     <td>{{bill.status}}</td>
                     <td>
                         <div class="btn-group">
-                            <button class="btn btn-info">
+                            <button [routerLink]="['bills/' + bill.id]" class="btn btn-info">
                                 <i class="material-icons">add</i>
                             </button>
                             <button (click)="onRemove(bill)" class="btn btn-danger">
@@ -56,4 +57,4 @@
             </tbody>
         </table>
     </div>
-</div> -->
+</div>

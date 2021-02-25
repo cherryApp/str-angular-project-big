@@ -22,6 +22,7 @@ import { NotfoundComponent } from './page/notfound/notfound.component';
 import { SidebarComponent } from './widget/sidebar/sidebar.component';
 import { ChartComponent } from './widget/chart/chart.component';
 import { ListComponent } from './widget/list/list.component';
+import { ListingBillComponent } from './page/listing/listing-bill/listing-bill.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ListComponent } from './widget/list/list.component';
     SidebarComponent,
     ChartComponent,
     ListComponent,
+    ListingBillComponent,
   ],
   imports: [
     BrowserModule,
