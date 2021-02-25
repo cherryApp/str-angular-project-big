@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import { Customer } from 'src/app/model/customer';
@@ -25,6 +26,7 @@ export class EditCustomerComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private customerService: CustomerService,
     private router: Router,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit(): void {
@@ -38,13 +40,22 @@ export class EditCustomerComponent implements OnInit {
     this.updating = true;
     if (customer.id === 0) {
       this.customerService.create(customer).subscribe(
-        ev => this.router.navigate(['customers']),
-        customer => console.log(customer)
-      );
-    } else
+        () => {
+          this.toastr.success('Sikeres vásárló létrehozás!', 'Siker!', { timeOut: 3000 });
+          this.updating = false;
+          this.router.navigate(['customers']);
+        },
+        error => this.toastr.error('Hiba a vásárló létrehozásakor!', 'Hiba!', { timeOut: 3000 })
+      )
+    } else {
       this.customerService.update(customer).subscribe(
-        ev => this.router.navigate(['customers'])
-      );
+        () => {
+          this.toastr.success('Sikeresen frissítetted a vásárlót!', 'Siker!', { timeOut: 3000 });
+          this.updating = false;
+          this.router.navigate(['products']);
+        },
+        error => this.toastr.error('Hiba történt a termék frissítésekor!', 'Hiba!', { timeOut: 3000 })
+      )
+    }
   }
-
 }

@@ -59,7 +59,7 @@
         </div>
         <div class="btn-group">
         </div>
-        <button type="submit" class="btn btn-primary btn-block btn-lg">
+        <button [disabled]="customerForm.invalid || updating" type="submit" class="btn btn-primary btn-block btn-lg">
           <i  class="material-icons">save</i>
         </button>
       </form>
