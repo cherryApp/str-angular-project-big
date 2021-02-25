@@ -1,13 +1,13 @@
 <div class="container">
     <div class="row">
         <div class="col-8 offset-2">
-           <h2 class="text-center mb-5 mt-5">Összes termék</h2>
+            <h2 class="text-center mb-5 mt-5">Összes termék</h2>
         </div>
 
         <div class="col-5">
             <button class="btn btn-primary btn-block" [routerLink]="[0]">
                 <i class="fa fa-edit"></i>
-                    Új tétel létrehozása
+                Új tétel létrehozása
             </button>
         </div>
         <div class="col-3 ">
@@ -18,10 +18,11 @@
             </select>
         </div>
         <div class="search-bar">
-         <form class="form-inline my-2 my-lg-0 d-flex justify-content-center">
-            <input (keyup)='onChangePhrase($event)' class="form-control mr-sm-2" type="text" placeholder="Keresés" >
-                <button class="btn btn-primary mt-4 my-sm-0" type="button"> <i class="fa fa-search"></i> Keresés</button>
-        </form>
+            <form class="form-inline my-2 my-lg-0 d-flex justify-content-center">
+                <input (keyup)='onChangePhrase($event)' class="form-control mr-sm-2" type="text" placeholder="Keresés">
+                <button class="btn btn-primary mt-4 my-sm-0" type="button"> <i class="fa fa-search"></i>
+                    Keresés</button>
+            </form>
         </div>
         <table class="table table-striped">
             <thead>
@@ -34,16 +35,16 @@
                     <th (click)="onColumnSelect('price')"><b>Price</b></th>
                     <th><i *ngIf="!irany" class="fa fa-arrow-up"></i>
                         <i *ngIf="irany" class="fa fa-arrow-down"></i>
-                                    </th>
+                    </th>
                 </tr>
             </thead>
             <tbody>
-              
-               <tr *ngFor="let product of productList | async | filter:phrase:filterKey | sorter:columnKey">
-                  
-            <td>
-              <span>{{ product.id }}</span>
-            </td>
+
+                <tr *ngFor="let product of productList | async | filter:phrase:filterKey | sorter:columnKey">
+
+                    <td>
+                        <span>{{ product.id }}</span>
+                    </td>
                     <td>{{product.name}} </td>
                     <td>{{product.type}}</td>
                     <!-- <td>{{product.catID}}</td> -->
@@ -52,7 +53,7 @@
                     <td>
 
                         <div class="btn-group">
-                            <button [routerLink]="[product.id]"  class="btn btn-info">
+                            <button [routerLink]="[product.id]" class="btn btn-info">
                                 <i class="fa fa-pencil"></i>
                             </button>
                             <button (click)="onRemove(product)" class="btn btn-danger">
