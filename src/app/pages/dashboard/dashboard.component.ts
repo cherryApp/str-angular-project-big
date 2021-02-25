@@ -10,32 +10,32 @@ export class DashboardComponent implements OnInit {
 
   cards: InfoCard[] = [
     {
-      icon:'content_copy',
-      cardClass:'card-header-warning',
-      title:'1.card',
-      content: 'dd',
-      footer: 'ee',
-    },
-    {
-      icon:'store',
+      icon:'directions_car_filled',
       cardClass:'card-header-success',
-      title:'',
-      content: '',
-      footer: '',
+      title:'Products',
+      content: 'This is our Products.',
+      footer: 'Lorem ipsum dolor sit amet.',
     },
     {
-      icon:'info_outline',
+      icon:'person',
       cardClass:'card-header-danger',
-      title:'',
-      content: '',
-      footer: '',
+      title:'Customers',
+      content: 'This is our Customers.',
+      footer: 'Lorem ipsum dolor sit amet.',
     },
     {
-      icon:'update',
+      icon:'shopping_cart',
       cardClass:'card-header-info',
-      title:'',
-      content: '',
-      footer: '',
+      title:'Orders',
+      content: 'This is our Customer Orders.',
+      footer: 'Lorem ipsum dolor sit amet.',
+    },
+    {
+      icon:'receipt',
+      cardClass:'card-header-warning',
+      title:'Bills',
+      content: 'This is our Order Bills.',
+      footer: 'Lorem ipsum dolor sit amet.',
     }
   ]
 
