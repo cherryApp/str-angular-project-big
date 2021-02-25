@@ -12,12 +12,18 @@ export class ListOrderComponent implements OnInit {
 
   orderList$: BehaviorSubject<Order[]> = this.orderService.list$;
 
+  phrase: string = '';
+
   constructor(
     private orderService: OrderService
   ) { }
 
   ngOnInit(): void {
     this.orderService.getAll();
+  }
+
+  onChangePhrase(event: Event): void {
+    this.phrase = (event.target as HTMLInputElement).value;
   }
 
 }
