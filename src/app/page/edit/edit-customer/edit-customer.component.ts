@@ -54,7 +54,7 @@ export class EditCustomerComponent implements OnInit {
           this.updating = false;
           this.router.navigate(['products']);
         },
-        error => this.toastr.error('Hiba történt a termék frissítésekor!', 'Hiba!', { timeOut: 3000 })
+        error => this.toastr.error('Hiba történt a vásárló frissítésekor!', 'Hiba!', { timeOut: 3000 })
       )
     }
   }
