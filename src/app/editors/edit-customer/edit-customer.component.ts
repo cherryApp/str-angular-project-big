@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Customer } from 'app/model/customer';
+import { Customer, CustomerAttributes } from 'app/model/customer';
 import { CustomerService } from 'app/services/customer.service';
 
 @Component({
@@ -12,6 +12,8 @@ import { CustomerService } from 'app/services/customer.service';
 export class EditCustomerComponent implements OnInit {
 
   customer: Customer = new Customer();
+
+  attributes = new CustomerAttributes();
 
   constructor(
     private customerService: CustomerService,

@@ -1,7 +1,7 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-12">
                 <div class="card">
                     <div class="card-header card-header-danger">
                         <h4 class="card-title">Customer Profile</h4>
@@ -12,18 +12,27 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="First Name" type="text" [(ngModel)]="customer.firstName" name="firstName">
+                                        <input matInput [placeholder]="attributes.firstName.title" type="text" [(ngModel)]="customer.firstName" name="firstName" required>
                                     </mat-form-field>
+                                    <div [hidden]="customerFrom.controls.firstName?.valid" class="error-message">
+                                        {{attributes.firstName.title}} is required!
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Last Name" type="text" [(ngModel)]="customer.lastName" name="lastName">
+                                        <input matInput [placeholder]="attributes.lastName.title" type="text" [(ngModel)]="customer.lastName" name="lastName" required>
                                     </mat-form-field>
+                                    <div [hidden]="customerFrom.controls.lastName?.valid" class="error-message">
+                                        {{attributes.lastName.title}} is required!
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                      <input matInput placeholder="Email address" type="email" [(ngModel)]="customer.email" name="email">
+                                      <input matInput [placeholder]="attributes.email.title" type="email" [(ngModel)]="customer.email" name="email" required pattern="[\w-\.]+@([\w-]+\.)+[\w-]{2,4}">
                                     </mat-form-field>
+                                    <div [hidden]="customerFrom.controls.email?.valid" class="error-message">
+                                        {{attributes.email.title}} is required and must be a valid email!
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
@@ -31,35 +40,46 @@
                             <div class="row">
                                 <div class="col-md-1">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Zip" type="text" [(ngModel)]="customer.address.zip" name="zip">
+                                        <input matInput [placeholder]="attributes.zip.title" type="text" [(ngModel)]="customer.address.zip" name="zip" required>
                                     </mat-form-field>
+                                    <div [hidden]="customerFrom.controls.zip?.valid" class="error-message">
+                                        {{attributes.zip.title}} is required!
+                                    </div>
                                 </div>
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="Country" type="text" [(ngModel)]="customer.address.country" name="country">
+                                        <input matInput [placeholder]="attributes.country.title" type="text" [(ngModel)]="customer.address.country" name="country" required>
                                     </mat-form-field>
+                                    <div [hidden]="customerFrom.controls.country?.valid" class="error-message">
+                                        {{attributes.country.title}} is required!
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput placeholder="City" type="text" [(ngModel)]="customer.address.city" name="city">
+                                        <input matInput [placeholder]="attributes.city.title" type="text" [(ngModel)]="customer.address.city" name="city" required>
                                     </mat-form-field>
+                                    <div [hidden]="customerFrom.controls.city?.valid" class="error-message">
+                                        {{attributes.email.title}} is required!
+                                    </div>
                                 </div>
                                 <div class="col-md-4">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Street" type="text" [(ngModel)]="customer.address.street" name="street">
+                                    <input matInput [placeholder]="attributes.street.title" type="text" [(ngModel)]="customer.address.street" name="street" required>
                                   </mat-form-field>
+                                  <div [hidden]="customerFrom.controls.street?.valid" class="error-message">
+                                    {{attributes.street.title}} is required!
                                 </div>
+                            </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Notes" type="text" [(ngModel)]="customer.address.notes" name="notes">
+                                    <input matInput [placeholder]="attributes.notes.title" type="text" [(ngModel)]="customer.address.notes" name="notes">
                                   </mat-form-field>
                                 </div>
-                                <div class="col-md-1">
-                                  <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Active" type="text" [(ngModel)]="customer.active" name="active">
-                                  </mat-form-field>
+                                <div class="col-md-1 form-group">
+                                    <label class="d-block" for="active">{{attributes.active.title}}</label>
+                                    <input id="active" name="active" [(ngModel)]="customer.active" type="checkbox">
                                 </div>
                             </div>
                             <button mat-raised-button [disabled]="customerFrom.invalid" class="btn btn-danger pull-right">
