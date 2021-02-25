@@ -44,12 +44,12 @@
             <td>
               <span>{{ product.id }}</span>
             </td>
-            <td><input class="form-control form-control-sm" [(ngModel)]="product.name"></td>
-            <td><input class="form-control form-control-sm" [(ngModel)]="product.type"></td>
-            <!-- <td><input class="form-control form-control-sm" [(ngModel)]="product.catId"></td> -->
-            <td><input class="form-control form-control-sm" [(ngModel)]="product.description"></td>
-            <td><input class="form-control form-control-sm" [(ngModel)]="product.price"></td>
-            <td>
+                    <td>{{product.name}} </td>
+                    <td>{{product.type}}</td>
+                    <!-- <td>{{product.catID}}</td> -->
+                    <td>{{product.description}}</td>
+                    <td>{{product.price}}</td>
+                    <td>
 
                         <div class="btn-group">
                             <button [routerLink]="[product.id]"  class="btn btn-info">
