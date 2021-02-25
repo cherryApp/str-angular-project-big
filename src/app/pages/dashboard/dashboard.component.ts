@@ -9,7 +9,6 @@ import { CustomerService } from 'app/services/customer.service';
 import { OrderService } from 'app/services/order.service';
 import { ProductService } from 'app/services/product.service';
 import { BehaviorSubject } from 'rxjs';
-import { map } from 'rxjs/operators';
 // import * as Chartist from 'chartist';
 
 @Component({
@@ -20,41 +19,47 @@ import { map } from 'rxjs/operators';
 export class DashboardComponent implements OnInit {
 
   productList$: BehaviorSubject<Product[]> = this.productService.list$;
-  productValue: any = '0';
+  productDefaultContent: string = '0';
+  productDefaultFooter: string = 'Featured Products: 0';
   customerList$: BehaviorSubject<Customer[]> = this.customerService.list$;
-  customerValue: any = '0';
-  billList$: BehaviorSubject<Bill[]> = this.billService.list$;
-  billValue: any = '0';
+  customerDefaultContent: string = '0';
+  customerDefaultFooter: string = 'Customers from London: 0';
   orderList$: BehaviorSubject<Order[]> = this.orderService.list$;
-  orderValue: any = '0';
+  orderDefaultContent: string = '0';
+  orderDefaultFooter: string = 'New Orders: 0';
+  billList$: BehaviorSubject<Bill[]> = this.billService.list$;
+  billDefaultContent: string = '0';
+  billDefaultFooter: string = 'Paid Bills: 0';
+
+
 
   cards: InfoCard[] = [
     {
-      title: 'Products',
-      content: this.productValue,
+      title: 'Active Products',
+      content: this.productDefaultContent,
       cardClass: 'card-header-warning',
-      footer: 'ide is jöhet valami',
+      footer: this.productDefaultFooter,
       icon: 'store'
     },
     {
-      title: 'Customers',
-      content: this.customerValue,
+      title: 'Active Customers',
+      content: this.customerDefaultContent,
       cardClass: 'card-header-success',
-      footer: 'ide is jöhet valami',
+      footer: this.customerDefaultFooter,
       icon: 'account_box'
     },
     {
-      title: 'Orders',
-      content: this.orderValue,
+      title: 'Unpaid Orders',
+      content: this.orderDefaultContent,
       cardClass: 'card-header-info',
-      footer: 'ide is jöhet valami',
+      footer: this.orderDefaultFooter,
       icon: 'info_outline'
     },
     {
-      title: 'Bills',
-      content: this.billValue,
+      title: 'Unpaid Bills',
+      content: this.billDefaultContent,
       cardClass: 'card-header-danger',
-      footer: 'ide is jöhet valami',
+      footer: this.billDefaultFooter,
       icon: 'euro'
     },
   ]
@@ -127,10 +132,15 @@ export class DashboardComponent implements OnInit {
     this.customerService.getAll();
     this.orderService.getAll();
     this.billService.getAll();
-    this.getProductsNumber()
-    this.getCustomersNumber()
-    this.getOrdersNumber()
-    this.getBillsNumber()
+    // this.getProductsNumber()
+    this.getCountsFromLists(this.productList$, 0, 'content', true, true, '', 'active');
+    this.getCountsFromLists(this.productList$, 0, 'footer', true, true, 'Featured Products: ', 'featured');
+    this.getCountsFromLists(this.customerList$, 1, 'content', true, true, '', 'active');
+    this.getCountsFromLists(this.customerList$, 1, 'footer', true, 'London', 'Customers from London: ', 'address', 'city');
+    this.getCountsFromLists(this.orderList$, 2, 'content', false, 'paid', '', 'status');
+    this.getCountsFromLists(this.orderList$, 2, 'footer', true, 'new', 'New Orders: ', 'status');
+    this.getCountsFromLists(this.billList$, 3, 'content', false, 'paid', '', 'status');
+    this.getCountsFromLists(this.billList$, 3, 'footer', true, 'paid', 'Paid Bills: ', 'status');
     /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
     // const dataDailySalesChart: any = {
@@ -212,28 +222,32 @@ export class DashboardComponent implements OnInit {
     // this.startAnimationForBarChart(websiteViewsChart);
   }
 
-  getProductsNumber() {
-    this.productList$.subscribe(item => {
-      const itemCount = '' + item.length;
-      this.cards[0].content = itemCount;
-    })
-  }
-  getCustomersNumber() {
-    this.customerList$.subscribe(item => {
-      const itemCount = '' + item.length;
-      this.cards[1].content = itemCount;
-    })
-  }
-  getOrdersNumber() {
-    this.orderList$.subscribe(item => {
-      const itemCount = '' + item.length;
-      this.cards[2].content = itemCount;
-    })
-  }
-  getBillsNumber() {
-    this.billList$.subscribe(item => {
-      const itemCount = '' + item.length;
-      this.cards[3].content = itemCount;
+  // Aktív termékek száma.
+  // Aktív vásárlók száma.
+  // Még nem fizetett rendelések száma.
+  // Még nem fizetett számlák összege.
+  // getProductsNumber() {
+  //   this.productList$.subscribe(item => {
+  //     const itemCount = '' + item.length;
+  //     this.cards[0].content = itemCount;
+  //   })
+  // }
+
+  getCountsFromLists(from: BehaviorSubject<any[]>, targetCard: number, targetParam: string, bool: boolean, isWhat: boolean | string, bindingString: string, param1: string, param2?: string,) {
+    from.subscribe(item => {
+      if (bool === true) {
+        if (param2) {
+          this.cards[targetCard][targetParam] = bindingString + item.filter(filtered => filtered[param1][param2] === isWhat).length;
+        } else {
+          this.cards[targetCard][targetParam] = bindingString + item.filter(filtered => filtered[param1] === isWhat).length;
+        }
+      } else {
+        if (param2) {
+          this.cards[targetCard][targetParam] = bindingString + item.filter(filtered => filtered[param1][param2] !== isWhat).length;
+        } else {
+          this.cards[targetCard][targetParam] = bindingString + item.filter(filtered => filtered[param1] !== isWhat).length;
+        }
+      }
     })
   }
 
