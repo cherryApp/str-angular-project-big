@@ -32,6 +32,7 @@ export class ListingOrderComponent implements OnInit {
     this.orderService.getAll();
   }
 
+  irany: boolean = false;
   columnKey: string = '';
   onColumnSelect(key: string): void {
     this.columnKey = key;
@@ -40,7 +41,9 @@ export class ListingOrderComponent implements OnInit {
   this.orderService.remove(order),
   this.router.navigate([''])
   }
-
+  onChangePhrase(event: any): void {
+    this.phrase = (event.target as HTMLInputElement).value;
+  }
 
   }
 
