@@ -46,14 +46,14 @@ export class ListingBillComponent implements OnInit {
   onRemove(bill: Bill): void {
     this.billService.remove(bill),
       // console.log(bill);
-      this.router.navigate(['']);
+      this.router.navigate(['bills/']);
     this.onDelete.emit(bill);
 
     if (bill.id === 0) {
       this.billService.create(bill).subscribe(
         () => {
           this.toastr.success('Sikeres termék törlése!', 'Törlés!', { timeOut: 3000 });
-          this.router.navigate(['products']);
+          this.router.navigate(['bills']);
         },
         error => this.toastr.error('Hiba a termék törlésekor!', 'Hiba!', { timeOut: 3000 })
       )
@@ -62,7 +62,7 @@ export class ListingBillComponent implements OnInit {
       this.billService.update(bill).subscribe(
         () => {
           this.toastr.success('Sikeresen törölted a terméket!', 'Törlés!', { timeOut: 3000 });
-          this.router.navigate(['products']);
+          this.router.navigate(['bills']);
         },
         error => this.toastr.error('Hiba történt a termék törlésekor!', 'Hiba!', { timeOut: 3000 })
       )
