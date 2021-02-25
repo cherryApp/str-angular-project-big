@@ -33,10 +33,12 @@ export class ListingBillComponent implements OnInit {
   productProperties: string[] = Object.keys(new Bill());
   sortedOrder = 'ASC';
   sortedColumn = 'id';
+  firstSorting = true;
   sortedCount = 0;
   phrase: string = '';
   column: string = '';
-
+  direction: boolean = false;
+  columnKey: string = '';
 
 
   ngOnInit(): void {
@@ -52,7 +54,7 @@ export class ListingBillComponent implements OnInit {
     if (bill.id === 0) {
       this.billService.create(bill).subscribe(
         () => {
-          this.toastr.success('Sikeres termék törlése!', 'Törlés!', { timeOut: 3000 });
+          this.toastr.success('Sikeres a termék törlése!', 'Törlés!', { timeOut: 3000 });
           this.router.navigate(['bills']);
         },
         error => this.toastr.error('Hiba a termék törlésekor!', 'Hiba!', { timeOut: 3000 })
@@ -69,12 +71,13 @@ export class ListingBillComponent implements OnInit {
     }
   }
 
-  direction: boolean = false;
-  columnKey: string = '';
-  onColumnSelect(key: string): void {
-    this.columnKey = key;
-    this.direction = !this.direction;
-
+  onColumnSelect(columnName: string): void {
+    if (this.firstSorting) {
+      this.sortedOrder = 'ASC';
+      this.firstSorting = false;
+    }
+    else this.sortedOrder == 'ASC' ? this.sortedOrder = 'DESC' : this.sortedOrder = 'ASC';
+    this.sortedColumn = columnName;
   }
 
   onChangePhrase(event: any): void {
