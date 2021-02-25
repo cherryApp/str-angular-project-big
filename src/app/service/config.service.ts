@@ -13,11 +13,11 @@ export class ConfigService {
 
   productTableCols: ITableCol[] = [
     {key: 'id', text:'#', editable: false},
-    {key: 'name', text:'Name', editable: true},
-    {key: 'type', text:'Type', editable: true},
+    {key: 'név', text:'Név', editable: true},
+    {key: 'típus', text:'Típus', editable: true},
     {key: 'catID', text:'CatId', editable: false},
-    {key: 'description', text:'Description', editable: true},
-    {key: 'price', text:'Price', editable: true}
+    {key: 'leírás', text:'Leírás', editable: true},
+    {key: 'ár', text:'Ár', editable: true}
   ];
 
   orderTableCols: ITableCol[] = [

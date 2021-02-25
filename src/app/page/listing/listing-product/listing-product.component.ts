@@ -6,6 +6,7 @@ import { ConfigService, ITableCol } from 'src/app/service/config.service';
 import { ProductService } from 'src/app/service/product.service';
 import { ToastrService } from 'ngx-toastr';
 
+
 @Component({
   selector: 'app-listing-product',
   templateUrl: './listing-product.component.html',
@@ -32,9 +33,6 @@ export class ListingProductComponent implements OnInit {
   phrase: string = '';
   column: string = '';
 
-  @Output() onUpdate: EventEmitter<Product> = new EventEmitter();
-  @Output() onDelete: EventEmitter<Product> = new EventEmitter();
-
 
   ngOnInit(): void {
     this.productService.getAll();
@@ -44,7 +42,7 @@ export class ListingProductComponent implements OnInit {
   onRemove(product: Product): void {
     this.productService.remove(product.id),
       this.router.navigate(['']);
-    this.onDelete.emit(product);
+
 
     if (product.id === 0) {
       this.productService.create(product).subscribe(
