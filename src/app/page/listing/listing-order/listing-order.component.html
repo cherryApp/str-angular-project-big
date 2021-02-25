@@ -20,21 +20,23 @@
     </div>
 
     <table class="table table-striped">
-      <thead class="mat-sort-header">
+      <thead>
         <tr>
           <th *ngFor="let col of cols">{{ col.text }}</th>
           <!-- <th>Customer ID</th>
            <th>Product ID</th>
            <th>Amount</th>
            <th>Status</th> -->
-          <th></th>
+           <th><i *ngIf="!irany" class="fa fa-arrow-up"></i>
+            <i *ngIf="irany" class="fa fa-arrow-down"></i>
+                        </th>
           <th></th>
         </tr>
       </thead>
       <tbody>
         <tr
           *ngFor="
-            let order of orderList$ | async"        >
+            let order of orderList$ | async | filter:filterKey:phrase | sorter:columnKey"        >
           <td>{{ order.id }}</td>
           <td>{{ order.customerID }}</td>
           <td>{{ order.productID }}</td>
