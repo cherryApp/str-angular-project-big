@@ -3,7 +3,6 @@
         <div class="col-8 offset-2">
             <h2 class="text-center mb-5 mt-5">Összes termék</h2>
         </div>
-
         <div class="col-12 my-3 mb-3">
             <button class="btn btn-success btn-block" [routerLink]="[0]">
         <i class="material-icons">edit</i>
@@ -35,15 +34,11 @@
                     <!-- <th (click)="onColumnSelect('catID')">CatID</th> -->
                     <th (click)="onColumnSelect('description')"><b>Leírás</b></th>
                     <th (click)="onColumnSelect('price')"><b>Ár</b></th>
-                    <th><i *ngIf="!irany" class="fa fa-arrow-up"></i>
-                        <i *ngIf="irany" class="fa fa-arrow-down"></i>
-                    </th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
-
-                <tr *ngFor="let product of productList | async | filter:phrase:filterKey | sorter:columnKey">
-
+                <tr *ngFor="let product of productList | async | filter:phrase:filterKey | sorter:sortedColumn:sortedOrder">
                     <td>
                         <span>{{ product.id }}</span>
                     </td>
@@ -53,7 +48,6 @@
                     <td>{{product.description}}</td>
                     <td>{{product.price}}</td>
                     <td>
-
                         <div class="btn-group">
                             <button [routerLink]="[product.id]" class="btn btn-info">
                                 <i class="fa fa-pencil"></i>
