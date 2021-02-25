@@ -33,6 +33,9 @@
                     <!-- <th (click)="onColumnSelect('catID')">CatID</th> -->
                     <th (click)="onColumnSelect('description')"><b>Description</b></th>
                     <th (click)="onColumnSelect('price')"><b>Price</b></th>
+                    <th><i *ngIf="!irany" class="fa fa-arrow-up"></i>
+                        <i *ngIf="irany" class="fa fa-arrow-down"></i>
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -42,11 +45,11 @@
                     <td>
                         <span>{{ product.id }}</span>
                     </td>
-                    <td><input class="form-control form-control-sm" [(ngModel)]="product.name"></td>
-                    <td><input class="form-control form-control-sm" [(ngModel)]="product.type"></td>
-                    <!-- <td><input class="form-control form-control-sm" [(ngModel)]="product.catId"></td> -->
-                    <td><input class="form-control form-control-sm" [(ngModel)]="product.description"></td>
-                    <td><input class="form-control form-control-sm" [(ngModel)]="product.price"></td>
+                    <td>{{product.name}} </td>
+                    <td>{{product.type}}</td>
+                    <!-- <td>{{product.catID}}</td> -->
+                    <td>{{product.description}}</td>
+                    <td>{{product.price}}</td>
                     <td>
 
                         <div class="btn-group">
