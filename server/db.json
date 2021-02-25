@@ -563,6 +563,17 @@
   ],
   "products": [
     {
+      "id": 1,
+      "name": "Szombat esti őrület",
+      "type": "film",
+      "catId": 1,
+      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, numquam sunt obcaecati quas minus deserunt excepturi eum perferendis earum quo ducimus officia. Odio itaque officia aspernatur aut a fuga cum?",
+      "price": 5999,
+      "featured": true,
+      "active": true,
+      "image": "https://www.mafab.hu/static/profiles/2014/293/00/5212_32.jpg"
+    },
+    {
       "id": 2,
       "name": "Álomépítők",
       "type": "film",
