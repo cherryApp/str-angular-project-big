@@ -1,10 +1,10 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Order } from 'src/app/model/order';
 import { OrderService } from 'src/app/service/order.service';
-import { ConfigService, ITableCol } from '../../../service/config.service';
+import { ConfigService, ITableCol } from 'src/app/service/config.service';
 
 @Component({
   selector: 'app-listing-order',
@@ -12,6 +12,10 @@ import { ConfigService, ITableCol } from '../../../service/config.service';
   styleUrls: ['./listing-order.component.scss']
 })
 export class ListingOrderComponent implements OnInit {
+
+  @Output() onUpdate: EventEmitter<Order> = new EventEmitter();
+  @Output() onDelete: EventEmitter<Order> = new EventEmitter();
+
   orderList$: BehaviorSubject<Order[]>= this.orderService.list$;
   // orderList$: Observable<Order[]>= this.orderService.getAll();
   phrase: string='';
@@ -19,13 +23,13 @@ export class ListingOrderComponent implements OnInit {
 
 
   constructor(
-    private orderService:OrderService,
-    private router:Router,
+    private orderService: OrderService,
+    private router: Router,
     private configService: ConfigService,
     private toastr: ToastrService,
   ) { }
 
-  filterKey: string = 'name';
+  filterKey: string = 'id';
   filterKeys: string[] = Object.keys(new Order());
   currentSelectProperty: string = 'name';
   orderProperties: string[] = Object.keys(new Order());
@@ -33,7 +37,7 @@ export class ListingOrderComponent implements OnInit {
   sortedColumn = 'id';
   sortedCount = 0;
   column: string = '';
-  irany: boolean = false;
+  direction: boolean = false;
   columnKey: string = '';
 
 
@@ -43,11 +47,13 @@ export class ListingOrderComponent implements OnInit {
 
   onColumnSelect(key: string): void {
     this.columnKey = key;
-    this.irany = !this.irany;
+    this.direction = !this.direction;
   }
   onRemove(order: Order): void {
   this.orderService.remove(order),
-  this.router.navigate(['/orders'])
+  this.router.navigate(['/orders']);
+  this.onDelete.emit(order);
+
   }
   onChangePhrase(event: any): void {
     this.phrase = (event.target as HTMLInputElement).value;
