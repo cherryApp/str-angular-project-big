@@ -38,7 +38,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let order of orderList$ | async | filter:filterKey:phrase | sorter:columnKey">
+        <tr *ngFor="let order of orderList$ | async | filter:filterKey:phrase | sorter:columnKey:'ASC'">
           <td>{{ order.id }}</td>
           <td>{{ order.customerID }}</td>
           <td>{{ order.productID }}</td>
