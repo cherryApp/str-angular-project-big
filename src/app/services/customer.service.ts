@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Customer } from 'app/model/customer';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class CustomerService {
 
   constructor(
     private http: HttpClient,
+    private toastr: ToastrService,
   ) { }
 
   getAll(): void {
@@ -30,28 +32,33 @@ export class CustomerService {
     return this.http.get<Customer>(`${this.customerUrl}/${id}`);
   }
 
-  create(Customer: Customer): void {
+  create(customer: Customer): void {
     this.http.post<Customer>(
-      `${this.customerUrl}`, Customer         // elküldjük az új értéket
+      `${this.customerUrl}`, customer         // elküldjük az új értéket
     ).subscribe(                              // feliratkozunk
       () => this.getAll()                     // ha végzett a mentéssel, újból lekérjük az adatokat a servertől
     );
+    this.toastr.success(`Customer ${customer.firstName} ${customer.lastName}  has been created.`, 'NEW Product');
   }
 
-  update(Customer: Customer): Observable<Customer> {
+  update(customer: Customer): Observable<Customer> {
     return this.http.patch<Customer>(
-      `${this.customerUrl}/${Customer.id}`, Customer
+      `${this.customerUrl}/${customer.id}`, customer
     ).pipe(
-      tap( () => this.getAll() )
+      tap( () => {
+        this.getAll();
+        this.toastr.info(`Customer #${customer.id}, ${customer.firstName} ${customer.lastName} has been updated.`, 'UPDATED');
+      })
     );
   }
 
-  remove(Customer: Customer): void {
+  remove(customer: Customer): void {
     this.http.delete<Customer>(
-      `${this.customerUrl}/${Customer.id}`
+      `${this.customerUrl}/${customer.id}`
     ).subscribe(
       () => this.getAll()
     );
+    this.toastr.error(`Customer #${customer.id}, ${customer.firstName} ${customer.lastName} has been deleted.`, 'DELETED');
   }
 
 }
