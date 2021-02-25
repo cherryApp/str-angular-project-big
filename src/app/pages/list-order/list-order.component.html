@@ -1,1 +1,48 @@
-<p>list-order works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title ">Orders</h4>
+          <p class="card-category">Order list</p>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+          <tr>
+            <th>#</th>
+            <th>CustomerID</th>
+            <th>ProductID</th>
+            <th>Amount</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orderList$ | async">
+            <td>{{order.id}}</td>
+            <td>{{order.customerID}}</td>
+            <td>{{order.productID}}</td>
+            <td>{{order.amount}}</td>
+            <td>{{order.status}}</td>
+            <td>
+              <div class="btn-group">
+                <button type="button" rel="tooltip" title="" class="btn btn-primary btn-link btn-sm">
+                  <i class="material-icons">edit</i>
+                </button>
+                <button type="button" rel="tooltip" title="" class="btn btn-primary btn-link btn-sm">
+                  <i class="material-icons">delete</i>
+                </button>
+
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
