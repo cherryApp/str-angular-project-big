@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
-        <div class="col-3">
-            <h3>Bills</h3>
+        <div class="col-12">
+            <h3 class="text-center mb-5 mt-5">Bills</h3>
         </div>
 
         <div class="col-12">
@@ -10,15 +10,16 @@
                 Create a New Bill
             </button>
         </div>
-        <div class="col-3">Select bill
-            <select [(ngModel)]="filterKey" class="form-control">
+
+        <div class="col-4 text-center">Select bill
+            <select [(ngModel)]="filterKey" class=" mb-5  form-control">
                 <option *ngFor="let key of filterKeys" [value]="key">
                     {{ key }}
                 </option>
             </select>
         </div>
 
-        <div class="search-bar">
+        <div class="col-6 mt-4 search-bar">
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search" (keyup)="onChangePhrase($event)">
                 <button class="btn btn-outline-success mt-4 my-2 my-sm-0" type="submit">
@@ -29,16 +30,32 @@
         <table class="table table-striped">
             <thead class="mat-sort-header">
                 <tr>
-                    <th *ngFor="let col of cols">{{ col.text }}</th>
-                    <!-- <th (click)="onColumnSelect('id')">ID</th>
+                    <th (click)="onColumnSelect('id')"> <b>#</b></th>
+                    <th (click)="onColumnSelect('orderID')"><b>Order ID</b></th>
+                    <th (click)="onColumnSelect('amount')"><b>Amount</b></th>
+                    <!-- <th (click)="onColumnSelect('catID')">CatID</th> -->
+                    <th (click)="onColumnSelect('status')"><b>Status</b></th>
+
+                    <th><i *ngIf="!direction" class="material-icons">north</i>
+                        <i *ngIf="direction" class="material-icons">south</i>
+                    </th>
+                </tr>
+            </thead>
+            <!-- <thead class="mat-sort-header">
+                <tr> -->
+            <!-- <th *ngFor="let col of cols" (click)="onColumnSelect('columnKey')">{{ col.text }}</th> -->
+            <!-- <th (click)="onColumnSelect('id')">ID</th>
                     <th (click)="onColumnSelect('orderID')">Order ID</th>
                     <th (click)="onColumnSelect('amount')">Amount</th>
                     <th (click)="onColumnSelect('status')">Status</th> -->
+            <!-- <th><i *ngIf="!direction" class="fa fa-arrow-up"></i>
+                        <i *ngIf="direction" class="fa fa-arrow-down"></i>
+                    </th>
                 </tr>
-            </thead>
+            </thead> -->
             <tbody>
 
-                <tr *ngFor="let bill of billList$ | async | filter:phrase:filterKey | sorter:columnKey">
+                <tr *ngFor="let bill of billList$ | async | filter:filterKey:phrase | sorter:columnKey">
                     <td>{{bill.id}}</td>
                     <td>{{bill.orderID}} </td>
                     <td>{{bill.amount}}</td>
