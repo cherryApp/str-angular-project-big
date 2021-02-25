@@ -53,14 +53,14 @@
             </thead> -->
             <tbody>
 
-                <tr *ngFor="let bill of billList$ | async | filter:filterKey:phrase | sorter:columnKey:sortedOrder">
+                <tr *ngFor="let bill of billList$ | async | filter:filterKey:phrase | sorter:sortedColumn:sortedOrder">
                     <td>{{bill.id}}</td>
                     <td>{{bill.orderID}} </td>
                     <td>{{bill.amount}}</td>
                     <td>{{bill.status}}</td>
                     <td>
                         <div class="btn-group">
-                            <button [routerLink]="['bills/' + bill.id]" class="btn btn-info">
+                            <button [routerLink]="[bill.id]" class="btn btn-info">
                                 <i class="material-icons">edit</i>
                             </button>
                             <button (click)="onRemove(bill)" class="btn btn-danger">
