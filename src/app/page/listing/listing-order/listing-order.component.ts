@@ -16,10 +16,10 @@ export class ListingOrderComponent implements OnInit {
   @Output() onUpdate: EventEmitter<Order> = new EventEmitter();
   @Output() onDelete: EventEmitter<Order> = new EventEmitter();
 
-  orderList$: BehaviorSubject<Order[]>= this.orderService.list$;
+  orderList$: BehaviorSubject<Order[]> = this.orderService.list$;
   // orderList$: Observable<Order[]>= this.orderService.getAll();
-  phrase: string='';
-  cols: ITableCol[]= this.configService.orderTableCols
+  phrase: string = '';
+  cols: ITableCol[] = this.configService.orderTableCols
 
 
   constructor(
@@ -55,14 +55,14 @@ export class ListingOrderComponent implements OnInit {
   }
 
   onRemove(order: Order): void {
-  this.orderService.remove(order),
-  this.router.navigate(['/orders']);
-  this.onDelete.emit(order);
+    this.orderService.remove(order),
+      this.router.navigate(['/orders']);
+    this.onDelete.emit(order);
 
   }
   onChangePhrase(event: any): void {
     this.phrase = (event.target as HTMLInputElement).value;
   }
 
-  }
+}
 
