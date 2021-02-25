@@ -71,6 +71,8 @@ export class ListingProductComponent implements OnInit {
     this.sortedColumn = columnName;
   }
 
+
+
   onChangePhrase(event: any): void {
     this.phrase = (event.target as HTMLInputElement).value;
   }

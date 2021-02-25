@@ -31,10 +31,17 @@
                     <th (click)="onColumnSelect('id')"> <b>#</b></th>
                     <th (click)="onColumnSelect('name')"><b>Név</b></th>
                     <th (click)="onColumnSelect('type')"><b>Típus</b></th>
-                    <!-- <th (click)="onColumnSelect('catID')">CatID</th> -->
+                    <th (click)="onColumnSelect('catId')"><b>catId</b></th>
                     <th (click)="onColumnSelect('description')"><b>Leírás</b></th>
                     <th (click)="onColumnSelect('price')"><b>Ár</b></th>
-                    <th></th>
+                    <th (click)="onColumnSelect('featured')"><b>Kiemelt</b></th>
+                    <th (click)="onColumnSelect('active')"><b>Aktív</b></th>
+                    
+                    
+                     <th><i *ngIf="!direction" class="material-icons">keyboard_arrow_up</i>
+              <i *ngIf="direction" class="material-icons">keyboard_arrow_down</i>
+            </th>
+                
                 </tr>
             </thead>
             <tbody>
@@ -44,9 +51,11 @@
                     </td>
                     <td>{{product.name}} </td>
                     <td>{{product.type}}</td>
-                    <!-- <td>{{product.catID}}</td> -->
+                    <td>{{product.catId}}</td>
                     <td>{{product.description}}</td>
                     <td>{{product.price}}</td>
+                    <td>{{product.featured}}</td>
+                    <td>{{product.active}}</td>
                     <td>
                         <div class="btn-group">
                             <button [routerLink]="[product.id]" class="btn btn-info">
