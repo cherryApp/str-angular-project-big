@@ -5,6 +5,7 @@ import { Product } from 'src/app/model/product';
 import { ConfigService, ITableCol } from 'src/app/service/config.service';
 import { ProductService } from 'src/app/service/product.service';
 import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-listing-product',
   templateUrl: './listing-product.component.html',
@@ -17,22 +18,30 @@ export class ListingProductComponent implements OnInit {
     private config: ConfigService,
     private toastr: ToastrService,
   ) { }
+
   productList: BehaviorSubject<Product[]> = this.productService.list$;
   cols: ITableCol[] = this.config.productTableCols;
+  phrase: string = '';
+
+  filterKey: string = 'id';
+  filterKeys: string[] = Object.keys(new Product());
   currentSelectProperty: string = 'name';
-  productProperties: string[] = Object.keys(new Product());
+  orderProperties: string[] = Object.keys(new Product());
   sortedOrder = 'ASC';
   sortedColumn = 'id';
+  sortedCount = 0;
+  column: string = '';
+  direction: boolean = false;
+  columnKey: string = '';
   firstSorting = true;
-  filterKey: string = 'name';
-  filterKeys: string[] = Object.keys(new Product());
-  phrase: string = '';
+
   ngOnInit(): void {
     this.productService.getAll();
   }
+
   onRemove(product: Product): void {
     this.productService.remove(product.id),
-      this.router.navigate(['']);
+      this.router.navigate(['/products']);
     if (product.id === 0) {
       this.productService.create(product).subscribe(
         () => {
@@ -52,6 +61,7 @@ export class ListingProductComponent implements OnInit {
       )
     }
   }
+
   onColumnSelect(columnName: string): void {
     if (this.firstSorting) {
       this.sortedOrder = 'ASC';
@@ -60,6 +70,7 @@ export class ListingProductComponent implements OnInit {
     else this.sortedOrder == 'ASC' ? this.sortedOrder = 'DESC' : this.sortedOrder = 'ASC';
     this.sortedColumn = columnName;
   }
+
   onChangePhrase(event: any): void {
     this.phrase = (event.target as HTMLInputElement).value;
   }
