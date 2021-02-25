@@ -56,9 +56,9 @@
         <label for="image">Kép (opcionális):</label>
         <input name="image" id="image" [(ngModel)]="product.image" type="text" class="form-control">
       </div>
-      <button [disabled]="productForm.invalid || updating" type="submit" class="btn btn-primary btn-block btn-lg">
-        <i *ngIf="!updating" class="material-icons">save</i>
-        <i *ngIf="updating" class="material-icons">refresh</i>
+      <button [disabled]="productForm.invalid || updating" type="submit" class="btn btn-primary btn-block">
+        <i *ngIf="!updating" class="fa fa-floppy-o"></i>
+        <i *ngIf="updating" class="fa fa-refresh"></i>
       </button>
     </form>
   </div>
