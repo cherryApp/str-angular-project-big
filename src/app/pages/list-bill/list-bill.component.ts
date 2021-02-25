@@ -15,6 +15,8 @@ export class ListBillComponent implements OnInit {
   billList$: Observable<Bill[]> = this.billService.billList$;
   filterkeys: string[] = Object.keys(new Bill);
   cols: ITableCol[] = this.config.tableColsBillList;
+  phrase: string = '';
+  filterKey: string = 'orderID';
 
   constructor(
     private billService: BillService,
