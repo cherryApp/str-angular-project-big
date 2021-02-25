@@ -1,13 +1,13 @@
 <div class="container">
     <div class="row">
         <div class="col-8 offset-2">
-           <h2 class="text-center mb-5 mt-5">Összes termék</h2>
+            <h2 class="text-center mb-5 mt-5">Összes termék</h2>
         </div>
 
         <div class="col-5">
             <button class="btn btn-primary btn-block" [routerLink]="[0]">
                 <i class="fa fa-edit"></i>
-                    Új tétel létrehozása
+                Új tétel létrehozása
             </button>
         </div>
         <div class="col-3 ">
@@ -18,10 +18,11 @@
             </select>
         </div>
         <div class="search-bar">
-         <form class="form-inline my-2 my-lg-0 d-flex justify-content-center">
-            <input (keyup)='onChangePhrase($event)' class="form-control mr-sm-2" type="text" placeholder="Keresés" >
-                <button class="btn btn-primary mt-4 my-sm-0" type="button"> <i class="fa fa-search"></i> Keresés</button>
-        </form>
+            <form class="form-inline my-2 my-lg-0 d-flex justify-content-center">
+                <input (keyup)='onChangePhrase($event)' class="form-control mr-sm-2" type="text" placeholder="Keresés">
+                <button class="btn btn-primary mt-4 my-sm-0" type="button"> <i class="fa fa-search"></i>
+                    Keresés</button>
+            </form>
         </div>
         <table class="table table-striped">
             <thead>
@@ -35,18 +36,18 @@
                 </tr>
             </thead>
             <tbody>
-              
-               <tr *ngFor="let product of productList | async | filter:phrase:filterKey | sorter:columnKey">
-                  
-            <td>
-              <span>{{ product.id }}</span>
-            </td>
-            <td><input class="form-control form-control-sm" [(ngModel)]="product.name"></td>
-            <td><input class="form-control form-control-sm" [(ngModel)]="product.type"></td>
-            <!-- <td><input class="form-control form-control-sm" [(ngModel)]="product.catId"></td> -->
-            <td><input class="form-control form-control-sm" [(ngModel)]="product.description"></td>
-            <td><input class="form-control form-control-sm" [(ngModel)]="product.price"></td>
-            <td>
+
+                <tr *ngFor="let product of productList | async | filter:phrase:filterKey | sorter:columnKey">
+
+                    <td>
+                        <span>{{ product.id }}</span>
+                    </td>
+                    <td><input class="form-control form-control-sm" [(ngModel)]="product.name"></td>
+                    <td><input class="form-control form-control-sm" [(ngModel)]="product.type"></td>
+                    <!-- <td><input class="form-control form-control-sm" [(ngModel)]="product.catId"></td> -->
+                    <td><input class="form-control form-control-sm" [(ngModel)]="product.description"></td>
+                    <td><input class="form-control form-control-sm" [(ngModel)]="product.price"></td>
+                    <td>
 
                         <div class="btn-group">
                             <button [routerLink]="[product.id]" class="btn btn-info">
