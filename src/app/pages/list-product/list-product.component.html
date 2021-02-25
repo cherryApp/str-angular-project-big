@@ -1,1 +1,56 @@
-<p>list-product works!</p>
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title ">Products</h4>
+                        <p class="card-category"> Product list</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+
+                                <thead class=" text-primary">
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>catID</th>
+                                    <th>Description</th>
+                                    <th>Price</th>
+                                    <th>Featured</th>
+                                    <th>Active</th>
+                                    <th></th>
+                                </thead>
+
+                                <tbody>
+                                    <tr *ngFor="let product of productList$ | async ">
+                                        <td>{{ product.id }}</td>
+                                        <td>{{ product.name }}</td>
+                                        <td>{{ product.type }}</td>
+                                        <td>{{ product.catID }}</td>
+                                        <td>{{ product.description }}</td>
+                                        <td>{{ product.price }}</td>
+                                        <td>{{ product.featured }}</td>
+                                        <td>{{ product.active }}</td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button type="button" rel="tooltip" title="szerkesztés" class="btn btn-primary btn-link btn-sm">
+                                                    szerkesztés
+                                                </button>
+                                                <button type="button" rel="tooltip" title="törlés" class="btn btn-danger btn-link btn-sm">
+                                                    törlés
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
