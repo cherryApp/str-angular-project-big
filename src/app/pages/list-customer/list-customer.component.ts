@@ -29,8 +29,12 @@ export class ListCustomerComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  changeOrder(sortby: string): void {
-    this.sortby = sortby;
+  changeOrder(param: string): void {
+    if (this.sorterDirection === 1)  this.sorterDirection = 2;
+    else this.sorterDirection = 1;
+    this.sortby = param;
+    document.querySelector('#arrow_up_'+param)?.classList.toggle('arrow__active');
+    document.querySelector('#arrow_down_'+param)?.classList.toggle('arrow__active');
   }
 
 }
