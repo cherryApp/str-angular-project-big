@@ -9,7 +9,7 @@
        ÚJ RENDELÉS
       </button>
     </div>
-    <div class="col-4">Kategóriák
+    <div class="col-4 offset-1">Kategóriák
           <select [(ngModel)]="filterKey" class="mb-5 form-control">
           <option *ngFor="let key of filterKeys" [value]="key">
             {{ key }}
@@ -19,38 +19,35 @@
   <div class="col-6 mt-4 search-bar">
     <form class="form-inline mx-auto d-flex justify-content-end">
         <input (keyup)='onChangePhrase($event)' class="form-control mr-sm-2" type="text" placeholder="Keresés">
-        <button class="btn btn-success mt-4 my-sm-0" type="button"> <i class="material-icons">manage_search</i>
+        <button class="btn btn-outline-success mt-4 my-sm-0" type="submit"> <i class="material-icons">manage_search</i>
             Keresés</button>
     </form>
 </div>
     <table class="table table-striped">
-      <thead class="mat-sort-header bg-dark text-light">
+      <thead class="bg-dark text-light">
         <tr>
           <!-- <th *ngFor="let col of cols">{{ col.text }}</th> -->
-          <th (click)="onColumnSelect('id')">#</th>
-          <th (click)="onColumnSelect('id')">Customer ID</th>
-           <th (click)="onColumnSelect('id')">Product ID</th>
-           <th (click)="onColumnSelect('id')">Amount</th>
-           <th (click)="onColumnSelect('id')">Status</th>
+          <th (click)="onColumnSelect('id')"><b>ID</b></th>
+          <th (click)="onColumnSelect('id')"><b>Customer ID</b></th>
+           <th (click)="onColumnSelect('id')"><b>Product ID</b></th>
+           <th (click)="onColumnSelect('id')"><b>Amount</b></th>
+           <th (click)="onColumnSelect('id')"><b>Status</b></th>
            <th><i *ngIf="!direction" class="material-icons">keyboard_arrow_up</i>
-            <i *ngIf="direction" class="material-icons">keyboard_arrow_down</i>
-                        </th>
-          <th></th>
+              <i *ngIf="direction" class="material-icons">keyboard_arrow_down</i>
+            </th>
         </tr>
       </thead>
       <tbody>
-        <tr
-          *ngFor="
-            let order of orderList$ | async | filter:filterKey:phrase | sorter:columnKey"        >
+        <tr *ngFor="let order of orderList$ | async | filter:filterKey:phrase | sorter:columnKey">
           <td>{{ order.id }}</td>
           <td>{{ order.customerID }}</td>
           <td>{{ order.productID }}</td>
           <td>{{ order.amount }}</td>
           <td>{{ order.status }}</td>
           <td>
-            <div class="btn-group">
+            <div class="btn-group d-flex justify-content-end">
               <button [routerLink]="[order.id]" class="btn btn-info">
-                <i class="material-icons">manage_search</i>
+                <i class="material-icons">edit</i>
               </button>
               <button (click)="onRemove(order)"  class="btn btn-danger">
                 <i class="material-icons">delete_outline</i>
