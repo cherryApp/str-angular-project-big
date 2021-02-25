@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Customer } from 'app/model/customer';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 
@@ -29,16 +29,18 @@ export class CustomerService {
 
   get(id: number | string): Observable<Customer> {
     id = parseInt(('' + id), 10);
-    return this.http.get<Customer>(`${this.customerUrl}/${id}`);
+    return id>0? this.http.get<Customer>(`${this.customerUrl}/${id}`): of(new Customer());
   }
 
-  create(customer: Customer): void {
-    this.http.post<Customer>(
+  create(customer: Customer): Observable<Customer> {
+    return this.http.post<Customer>(
       `${this.customerUrl}`, customer         // elküldjük az új értéket
-    ).subscribe(                              // feliratkozunk
-      () => this.getAll()                     // ha végzett a mentéssel, újból lekérjük az adatokat a servertől
+    ).pipe(
+      tap( () => {
+        this.getAll();                        // ha végzett a mentéssel, újból lekérjük az adatokat a servertől
+        this.toastr.success(`Customer ${customer.firstName} ${customer.lastName}  has been created.`, 'NEW Customer');
+      })
     );
-    this.toastr.success(`Customer ${customer.firstName} ${customer.lastName}  has been created.`, 'NEW Product');
   }
 
   update(customer: Customer): Observable<Customer> {
