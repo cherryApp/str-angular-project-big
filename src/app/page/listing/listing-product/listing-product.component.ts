@@ -76,7 +76,6 @@ export class ListingProductComponent implements OnInit {
 
   onChangePhrase(event: any): void {
     this.phrase = (event.target as HTMLInputElement).value;
-
   }
 
 
