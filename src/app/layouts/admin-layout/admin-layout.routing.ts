@@ -7,6 +7,7 @@ import { OrderListComponent } from 'app/pages/order-list/order-list.component';
 import { BillListComponent } from 'app/pages/bill-list/bill-list.component';
 import { CustomerListComponent } from 'app/pages/customer-list/customer-list.component';
 import { EditCustomerComponent } from 'app/editors/edit-customer/edit-customer.component';
+import { EditOrderComponent } from 'app/editors/edit-order/edit-order.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -58,4 +59,5 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'bill-list', component: BillListComponent },
     { path: 'customer-list', component: CustomerListComponent },
     { path: 'customer/:id', component: EditCustomerComponent },
+    { path: 'order/:id', component: EditOrderComponent },
 ];

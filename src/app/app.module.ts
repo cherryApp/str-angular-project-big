@@ -21,6 +21,7 @@ import { BillListComponent } from './pages/bill-list/bill-list.component';
 import { CustomerListComponent } from './pages/customer-list/customer-list.component';
 import { InfoCardComponent } from './common/info-card/info-card.component';
 import { EditCustomerComponent } from './editors/edit-customer/edit-customer.component';
+import { EditOrderComponent } from './editors/edit-order/edit-order.component';
 
 @NgModule({
   imports: [
@@ -48,6 +49,7 @@ import { EditCustomerComponent } from './editors/edit-customer/edit-customer.com
     CustomerListComponent,
     DashboardComponent,
     InfoCardComponent,
+    EditOrderComponent,
     //EditCustomerComponent,
 
   ],
