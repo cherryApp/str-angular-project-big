@@ -1,6 +1,6 @@
 
 export class Address {
-    zip: number=0;
+  zip:string='';
   country: string='';
   city: string='';
   street: string='';
