@@ -2,10 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { BrowserModule  } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
-
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { EditProductComponent } from './editors/edit-product/edit-product.component';
 
 const routes: Routes =[
+
+  { path: 'product-list/product/:id', component: EditProductComponent },
   {
     path: '',
     redirectTo: 'dashboard',
@@ -16,7 +18,10 @@ const routes: Routes =[
     children: [{
       path: '',
       loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
-    }]
+    },
+
+  
+  ]
   }
 ];
 

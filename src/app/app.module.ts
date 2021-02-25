@@ -20,6 +20,7 @@ import { SorterPipe } from './pipe/sorter.pipe';
 import { BillListComponent } from './pages/bill-list/bill-list.component';
 import { CustomerListComponent } from './pages/customer-list/customer-list.component';
 import { InfoCardComponent } from './common/info-card/info-card.component';
+import { EditProductComponent } from './editors/edit-product/edit-product.component';
 import { EditCustomerComponent } from './editors/edit-customer/edit-customer.component';
 
 @NgModule({
@@ -48,6 +49,7 @@ import { EditCustomerComponent } from './editors/edit-customer/edit-customer.com
     CustomerListComponent,
     DashboardComponent,
     InfoCardComponent,
+    EditProductComponent,
     //EditCustomerComponent,
 
   ],
