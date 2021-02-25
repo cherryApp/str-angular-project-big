@@ -32,6 +32,9 @@
                     <!-- <th (click)="onColumnSelect('catID')">CatID</th> -->
                     <th (click)="onColumnSelect('description')"><b>Description</b></th>
                     <th (click)="onColumnSelect('price')"><b>Price</b></th>
+                    <th><i *ngIf="!irany" class="fa fa-arrow-up"></i>
+                        <i *ngIf="irany" class="fa fa-arrow-down"></i>
+                                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -49,7 +52,7 @@
             <td>
 
                         <div class="btn-group">
-                            <button [routerLink]="[product.id]" class="btn btn-info">
+                            <button [routerLink]="[product.id]"  class="btn btn-info">
                                 <i class="fa fa-pencil"></i>
                             </button>
                             <button (click)="onRemove(product)" class="btn btn-danger">
