@@ -4,7 +4,10 @@
             <div class="col-12">
                 <div class="card d-flex">
                     <div class="card-header card-header-primary mb-4 w-50 mx-auto">
-                        <h4 class="card-title ">Create/edit product</h4>
+                        <ng-container *ngIf="(product$ | async) as product"> 
+                            <h4 *ngIf="product.id==0" class="card-title">Create new product</h4>
+                            <h4 *ngIf="product.id!=0" class="card-title">Edit product</h4>
+                        </ng-container>
                     </div>
                     <div class="row">
                         <div *ngIf="(product$ | async) as product" class="col-6 offset-3">
@@ -57,16 +60,16 @@
                                 <div class="form-group">
                                     <label class="d-block" for="featured">{{attributes.featured}}</label>
                                     <input name="featured" [(ngModel)]="product.featured" type="radio" [value]="true" required>
-                                    <label class="mx-1 d-inline input-group-text" for="featured-true">true</label>
+                                    <label class="mx-1 d-inline input-group-text" for="featured-true">Yes</label>
                                     <input class="ml-1" name="featured" [(ngModel)]="product.featured" type="radio" [value]="false" required>
-                                    <label class="mx-1 d-inline input-group-text" for="featured-false">false</label>
+                                    <label class="mx-1 d-inline input-group-text" for="featured-false">No</label>
                                 </div>
                                 <div class="form-group">
                                     <label class="d-block" for="active">{{attributes.active}}</label>
                                     <input name="active-true" [(ngModel)]="product.active" type="radio" [value]="true" required>
-                                    <label class="mx-1 d-inline input-group-text" for="active-true">true</label>
+                                    <label class="mx-1 d-inline input-group-text" for="active-true">Yes</label>
                                     <input class="ml-1" name="active-false" [(ngModel)]="product.active" type="radio" [value]="false" required>
-                                    <label class="mx-1 d-inline input-group-text" for="active-false">false</label>
+                                    <label class="mx-1 d-inline input-group-text" for="active-false">No</label>
                                 </div>
                         <button [disabled]="productForm.invalid" type="submit" class="btn btn-primary btn-block btn-lg">
                             <i class="fa fa-save"></i>
