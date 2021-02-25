@@ -67,14 +67,16 @@ export class ListingProductComponent implements OnInit {
   }
 
 
+  irany: boolean = false;
   columnKey: string = '';
   onColumnSelect(key: string): void {
     this.columnKey = key;
-
+    this.irany = !this.irany;
   }
 
   onChangePhrase(event: any): void {
     this.phrase = (event.target as HTMLInputElement).value;
+
   }
 
 
