@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { Order } from 'src/app/models/order';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-list-order',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListOrderComponent implements OnInit {
 
-  constructor() { }
+  orderList$: BehaviorSubject<Order[]> = this.orderService.list$;
+
+  constructor(
+    private orderService: OrderService
+  ) { }
 
   ngOnInit(): void {
+    this.orderService.getAll();
   }
 
 }
