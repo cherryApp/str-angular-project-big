@@ -8,7 +8,7 @@
                         <p class="card-category">List of products currently on stock.</p>
                     </div>
                     <div class="card my-0 px-3">
-                        <button [routerLink]="" class="btn btn-primary my-3">
+                        <button [routerLink]="['product/'+'0']" class="btn btn-primary my-3">
                             Create new product
                         </button>
                     </div>
@@ -37,7 +37,7 @@
                                             {{product[attribute.key]}}</td>
                                         <td>
                                             <div class="btn-group">
-                                                <button [routerLink]="" class="btn btn-info">
+                                                <button [routerLink]="['product/' + product.id]" class="btn btn-info">
                                                     <i class="fa fa-pencil"></i>
                                                 </button>
                                                 <button class="btn btn-danger" (click)="onDelete(product)">

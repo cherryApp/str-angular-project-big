@@ -7,7 +7,7 @@
       "catID": 3,
       "description": "posuere felis sed lacus morbi sem mauris laoreet ut rhoncus",
       "price": 65714,
-      "featured": true,
+      "featured": false,
       "active": false
     },
     {
@@ -167,8 +167,8 @@
       "catID": 5,
       "description": "donec diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci",
       "price": 66081,
-      "featured": true,
-      "active": true
+      "featured": false,
+      "active": false
     },
     {
       "id": 26,
@@ -919,6 +919,16 @@
       "price": 65697,
       "featured": true,
       "active": false
+    },
+    {
+      "id": 101,
+      "name": "L. A. Confidental",
+      "type": "Drama",
+      "catID": "3",
+      "description": "A classic American movie.",
+      "price": "10000",
+      "featured": false,
+      "active": true
     }
   ],
   "order": [
