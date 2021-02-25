@@ -1,0 +1,74 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-danger">
+                        <h4 class="card-title">Customer Profile</h4>
+                        <!-- <p class="card-category">Complete your profile</p> -->
+                    </div>
+                    <div class="card-body">
+                        <form #customerFrom="ngForm" (ngSubmit)="onFormSubmit(customerFrom)">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="First Name" type="text" [(ngModel)]="customer.firstName" name="firstName">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Last Name" type="text" [(ngModel)]="customer.lastName" name="lastName">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                      <input matInput placeholder="Email address" type="email" [(ngModel)]="customer.email" name="email">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Zip" type="text" [(ngModel)]="customer.address.zip" name="zip">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Country" type="text" [(ngModel)]="customer.address.country" name="country">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="City" type="text" [(ngModel)]="customer.address.city" name="city">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Street" type="text" [(ngModel)]="customer.address.street" name="street">
+                                  </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Notes" type="text" [(ngModel)]="customer.address.notes" name="notes">
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-1">
+                                  <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Active" type="text" [(ngModel)]="customer.active" name="active">
+                                  </mat-form-field>
+                                </div>
+                            </div>
+                            <button mat-raised-button [disabled]="customerFrom.invalid" class="btn btn-danger pull-right">Update Profile</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+  
