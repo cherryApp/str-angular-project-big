@@ -1,40 +1,56 @@
 <div class="container">
   <div class="row">
     <div class="col-4 offset-5">
-      <h3>Orders</h3>
+      <h3>RENDELÉSEK</h3>
     </div>
     <div class="col-12">
       <button class="btn btn-success btn-block" [routerLink]="[0]">
         <i class="material-icons">add</i>
-        Create a New Order
+       ÚJ RENDELÉS
       </button>
     </div>
-    <div class="col-3">Select category
+    <div class="col-3">Kategóriák
           <select [(ngModel)]="filterKey" class="form-control">
-
-        <option *ngFor="let key of filterKeys" [value]="key">
+          <option *ngFor="let key of filterKeys" [value]="key">
             {{ key }}
         </option>
     </select>
-
-    </div>
-
+  </div>
+  <div class="search-bar">
+    <form class="form-inline mx-auto d-flex justify-content-end">
+        <input (keyup)='onChangePhrase($event)' class="form-control mr-sm-2" type="text" placeholder="Keresés">
+        <button class="btn btn-warning mt-4 my-sm-0" type="button"> <i class="fa fa-search"></i>
+            Keresés</button>
+    </form>
+</div>
     <table class="table table-striped">
-      <thead class="mat-sort-header">
+      <thead class="bg-secondary text-light">
         <tr>
-          <th *ngFor="let col of cols">{{ col.text }}</th>
-          <!-- <th>Customer ID</th>
-           <th>Product ID</th>
-           <th>Amount</th>
-           <th>Status</th> -->
-          <th></th>
+          <!-- <th *ngFor="let col of cols">{{ col.text }}</th> -->
+          <th (click)="onColumnSelect('id')">#<i *ngIf="!irany" class="material-icons">keyboard_arrow_up</i>
+            <i *ngIf="irany" class="material-icons">keyboard_arrow_down</i></th>
+
+          <th (click)="onColumnSelect('id')">Customer ID<i *ngIf="!irany" class="material-icons">keyboard_arrow_up</i>
+            <i *ngIf="irany" class="material-icons">keyboard_arrow_down</i></th>
+
+           <th (click)="onColumnSelect('id')">Product ID<i *ngIf="!irany" class="material-icons">keyboard_arrow_up</i>
+            <i *ngIf="irany" class="material-icons">keyboard_arrow_down</i></th>
+
+           <th (click)="onColumnSelect('id')">Amount<i *ngIf="!irany" class="material-icons">keyboard_arrow_up</i>
+            <i *ngIf="irany" class="material-icons">keyboard_arrow_down</i></th>
+
+           <th (click)="onColumnSelect('id')">Status<i *ngIf="!irany" class="material-icons">keyboard_arrow_up</i>
+            <i *ngIf="irany" class="material-icons">keyboard_arrow_down</i></th>
+           <!-- <th><i *ngIf="!irany" class="material-icons">keyboard_arrow_up</i>
+            <i *ngIf="irany" class="material-icons">keyboard_arrow_down</i>
+                        </th> -->
           <th></th>
         </tr>
       </thead>
       <tbody>
         <tr
           *ngFor="
-            let order of orderList$ | async"        >
+            let order of orderList$ | async | filter:filterKey:phrase | sorter:columnKey"        >
           <td>{{ order.id }}</td>
           <td>{{ order.customerID }}</td>
           <td>{{ order.productID }}</td>
@@ -42,10 +58,10 @@
           <td>{{ order.status }}</td>
           <td>
             <div class="btn-group">
-              <button [routerLink]="['order/' + order.id]" class="btn btn-info">
+              <button [routerLink]="[order.id]" class="btn btn-info">
                 <i class="material-icons">manage_search</i>
               </button>
-              <button (click)="onRemove(order)" [routerLink]="['order/' + order.id]" class="btn btn-danger">
+              <button (click)="onRemove(order)"  class="btn btn-danger">
                 <i class="material-icons">delete_outline</i>
               </button>
             </div>
