@@ -2,9 +2,21 @@
     <div class="col-md-10 offset-1">
 
       <div class="input-group no-border col-md-5 pb-4">
+        <div class="filter-header">Szűrés: </div>
+        <select [(ngModel)]="filterKey" class="form-control mr-3" style="width: 200px;">
+            <option *ngFor="let fkey of filterKeys" [value]="fkey">{{ fkey }}</option>
+        </select>
         <input [(ngModel)]="filterPhrase" type="text" value="" class="form-control" placeholder="Filter...">
       </div>
-
+      <div class="border d-flex p-3 mb-3 bg-light">
+        <div class="filter-header">Rendezés: </div>
+        <div *ngFor="let skey of filterKeys" class="filter-button" (click)="changeOrder(skey)">{{ skey }}</div>
+        <select [(ngModel)]="sorterDirection" class="form-control mr-3" style="width: 200px;">
+            <option value="1">növekvő</option>
+            <option value="2">csökkenő</option>
+        </select>
+      </div>
+      
       <div class="card">
         <div class="card-header card-header-primary">
           <h4 class="card-title ">Category Table</h4>
