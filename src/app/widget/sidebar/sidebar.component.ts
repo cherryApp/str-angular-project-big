@@ -12,4 +12,10 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  setActive(event: Event): void {
+    const navItems = document.querySelectorAll('ul.nav li');
+    const currentListItem = (event.currentTarget as HTMLElement);
+    navItems.forEach(item => item.classList.remove('active'));
+    currentListItem?.classList.add('active');
+  }
 }
