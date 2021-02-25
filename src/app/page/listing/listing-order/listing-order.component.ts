@@ -39,16 +39,21 @@ export class ListingOrderComponent implements OnInit {
   column: string = '';
   direction: boolean = false;
   columnKey: string = '';
-
+  firstSorting = true;
 
   ngOnInit(): void {
     this.orderService.getAll();
   }
 
-  onColumnSelect(key: string): void {
-    this.columnKey = key;
-    this.direction = !this.direction;
+  onColumnSelect(columnName: string): void {
+    if (this.firstSorting) {
+      this.sortedOrder = 'ASC';
+      this.firstSorting = false;
+    }
+    else this.sortedOrder == 'ASC' ? this.sortedOrder = 'DESC' : this.sortedOrder = 'ASC';
+    this.sortedColumn = columnName;
   }
+
   onRemove(order: Order): void {
   this.orderService.remove(order),
   this.router.navigate(['/orders']);
