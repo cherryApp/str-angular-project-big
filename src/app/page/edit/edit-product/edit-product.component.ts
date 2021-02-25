@@ -29,6 +29,7 @@ export class EditProductComponent implements OnInit {
 
   setProductToDatabase(product: Product): void {
     this.updating = true;
+    product.catId = Number(product.catId);
     if (product.id === 0) {
       this.productService.create(product).subscribe(
         () => {
