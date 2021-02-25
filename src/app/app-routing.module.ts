@@ -8,7 +8,7 @@ import { ListingCustomerComponent } from './page/listing/listing-customer/listin
 import { ListingOrderComponent } from './page/listing/listing-order/listing-order.component';
 import { ListingProductComponent } from './page/listing/listing-product/listing-product.component';
 import { ListingBillComponent } from './page/listing/listing-bill/listing-bill.component';
-// import { EditBillComponent } from './page/edit/edit-bill/edit-bill.component';
+import { EditBillComponent } from './page/edit/edit-bill/edit-bill.component';
 import { NotfoundComponent } from './page/notfound/notfound.component';
 
 const routes: Routes = [
@@ -44,10 +44,10 @@ const routes: Routes = [
     path: 'bills',
     component: ListingBillComponent
   },
-  // {
-  //   path: 'bills/:id',
-  //   component: EditBillComponent
-  // },
+  {
+    path: 'bills/:id',
+    component: EditBillComponent
+  },
   {
     path: '**',
     component: NotfoundComponent
