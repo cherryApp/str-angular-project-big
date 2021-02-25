@@ -4,35 +4,37 @@
             <h2 class="text-center mb-5 mt-5">Összes termék</h2>
         </div>
 
-        <div class="col-5">
+        <div class="col-12 my-3 mb-3">
             <button class="btn btn-primary btn-block" [routerLink]="[0]">
-                <i class="fa fa-edit"></i>
+        <i class="material-icons">edit</i>
                 Új tétel létrehozása
             </button>
         </div>
-        <div class="col-3 ">
-            <select [(ngModel)]="filterKey" class="form-control">
-                <option *ngFor="let key of filterKeys" [value]="key">
-                    {{ key }}
-                </option>
-            </select>
-        </div>
-        <div class="search-bar">
-            <form class="form-inline my-2 my-lg-0 d-flex justify-content-center">
-                <input (keyup)='onChangePhrase($event)' class="form-control mr-sm-2" type="text" placeholder="Keresés">
-                <button class="btn btn-primary mt-4 my-sm-0" type="button"> <i class="fa fa-search"></i>
-                    Keresés</button>
-            </form>
+     <div class="d-flex justify-content-center col-12 my-3">
+            <div class="mr-5">
+                <select [(ngModel)]="filterKey" class="form-control">
+                    <option *ngFor="let key of filterKeys" [value]="key">
+                        {{ key }}
+                    </option>
+                </select>
+            </div>
+            <div class="search-bar">
+                <form class="form-inline my-2 my-lg-0 d-flex justify-content-center">
+                    <input (keyup)='onChangePhrase($event)' class="form-control mr-sm-2" type="text" placeholder="Keresés">
+                    <button class="btn btn-primary mt-4 my-sm-0 ml-3" type="button"> <i class="fa fa-search"></i>
+                        Keresés</button>
+                </form>
+            </div>
         </div>
         <table class="table table-striped">
-            <thead>
+            <thead class="thead-dark">
                 <tr>
                     <th (click)="onColumnSelect('id')"> <b>#</b></th>
-                    <th (click)="onColumnSelect('name')"><b>Name</b></th>
-                    <th (click)="onColumnSelect('type')"><b>Type</b></th>
+                    <th (click)="onColumnSelect('name')"><b>Név</b></th>
+                    <th (click)="onColumnSelect('type')"><b>Típus</b></th>
                     <!-- <th (click)="onColumnSelect('catID')">CatID</th> -->
-                    <th (click)="onColumnSelect('description')"><b>Description</b></th>
-                    <th (click)="onColumnSelect('price')"><b>Price</b></th>
+                    <th (click)="onColumnSelect('description')"><b>Leírás</b></th>
+                    <th (click)="onColumnSelect('price')"><b>Ár</b></th>
                     <th><i *ngIf="!irany" class="fa fa-arrow-up"></i>
                         <i *ngIf="irany" class="fa fa-arrow-down"></i>
                     </th>
