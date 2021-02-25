@@ -1,44 +1,59 @@
 <div class="container">
     <div class="row">
-        <div class="col-3">
-            <h3>Bills</h3>
+        <div class="col-12">
+            <h2 class="text-center mb-5 mt-3 font-weight-bold">Számlák</h2>
         </div>
 
-        <div class="col-12">
-            <button class="btn btn-success btn-block" [routerLink]="[0]">
+        <div class="col-12 d-flex justify-content-center my-3">
+            <button class="btn btn-success btn-block font-weight-bold" [routerLink]="[0]">
                 <i class="material-icons">add</i>
-                Create a New Bill
+                Új számla létrehozása
             </button>
         </div>
-        <div class="col-3">Select bill
-            <select [(ngModel)]="filterKey" class="form-control">
+
+        <div class="col-4 text-center font-weight-bold">Kiválasztás
+            <select [(ngModel)]="filterKey" class="custom-select mb-3">
                 <option *ngFor="let key of filterKeys" [value]="key">
                     {{ key }}
                 </option>
             </select>
         </div>
 
-        <div class="search-bar">
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" (keyup)="onChangePhrase($event)">
-                <button class="btn btn-outline-success mt-4 my-2 my-sm-0" type="submit">
-                    Search</button>
+        <div class="col-6 mt-4 search-bar">
+            <form class="form-inline my-2 my-lg-0 d-flex justify-content-center">
+                <input class="form-control mr-sm-2" type="text" placeholder="Keresés" (keyup)="onChangePhrase($event)">
+                <button class="btn btn-success mt-4 my-2 my-sm-0 font-weight-bold" type="submit">
+                    Keresés</button>
             </form>
         </div>
 
         <table class="table table-striped">
-            <thead class="mat-sort-header">
+            <thead class="thead-dark">
                 <tr>
-                    <th *ngFor="let col of cols">{{ col.text }}</th>
-                    <!-- <th (click)="onColumnSelect('id')">ID</th>
+                    <th (click)="onColumnSelect('id')"> <b>#</b></th>
+                    <th (click)="onColumnSelect('orderID')"><b>Rendelés azonosító</b></th>
+                    <th (click)="onColumnSelect('amount')"><b>Összeg</b></th>
+                    <th (click)="onColumnSelect('status')"><b>Státusz</b></th>
+                    <th><i *ngIf="!direction" class="material-icons">north</i>
+                        <i *ngIf="direction" class="material-icons">south</i>
+                    </th>
+                </tr>
+            </thead>
+            <!-- <thead class="mat-sort-header">
+                <tr> -->
+            <!-- <th *ngFor="let col of cols" (click)="onColumnSelect('columnKey')">{{ col.text }}</th> -->
+            <!-- <th (click)="onColumnSelect('id')">ID</th>
                     <th (click)="onColumnSelect('orderID')">Order ID</th>
                     <th (click)="onColumnSelect('amount')">Amount</th>
                     <th (click)="onColumnSelect('status')">Status</th> -->
+            <!-- <th><i *ngIf="!direction" class="fa fa-arrow-up"></i>
+                        <i *ngIf="direction" class="fa fa-arrow-down"></i>
+                    </th>
                 </tr>
-            </thead>
+            </thead> -->
             <tbody>
 
-                <tr *ngFor="let bill of billList$ | async | filter:phrase:filterKey | sorter:columnKey">
+                <tr *ngFor="let bill of billList$ | async | filter:filterKey:phrase | sorter:columnKey:sortedOrder">
                     <td>{{bill.id}}</td>
                     <td>{{bill.orderID}} </td>
                     <td>{{bill.amount}}</td>
@@ -46,7 +61,7 @@
                     <td>
                         <div class="btn-group">
                             <button [routerLink]="['bills/' + bill.id]" class="btn btn-info">
-                                <i class="material-icons">add</i>
+                                <i class="material-icons">edit</i>
                             </button>
                             <button (click)="onRemove(bill)" class="btn btn-danger">
                                 <i class="material-icons">delete_outline</i>
