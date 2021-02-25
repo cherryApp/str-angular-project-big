@@ -20,6 +20,7 @@ import { SidebarComponent } from './common/sidebar/sidebar.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { FilterPipe } from './pipe/filter.pipe';
 import { InfoCardComponent } from './common/info-card/info-card.component';
+import { SorterPipe } from './pipe/sorter.pipe';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { InfoCardComponent } from './common/info-card/info-card.component';
     SidebarComponent,
     FooterComponent,
     FilterPipe,
-    InfoCardComponent
+    InfoCardComponent,
+    SorterPipe
   ],
   imports: [
     BrowserModule,
