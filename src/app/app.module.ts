@@ -50,7 +50,7 @@ import { EditCustomerComponent } from './editors/edit-customer/edit-customer.com
     DashboardComponent,
     InfoCardComponent,
     EditProductComponent,
-    EditCustomerComponent,
+    //EditCustomerComponent,
 
   ],
   providers: [],

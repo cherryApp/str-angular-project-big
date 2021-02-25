@@ -8,7 +8,7 @@
       "description": "posuere felis sed lacus morbi sem mauris laoreet ut rhoncus",
       "price": 65714,
       "featured": false,
-      "active": false
+      "active": true
     },
     {
       "id": 6,
@@ -926,9 +926,19 @@
       "type": "Drama",
       "catID": "3",
       "description": "A classic American movie.",
-      "price": "10000",
+      "price": "12000",
       "featured": false,
       "active": true
+    },
+    {
+      "id": 102,
+      "name": "Homeland Season 1",
+      "type": "Thriller, Spy",
+      "catID": "2",
+      "description": "A really good spy story.",
+      "price": "9800",
+      "featured": false,
+      "active": false
     }
   ],
   "order": [
