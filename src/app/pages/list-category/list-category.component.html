@@ -34,7 +34,7 @@
               </thead>
 
               <tbody>
-                <tr *ngFor="let category of categoryList$ | async | filter:filterPhrase:filterKey ">
+                <tr *ngFor="let category of categoryList$ | async | filter:filterPhrase:filterKey | sorter:sortby:sorterDirection">
                   <td>{{ category.id }}</td>
                   <td>{{ category.name }}</td>
                   <td>{{ category.description }}</td>
