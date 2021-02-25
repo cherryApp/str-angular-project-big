@@ -1,0 +1,29 @@
+.filter {
+    &-button {
+        display: inline-block;
+        padding: .37rem 1rem;
+        border: 1px solid rgba(150, 150, 150, .35);
+        border-radius: .15rem;
+        cursor: pointer;
+        user-select: none;
+        margin: 0 .2rem;
+
+        &:hover {
+            background-color: rgba(175, 1, 131, 1);
+            border: 1px solid rgba(175, 1, 131, 1);
+            color: rgba(255, 255, 255, 1);
+        }
+    }
+
+    &-header {
+        display: inline-block;
+        padding: .37rem 1rem;
+        background-color: rgb(146, 146, 146);
+        border: 1px solid rgb(146, 146, 146);
+        border-radius: .15rem;
+        color: rgb(255, 255, 255);
+        cursor: none;
+        user-select: none;
+        margin: 0 .2rem;
+    }
+}

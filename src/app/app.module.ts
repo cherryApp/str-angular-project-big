@@ -19,6 +19,8 @@ import { NavbarComponent } from './common/navbar/navbar.component';
 import { SidebarComponent } from './common/sidebar/sidebar.component';
 import { FooterComponent } from './common/footer/footer.component';
 import { FilterPipe } from './pipe/filter.pipe';
+import { InfoCardComponent } from './common/info-card/info-card.component';
+import { SorterPipe } from './pipe/sorter.pipe';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,9 @@ import { FilterPipe } from './pipe/filter.pipe';
     NavbarComponent,
     SidebarComponent,
     FooterComponent,
-    FilterPipe
+    FilterPipe,
+    InfoCardComponent,
+    SorterPipe
   ],
   imports: [
     BrowserModule,
