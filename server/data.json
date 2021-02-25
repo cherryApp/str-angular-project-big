@@ -3,7 +3,7 @@
     {
       "id": 5,
       "name": "The Inhabited Island 2: Rebellion",
-      "type": "Action|Adventure|Sci-Fi",
+      "type": "Action / Adventure / Sci-Fi",
       "catID": 3,
       "description": "posuere felis sed lacus morbi sem mauris laoreet ut rhoncus",
       "price": 65714,
@@ -53,7 +53,7 @@
     {
       "id": 13,
       "name": "Electric Dreams",
-      "type": "Comedy|Drama|Romance|Sci-Fi",
+      "type": "Comedy / Drama / Romance / Sci-Fi",
       "catID": 2,
       "description": "mattis nibh ligula nec sem duis aliquam convallis nunc proin at turpis a pede posuere nonummy integer",
       "price": 32116,
@@ -73,7 +73,7 @@
     {
       "id": 15,
       "name": "Too Many Girls",
-      "type": "Comedy|Musical",
+      "type": "Comedy / Musical",
       "catID": 5,
       "description": "pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat",
       "price": 44734,
@@ -83,7 +83,7 @@
     {
       "id": 17,
       "name": "Naked City, The",
-      "type": "Crime|Drama|Film-Noir|Mystery",
+      "type": "Crime / Drama / Film-Noir / Mystery",
       "catID": 5,
       "description": "tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus",
       "price": 85493,
@@ -113,7 +113,7 @@
     {
       "id": 20,
       "name": "Titanic",
-      "type": "Action|Drama",
+      "type": "Action / Drama",
       "catID": 2,
       "description": "velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat erat quisque erat",
       "price": 59683,
@@ -133,7 +133,7 @@
     {
       "id": 22,
       "name": "Mediterraneo",
-      "type": "Comedy|Drama",
+      "type": "Comedy / Drama",
       "catID": 4,
       "description": "amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum",
       "price": 24885,
@@ -153,7 +153,7 @@
     {
       "id": 24,
       "name": "Atalante, L'",
-      "type": "Comedy|Drama|Romance",
+      "type": "Comedy / Drama / Romance",
       "catID": 3,
       "description": "ut suscipit a feugiat et eros vestibulum ac est lacinia nisi venenatis tristique fusce congue diam id",
       "price": 15215,
@@ -173,7 +173,7 @@
     {
       "id": 26,
       "name": "Sleeping Dogs Lie (a.k.a. Stay)",
-      "type": "Comedy|Drama|Romance",
+      "type": "Comedy / Drama / Romance",
       "catID": 1,
       "description": "justo in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus",
       "price": 83217,
@@ -203,7 +203,7 @@
     {
       "id": 29,
       "name": "Duchess of Langeais, The (a.k.a. Don't Touch the Axe) (Ne touchez pas la hache)",
-      "type": "Drama|Romance",
+      "type": "Drama / Romance",
       "catID": 5,
       "description": "vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl",
       "price": 93564,
@@ -213,7 +213,7 @@
     {
       "id": 30,
       "name": "Beauty and the Beast (La belle et la bête)",
-      "type": "Drama|Fantasy",
+      "type": "Drama / Fantasy",
       "catID": 3,
       "description": "nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi nulla ac enim in",
       "price": 40393,
@@ -243,7 +243,7 @@
     {
       "id": 33,
       "name": "Blind Swordsman: Zatoichi, The (Zatôichi)",
-      "type": "Action|Comedy|Crime|Drama",
+      "type": "Action / Comedy / Crime / Drama",
       "catID": 5,
       "description": "porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla",
       "price": 47646,
@@ -253,7 +253,7 @@
     {
       "id": 34,
       "name": "House (Hausu)",
-      "type": "Comedy|Fantasy|Horror",
+      "type": "Comedy / Fantasy / Horror",
       "catID": 2,
       "description": "suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus sit amet sem",
       "price": 95042,
@@ -263,7 +263,7 @@
     {
       "id": 35,
       "name": "Miracle of Morgan's Creek, The",
-      "type": "Comedy|Romance",
+      "type": "Comedy / Romance",
       "catID": 3,
       "description": "orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est donec odio",
       "price": 44076,
@@ -273,7 +273,7 @@
     {
       "id": 36,
       "name": "Life is a Bed of Roses (Vie est un roman, La)",
-      "type": "Fantasy|Musical",
+      "type": "Fantasy / Musical",
       "catID": 5,
       "description": "id turpis integer aliquet massa id lobortis convallis tortor risus",
       "price": 89192,
@@ -283,7 +283,7 @@
     {
       "id": 37,
       "name": "Rampart",
-      "type": "Action|Crime|Drama|Thriller",
+      "type": "Action / Crime / Drama / Thriller",
       "catID": 5,
       "description": "augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis",
       "price": 45523,
@@ -293,7 +293,7 @@
     {
       "id": 38,
       "name": "Cherry Blossoms (Kirschblüten - Hanami)",
-      "type": "Drama|Romance",
+      "type": "Drama / Romance",
       "catID": 4,
       "description": "dolor sit amet consectetuer adipiscing elit proin risus praesent lectus vestibulum quam sapien varius",
       "price": 20922,
@@ -303,7 +303,7 @@
     {
       "id": 39,
       "name": "Kon-Tiki",
-      "type": "Adventure|Documentary|Drama",
+      "type": "Adventure / Documentary / Drama",
       "catID": 5,
       "description": "velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat erat quisque erat eros viverra eget congue eget semper",
       "price": 9034,
@@ -313,7 +313,7 @@
     {
       "id": 40,
       "name": "Caótica Ana",
-      "type": "Comedy|Drama|Mystery|Romance",
+      "type": "Comedy / Drama / Mystery / Romance",
       "catID": 4,
       "description": "sed magna at nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia",
       "price": 90553,
@@ -323,7 +323,7 @@
     {
       "id": 41,
       "name": "Evil Roy Slade",
-      "type": "Comedy|Western",
+      "type": "Comedy / Western",
       "catID": 1,
       "description": "vel enim sit amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris",
       "price": 44486,
@@ -343,7 +343,7 @@
     {
       "id": 43,
       "name": "Quartet",
-      "type": "Comedy|Drama",
+      "type": "Comedy / Drama",
       "catID": 4,
       "description": "vivamus vestibulum sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus",
       "price": 34817,
@@ -353,7 +353,7 @@
     {
       "id": 44,
       "name": "Conception",
-      "type": "Comedy|Romance",
+      "type": "Comedy / Romance",
       "catID": 5,
       "description": "vel ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent",
       "price": 91132,
@@ -363,7 +363,7 @@
     {
       "id": 45,
       "name": "Horsemen",
-      "type": "Crime|Drama|Horror|Mystery|Thriller",
+      "type": "Crime / Drama / Horror / Mystery / Thriller",
       "catID": 4,
       "description": "aliquam convallis nunc proin at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum eget vulputate",
       "price": 98374,
@@ -373,7 +373,7 @@
     {
       "id": 46,
       "name": "Bending the Rules",
-      "type": "Action|Drama",
+      "type": "Action / Drama",
       "catID": 5,
       "description": "vitae consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum praesent",
       "price": 76782,
@@ -393,7 +393,7 @@
     {
       "id": 48,
       "name": "What Doesn't Kill You",
-      "type": "Crime|Drama",
+      "type": "Crime / Drama",
       "catID": 3,
       "description": "nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque",
       "price": 22185,
@@ -403,7 +403,7 @@
     {
       "id": 49,
       "name": "Free Men (Les hommes libres)",
-      "type": "Drama|War",
+      "type": "Drama / War",
       "catID": 1,
       "description": "primis in faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est donec odio justo",
       "price": 70888,
@@ -423,7 +423,7 @@
     {
       "id": 51,
       "name": "House of Branching Love, The (Haarautuvan rakkauden talo)",
-      "type": "Comedy|Drama",
+      "type": "Comedy / Drama",
       "catID": 3,
       "description": "orci pede venenatis non sodales sed tincidunt eu felis fusce posuere felis sed lacus morbi sem",
       "price": 58879,
@@ -443,7 +443,7 @@
     {
       "id": 53,
       "name": "Foosball (Metegol)",
-      "type": "Adventure|Animation|Romance",
+      "type": "Adventure / Animation / Romance",
       "catID": 3,
       "description": "quam nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus",
       "price": 59572,
@@ -453,7 +453,7 @@
     {
       "id": 54,
       "name": "The Boyfriend School",
-      "type": "Comedy|Romance",
+      "type": "Comedy / Romance",
       "catID": 4,
       "description": "nunc rhoncus dui vel sem sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula",
       "price": 34915,
@@ -463,7 +463,7 @@
     {
       "id": 55,
       "name": "Angst",
-      "type": "Drama|Horror",
+      "type": "Drama / Horror",
       "catID": 3,
       "description": "quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere",
       "price": 77543,
@@ -483,7 +483,7 @@
     {
       "id": 57,
       "name": "Monkey Business",
-      "type": "Comedy|Sci-Fi",
+      "type": "Comedy / Sci-Fi",
       "catID": 2,
       "description": "amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh in quis justo maecenas",
       "price": 42019,
@@ -493,7 +493,7 @@
     {
       "id": 58,
       "name": "Anthony Adverse",
-      "type": "Adventure|Romance",
+      "type": "Adventure / Romance",
       "catID": 4,
       "description": "consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices",
       "price": 25932,
@@ -523,7 +523,7 @@
     {
       "id": 61,
       "name": "Perez.",
-      "type": "Crime|Drama|Thriller",
+      "type": "Crime / Drama / Thriller",
       "catID": 2,
       "description": "tristique est et tempus semper est quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ipsum",
       "price": 32651,
@@ -533,7 +533,7 @@
     {
       "id": 62,
       "name": "Game of Death II (a.k.a. Tower of Death) (Si wang ta)",
-      "type": "Action|Mystery",
+      "type": "Action / Mystery",
       "catID": 4,
       "description": "cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum",
       "price": 80723,
@@ -563,7 +563,7 @@
     {
       "id": 65,
       "name": "Cruising",
-      "type": "Crime|Drama|Thriller",
+      "type": "Crime / Drama / Thriller",
       "catID": 5,
       "description": "pulvinar sed nisl nunc rhoncus dui vel sem sed sagittis nam congue risus semper porta volutpat",
       "price": 26948,
@@ -573,7 +573,7 @@
     {
       "id": 66,
       "name": "The Butter Battle Book",
-      "type": "Animation|Children",
+      "type": "Animation / Children",
       "catID": 4,
       "description": "ligula sit amet eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras",
       "price": 98102,
@@ -583,7 +583,7 @@
     {
       "id": 67,
       "name": "When Harry Met Sally...",
-      "type": "Comedy|Romance",
+      "type": "Comedy / Romance",
       "catID": 2,
       "description": "neque libero convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet",
       "price": 3956,
@@ -613,7 +613,7 @@
     {
       "id": 70,
       "name": "Pirates! Band of Misfits, The",
-      "type": "Adventure|Animation|Children|Comedy",
+      "type": "Adventure / Animation / Children / Comedy",
       "catID": 2,
       "description": "fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus aliquet",
       "price": 8976,
@@ -643,7 +643,7 @@
     {
       "id": 73,
       "name": "MacGruber",
-      "type": "Action|Comedy",
+      "type": "Action / Comedy",
       "catID": 2,
       "description": "nisi venenatis tristique fusce congue diam id ornare imperdiet sapien urna pretium nisl ut",
       "price": 98554,
@@ -653,7 +653,7 @@
     {
       "id": 74,
       "name": "Patriot Games",
-      "type": "Action|Thriller",
+      "type": "Action / Thriller",
       "catID": 4,
       "description": "sapien non mi integer ac neque duis bibendum morbi non quam nec dui luctus rutrum nulla",
       "price": 67976,
@@ -673,7 +673,7 @@
     {
       "id": 76,
       "name": "Hamlet",
-      "type": "Crime|Drama|Romance|Thriller",
+      "type": "Crime / Drama / Romance / Thriller",
       "catID": 2,
       "description": "et tempus semper est quam pharetra magna ac consequat metus sapien ut",
       "price": 27817,
@@ -683,7 +683,7 @@
     {
       "id": 77,
       "name": "American Hustle",
-      "type": "Crime|Drama",
+      "type": "Crime / Drama",
       "catID": 1,
       "description": "platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id",
       "price": 99527,
@@ -733,7 +733,7 @@
     {
       "id": 82,
       "name": "Remote Control",
-      "type": "Comedy|Drama",
+      "type": "Comedy / Drama",
       "catID": 1,
       "description": "neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros",
       "price": 75841,
@@ -743,7 +743,7 @@
     {
       "id": 83,
       "name": "Shaggy Dog, The",
-      "type": "Children|Comedy",
+      "type": "Children / Comedy",
       "catID": 5,
       "description": "convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum",
       "price": 10892,
@@ -753,7 +753,7 @@
     {
       "id": 84,
       "name": "Bad Eggs",
-      "type": "Comedy|Thriller",
+      "type": "Comedy / Thriller",
       "catID": 5,
       "description": "porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus sit amet",
       "price": 59404,
@@ -763,7 +763,7 @@
     {
       "id": 85,
       "name": "Hamlet Goes Business (Hamlet liikemaailmassa)",
-      "type": "Comedy|Drama|Romance",
+      "type": "Comedy / Drama / Romance",
       "catID": 4,
       "description": "elit ac nulla sed vel enim sit amet nunc viverra",
       "price": 76794,
@@ -773,7 +773,7 @@
     {
       "id": 86,
       "name": "Story of Three Loves, The",
-      "type": "Drama|Musical|Romance",
+      "type": "Drama / Musical / Romance",
       "catID": 4,
       "description": "lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in",
       "price": 57792,
@@ -793,7 +793,7 @@
     {
       "id": 88,
       "name": "Bionicle 2: Legends of Metru Nui",
-      "type": "Action|Adventure|Animation|Children|Fantasy",
+      "type": "Action / Adventure / Animation / Children / Fantasy",
       "catID": 2,
       "description": "integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo",
       "price": 70369,
@@ -803,7 +803,7 @@
     {
       "id": 89,
       "name": "Dahmer",
-      "type": "Drama|Horror|Thriller",
+      "type": "Drama / Horror / Thriller",
       "catID": 5,
       "description": "odio curabitur convallis duis consequat dui nec nisi volutpat eleifend donec ut dolor morbi vel lectus in quam fringilla rhoncus",
       "price": 95104,
@@ -823,7 +823,7 @@
     {
       "id": 91,
       "name": "Stranger than Fiction",
-      "type": "Comedy|Drama|Fantasy|Romance",
+      "type": "Comedy / Drama / Fantasy / Romance",
       "catID": 2,
       "description": "felis eu sapien cursus vestibulum proin eu mi nulla ac enim in tempor turpis",
       "price": 64432,
@@ -833,7 +833,7 @@
     {
       "id": 92,
       "name": "An Amazing Couple",
-      "type": "Comedy|Romance",
+      "type": "Comedy / Romance",
       "catID": 4,
       "description": "cubilia curae nulla dapibus dolor vel est donec odio justo sollicitudin ut",
       "price": 9436,
@@ -843,7 +843,7 @@
     {
       "id": 93,
       "name": "Jabberwocky",
-      "type": "Adventure|Comedy|Fantasy",
+      "type": "Adventure / Comedy / Fantasy",
       "catID": 5,
       "description": "adipiscing elit proin risus praesent lectus vestibulum quam sapien varius ut",
       "price": 31815,
@@ -853,7 +853,7 @@
     {
       "id": 94,
       "name": "Incendiary",
-      "type": "Drama|Mystery|Romance|Thriller",
+      "type": "Drama / Mystery / Romance / Thriller",
       "catID": 2,
       "description": "orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi",
       "price": 14261,
@@ -873,7 +873,7 @@
     {
       "id": 96,
       "name": "SpongeBob Movie: Sponge Out of Water, The",
-      "type": "Adventure|Animation|Children|Comedy",
+      "type": "Adventure / Animation / Children / Comedy",
       "catID": 5,
       "description": "mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed vel enim sit amet",
       "price": 59274,
@@ -883,7 +883,7 @@
     {
       "id": 97,
       "name": "Stavisky...",
-      "type": "Crime|Drama",
+      "type": "Crime / Drama",
       "catID": 3,
       "description": "ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec",
       "price": 37686,
