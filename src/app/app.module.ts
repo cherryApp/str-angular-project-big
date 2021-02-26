@@ -24,6 +24,7 @@ import { ChartComponent } from './widget/chart/chart.component';
 import { ListComponent } from './widget/list/list.component';
 import { ListingBillComponent } from './page/listing/listing-bill/listing-bill.component';
 import { EditBillComponent } from './page/edit/edit-bill/edit-bill.component';
+import { OrderBindingsPipe } from './pipe/order-bindings.pipe';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { EditBillComponent } from './page/edit/edit-bill/edit-bill.component';
     ListComponent,
     ListingBillComponent,
     EditBillComponent,
+    OrderBindingsPipe,
   ],
   imports: [
     BrowserModule,
