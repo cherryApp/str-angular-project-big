@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Order } from 'src/app/model/order';
 import { OrderService } from 'src/app/service/order.service';
 import { ConfigService, ITableCol } from 'src/app/service/config.service';
@@ -56,10 +56,17 @@ export class ListingOrderComponent implements OnInit {
   }
 
   onRemove(order: Order): void {
-    this.orderService.remove(order),
-      this.router.navigate(['/orders']);
-    this.onDelete.emit(order);
-
+    // this.orderService.remove(order),
+    //   this.router.navigate(['/orders']);
+    // this.onDelete.emit(order);
+    of(this.orderService.remove(order)).subscribe(
+      () => {
+        this.toastr.success('Sikeresen törölted a terméket!', 'Törlés!', { timeOut: 3000 });
+        this.orderService.getAll();
+        this.router.navigate(['orders']);
+      },
+      error => this.toastr.error('Hiba történt a termék törlésekor!', 'Hiba!', { timeOut: 3000 })
+    )
   }
   onChangePhrase(event: any): void {
     this.phrase = (event.target as HTMLInputElement).value;
