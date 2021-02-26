@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Category } from 'app/model/category';
 import { Product, ProductAttributes } from 'app/model/product';
+import { CategoryService } from 'app/services/category.service';
 import { ProductService } from 'app/services/product.service';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
@@ -17,14 +19,18 @@ export class EditProductComponent implements OnInit {
     switchMap(params => this.productService.get(params.id))
   );
 
+  categoryList$: BehaviorSubject<Category[]> = this.categoryService.list$;
+
   attributes = new ProductAttributes();
 
   constructor(    
     private activatedRoute: ActivatedRoute,
     private productService: ProductService,
+    private categoryService: CategoryService,
     private router: Router,) { }
 
   ngOnInit(): void {
+    this.categoryService.getAll();
   }
 
   onUpdate(form: NgForm, product: Product): void {
