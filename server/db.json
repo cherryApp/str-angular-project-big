@@ -1529,9 +1529,9 @@
     {
       "id": 1,
       "customerID": 52,
-      "productID": 33,
+      "productID": 31,
       "amount": 31,
-      "status": "paid"
+      "status": "shipped"
     },
     {
       "id": 2,
