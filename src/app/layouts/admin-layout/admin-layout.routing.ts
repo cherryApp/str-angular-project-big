@@ -7,6 +7,8 @@ import { OrderListComponent } from 'app/pages/order-list/order-list.component';
 import { BillListComponent } from 'app/pages/bill-list/bill-list.component';
 import { CustomerListComponent } from 'app/pages/customer-list/customer-list.component';
 import { EditCustomerComponent } from 'app/editors/edit-customer/edit-customer.component';
+import { CategroyListComponent } from 'app/pages/categroy-list/categroy-list.component';
+import { EditCategoryComponent } from 'app/editors/edit-category/edit-category.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -58,4 +60,6 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'bill-list', component: BillListComponent },
     { path: 'customer-list', component: CustomerListComponent },
     { path: 'customer/:id', component: EditCustomerComponent },
+    { path: 'category-list', component: CategroyListComponent},
+    { path: 'category/:id', component: EditCategoryComponent},
 ];
