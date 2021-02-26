@@ -3,5 +3,5 @@ export class Order {
   customerID: number = 0;
   productID: number = 0;
   amount: number = 0;
-  status: string = ''; // new|shipped|paid
+  status: string = 'new'; // new|shipped|paid
 }
