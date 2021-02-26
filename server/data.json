@@ -18,7 +18,7 @@
       "description": "eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat",
       "price": "4310",
       "featured": false,
-      "active": false
+      "active": true
     },
     {
       "id": 8,
@@ -586,7 +586,7 @@
       "type": "Comedy / Romance",
       "catID": 2,
       "description": "neque libero convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet",
-      "price": 3956,
+      "price": 2956,
       "featured": true,
       "active": true
     },
@@ -926,7 +926,7 @@
       "type": "Drama",
       "catID": "3",
       "description": "A classic American movie.",
-      "price": "12000",
+      "price": 12000,
       "featured": false,
       "active": true
     },
@@ -936,7 +936,7 @@
       "type": "Western",
       "catID": "3",
       "description": "A classic American movie.",
-      "price": "10000",
+      "price": 10000,
       "featured": false,
       "active": true
     }

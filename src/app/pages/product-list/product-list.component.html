@@ -39,10 +39,10 @@
                                         *ngFor="let product of productList$ | async | filter:phrase:filterKey | sorter:sorterKey:sortDirection">
                                         <ng-container *ngFor="let attribute of attributes | keyvalue:originalOrder">
                                             <td *ngIf="attribute.key!=='featured' && attribute.key!=='active'">{{product[attribute.key]}}</td>
-                                            <td *ngIf="attribute.key==='featured' && product[attribute.key]">Yes</td>
-                                            <td *ngIf="attribute.key==='featured' && !product[attribute.key]">No</td>
-                                            <td *ngIf="attribute.key==='active' && product[attribute.key]">Yes</td>
-                                            <td *ngIf="attribute.key==='active' && !product[attribute.key]">No</td>
+                                            <td *ngIf="attribute.key==='featured' && product[attribute.key]"><i class="fa fa-check"></i></td>
+                                            <td *ngIf="attribute.key==='featured' && !product[attribute.key]"><i class="fa fa-times"></i></td>
+                                            <td *ngIf="attribute.key==='active' && product[attribute.key]"><i class="fa fa-check"></i></td>
+                                            <td *ngIf="attribute.key==='active' && !product[attribute.key]"><i class="fa fa-times"></i></td>
                                         </ng-container>
                                         <td>
                                             <div class="btn-group">
