@@ -80,6 +80,7 @@ export class ListingBillComponent implements OnInit {
     }
     else this.sortedOrder == 'ASC' ? this.sortedOrder = 'DESC' : this.sortedOrder = 'ASC';
     this.sortedColumn = columnName;
+    this.direction = !this.direction;
   }
 
   onChangePhrase(event: any): void {
