@@ -52,6 +52,7 @@ export class ListingOrderComponent implements OnInit {
     }
     else this.sortedOrder == 'ASC' ? this.sortedOrder = 'DESC' : this.sortedOrder = 'ASC';
     this.sortedColumn = columnName;
+    this.direction = !this.direction;
   }
 
   onRemove(order: Order): void {
