@@ -45,6 +45,7 @@ export class EditOrderComponent implements OnInit {
       this.orderService.get(params.id).subscribe((order) => {
         console.log(order);
         this.order = order || new Order();
+        this.order.status = this.order.id ? this.order.status : 'new';
       })
     );
     this.chosenCustomer.id = this.order.customerID;
@@ -107,4 +108,20 @@ export class EditOrderComponent implements OnInit {
       );
     }
   }
+
+  // transform(orders: any[]): Order[] {
+  //   orders.forEach((order) => {
+  //     this.customerService.get(order.customerID).subscribe(
+  //       (customer) =>
+  //         (order.customerID = `${order.customerID} (${customer.firstName} ${customer.lastName})`),
+  //       () => (order.customerID = `${order.customerID} ()`)
+  //     );
+  //     this.productService.getOne(order.productID).subscribe(
+  //       (product) => (order.productID = `${order.productID} (${product.name})`),
+  //       () => (order.productID = `${order.productID} ()`)
+  //     );
+  //   });
+
+  //   return orders;
+  // }
 }

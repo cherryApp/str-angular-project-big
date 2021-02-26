@@ -11,6 +11,8 @@
           type="number"
           class="form-control"
           required
+          pattern="[1-9]\d?\d?\d?"
+          [disabled]="!updating"
           autofocus
         />
         <!-- itt a mezők üresen maradnak -->
@@ -46,7 +48,7 @@
           "
           class="error-message"
         >
-          Kötelezően kitöltendő mező!
+          Kötelezően kitöltendő mező! Maximum 4-jegyű szám.
         </div>
       </div>
       <div class="form-group">
@@ -57,6 +59,7 @@
           name="product"
           type="number"
           class="form-control"
+          pattern="[1-9]\d?\d?\d?\d?"
           required
         />
         <div
@@ -66,7 +69,7 @@
           "
           class="error-message"
         >
-          Kötelezően kitöltendő mező!
+          Kötelezően kitöltendő mező! Maximum 5-jegyű szám.
         </div>
       </div>
       <div class="form-group">
@@ -77,6 +80,7 @@
           name="amount"
           type="number"
           class="form-control"
+          pattern="[1-9]\d?"
           required
         />
         <div
@@ -86,7 +90,7 @@
           "
           class="error-message"
         >
-          Kötelezően kitöltendő mező!
+          Kötelezően kitöltendő mező! Maximum 2-jegyű szám.
         </div>
       </div>
       <div class="form-group">
@@ -105,6 +109,7 @@
           class="form-control"
           id="status"
           name="status"
+          pattern="^(new|shipped|paid)$"
         >
           <option value="new">new</option>
           <option value="shipped">shipped</option>
@@ -112,6 +117,15 @@
         </select>
 
         <!-- new|shipped|paid -->
+        <div
+          [hidden]="
+            orderForm.controls.status?.valid ||
+            orderForm.controls.status?.pristine
+          "
+          class="error-message"
+        >
+          Kötelezően kitöltendő mező! Csak new, shipped vagy paid lehet.
+        </div>
       </div>
       <button
         [disabled]="orderForm.invalid || updating"
