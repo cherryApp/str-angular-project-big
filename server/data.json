@@ -3563,5 +3563,32 @@
         "notes": ""
       }
     }
+  ],
+  "category": [
+    {
+      "id": 1,
+      "name": "DVD",
+      "description": "Normal edition, plastic box"
+    },
+    {
+      "id": 2,
+      "name": "DVD limited",
+      "description": "DVD special edition in a gift box"
+    },
+    {
+      "id": 3,
+      "name": "BD",
+      "description": "Blu-ray Normal Edition"
+    },
+    {
+      "id": 4,
+      "name": "BD 3D",
+      "description": "Blu-ray 3D normal edition, plastic box"
+    },
+    {
+      "id":5,
+      "name": "BD 3D limited",
+      "description": " Blu-ray special edition in a gift box"
+    }
   ]
 }
