@@ -32,7 +32,7 @@ export class ListingProductComponent implements OnInit {
   sortedCount = 0;
   column: string = '';
   direction: boolean = false;
-  columnKey: string = '';
+  columnKey: string = ''
   firstSorting = true;
 
   ngOnInit(): void {
@@ -62,6 +62,8 @@ export class ListingProductComponent implements OnInit {
     }
   }
 
+
+
   onColumnSelect(columnName: string): void {
     if (this.firstSorting) {
       this.sortedOrder = 'ASC';
@@ -69,6 +71,7 @@ export class ListingProductComponent implements OnInit {
     }
     else this.sortedOrder == 'ASC' ? this.sortedOrder = 'DESC' : this.sortedOrder = 'ASC';
     this.sortedColumn = columnName;
+    this.direction = !this.direction;
   }
 
 
