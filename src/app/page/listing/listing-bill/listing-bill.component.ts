@@ -14,8 +14,8 @@ import { ToastrService } from 'ngx-toastr';
 export class ListingBillComponent implements OnInit {
 
   @Input() id: number = 0;
-  @Output() onUpdate: EventEmitter<Bill> = new EventEmitter();
-  @Output() onDelete: EventEmitter<Bill> = new EventEmitter();
+  // @Output() onUpdate: EventEmitter<Bill> = new EventEmitter();
+  // @Output() onDelete: EventEmitter<Bill> = new EventEmitter();
 
   billList$: BehaviorSubject<Bill[]> = this.billService.list$;
 
@@ -46,29 +46,31 @@ export class ListingBillComponent implements OnInit {
   }
 
   onRemove(bill: Bill): void {
-    this.billService.remove(bill),
-      // console.log(bill);
-      this.router.navigate(['bills/']);
-    this.onDelete.emit(bill);
+    // this.billService.remove(bill),
+    //   this.router.navigate(['/bills']);
+    // this.onDelete.emit(bill);
 
-    if (bill.id === 0) {
-      this.billService.create(bill).subscribe(
-        () => {
-          this.toastr.success('Sikeres a termék törlése!', 'Törlés!', { timeOut: 3000 });
-          this.router.navigate(['bills']);
-        },
-        error => this.toastr.error('Hiba a termék törlésekor!', 'Hiba!', { timeOut: 3000 })
-      )
-    }
-    else {
-      this.billService.update(bill).subscribe(
-        () => {
-          this.toastr.success('Sikeresen törölted a terméket!', 'Törlés!', { timeOut: 3000 });
-          this.router.navigate(['bills']);
-        },
-        error => this.toastr.error('Hiba történt a termék törlésekor!', 'Hiba!', { timeOut: 3000 })
-      )
-    }
+
+    // if (bill.id === 0) {
+    //   this.billService.create(bill).subscribe(
+    //     () => {
+    //       this.toastr.success('Sikeres a termék törlése!', 'Törlés!', { timeOut: 3000 });
+    //       this.router.navigate(['/bills']);
+    //     },
+    //     error => this.toastr.error('Hiba a termék törlésekor!', 'Hiba!', { timeOut: 3000 })
+    //   )
+    // }
+    // else {}
+
+    this.billService.remove(bill).subscribe(
+      () => {
+        this.toastr.success('Sikeresen törölted a terméket!', 'Törlés!', { timeOut: 3000 });
+        this.billService.getAll();
+        this.router.navigate(['/bills']);
+      },
+      error => this.toastr.error('Hiba történt a termék törlésekor!', 'Hiba!', { timeOut: 3000 })
+    )
+
   }
 
   onColumnSelect(columnName: string): void {
