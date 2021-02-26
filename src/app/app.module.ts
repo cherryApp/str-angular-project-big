@@ -24,6 +24,8 @@ import { ChartComponent } from './common/chart/chart.component';
 import { ChartsModule } from 'ng2-charts';
 import { EditProductComponent } from './editors/edit-product/edit-product.component';
 import { EditCustomerComponent } from './editors/edit-customer/edit-customer.component';
+import { CategroyListComponent } from './pages/categroy-list/categroy-list.component';
+import { EditCategoryComponent } from './editors/edit-category/edit-category.component';
 
 @NgModule({
   imports: [
@@ -54,6 +56,8 @@ import { EditCustomerComponent } from './editors/edit-customer/edit-customer.com
     InfoCardComponent,
     ChartComponent,
     EditProductComponent,
+    CategroyListComponent,
+    EditCategoryComponent,
     //EditCustomerComponent,
 
   ],
