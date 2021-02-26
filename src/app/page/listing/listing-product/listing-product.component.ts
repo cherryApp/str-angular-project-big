@@ -40,26 +40,27 @@ export class ListingProductComponent implements OnInit {
   }
 
   onRemove(product: Product): void {
-    this.productService.remove(product.id),
-      this.router.navigate(['/products']);
-    if (product.id === 0) {
-      this.productService.create(product).subscribe(
-        () => {
-          this.toastr.success('Sikeres termék törlése!', 'Törlés!', { timeOut: 3000 });
-          this.router.navigate(['products']);
-        },
-        error => this.toastr.error('Hiba a termék törlésekor!', 'Hiba!', { timeOut: 3000 })
-      )
-    }
-    else {
-      this.productService.update(product).subscribe(
-        () => {
-          this.toastr.success('Sikeresen törölted a terméket!', 'Törlés!', { timeOut: 3000 });
-          this.router.navigate(['products']);
-        },
-        error => this.toastr.error('Hiba történt a termék törlésekor!', 'Hiba!', { timeOut: 3000 })
-      )
-    }
+    // this.productService.remove(product.id),
+    //   this.router.navigate(['/products']);
+    // if (product.id === 0) {
+    //   this.productService.create(product).subscribe(
+    //     () => {
+    //       this.toastr.success('Sikeres termék törlése!', 'Törlés!', { timeOut: 3000 });
+    //       this.router.navigate(['products']);
+    //     },
+    //     error => this.toastr.error('Hiba a termék törlésekor!', 'Hiba!', { timeOut: 3000 })
+    //   )
+    // }
+
+    this.productService.remove(product.id).subscribe(
+      () => {
+        this.toastr.success('Sikeresen törölted a terméket!', 'Törlés!', { timeOut: 3000 });
+        this.productService.getAll();
+        this.router.navigate(['products']);
+      },
+      error => this.toastr.error('Hiba történt a termék törlésekor!', 'Hiba!', { timeOut: 3000 })
+    )
+
   }
 
 

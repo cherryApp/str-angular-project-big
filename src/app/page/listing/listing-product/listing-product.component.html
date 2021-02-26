@@ -29,7 +29,7 @@
             <thead class="thead-dark">
                 <tr>
                     <th (click)="onColumnSelect('id')"> <b>#</b></th>
-                    <th (click)="onColumnSelect('name')"><b>Név</b></th>
+                    <th (click)="onColumnSelect('name')"><b>Termék név</b></th>
                     <th (click)="onColumnSelect('type')"><b>Típus</b></th>
                     <th (click)="onColumnSelect('catId')"><b>catId</b></th>
                     <th (click)="onColumnSelect('description')"><b>Leírás</b></th>
@@ -53,8 +53,8 @@
                     <td>{{product.catId}}</td>
                     <td>{{product.description}}</td>
                     <td>{{product.price}}</td>
-                    <td><input class="form-control form-control-sm" [(ngModel)]="product.featured" type="checkbox"></td>
-                    <td><input class="form-control form-control-sm" [(ngModel)]="product.active" type="checkbox"></td>
+                    <td><input class="form-control form-control-sm" [(ngModel)]="product.featured" type="checkbox" value="readonly"></td>
+                    <td><input class="form-control form-control-sm" [(ngModel)]="product.active" type="checkbox" value="readonly"></td>
                     <td>{{product.operations}}
                         <div class="btn-group">
                             <button [routerLink]="[product.id]" class="btn btn-info">

@@ -563,50 +563,6 @@
   ],
   "products": [
     {
-      "id": 1,
-      "name": "Szombat esti őrület",
-      "type": "film",
-      "catId": 1,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, numquam sunt obcaecati quas minus deserunt excepturi eum perferendis earum quo ducimus officia. Odio itaque officia aspernatur aut a fuga cum?",
-      "price": 5999,
-      "featured": true,
-      "active": true,
-      "image": "https://www.mafab.hu/static/profiles/2014/293/00/5212_32.jpg"
-    },
-    {
-      "id": 2,
-      "name": "Álomépítők",
-      "type": "film",
-      "catId": 2,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, numquam sunt obcaecati quas minus deserunt excepturi eum perferendis earum quo ducimus officia. Odio itaque officia aspernatur aut a fuga cum?",
-      "price": 1150,
-      "featured": false,
-      "active": true,
-      "image": "https://www.mafab.hu/static/2020/208/09/326447_1595834974.4647.jpg"
-    },
-    {
-      "id": 3,
-      "name": "Lódító hódító",
-      "type": "film",
-      "catId": 1,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, numquam sunt obcaecati quas minus deserunt excepturi eum perferendis earum quo ducimus officia. Odio itaque officia aspernatur aut a fuga cum?",
-      "price": 6574,
-      "featured": true,
-      "active": true,
-      "image": "https://www.mafab.hu/static/profiles/2014/293/12/49283_46.jpg"
-    },
-    {
-      "id": 4,
-      "name": "Parasztvakítás",
-      "type": "film",
-      "catId": 1,
-      "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, numquam sunt obcaecati quas minus deserunt excepturi eum perferendis earum quo ducimus officia. Odio itaque officia aspernatur aut a fuga cum?",
-      "price": 1478,
-      "featured": false,
-      "active": true,
-      "image": "https://www.mafab.hu/static/2021/6/10/340739_1610012767.4184.jpg"
-    },
-    {
       "id": 5,
       "name": "Little",
       "type": "film",
