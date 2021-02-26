@@ -1,55 +1,119 @@
 <div class="row">
-  <div class="col-6 offset-3">
-    <form #orderFrom="ngForm" (ngSubmit)="onFormSubmit(orderFrom)">
+  <div *ngIf="order" class="col-6 offset-3 mt-5">
+    <form #orderForm="ngForm" (ngSubmit)="setOrderToDatabase(order)">
       <div class="form-group">
-        <label>customerID</label>
-        <input
+        <label for="customer">customerID</label>
+
+        <!-- <input
           [(ngModel)]="order.customerID"
+          id="customer"
           name="customer"
           type="number"
           class="form-control"
           required
+          autofocus
+        /> -->
+
+        <!-- <input
+          id="customerID"
+          type="string"
+          name="customerID"
+          class="form-control"
+          [(ngModel)]="choosenCustomer"
+          [ngbTypeahead]="search"
+          [resultFormatter]="customerResultFormatter"
+          [inputFormatter]="customerIputFormatter"
+          #instance="ngbTypeahead"
+        /> -->
+        <input
+          id="customerID"
+          type="string"
+          name="customerID"
+          value="order.customerID"
+          class="form-control"
+          [(ngModel)]="chosenCustomer"
+          [ngbTypeahead]="search"
+          [resultFormatter]="customerResultFormatter"
+          [inputFormatter]="customerIputFormatter"
+          #instance="ngbTypeahead"
         />
-        <!-- id: number = 0;
-  customerID: number = 0;
-  productID: number = 0;
-  amount: number = 0;
-  status: string = ''; -->
+
+        <div
+          [hidden]="
+            orderForm.controls.customer?.valid ||
+            orderForm.controls.customer?.pristine
+          "
+          class="error-message"
+        >
+          Kötelezően kitöltendő mező!
+        </div>
       </div>
       <div class="form-group">
-        <label>ProductID</label>
+        <label for="product">ProductID</label>
         <input
+          id="product"
           [(ngModel)]="order.productID"
           name="product"
           type="number"
           class="form-control"
           required
         />
+        <div
+          [hidden]="
+            orderForm.controls.product?.valid ||
+            orderForm.controls.product?.pristine
+          "
+          class="error-message"
+        >
+          Kötelezően kitöltendő mező!
+        </div>
       </div>
       <div class="form-group">
-        <label>Amount</label>
+        <label for="amount">Amount</label>
         <input
           [(ngModel)]="order.amount"
+          id="amount"
           name="amount"
-          type="text"
+          type="number"
           class="form-control"
           required
         />
+        <div
+          [hidden]="
+            orderForm.controls.amount?.valid ||
+            orderForm.controls.amount?.pristine
+          "
+          class="error-message"
+        >
+          Kötelezően kitöltendő mező!
+        </div>
       </div>
       <div class="form-group">
-        <label>Status</label>
-        <input
+        <label for="status">Status</label>
+        <!-- <input
           [(ngModel)]="order.status"
+          id="status"
           name="status"
           type="text"
           class="form-control"
           required
           pattern="^(new|shipped|paid)$"
-        />
+        /> -->
+        <select
+          [(ngModel)]="order.status"
+          class="form-control"
+          id="status"
+          name="status"
+        >
+          <option value="new">new</option>
+          <option value="shipped">shipped</option>
+          <option value="paid">paid</option>
+        </select>
+
         <!-- new|shipped|paid -->
       </div>
       <button
-        [disabled]="orderFrom.invalid || updating"
+        [disabled]="orderForm.invalid || updating"
         class="btn btn-block btn-primary"
       >
         <i *ngIf="!updating" class="fa fa-save"></i>

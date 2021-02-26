@@ -25,6 +25,7 @@ import { ListComponent } from './widget/list/list.component';
 import { ListingBillComponent } from './page/listing/listing-bill/listing-bill.component';
 import { EditBillComponent } from './page/edit/edit-bill/edit-bill.component';
 import { OrderBindingsPipe } from './pipe/order-bindings.pipe';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -56,8 +57,9 @@ import { OrderBindingsPipe } from './pipe/order-bindings.pipe';
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
