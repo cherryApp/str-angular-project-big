@@ -46,7 +46,7 @@ export class ProductService {
     ).subscribe(
       () => this.getAll()
     );
-    this.toastr.success('The product has been created.', 'NEW Product');
+    this.toastr.success('The product has been created.', 'NEW PRODUCT');
   }
 
   remove(product: Product): void {
