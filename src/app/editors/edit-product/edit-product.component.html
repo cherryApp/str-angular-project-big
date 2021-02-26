@@ -34,13 +34,20 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="catID">{{attributes.catID}}</label>
+                                    <select class="custom-select" [(ngModel)]="product.catID" name="catID">
+                                        <option *ngFor="let category of categoryList$ | async" [value]="category.id">{{category.id}} - {{category.name}}: {{category.description}} </option>
+                                    </select>
+                                </div>
+
+                                <!-- <div class="form-group">
+                                    <label for="catID">{{attributes.catID}}</label>
                                     <input name="catID" [(ngModel)]="product.catID" type="number" class="form-control"
                                         pattern="[1-5]" required>
                                     <div [hidden]="productForm.controls.catID?.valid || productForm.controls.catID?.pristine"
                                         class="error-message">
                                         The {{attributes.catID}} must be a number between 1-5.
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <label for="description">{{attributes.description}}</label>
                                     <input name="description" [(ngModel)]="product.description" type="text"
@@ -61,11 +68,13 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="mr-2" for="featured">Product is {{attributes.featured}}</label>
-                                    <input class="regular-checkbox" name="featured" [(ngModel)]="product.featured" type="checkbox">
+                                    <input class="regular-checkbox" name="featured" [(ngModel)]="product.featured"
+                                        type="checkbox">
                                 </div>
                                 <div class="form-group">
                                     <label class="mr-2" for="active">Product is {{attributes.active}}</label>
-                                    <input class="regular-checkbox" name="active" [(ngModel)]="product.active" type="checkbox">
+                                    <input class="regular-checkbox" name="active" [(ngModel)]="product.active"
+                                        type="checkbox">
                                 </div>
                                 <button [disabled]="productForm.invalid" type="submit"
                                     class="btn btn-primary btn-block btn-lg">
