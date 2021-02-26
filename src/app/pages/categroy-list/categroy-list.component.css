@@ -1,0 +1,38 @@
+th {
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 768px)  {
+
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	td {
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+        text-align: start;
+        margin-top: 10px;
+	}
+	
+	td:before {
+        font-size: .8em;
+        font-style: italic;
+        color: rgb(128, 0, 128);
+		position: absolute;
+		top: 2px;
+		left: 2px;
+		width: 20%; 
+		padding-right: 10px;
+        margin-top: -10px;
+		white-space: nowrap;
+	}
+	
+	td:nth-of-type(1):before { content: "ID"; }
+	td:nth-of-type(2):before { content: "Order ID"; }
+	td:nth-of-type(3):before { content: "Amount"; }
+	td:nth-of-type(4):before { content: "Status"; }
+	td:nth-of-type(5):before { content: "Options"; }
+}
