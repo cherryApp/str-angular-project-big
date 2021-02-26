@@ -6,19 +6,19 @@
       "type": "Action / Adventure / Sci-Fi",
       "catID": 3,
       "description": "posuere felis sed lacus morbi sem mauris laoreet ut rhoncus",
-      "price": 65714,
-      "featured": false,
+      "price": "65713",
+      "featured": true,
       "active": true
     },
     {
       "id": 6,
-      "name": "Late George Apley, The",
+      "name": "The Late George Apley",
       "type": "Comedy",
       "catID": 5,
       "description": "eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat",
-      "price": 67325,
+      "price": "4310",
       "featured": false,
-      "active": true
+      "active": false
     },
     {
       "id": 8,
@@ -902,12 +902,12 @@
     },
     {
       "id": 99,
-      "name": "Dry Summer (Susuz yaz) (Reflections)",
+      "name": "Dry Summer (Susuz yaz)",
       "type": "Drama",
       "catID": 5,
       "description": "nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus",
       "price": 68523,
-      "featured": false,
+      "featured": true,
       "active": true
     },
     {
@@ -932,13 +932,13 @@
     },
     {
       "id": 102,
-      "name": "Homeland Season 1",
-      "type": "Thriller, Spy",
-      "catID": "2",
-      "description": "A really good spy story.",
-      "price": "9800",
+      "name": "Once Upon a Time in the West",
+      "type": "Western",
+      "catID": "3",
+      "description": "A classic American movie.",
+      "price": "10000",
       "featured": false,
-      "active": false
+      "active": true
     }
   ],
   "order": [

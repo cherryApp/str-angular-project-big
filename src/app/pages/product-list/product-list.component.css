@@ -8,8 +8,6 @@ th {
 		display: block; 
 	}
 	
-	/* tr { border: 1px solid #ccc; } */
-	
 	td {
 		border: none;
 		border-bottom: 1px solid #eee; 

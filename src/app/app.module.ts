@@ -20,6 +20,8 @@ import { SorterPipe } from './pipe/sorter.pipe';
 import { BillListComponent } from './pages/bill-list/bill-list.component';
 import { CustomerListComponent } from './pages/customer-list/customer-list.component';
 import { InfoCardComponent } from './common/info-card/info-card.component';
+import { ChartComponent } from './common/chart/chart.component';
+import { ChartsModule } from 'ng2-charts';
 import { EditProductComponent } from './editors/edit-product/edit-product.component';
 import { EditCustomerComponent } from './editors/edit-customer/edit-customer.component';
 import { EditOrderComponent } from './editors/edit-order/edit-order.component';
@@ -38,6 +40,7 @@ import { EditOrderComponent } from './editors/edit-order/edit-order.component';
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+    ChartsModule
   ],
   declarations: [
     AppComponent,
@@ -51,6 +54,7 @@ import { EditOrderComponent } from './editors/edit-order/edit-order.component';
     DashboardComponent,
     InfoCardComponent,
     EditOrderComponent,
+    ChartComponent,
     EditProductComponent,
     //EditCustomerComponent,
 
