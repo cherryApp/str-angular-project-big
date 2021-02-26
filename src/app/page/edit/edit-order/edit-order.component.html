@@ -1,9 +1,57 @@
 <div class="row">
   <div *ngIf="order" class="col-6 offset-3 mt-5">
     <form #orderForm="ngForm" (ngSubmit)="setOrderToDatabase(order)">
+      <div *ngIf="!updating" class="form-group">
+        <label for="order">orderID</label>
+        <input
+          [(ngModel)]="order.id"
+          id="order"
+          name="order"
+          type="number"
+          class="form-control"
+          disabled
+        />
+        <!--
+            pattern="[1-9]\d?\d?\d?"
+            [disabled]="!updating" -->
+        <!-- itt a mezők üresen maradnak -->
+        <!-- <input
+          id="customerID"
+          type="string"
+          name="customerID"
+          class="form-control"
+          [(ngModel)]="choosenCustomer"
+          [ngbTypeahead]="search"
+          [resultFormatter]="customerResultFormatter"
+          [inputFormatter]="customerIputFormatter"
+          #instance="ngbTypeahead"
+        /> -->
+        <!-- ez részlegesen működik, de a customer mező üresen marad  -->
+        <!-- <input
+          id="customerID"
+          type="string"
+          name="customerID"
+          value="order.customerID"
+          class="form-control"
+          [(ngModel)]="chosenCustomer"
+          [ngbTypeahead]="search"
+          [resultFormatter]="customerResultFormatter"
+          [inputFormatter]="customerIputFormatter"
+          #instance="ngbTypeahead"
+        /> -->
+
+        <div
+          [hidden]="
+            orderForm.controls.customer?.valid ||
+            orderForm.controls.customer?.pristine
+          "
+          class="error-message"
+        >
+          Kötelezően kitöltendő mező! Maximum 4-jegyű szám.
+        </div>
+      </div>
       <div class="form-group">
         <label for="customer">customerID</label>
-
         <input
           [(ngModel)]="order.customerID"
           id="customer"
@@ -12,9 +60,10 @@
           class="form-control"
           required
           pattern="[1-9]\d?\d?\d?"
-          [disabled]="!updating"
           autofocus
         />
+        <!-- [disabled]="!updating" -->
+
         <!-- itt a mezők üresen maradnak -->
         <!-- <input
           id="customerID"
