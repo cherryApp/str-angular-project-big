@@ -11,6 +11,12 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ProductListComponent implements OnInit {
 
+  product = new Product();
+
+  setProducttoDelete(product: Product): void {
+    this.product = product;
+  }
+
   productList$: BehaviorSubject<Product[]> = this.productService.list$;
 
   phrase: string = '';

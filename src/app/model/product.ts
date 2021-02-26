@@ -13,7 +13,7 @@ export class ProductAttributes {
     id: string = "ID";
     name: string = 'Name';
     type: string = 'Type';
-    catID: string = 'Category ID'
+    catID: string = 'Category'
     description: string = 'Description'
     price: string = 'Price'
     featured: string = 'Featured'
