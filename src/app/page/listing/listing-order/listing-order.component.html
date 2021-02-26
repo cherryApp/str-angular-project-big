@@ -5,12 +5,12 @@
     </div>
     <div class="col-12">
       <button class="btn btn-success btn-block" [routerLink]="[0]">
-        <i class="material-icons">add</i>
-       ÚJ RENDELÉS
+        <i class="material-icons">add</i>ÚJ RENDELÉS
+
       </button>
     </div>
-    <div class="col-4 offset-1">Kategóriák
-          <select [(ngModel)]="filterKey" class="mb-5 form-control">
+    <div class="col-4 offset-1 font-weight-bold">Kiválasztás
+          <select [(ngModel)]="filterKey" class="custom-select mb-3 bg-light">
           <option *ngFor="let key of filterKeys" [value]="key">
             {{ key }}
         </option>
