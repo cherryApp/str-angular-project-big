@@ -1,9 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
 import { Customer } from 'src/app/model/customer';
 import { CustomerService } from 'src/app/service/customer.service';
 
@@ -14,7 +11,7 @@ import { CustomerService } from 'src/app/service/customer.service';
 })
 export class EditCustomerComponent implements OnInit {
 
- @Input() id: number = 0; 
+  id: number = 0; 
   updating: boolean = false;
   customer: Customer = new Customer();
 
@@ -30,14 +27,13 @@ export class EditCustomerComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.customerService.get(this.id).subscribe(
-      customer => this.customer = customer
-    );
+    this.customerService.get(this.id).subscribe(customer => this.customer = customer)
     this.activatedRoute.params.subscribe(params => this.id = params.id);
   }
 
   onUpdate(customer: Customer): void {
     this.updating = true;
+    customer.id = Number(customer.id)
     if (customer.id === 0) {
       this.customerService.create(customer).subscribe(
         () => {

@@ -21,17 +21,9 @@ export class CustomerService {
     this.http.get<Customer[]>(this.customersUrl).subscribe(customers => this.list$.next(customers));
   }
 
-   /* getAll(): Observable<Customer[]> {
-     return this.http.get<Customer[]>(this.customersUrl);
-   } */
-
    get(id: number): Observable<Customer> {
     return Number(id) === 0 ? of(new Customer()) : this.http.get<Customer>(`${this.customersUrl}/${Number(id)}`);
   }
-
-   /* get(customer: Customer): Observable<Customer> {
-     return this.http.get<Customer>(`${this.customersUrl}/${customer.id}`)
-   } */
 
    create(customer: Customer): Observable<Customer> {
     return this.http.post<Customer>(this.customersUrl, customer)
