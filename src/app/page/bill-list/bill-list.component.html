@@ -1,0 +1,81 @@
+<div class="col-md-12">
+  <div class="card card-plain">
+      <button class="btn btn-danger btn-block">
+          <span class="mat-button-wrapper">Add new bill</span>
+          <!-- <div class="mat-button-ripple mat-ripple" matripple=""></div> -->
+          <!-- <div class="mat-button-focus-overlay"></div> -->
+      </button>
+  </div>
+  <div class="card card-plain">
+      <div class="card-header card-header-primary">
+          <h4 class="card-title mt-0">Bill List</h4>
+          <p class="card-category">All bills should be seen here</p>
+      </div>
+
+      <div class="card-body">
+          <div class="table-responsive">
+              <table class="table table-hover">
+                  <thead class="">
+                    <tr class="bcolor">
+                      <th [class.active]="order === 'id'"
+                        (click)="setOrder('id')">ID:
+                        <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                      </th>
+
+                      <th [class.active]="order === 'name'"
+                      (click)="setOrder('name')">Order ID:
+                      <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                      </th>
+
+                      <th [class.active]="order === 'type'"
+                      (click)="setOrder('type')">Amount:
+                      <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                      </th>
+
+                      <th [class.active]="order === 'description'"
+                      (click)="setOrder('description')">Status:
+                      <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                      </th>
+
+                  </tr>
+
+                  <tr>
+                    <th><input (keyup)="onFilter('id', $event)" class="form-control"  type="text" placeholder="Filter"></th>
+                    <th><input (keyup)="onFilter('orderID', $event)" class="form-control" type="text" placeholder="Filter"></th>
+                    <th><input (keyup)="onFilter('amount', $event)" class="form-control" type="text" placeholder="Filter"></th>
+                    <th><input (keyup)="onFilter('status', $event)" class="form-control" type="text" placeholder="Filter"></th>
+                  </tr>
+
+              </thead>
+
+                  <tbody>
+                      <tr *ngFor="let bill of billList$ | async | orderBy:order:reverse">
+                          <td>{{ bill.id }}</td>
+                          <td>{{ bill.orderID }}</td>
+                          <!-- <td>{{ bill.customerID }}</td> -->
+                          <!-- <td>{{ customer.name }}</td> -->
+                          <!-- <td>{{ bill.productID }}</td> -->
+                          <!-- <td>{{ product.name }}</td> -->
+                          <td>{{ bill.amount }}</td>
+                          <td>{{ bill.status }}</td>
+                          <td>
+                              <div class="btn-group">
+                                  <button  [routerLink]="[bill.id]" class="btn btn-warning">
+                                      <span class="material-icons">
+                                          create
+                                      </span>
+                                  </button>
+                                  <button (click)="onDelete(bill)" class="btn btn-danger">
+                                      <span class="material-icons">
+                                          delete_forever
+                                      </span>
+                                  </button>
+                              </div>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>

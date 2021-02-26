@@ -1,0 +1,85 @@
+<div class="col-md-12">
+    <div class="card card-plain">
+        <button class="btn btn-danger btn-block">
+            <span class="mat-button-wrapper">Add new order</span>
+            <!-- <div class="mat-button-ripple mat-ripple" matripple=""></div> -->
+            <!-- <div class="mat-button-focus-overlay"></div> -->
+        </button>
+    </div>
+    <div class="card card-plain">
+        <div class="card-header card-header-primary">
+            <h4 class="card-title mt-0">Order List</h4>
+            <p class="card-category">All orders should be seen here</p>
+        </div>
+
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead class="">
+                        <!-- <tr>
+                            <th>ID</th>
+                            <th>Customer ID</th>
+                            <th>Product ID</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th></th>
+                        </tr> -->
+                        <tr class="bcolor">
+                            <th [class.active]="order === 'id'"
+                              (click)="setOrder('id')">ID
+                              <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                            </th>
+                            <th [class.active]="order === 'customerID'"
+                              (click)="setOrder('customerID')">Customer ID
+                              <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                            </th>
+                            <th [class.active]="order === 'productID'"
+                              (click)="setOrder('productID')">Product ID
+                              <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                            </th>
+                            <th [class.active]="order === 'amount'"
+                              (click)="setOrder('amount')">Amount
+                              <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                            </th>
+                            <th [class.active]="order === 'status'"
+                              (click)="setOrder('status')">Status
+                              <span [hidden]="reverse">▼</span><span [hidden]="!reverse">▲</span>
+                            </th>
+                            <th></th>
+                        </tr>
+                        <tr>
+                            <th><input (keyup)="onFilter('id', $event)" class="form-control"  type="text" placeholder="Search ID"></th>
+                            <th><input (keyup)="onFilter('customerID', $event)" class="form-control"  type="text" placeholder="Search Customer ID"></th>
+                            <th><input (keyup)="onFilter('productID', $event)" class="form-control"  type="text" placeholder="Search Product ID"></th>
+                            <th><input (keyup)="onFilter('amount', $event)" class="form-control"  type="text" placeholder="Search Amount"></th>
+                            <th><input (keyup)="onFilter('status', $event)" class="form-control"  type="text" placeholder="Search Status"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let order of orderList$ | async | orderBy: order : reverse">
+                            <td>{{ order.id }}</td>
+                            <td>{{ order.customerID }}</td>
+                            <td>{{ order.productID }}</td>
+                            <td>{{ order.amount }}</td>
+                            <td>{{ order.status }}</td>
+                            <td>
+                                <div class="btn-group">
+                                    <!-- <button [routerLink]="[order.id]" class="btn btn-warning">
+                                        <span class="material-icons">
+                                            create
+                                        </span> -->
+                                    <!-- </button> -->
+                                    <button (click)="onDelete(order)" class="btn btn-danger">
+                                        <span class="material-icons">
+                                            delete_forever
+                                        </span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

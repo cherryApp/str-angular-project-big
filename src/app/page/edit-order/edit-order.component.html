@@ -1,0 +1,29 @@
+<div class="container">
+    <form action="">
+        <div class="form-group">
+            <label for="id">ID</label>
+            <input [(ngModel)]="order.id" type="number" class="form-control" id="id" name="id" required>
+        </div>
+        <div class="form-group">
+            <label for="customerID">Customer ID</label>
+            <input [(ngModel)]="order.customerID" type="number" class="form-control" id="customerID" name="customerID" required>
+        </div>
+        <div class="form-group">
+            <label for="productID">Product ID</label>
+            <input [(ngModel)]="order.productID" type="number" class="form-control" id="productID" name="productID" required>
+        </div>
+        <div class="form-group">
+            <label for="amount">Amount</label>
+            <input [(ngModel)]="order.amount" type="number" class="form-control" id="amount" name="amount" required>
+        </div>
+        <div class="form-group">
+            <label for="status">Status</label>
+            <select [(ngModel)]="order.status" class="form-control" id="status" name="status" required>
+                <option value="new">New</option>
+                <option value="shipped">Shipped</option>
+                <option value="paid">Paid</option>
+            </select>
+        </div>
+        <button disabled type="submit" class="btn btn-primary float-right">Submit</button>
+    </form>
+</div>

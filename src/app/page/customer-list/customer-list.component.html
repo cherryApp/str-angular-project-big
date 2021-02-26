@@ -1,0 +1,57 @@
+<div class="col-md-12">
+  <div class="card card-plain">
+    <button class="btn btn-danger btn-block">
+      <span class="mat-button-wrapper">Add new order</span>
+    </button>
+    <div class="card-header card-header-primary">
+      <h4 class="card-title mt-0">Customer List</h4>
+      <p class="card-category">All customers should be seen here</p>
+    </div>
+
+      <div class="col-12 my-2">
+          <table class="table table-hover">
+              <thead>
+                  <tr>
+                      <th>FirstName</th>
+                      <th>LastName</th>
+                      <th>Email</th>
+                      <th>Zip</th>
+                      <th>Country</th>
+                      <th>City</th>
+                      <th>Street</th>
+                      <th>Notes</th>
+                      <th>Active</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let customer of customerList$ | async">
+                      <td>{{ customer.firstName }}</td>
+                      <td>{{ customer.lastName }}</td>
+                      <td>{{ customer.email }}</td>
+                      <td>{{ customer.address.zip }}</td>
+                      <td>{{ customer.address.country }}</td>
+                      <td>{{ customer.address.city }}</td>
+                      <td>{{ customer.address.street }}</td>
+                      <td>{{ customer.address.notes }}</td>
+                      <td>{{ customer.active }}</td>
+                      <td>
+                          <div class="btn-group">
+                              <button class="btn btn-info px-3 mr-1">
+                                  <i class="material-icons">
+                                      mode_edit
+                                  </i>
+                              </button>
+                              <button (click)="removeCustomer(customer.id)" class="btn btn-danger px-3 ml-1">
+                                  <i class="material-icons">
+                                      delete_forever
+                                  </i>
+                              </button>
+                          </div>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+
+  </div>
+</div>
