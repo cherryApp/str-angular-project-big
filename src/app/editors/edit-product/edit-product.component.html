@@ -4,7 +4,7 @@
             <div class="col-12">
                 <div class="card d-flex">
                     <div class="card-header card-header-primary mb-4 w-50 mx-auto">
-                        <ng-container *ngIf="(product$ | async) as product"> 
+                        <ng-container *ngIf="(product$ | async) as product">
                             <h4 *ngIf="product.id==0" class="card-title">Create new product</h4>
                             <h4 *ngIf="product.id!=0" class="card-title">Edit product</h4>
                         </ng-container>
@@ -18,7 +18,8 @@
                                         pattern="[A-ZÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ](.{3,99})" required>
                                     <div [hidden]="productForm.controls.name?.valid || productForm.controls.name?.pristine"
                                         class="error-message">
-                                        The {{attributes.name}} must be between 4-100 characters and must start with a capital letter.
+                                        The {{attributes.name}} must be between 4-100 characters and must start with a
+                                        capital letter.
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -27,7 +28,8 @@
                                         pattern="[A-ZÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ](.{3,49})" required>
                                     <div [hidden]="productForm.controls.type?.valid || productForm.controls.type?.pristine"
                                         class="error-message">
-                                        The {{attributes.type}} must be between 4-50 characters and must start with a capital letter.
+                                        The {{attributes.type}} must be between 4-50 characters and must start with a
+                                        capital letter.
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -41,8 +43,8 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="description">{{attributes.description}}</label>
-                                    <input name="description" [(ngModel)]="product.description" type="text" class="form-control"
-                                        pattern=".{10,255}" required>
+                                    <input name="description" [(ngModel)]="product.description" type="text"
+                                        class="form-control" pattern=".{10,255}" required>
                                     <div [hidden]="productForm.controls.description?.valid || productForm.controls.description?.pristine"
                                         class="error-message">
                                         The {{attributes.description}} must be between 10-255 characters.
@@ -58,28 +60,22 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="d-block" for="featured">{{attributes.featured}}</label>
-                                    <input name="featured" [(ngModel)]="product.featured" type="radio" [value]="true" required>
-                                    <label class="mx-1 d-inline input-group-text" for="featured-true">Yes</label>
-                                    <input class="ml-1" name="featured" [(ngModel)]="product.featured" type="radio" [value]="false" required>
-                                    <label class="mx-1 d-inline input-group-text" for="featured-false">No</label>
+                                    <label class="mr-2" for="featured">Product is {{attributes.featured}}</label>
+                                    <input class="regular-checkbox" name="featured" [(ngModel)]="product.featured" type="checkbox">
                                 </div>
                                 <div class="form-group">
-                                    <label class="d-block" for="active">{{attributes.active}}</label>
-                                    <input name="active-true" [(ngModel)]="product.active" type="radio" [value]="true" required>
-                                    <label class="mx-1 d-inline input-group-text" for="active-true">Yes</label>
-                                    <input class="ml-1" name="active-false" [(ngModel)]="product.active" type="radio" [value]="false" required>
-                                    <label class="mx-1 d-inline input-group-text" for="active-false">No</label>
+                                    <label class="mr-2" for="active">Product is {{attributes.active}}</label>
+                                    <input class="regular-checkbox" name="active" [(ngModel)]="product.active" type="checkbox">
                                 </div>
-                        <button [disabled]="productForm.invalid" type="submit" class="btn btn-primary btn-block btn-lg">
-                            <i class="fa fa-save"></i>
-                        </button>
-                        </form>
-
+                                <button [disabled]="productForm.invalid" type="submit"
+                                    class="btn btn-primary btn-block btn-lg">
+                                    <i class="fa fa-save"></i>
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>

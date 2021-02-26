@@ -13,12 +13,18 @@
                         </button>
                     </div>
                     <div class="card-body col-6 d-flex">
-                        <input name="phrase" (keyup)="onChangePhrase($event)" class="form-control" type="text"
-                            placeholder="Enter filtering phrase...">
+                        <input id="phrase" name="phrase" (keyup)="onChangePhrase($event)" class="form-control" type="text"
+                            placeholder="Enter filtering phrase..."
+                            [disabled]="filterKey==='active' || filterKey==='featured'">
                         <select class="custom-select ml-2" (change)="onChangeKey($event)">
-                            <option *ngFor="let attribute of attributes | keyvalue:originalOrder"
-                                [value]="attribute.key" [selected]="setDefault(attribute.key)">Filter by
-                                {{attribute.value}}</option>
+                            <ng-container *ngFor="let attribute of attributes | keyvalue:originalOrder">
+                                <option *ngIf="attribute.key!=='featured' && attribute.key!=='active'"
+                                    [value]="attribute.key" [selected]="setDefault(attribute.key)">Filter by
+                                    {{attribute.value}}
+                                </option>
+                                <option *ngIf="attribute.key==='featured'" [value]="attribute.key">Show {{attribute.value}} only</option>
+                                <option *ngIf="attribute.key==='active'" [value]="attribute.key">Show {{attribute.value}} only</option>
+                            </ng-container>
                         </select>
                     </div>
                     <div class="card-body">
@@ -38,11 +44,16 @@
                                     <tr
                                         *ngFor="let product of productList$ | async | filter:phrase:filterKey | sorter:sorterKey:sortDirection">
                                         <ng-container *ngFor="let attribute of attributes | keyvalue:originalOrder">
-                                            <td *ngIf="attribute.key!=='featured' && attribute.key!=='active'">{{product[attribute.key]}}</td>
-                                            <td *ngIf="attribute.key==='featured' && product[attribute.key]"><i class="fa fa-check"></i></td>
-                                            <td *ngIf="attribute.key==='featured' && !product[attribute.key]"><i class="fa fa-times"></i></td>
-                                            <td *ngIf="attribute.key==='active' && product[attribute.key]"><i class="fa fa-check"></i></td>
-                                            <td *ngIf="attribute.key==='active' && !product[attribute.key]"><i class="fa fa-times"></i></td>
+                                            <td *ngIf="attribute.key!=='featured' && attribute.key!=='active'">
+                                                {{product[attribute.key]}}</td>
+                                            <td *ngIf="attribute.key==='featured' && product[attribute.key]"><i
+                                                    class="fa fa-check"></i></td>
+                                            <td *ngIf="attribute.key==='featured' && !product[attribute.key]"><i
+                                                    class="fa fa-times"></i></td>
+                                            <td *ngIf="attribute.key==='active' && product[attribute.key]"><i
+                                                    class="fa fa-check"></i></td>
+                                            <td *ngIf="attribute.key==='active' && !product[attribute.key]"><i
+                                                    class="fa fa-times"></i></td>
                                         </ng-container>
                                         <td>
                                             <div class="btn-group">
