@@ -17,7 +17,7 @@
       "catID": 5,
       "description": "eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat",
       "price": "4310",
-      "featured": false,
+      "featured": true,
       "active": true
     },
     {
@@ -3586,7 +3586,7 @@
       "description": "Blu-ray 3D normal edition, plastic box"
     },
     {
-      "id":5,
+      "id": 5,
       "name": "BD 3D limited",
       "description": " Blu-ray special edition in a gift box"
     }
