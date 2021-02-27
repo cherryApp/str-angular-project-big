@@ -4,7 +4,7 @@
       "id": 5,
       "name": "The Inhabited Island 2: Rebellion",
       "type": "Action / Adventure / Sci-Fi",
-      "catID": 3,
+      "catID": "4",
       "description": "posuere felis sed lacus morbi sem mauris laoreet ut rhoncus",
       "price": "65713",
       "featured": true,
@@ -17,8 +17,8 @@
       "catID": 5,
       "description": "eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat",
       "price": "4310",
-      "featured": false,
-      "active": false
+      "featured": true,
+      "active": true
     },
     {
       "id": 8,
@@ -586,7 +586,7 @@
       "type": "Comedy / Romance",
       "catID": 2,
       "description": "neque libero convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet",
-      "price": 3956,
+      "price": 2956,
       "featured": true,
       "active": true
     },
@@ -924,9 +924,9 @@
       "id": 101,
       "name": "L. A. Confidental",
       "type": "Drama",
-      "catID": "3",
+      "catID": "4",
       "description": "A classic American movie.",
-      "price": "12000",
+      "price": 12000,
       "featured": false,
       "active": true
     },
@@ -936,7 +936,7 @@
       "type": "Western",
       "catID": "3",
       "description": "A classic American movie.",
-      "price": "10000",
+      "price": 10000,
       "featured": false,
       "active": true
     }
@@ -3562,6 +3562,33 @@
         "street": "Bayside, 94",
         "notes": ""
       }
+    }
+  ],
+  "category": [
+    {
+      "id": 1,
+      "name": "DVD",
+      "description": "Normal edition, plastic box"
+    },
+    {
+      "id": 2,
+      "name": "DVD limited",
+      "description": "DVD special edition in a gift box"
+    },
+    {
+      "id": 3,
+      "name": "BD",
+      "description": "Blu-ray Normal Edition"
+    },
+    {
+      "id": 4,
+      "name": "BD 3D",
+      "description": "Blu-ray 3D normal edition, plastic box"
+    },
+    {
+      "id": 5,
+      "name": "BD 3D limited",
+      "description": " Blu-ray special edition in a gift box"
     }
   ]
 }

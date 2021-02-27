@@ -11,6 +11,12 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ProductListComponent implements OnInit {
 
+  product = new Product();
+
+  setProducttoDelete(product: Product): void {
+    this.product = product;
+  }
+
   productList$: BehaviorSubject<Product[]> = this.productService.list$;
 
   phrase: string = '';
@@ -35,7 +41,12 @@ export class ProductListComponent implements OnInit {
   }
 
   onChangeKey(event: Event): void {
+    if (this.filterKey === "featured" || this.filterKey === "active" ) {
+      this.phrase = "";
+      (<HTMLInputElement>document.getElementById("phrase")).value = "";      
+    }
     this.filterKey = (event.target as HTMLInputElement).value;
+    if (this.filterKey === "featured" || this.filterKey === "active" ) {this.phrase = "true"}
   }
 
   setDefault(key):boolean {

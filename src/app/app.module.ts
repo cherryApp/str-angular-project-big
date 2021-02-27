@@ -25,6 +25,8 @@ import { ChartsModule } from 'ng2-charts';
 import { EditProductComponent } from './editors/edit-product/edit-product.component';
 import { EditCustomerComponent } from './editors/edit-customer/edit-customer.component';
 import { EditOrderComponent } from './editors/edit-order/edit-order.component';
+import { CategroyListComponent } from './pages/categroy-list/categroy-list.component';
+import { EditCategoryComponent } from './editors/edit-category/edit-category.component';
 
 @NgModule({
   imports: [
@@ -56,6 +58,8 @@ import { EditOrderComponent } from './editors/edit-order/edit-order.component';
     EditOrderComponent,
     ChartComponent,
     EditProductComponent,
+    CategroyListComponent,
+    EditCategoryComponent,
     //EditCustomerComponent,
 
   ],
