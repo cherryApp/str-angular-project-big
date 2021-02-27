@@ -4,6 +4,7 @@ import { Product, ProductAttributes } from 'app/model/product';
 import { ColumnSortOrder, ProductService } from 'app/services/product.service';
 import { BehaviorSubject } from 'rxjs';
 
+
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -15,6 +16,9 @@ export class ProductListComponent implements OnInit {
 
   setProducttoDelete(product: Product): void {
     this.product = product;
+    $('#confirmationDialog').on('shown.bs.modal', function () {
+      $('#cancelButton').trigger('focus')
+    })
   }
 
   productList$: BehaviorSubject<Product[]> = this.productService.list$;
@@ -92,5 +96,6 @@ export class ProductListComponent implements OnInit {
   sortDirection = "none";
   
   sortOrder = new ColumnSortOrder();
+
 
 }

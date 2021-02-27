@@ -14,7 +14,7 @@
                     </div>
                     <div class="card-body col-6 d-flex">
                         <input id="phrase" name="phrase" (keyup)="onChangePhrase($event)" class="form-control" type="text"
-                            placeholder="Enter filtering phrase..."
+                            placeholder="Enter phrase..."
                             [disabled]="filterKey==='active' || filterKey==='featured'">
                         <select class="custom-select ml-2" (change)="onChangeKey($event)">
                             <ng-container *ngFor="let attribute of attributes | keyvalue:originalOrder">
@@ -60,7 +60,7 @@
                                                 <button [routerLink]="['product/' + product.id]" class="btn btn-info">
                                                     <i class="fa fa-pencil"></i>
                                                 </button>
-                                                <button class="btn btn-danger" data-toggle="modal" data-target="#myModal" (click)=setProducttoDelete(product)>
+                                                <button class="btn btn-danger" data-toggle="modal" data-target="#confirmationDialog" (click)=setProducttoDelete(product)>
                                                     <i class="fa fa-trash"></i>
                                                 </button>
                                             </div>
@@ -75,20 +75,23 @@
         </div>
     </div>
 </div>
-<div class="modal" id="myModal" tabindex="-1">
+<div class="modal" id="confirmationDialog" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title font-weight-bold">CONFIRMATION REQUIRED</h5>
+          <h5 class="modal-title text-danger font-weight-bold">CONFIRMATION REQUIRED</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <p>Do you really want to delete this product?</p>
+            <p><strong>Are you sure you want to delete <span class="text-primary">{{product.name}}</span>?</strong></p>
+            <p>All information associated to this product will be permanently deleted.
+            <span class="text-danger">This operation can not be undone.</span>
+            </p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-info" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-outline-primary" id="cancelButton" data-dismiss="modal">Cancel</button>
           <button type="button" class="btn btn-danger" (click)="onDelete(product)" data-dismiss="modal">Delete</button>
         </div>
       </div>
