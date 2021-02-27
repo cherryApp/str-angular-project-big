@@ -1,8 +1,10 @@
 import { KeyValue } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Category, CategoryAttributes } from 'app/model/category';
 import { Order, OrderAttributes } from 'app/model/order';
+import { CategoryService } from 'app/services/category.service';
 import { ColumnSortOrder, OrderService } from 'app/services/order.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-order-list',
@@ -10,18 +12,38 @@ import { BehaviorSubject } from 'rxjs';
   styleUrls: ['./order-list.component.css']
 })
 export class OrderListComponent implements OnInit {
+  order = new Order();
+
+  setOrdertoDelete(order: Order): void {
+    this.order = order;
+    $('#confirmationDialog').on('shown.bs.modal', function () {
+      $('#cancelButton').trigger('focus')
+    })
+  }
+
+  category = new Category();
+  category$ = new Observable<Category>();
+  categoryAttributes = new CategoryAttributes();
+
+  getCategory(id: number) {
+    this.category$ = this.categoryService.get(id)
+    this.category$.forEach(item => this.category = item);
+  }
+
 
   orderList$: BehaviorSubject<Order[]> = this.orderService.list$;
 
   phrase: string = '';
   filterKey = 'id';
-
+  
   sorterKey: string ='';
-
+  
   attributes = new OrderAttributes();
+  
+  sortDirection = "none";
+  sortOrder = new ColumnSortOrder();
 
-
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService, private categoryService: CategoryService) { }
 
   ngOnInit(): void {
     this.orderService.getAll();
@@ -79,9 +101,6 @@ export class OrderListComponent implements OnInit {
     }
   }
   
-  sortDirection = "none";
-  
-  sortOrder = new ColumnSortOrder();
 
 }
 
