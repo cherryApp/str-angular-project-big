@@ -1,6 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
-import { Label } from 'ng2-charts';
+import { Label, BaseChartDirective } from 'ng2-charts';
+
+export interface IChart {
+  cardClass: string;
+  title: string;
+  content: string;
+  icon: string;
+  footer: string;
+  barChartLabels: Label[];
+  barChartData: ChartDataSets[];
+  chartColors: Array<any>;
+  barChartType: ChartType;
+}
 
 @Component({
   selector: 'app-chart',
@@ -9,47 +21,52 @@ import { Label } from 'ng2-charts';
 })
 export class ChartComponent implements OnInit {
 
-  public barChartOptions: ChartOptions = {
-    responsive: true,
-  };
-  public barChartLabels: Label[] = ['Products', 'Customers'];
-  public barChartType: ChartType = 'bar';
-  public barChartLegend = true;
-  public barChartPlugins = [];
+  @ViewChild(BaseChartDirective) chart: BaseChartDirective;
 
-  public barChartData: ChartDataSets[] = [
-    { data: [50, 93], label: 'All' },
-    { data: [47, 9], label: 'Active' }
+  @Input() cardClass: string = 'card-header-success';
+  @Input() title: string = 'title';
+  @Input() content: string = 'content';
+  @Input() icon: string = 'access_time';
+  @Input() footer: string = 'footer';
+
+
+  barChartOptions: ChartOptions = {
+    responsive: true,
+    maintainAspectRatio: true,
+  };
+  @Input() barChartLabels: Label[] = [];
+  @Input() barChartType: ChartType = 'horizontalBar';
+  barChartLegend = true;
+  barChartPlugins = [];
+
+
+  @Input() barChartData: ChartDataSets[] = [
+    { data: [1, 1], label: 'Sample1' },
+    { data: [1, 1], label: 'Sample2' }
   ];
-  public chartColors: Array<any> = [
+
+  @Input() chartColors: Array<any> = [
     { // first color
-      backgroundColor: '#448AFF',
-      borderColor: '#448AFF',
-      pointBackgroundColor: '#2962FF',
-      pointBorderColor: '#2962FF',
-      pointHoverBackgroundColor: '#2962FF',
-      pointHoverBorderColor: '#2962FF'
+      backgroundColor: '#448AFF'
     },
     { // second color
-      backgroundColor: '#00E5FF',
-      borderColor: '#00E5FF',
-      pointBackgroundColor: '#00E5FF',
-      pointBorderColor: '#00E5FF',
-      pointHoverBackgroundColor: '#00B8D4',
-      pointHoverBorderColor: '#00B8D4'
+      backgroundColor: '#00E5FF'
     }];
 
   constructor() { }
 
   ngOnInit(): void {
+    setTimeout(() => {
+      this.chart.chart.update()
+    }, 500);
   }
 
-  public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
-    console.log(event, active);
-  }
+  // public chartClicked({ event, active }: { event: MouseEvent, active: {}[] }): void {
+  //   console.log(event, active);
+  // }
 
-  public chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
-    console.log(event, active);
-  }
+  // public chartHovered({ event, active }: { event: MouseEvent, active: {}[] }): void {
+  //   console.log(event, active);
+  // }
 
 }

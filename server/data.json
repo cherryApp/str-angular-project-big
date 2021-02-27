@@ -11,16 +11,6 @@
       "active": true
     },
     {
-      "id": 6,
-      "name": "The Late George Apley",
-      "type": "Comedy",
-      "catID": 5,
-      "description": "eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat",
-      "price": "4310",
-      "featured": true,
-      "active": true
-    },
-    {
       "id": 8,
       "name": "Suicide Killers",
       "type": "Documentary",
@@ -98,7 +88,7 @@
       "description": "cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor",
       "price": 41804,
       "featured": false,
-      "active": false
+      "active": true
     },
     {
       "id": 20,
@@ -128,7 +118,7 @@
       "description": "amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum",
       "price": 24885,
       "featured": true,
-      "active": false
+      "active": true
     },
     {
       "id": 23,
