@@ -8,46 +8,17 @@
                 </app-info-card>
             </div>
         </div>
-        <!-- <div class="row d-flex justify-content-around">
-            <div class="card card-chart col-sm-5">
-                <div class="card-header card-header-success">
-                    <div class="chart">
-                        <app-chart></app-chart>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <h4 class="card-title">Products and Customers</h4>
-                    <p class="card-category">
-                        <span class="text-success"><i
-                                class="fa fa-long-arrow-up"></i> 55% </span>
-                        increase in today sales.
-                    </p>
-                </div>
-                <div class="card-footer">
-                    <div class="stats">
-                        <i class="material-icons">access_time</i> updated 4
-                        minutes ago
-                    </div>
-                </div>
+        <div class="row d-flex justify-content-around">
+            <div *ngFor="let chart of charts" class="card card-chart col-sm-5">
+                <app-chart [cardClass]="chart.cardClass" [icon]="chart.icon"
+                    [title]="chart.title" [content]="chart.content"
+                    [footer]="chart.footer"
+                    [barChartLabels]="chart.barChartLabels"
+                    [barChartData]="chart.barChartData"
+                    [chartColors]="chart.chartColors"
+                    [barChartType]="chart.barChartType"></app-chart>
             </div>
-            <div class="card card-chart col-sm-5">
-                <div class="card-header card-header-warning">
-                    <div class="chart">
-                        <app-chart></app-chart>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <h4 class="card-title">Email Subscriptions</h4>
-                    <p class="card-category">Last Campaign Performance</p>
-                </div>
-                <div class="card-footer">
-                    <div class="stats">
-                        <i class="material-icons">access_time</i> campaign
-                        sent 2 days ago
-                    </div>
-                </div>
-            </div>
-        </div> -->
+        </div>
 
     </div>
 </div>

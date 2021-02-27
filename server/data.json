@@ -4,19 +4,9 @@
       "id": 5,
       "name": "The Inhabited Island 2: Rebellion",
       "type": "Action / Adventure / Sci-Fi",
-      "catID": "4",
+      "catID": "2",
       "description": "posuere felis sed lacus morbi sem mauris laoreet ut rhoncus",
       "price": "65713",
-      "featured": true,
-      "active": true
-    },
-    {
-      "id": 6,
-      "name": "The Late George Apley",
-      "type": "Comedy",
-      "catID": 5,
-      "description": "eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat",
-      "price": "4310",
       "featured": true,
       "active": true
     },
@@ -71,16 +61,6 @@
       "active": true
     },
     {
-      "id": 15,
-      "name": "Too Many Girls",
-      "type": "Comedy / Musical",
-      "catID": 5,
-      "description": "pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat",
-      "price": 44734,
-      "featured": false,
-      "active": true
-    },
-    {
       "id": 17,
       "name": "Naked City, The",
       "type": "Crime / Drama / Film-Noir / Mystery",
@@ -108,7 +88,7 @@
       "description": "cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor",
       "price": 41804,
       "featured": false,
-      "active": false
+      "active": true
     },
     {
       "id": 20,
@@ -138,7 +118,7 @@
       "description": "amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum",
       "price": 24885,
       "featured": true,
-      "active": false
+      "active": true
     },
     {
       "id": 23,
@@ -939,6 +919,26 @@
       "price": 10000,
       "featured": false,
       "active": true
+    },
+    {
+      "id": 103,
+      "name": "Schindler's List",
+      "type": "Drama",
+      "catID": "4",
+      "description": "Spielberg's classic Holocaust movie.",
+      "price": 12000,
+      "featured": true,
+      "active": true
+    },
+    {
+      "id": 104,
+      "name": "The Godfather",
+      "type": "Drama",
+      "catID": "1",
+      "description": "A classic American movie.",
+      "price": 3000,
+      "featured": false,
+      "active": false
     }
   ],
   "order": [

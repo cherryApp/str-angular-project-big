@@ -34,7 +34,7 @@ export class ProductService {
     ).pipe(
       tap(() => {
         this.getAll();
-        this.toastr.info('The product has been updated.', 'UPDATED');
+        this.toastr.info(`Product #${product.id}</br>${product.name}</br>has been updated.`, 'UPDATED');
       })
     );
   }
@@ -46,7 +46,7 @@ export class ProductService {
     ).subscribe(
       () => this.getAll()
     );
-    this.toastr.success('The product has been created.', 'NEW PRODUCT');
+    this.toastr.success(`A new product</br>${product.name}</br>has been created.`, 'NEW PRODUCT');
   }
 
   remove(product: Product): void {
@@ -55,7 +55,7 @@ export class ProductService {
     ).subscribe(
       () => this.getAll()
     );
-    this.toastr.error('The product has been deleted.', 'DELETED');
+    this.toastr.error(`Product #${product.id}</br>${product.name}</br>has been deleted.`, 'DELETED');
   }
 
 }
