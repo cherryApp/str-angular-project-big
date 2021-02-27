@@ -4,7 +4,7 @@
       "id": 5,
       "name": "The Inhabited Island 2: Rebellion",
       "type": "Action / Adventure / Sci-Fi",
-      "catID": "4",
+      "catID": "2",
       "description": "posuere felis sed lacus morbi sem mauris laoreet ut rhoncus",
       "price": "65713",
       "featured": true,
@@ -68,16 +68,6 @@
       "description": "id nisl venenatis lacinia aenean sit amet justo morbi ut odio",
       "price": 58756,
       "featured": true,
-      "active": true
-    },
-    {
-      "id": 15,
-      "name": "Too Many Girls",
-      "type": "Comedy / Musical",
-      "catID": 5,
-      "description": "pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat",
-      "price": 44734,
-      "featured": false,
       "active": true
     },
     {
@@ -939,6 +929,26 @@
       "price": 10000,
       "featured": false,
       "active": true
+    },
+    {
+      "id": 103,
+      "name": "Schindler's List",
+      "type": "Drama",
+      "catID": "4",
+      "description": "Spielberg's classic Holocaust movie.",
+      "price": 12000,
+      "featured": true,
+      "active": true
+    },
+    {
+      "id": 104,
+      "name": "The Godfather",
+      "type": "Drama",
+      "catID": "1",
+      "description": "A classic American movie.",
+      "price": 3000,
+      "featured": false,
+      "active": false
     }
   ],
   "order": [

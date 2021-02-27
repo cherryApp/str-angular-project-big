@@ -1,9 +1,10 @@
 import { KeyValue } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Category, CategoryAttributes } from 'app/model/category';
 import { Product, ProductAttributes } from 'app/model/product';
+import { CategoryService } from 'app/services/category.service';
 import { ColumnSortOrder, ProductService } from 'app/services/product.service';
-import { BehaviorSubject } from 'rxjs';
-
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-list',
@@ -21,8 +22,17 @@ export class ProductListComponent implements OnInit {
     })
   }
 
-  productList$: BehaviorSubject<Product[]> = this.productService.list$;
+  category = new Category();
+  category$ = new Observable<Category>();
+  categoryAttributes = new CategoryAttributes();
 
+  getCategory(id: number) {
+    this.category$ = this.categoryService.get(id)
+    this.category$.forEach(item => this.category = item);
+  }
+
+  productList$: BehaviorSubject<Product[]> = this.productService.list$;
+  
   phrase: string = '';
   filterKey = 'name';
 
@@ -30,7 +40,7 @@ export class ProductListComponent implements OnInit {
 
   attributes = new ProductAttributes();
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private categoryService: CategoryService) { }
 
   ngOnInit(): void {
     this.productService.getAll();
