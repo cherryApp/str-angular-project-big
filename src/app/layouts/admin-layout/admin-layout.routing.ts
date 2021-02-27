@@ -9,6 +9,7 @@ import { CustomerListComponent } from 'app/pages/customer-list/customer-list.com
 import { EditCustomerComponent } from 'app/editors/edit-customer/edit-customer.component';
 import { CategroyListComponent } from 'app/pages/categroy-list/categroy-list.component';
 import { EditCategoryComponent } from 'app/editors/edit-category/edit-category.component';
+import { AboutUsComponent } from 'app/pages/about-us/about-us.component';
 
 export const AdminLayoutRoutes: Routes = [
     // {
@@ -60,6 +61,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'bill-list', component: BillListComponent },
     { path: 'customer-list', component: CustomerListComponent },
     { path: 'customer/:id', component: EditCustomerComponent },
-    { path: 'category-list', component: CategroyListComponent},
-    { path: 'category/:id', component: EditCategoryComponent},
+    { path: 'category-list', component: CategroyListComponent },
+    { path: 'category/:id', component: EditCategoryComponent },
+    { path: 'about', component: AboutUsComponent },
 ];

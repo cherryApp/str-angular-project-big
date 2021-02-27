@@ -27,6 +27,7 @@ import { EditCustomerComponent } from './editors/edit-customer/edit-customer.com
 import { CategroyListComponent } from './pages/categroy-list/categroy-list.component';
 import { EditCategoryComponent } from './editors/edit-category/edit-category.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
 
 @NgModule({
   imports: [
@@ -61,6 +62,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     EditProductComponent,
     CategroyListComponent,
     EditCategoryComponent,
+    AboutUsComponent,
     //EditCustomerComponent,
 
   ],
