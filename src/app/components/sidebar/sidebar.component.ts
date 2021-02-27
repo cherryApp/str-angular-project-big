@@ -17,6 +17,7 @@ export const ROUTES: RouteInfo[] = [
   { path: '/bill-list', title: 'Bills', icon: 'euro_symbol', class: '', hidden: false },
   { path: '/category-list', title: 'Categories', icon: 'disc_full', class: '', hidden: false },
   { path: '/customer/', title: 'Customer', icon: '', class: '', hidden: true },
+  { path: '/about', title: 'We are Team 4, also known as ALT + F4', icon: '', class: '', hidden: true },
 ];
 
 @Component({
