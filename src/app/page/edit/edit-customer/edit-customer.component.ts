@@ -27,8 +27,8 @@ export class EditCustomerComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.customerService.get(this.id).subscribe(customer => this.customer = customer)
     this.activatedRoute.params.subscribe(params => this.id = params.id);
+    this.customerService.get(this.id).subscribe(customer => this.customer = customer)
   }
 
   onUpdate(customer: Customer): void {
@@ -48,7 +48,7 @@ export class EditCustomerComponent implements OnInit {
         () => {
           this.toastr.success('Sikeresen frissítetted a vásárlót!', 'Siker!', { timeOut: 3000 });
           this.updating = false;
-          this.router.navigate(['products']);
+          this.router.navigate(['customers']);
         },
         error => this.toastr.error('Hiba történt a vásárló frissítésekor!', 'Hiba!', { timeOut: 3000 })
       )

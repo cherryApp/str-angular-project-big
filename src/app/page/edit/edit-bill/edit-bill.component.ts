@@ -24,10 +24,8 @@ export class EditBillComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.billService.get(this.id).subscribe(
-      bill => this.bill = bill
-    );
     this.activatedRoute.params.subscribe(params => this.id = params.id);
+    this.billService.get(this.id).subscribe(bill => this.bill = bill);
   }
 
   onUpdate(bill: Bill): void {
@@ -37,7 +35,7 @@ export class EditBillComponent implements OnInit {
         () => {
           this.toastr.success('Sikeres számla létrehozás!', 'Siker!', { timeOut: 3000 });
           this.updating = false;
-          this.router.navigate(['bill']);
+          this.router.navigate(['bills']);
         },
         error => this.toastr.error('Hiba a számla létrehozásakor!', 'Hiba!', { timeOut: 3000 })
       )
@@ -46,7 +44,7 @@ export class EditBillComponent implements OnInit {
         () => {
           this.toastr.success('Sikeresen frissítetted a számlát!', 'Siker!', { timeOut: 3000 });
           this.updating = false;
-          this.router.navigate(['products']);
+          this.router.navigate(['bills']);
         },
         error => this.toastr.error('Hiba történt a számla frissítésekor!', 'Hiba!', { timeOut: 3000 })
       )
