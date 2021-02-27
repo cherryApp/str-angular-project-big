@@ -51,7 +51,7 @@
                                                 {{product[attribute.key]}}</td>
                                             <td *ngIf="attribute.key==='catID'"
                                                 (click)="getCategory(product[attribute.key])" class="clickable" 
-                                                [ngbPopover]="popContent" container="body" animation="true" placement="right"
+                                                [ngbPopover]="popContent" container="body" animation="true" placement="bottom"
                                                 triggers="manual" #p="ngbPopover" (click)="p.open()"
                                                 [popoverTitle]="popTitle">{{product[attribute.key]}}</td>
                                             <ng-template #popContent>
