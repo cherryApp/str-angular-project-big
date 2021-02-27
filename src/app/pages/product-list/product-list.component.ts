@@ -5,6 +5,7 @@ import { Product, ProductAttributes } from 'app/model/product';
 import { CategoryService } from 'app/services/category.service';
 import { ColumnSortOrder, ProductService } from 'app/services/product.service';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { updateIndexSignature } from 'typescript';
 
 @Component({
   selector: 'app-product-list',
@@ -32,18 +33,30 @@ export class ProductListComponent implements OnInit {
   }
 
   productList$: BehaviorSubject<Product[]> = this.productService.list$;
-  
+  updating: boolean = true
+
   phrase: string = '';
   filterKey = 'name';
 
-  sorterKey: string ='';
+  sorterKey: string = '';
 
   attributes = new ProductAttributes();
 
-  constructor(private productService: ProductService, private categoryService: CategoryService) { }
+  constructor(private productService: ProductService, private categoryService: CategoryService) {
+    this.updatingValues();
+  }
 
   ngOnInit(): void {
     this.productService.getAll();
+  }
+
+  updatingValues() {
+    this.productList$.subscribe(item => {
+      if (item.length > 0) {
+        this.updating = false;
+      }
+    }
+    )
   }
 
   onDelete(product: Product): void {
@@ -55,26 +68,26 @@ export class ProductListComponent implements OnInit {
   }
 
   onChangeKey(event: Event): void {
-    if (this.filterKey === "featured" || this.filterKey === "active" ) {
+    if (this.filterKey === "featured" || this.filterKey === "active") {
       this.phrase = "";
-      (<HTMLInputElement>document.getElementById("phrase")).value = "";      
+      (<HTMLInputElement>document.getElementById("phrase")).value = "";
     }
     this.filterKey = (event.target as HTMLInputElement).value;
-    if (this.filterKey === "featured" || this.filterKey === "active" ) {this.phrase = "true"}
+    if (this.filterKey === "featured" || this.filterKey === "active") { this.phrase = "true" }
   }
 
-  setDefault(key):boolean {
+  setDefault(key): boolean {
     return key === "name" ? true : false;
   }
 
-  originalOrder = (a: KeyValue<number,string>, b: KeyValue<number,string>): number => {
+  originalOrder = (a: KeyValue<number, string>, b: KeyValue<number, string>): number => {
     return 0;
   }
 
-  onColumnSelect(key: string) : void {
+  onColumnSelect(key: string): void {
     this.sorterKey = key;
     let clicked = true;
-    
+
     if (this.sortOrder[key] === "none" && clicked) {
       this.erasesortDirections();
       this.sortOrder[key] = "ascending"
@@ -96,15 +109,15 @@ export class ProductListComponent implements OnInit {
     this.sortDirection = this.sortOrder[key];
     console.log(this.sortDirection);
   }
-  
+
   erasesortDirections(): void {
     for (let key in this.sortOrder) {
       this.sortOrder[key] = "none";
     }
   }
-  
+
   sortDirection = "none";
-  
+
   sortOrder = new ColumnSortOrder();
 
 

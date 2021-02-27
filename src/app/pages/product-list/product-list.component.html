@@ -5,84 +5,127 @@
                 <div class="card">
                     <div class="card-header card-header-info">
                         <h4 class="card-title ">Products</h4>
-                        <p class="card-category">List of products currently on stock.</p>
+                        <p class="card-category">List of products currently on
+                            stock.</p>
                     </div>
                     <div class="card my-0 px-3">
-                        <button [routerLink]="['product/'+'0']" class="btn btn-primary my-3">
+                        <button [routerLink]="['product/'+'0']"
+                            class="btn btn-primary my-3">
                             Create new product
                         </button>
                     </div>
                     <div class="card-body col-6 d-flex">
-                        <input id="phrase" name="phrase" (keyup)="onChangePhrase($event)" class="form-control"
-                            type="text" placeholder="Enter phrase..."
+                        <input id="phrase" name="phrase"
+                            (keyup)="onChangePhrase($event)"
+                            class="form-control" type="text"
+                            placeholder="Enter phrase..."
                             [disabled]="filterKey==='active' || filterKey==='featured'">
-                        <select class="custom-select ml-2" (change)="onChangeKey($event)">
-                            <ng-container *ngFor="let attribute of attributes | keyvalue:originalOrder">
-                                <option *ngIf="attribute.key!=='featured' && attribute.key!=='active'"
-                                    [value]="attribute.key" [selected]="setDefault(attribute.key)">Filter by
+                        <select class="custom-select ml-2"
+                            (change)="onChangeKey($event)">
+                            <ng-container
+                                *ngFor="let attribute of attributes | keyvalue:originalOrder">
+                                <option
+                                    *ngIf="attribute.key!=='featured' && attribute.key!=='active'"
+                                    [value]="attribute.key"
+                                    [selected]="setDefault(attribute.key)">
+                                    Filter by
                                     {{attribute.value}}
                                 </option>
-                                <option *ngIf="attribute.key==='featured'" [value]="attribute.key">Show
+                                <option *ngIf="attribute.key==='featured'"
+                                    [value]="attribute.key">Show
                                     {{attribute.value}} only</option>
-                                <option *ngIf="attribute.key==='active'" [value]="attribute.key">Show
+                                <option *ngIf="attribute.key==='active'"
+                                    [value]="attribute.key">Show
                                     {{attribute.value}} only</option>
                             </ng-container>
                         </select>
                     </div>
-                    <div class="card-body">
+                    <div *ngIf="updating" class="d-flex justify-content-center">
+                        <mat-spinner></mat-spinner>
+                    </div>
+                    <div *ngIf="!updating" class="card-body">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class="text-primary">
                                     <th *ngFor="let attribute of attributes | keyvalue:originalOrder"
                                         (click)="onColumnSelect(attribute.key)">
                                         {{attribute.value}}
-                                        <span *ngIf="(sortOrder[attribute.key] === 'ascending' )"><i
+                                        <span
+                                            *ngIf="(sortOrder[attribute.key] === 'ascending' )"><i
                                                 class="fa fa-angle-up"></i></span>
-                                        <span *ngIf="(sortOrder[attribute.key] === 'descending' )"><i
+                                        <span
+                                            *ngIf="(sortOrder[attribute.key] === 'descending' )"><i
                                                 class="fa fa-angle-down"></i></span>
                                     </th>
                                 </thead>
                                 <tbody>
                                     <tr
                                         *ngFor="let product of productList$ | async | filter:phrase:filterKey | sorter:sorterKey:sortDirection">
-                                        <ng-container *ngFor="let attribute of attributes | keyvalue:originalOrder">
+                                        <ng-container
+                                            *ngFor="let attribute of attributes | keyvalue:originalOrder">
                                             <td
                                                 *ngIf="attribute.key!=='featured' && attribute.key!=='active' && attribute.key!=='catID'">
                                                 {{product[attribute.key]}}</td>
                                             <td *ngIf="attribute.key==='catID'"
-                                                (click)="getCategory(product[attribute.key])" class="clickable" 
-                                                [ngbPopover]="popContent" container="body" animation="true" placement="bottom"
-                                                triggers="manual" #p="ngbPopover" (click)="p.open()"
-                                                [popoverTitle]="popTitle">{{product[attribute.key]}}</td>
+                                                (click)="getCategory(product[attribute.key])"
+                                                class="clickable"
+                                                [ngbPopover]="popContent"
+                                                container="body"
+                                                animation="true"
+                                                placement="bottom"
+                                                triggers="manual"
+                                                #p="ngbPopover"
+                                                (click)="p.open()"
+                                                [popoverTitle]="popTitle">
+                                                {{product[attribute.key]}}</td>
                                             <ng-template #popContent>
-                                                <ng-container *ngIf="category$ | async">
+                                                <ng-container
+                                                    *ngIf="category$ | async">
                                                     <div class="card user-card">
-                                                        <div #popTitle class="card-header text-primary text-center">
-                                                            {{attribute.value}} details</div>
+                                                        <div #popTitle
+                                                            class="card-header text-primary text-center">
+                                                            {{attribute.value}}
+                                                            details</div>
                                                         <div class="card-body">
-                                                            <p><b>{{categoryAttributes.id}}:</b> {{category.id}}</p>
-                                                            <p><b>{{categoryAttributes.name}}:</b> {{category.name}}</p>
+                                                            <p><b>{{categoryAttributes.id}}:</b>
+                                                                {{category.id}}
+                                                            </p>
+                                                            <p><b>{{categoryAttributes.name}}:</b>
+                                                                {{category.name}}
+                                                            </p>
                                                             <p><b>{{categoryAttributes.description}}</b>
-                                                                {{category.description}}</p>
+                                                                {{category.description}}
+                                                            </p>
                                                         </div>
                                                     </div>
                                                 </ng-container>
                                             </ng-template>
-                                            <td *ngIf="attribute.key==='featured' && product[attribute.key]"><i
-                                                    class="fa fa-check"></i></td>
-                                            <td *ngIf="attribute.key==='featured' && !product[attribute.key]"><i
-                                                    class="fa fa-times"></i></td>
-                                            <td *ngIf="attribute.key==='active' && product[attribute.key]"><i
-                                                    class="fa fa-check"></i></td>
-                                            <td *ngIf="attribute.key==='active' && !product[attribute.key]"><i
-                                                    class="fa fa-times"></i></td>
+                                            <td
+                                                *ngIf="attribute.key==='featured' && product[attribute.key]">
+                                                <i class="fa fa-check"></i>
+                                            </td>
+                                            <td
+                                                *ngIf="attribute.key==='featured' && !product[attribute.key]">
+                                                <i class="fa fa-times"></i>
+                                            </td>
+                                            <td
+                                                *ngIf="attribute.key==='active' && product[attribute.key]">
+                                                <i class="fa fa-check"></i>
+                                            </td>
+                                            <td
+                                                *ngIf="attribute.key==='active' && !product[attribute.key]">
+                                                <i class="fa fa-times"></i>
+                                            </td>
                                         </ng-container>
                                         <td>
                                             <div class="btn-group">
-                                                <button [routerLink]="['product/' + product.id]" class="btn btn-info">
+                                                <button
+                                                    [routerLink]="['product/' + product.id]"
+                                                    class="btn btn-info">
                                                     <i class="fa fa-pencil"></i>
                                                 </button>
-                                                <button class="btn btn-danger" data-toggle="modal"
+                                                <button class="btn btn-danger"
+                                                    data-toggle="modal"
                                                     data-target="#confirmationDialog"
                                                     (click)=setProducttoDelete(product)>
                                                     <i class="fa fa-trash"></i>
@@ -103,22 +146,28 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title text-danger font-weight-bold">CONFIRMATION REQUIRED</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <h5 class="modal-title text-danger font-weight-bold">
+                    CONFIRMATION REQUIRED</h5>
+                <button type="button" class="close" data-dismiss="modal"
+                    aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p><strong>Are you sure you want to delete <span class="text-primary">{{product.name}}</span>?</strong>
+                <p><strong>Are you sure you want to delete <span
+                            class="text-primary">{{product.name}}</span>?</strong>
                 </p>
-                <p>All information associated to this product will be permanently deleted.
-                    <span class="text-danger">This operation can not be undone.</span>
+                <p>All information associated to this product will be
+                    permanently deleted.
+                    <span class="text-danger">This operation can not be
+                        undone.</span>
                 </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline-primary" id="cancelButton"
-                    data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger" (click)="onDelete(product)"
+                <button type="button" class="btn btn-outline-primary"
+                    id="cancelButton" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger"
+                    (click)="onDelete(product)"
                     data-dismiss="modal">Delete</button>
             </div>
         </div>

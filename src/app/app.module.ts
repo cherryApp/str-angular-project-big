@@ -28,6 +28,8 @@ import { CategroyListComponent } from './pages/categroy-list/categroy-list.compo
 import { EditCategoryComponent } from './editors/edit-category/edit-category.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   imports: [
@@ -45,7 +47,9 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
     RouterModule,
     AppRoutingModule,
     ChartsModule,
-    NgbModule
+    NgbModule,
+    MatProgressSpinnerModule,
+    MatPaginatorModule
   ],
   declarations: [
     AppComponent,
