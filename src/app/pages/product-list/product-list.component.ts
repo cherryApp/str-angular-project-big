@@ -5,7 +5,6 @@ import { Product, ProductAttributes } from 'app/model/product';
 import { CategoryService } from 'app/services/category.service';
 import { ColumnSortOrder, ProductService } from 'app/services/product.service';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { updateIndexSignature } from 'typescript';
 
 @Component({
   selector: 'app-product-list',
@@ -43,11 +42,12 @@ export class ProductListComponent implements OnInit {
   attributes = new ProductAttributes();
 
   constructor(private productService: ProductService, private categoryService: CategoryService) {
-    this.updatingValues();
+
   }
 
   ngOnInit(): void {
     this.productService.getAll();
+    this.updatingValues();
   }
 
   updatingValues() {
@@ -55,8 +55,7 @@ export class ProductListComponent implements OnInit {
       if (item.length > 0) {
         this.updating = false;
       }
-    }
-    )
+    })
   }
 
   onDelete(product: Product): void {

@@ -25,7 +25,10 @@
                                 {{attribute.value}}</option>
                         </select>
                     </div>
-                    <div class="card-body">
+                    <div *ngIf="updating" class="d-flex justify-content-center">
+                        <mat-spinner></mat-spinner>
+                    </div>
+                    <div *ngIf="!updating" class="card-body">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class="text-primary">
