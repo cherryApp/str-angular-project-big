@@ -4,7 +4,7 @@
       "id": 5,
       "name": "The Inhabited Island 2: Rebellion",
       "type": "Action / Adventure / Sci-Fi",
-      "catID": 3,
+      "catID": "2",
       "description": "posuere felis sed lacus morbi sem mauris laoreet ut rhoncus",
       "price": "65713",
       "featured": true,
@@ -61,13 +61,13 @@
       "active": true
     },
     {
-      "id": 15,
-      "name": "Too Many Girls",
-      "type": "Comedy / Musical",
+      "id": 17,
+      "name": "Naked City, The",
+      "type": "Crime / Drama / Film-Noir / Mystery",
       "catID": 5,
-      "description": "pretium iaculis justo in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat",
-      "price": 44734,
-      "featured": false,
+      "description": "tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus",
+      "price": 85493,
+      "featured": true,
       "active": true
     },
     {
@@ -904,7 +904,7 @@
       "id": 101,
       "name": "L. A. Confidental",
       "type": "Drama",
-      "catID": "3",
+      "catID": "4",
       "description": "A classic American movie.",
       "price": 12000,
       "featured": false,
@@ -919,6 +919,26 @@
       "price": 10000,
       "featured": false,
       "active": true
+    },
+    {
+      "id": 103,
+      "name": "Schindler's List",
+      "type": "Drama",
+      "catID": "4",
+      "description": "Spielberg's classic Holocaust movie.",
+      "price": 12000,
+      "featured": true,
+      "active": true
+    },
+    {
+      "id": 104,
+      "name": "The Godfather",
+      "type": "Drama",
+      "catID": "1",
+      "description": "A classic American movie.",
+      "price": 3000,
+      "featured": false,
+      "active": false
     }
   ],
   "order": [
@@ -3542,6 +3562,33 @@
         "street": "Bayside, 94",
         "notes": ""
       }
+    }
+  ],
+  "category": [
+    {
+      "id": 1,
+      "name": "DVD",
+      "description": "Normal edition, plastic box"
+    },
+    {
+      "id": 2,
+      "name": "DVD limited",
+      "description": "DVD special edition in a gift box"
+    },
+    {
+      "id": 3,
+      "name": "BD",
+      "description": "Blu-ray Normal Edition"
+    },
+    {
+      "id": 4,
+      "name": "BD 3D",
+      "description": "Blu-ray 3D normal edition, plastic box"
+    },
+    {
+      "id": 5,
+      "name": "BD 3D limited",
+      "description": " Blu-ray special edition in a gift box"
     }
   ]
 }

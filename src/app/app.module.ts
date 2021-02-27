@@ -24,6 +24,9 @@ import { ChartComponent } from './common/chart/chart.component';
 import { ChartsModule } from 'ng2-charts';
 import { EditProductComponent } from './editors/edit-product/edit-product.component';
 import { EditCustomerComponent } from './editors/edit-customer/edit-customer.component';
+import { CategroyListComponent } from './pages/categroy-list/categroy-list.component';
+import { EditCategoryComponent } from './editors/edit-category/edit-category.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -32,6 +35,7 @@ import { EditCustomerComponent } from './editors/edit-customer/edit-customer.com
     ToastrModule.forRoot({
       timeOut: 3000,
       preventDuplicates: true,
+      enableHtml: true
     }),
     FormsModule,
     ReactiveFormsModule,
@@ -39,7 +43,8 @@ import { EditCustomerComponent } from './editors/edit-customer/edit-customer.com
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
-    ChartsModule
+    ChartsModule,
+    NgbModule
   ],
   declarations: [
     AppComponent,
@@ -54,6 +59,8 @@ import { EditCustomerComponent } from './editors/edit-customer/edit-customer.com
     InfoCardComponent,
     ChartComponent,
     EditProductComponent,
+    CategroyListComponent,
+    EditCategoryComponent,
     //EditCustomerComponent,
 
   ],
