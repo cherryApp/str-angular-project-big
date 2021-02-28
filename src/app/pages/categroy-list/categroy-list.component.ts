@@ -78,4 +78,9 @@ export class CategroyListComponent implements OnInit {
     sortDirection = "none";
     
     sortOrder = new ColumnSortOrder();
+
+    speak(text: string){
+      let msg = new SpeechSynthesisUtterance(); msg.text =text; 
+      msg.rate = 0.5;
+      window.speechSynthesis.speak(msg);  }
 }
