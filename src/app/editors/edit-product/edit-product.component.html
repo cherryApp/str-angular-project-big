@@ -18,7 +18,7 @@
                                         pattern="[A-ZÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ](.{3,99})" required>
                                     <div [hidden]="productForm.controls.name?.valid || productForm.controls.name?.pristine"
                                         class="error-message">
-                                        The {{attributes.name}} must be between 4-100 characters and must start with a
+                                        {{attributes.name}} must be between 4-100 characters and must start with a
                                         capital letter.
                                     </div>
                                 </div>
@@ -28,7 +28,7 @@
                                         pattern="[A-ZÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ](.{3,49})" required>
                                     <div [hidden]="productForm.controls.type?.valid || productForm.controls.type?.pristine"
                                         class="error-message">
-                                        The {{attributes.type}} must be between 4-50 characters and must start with a
+                                        {{attributes.type}} must be between 4-50 characters and must start with a
                                         capital letter.
                                     </div>
                                 </div>
@@ -39,31 +39,31 @@
                                     </select>
                                 </div>
 
-                                <!-- <div class="form-group">
-                                    <label for="catID">{{attributes.catID}}</label>
-                                    <input name="catID" [(ngModel)]="product.catID" type="number" class="form-control"
-                                        pattern="[1-5]" required>
-                                    <div [hidden]="productForm.controls.catID?.valid || productForm.controls.catID?.pristine"
+                                <div class="form-group">
+                                    <label for="stock">{{attributes.stock}}</label>
+                                    <input name="stock" [(ngModel)]="product.stock" type="number" class="form-control"
+                                        required>
+                                    <div [hidden]="productForm.controls.stock?.valid || productForm.controls.stock?.pristine"
                                         class="error-message">
-                                        The {{attributes.catID}} must be a number between 1-5.
+                                        {{attributes.stock}} is required and can only be a number.
                                     </div>
-                                </div> -->
+                                </div>
                                 <div class="form-group">
                                     <label for="description">{{attributes.description}}</label>
                                     <input name="description" [(ngModel)]="product.description" type="text"
                                         class="form-control" pattern=".{10,255}" required>
                                     <div [hidden]="productForm.controls.description?.valid || productForm.controls.description?.pristine"
                                         class="error-message">
-                                        The {{attributes.description}} must be between 10-255 characters.
+                                        {{attributes.description}} must be between 10-255 characters.
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="price">{{attributes.price}}</label>
+                                    <label for="price">{{attributes.price}} in Forints</label>
                                     <input name="price" [(ngModel)]="product.price" type="number" class="form-control"
-                                        pattern="[1-9][0-9]*" required>
+                                        required>
                                     <div [hidden]="productForm.controls.price?.valid || productForm.controls.price?.pristine"
                                         class="error-message">
-                                        The {{attributes.price}} must be a number and cannot start with a zero.
+                                        {{attributes.price}} is required and can only be a number.
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -76,9 +76,9 @@
                                     <input class="regular-checkbox" name="active" [(ngModel)]="product.active"
                                         type="checkbox">
                                 </div>
-                                <button [disabled]="productForm.invalid" type="submit"
+                                <button [disabled]="productForm.invalid" [disabled]="clicked" type="submit"
                                     class="btn btn-primary btn-block btn-lg">
-                                    <i class="fa fa-save"></i>
+                                    <i id="saveicon" class="fa fa-save"></i>
                                 </button>
                             </form>
                         </div>

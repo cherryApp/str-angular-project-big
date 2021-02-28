@@ -28,6 +28,9 @@ import { EditOrderComponent } from './editors/edit-order/edit-order.component';
 import { CategroyListComponent } from './pages/categroy-list/categroy-list.component';
 import { EditCategoryComponent } from './editors/edit-category/edit-category.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   imports: [
@@ -45,7 +48,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     RouterModule,
     AppRoutingModule,
     ChartsModule,
-    NgbModule
+    NgbModule,
+    MatProgressSpinnerModule,
+    MatPaginatorModule
   ],
   declarations: [
     AppComponent,
@@ -63,6 +68,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     EditProductComponent,
     CategroyListComponent,
     EditCategoryComponent,
+    AboutUsComponent,
     //EditCustomerComponent,
 
   ],

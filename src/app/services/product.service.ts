@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
+import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { Product } from 'app/model/product';
@@ -14,7 +15,7 @@ export class ProductService {
 
   list$: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([]);
 
-  constructor(private http: HttpClient, private toastr: ToastrService) { }
+  constructor(private http: HttpClient, private toastr: ToastrService, private router: Router,) { }
 
   getAll(): void {
     this.list$.next([]);
@@ -33,7 +34,6 @@ export class ProductService {
       product
     ).pipe(
       tap(() => {
-        this.getAll();
         this.toastr.info(`Product #${product.id}</br>${product.name}</br>has been updated.`, 'UPDATED');
       })
     );
@@ -44,7 +44,7 @@ export class ProductService {
       `${this.serverUrl}`,
       product
     ).subscribe(
-      () => this.getAll()
+      () => this.router.navigate(['product-list'])
     );
     this.toastr.success(`A new product</br>${product.name}</br>has been created.`, 'NEW PRODUCT');
   }
@@ -53,10 +53,15 @@ export class ProductService {
     this.http.delete<Product>(
       `${this.serverUrl}/${product.id}`
     ).subscribe(
-      () => this.getAll()
+      () => this.redirectTo('//product-list')
     );
     this.toastr.error(`Product #${product.id}</br>${product.name}</br>has been deleted.`, 'DELETED');
   }
+
+  redirectTo(uri:string){
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate([uri]));
+ }
 
 }
 
@@ -67,6 +72,7 @@ export class ColumnSortOrder {
   catID: string = "none";
   description: string = "none";
   price: string = "none";
+  stock: string = "none";
   featured: string = "none";
   active: string = "none";
 }

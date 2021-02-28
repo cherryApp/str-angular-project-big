@@ -15,6 +15,8 @@ import { switchMap } from 'rxjs/operators';
 })
 export class EditProductComponent implements OnInit {
 
+  clicked: boolean = false;
+
   product$: Observable<Product> = this.activatedRoute.params.pipe(
     switchMap(params => this.productService.get(params.id))
   );
@@ -34,16 +36,19 @@ export class EditProductComponent implements OnInit {
   }
 
   onUpdate(form: NgForm, product: Product): void {
+    this.clicked=true;
+    this.animateSaveIcon();
     if (product.id === 0) {
       this.productService.create(product);
-      this.router.navigate(['product-list'])
     } else {
       this.productService.update(product).subscribe(
         ev => this.router.navigate(['product-list'])
       );
     }
   }
-
-
-
+  animateSaveIcon(): void {
+    let saveIcon = document.getElementById("saveicon");
+    saveIcon.classList.remove("fa-save");
+    saveIcon.classList.add("fa-spinner", "fa-pulse");
+  }
 }

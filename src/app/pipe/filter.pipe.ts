@@ -10,7 +10,7 @@ export class FilterPipe implements PipeTransform {
       return value;
     }
 
-    if (key === 'id' || key === 'price' || key === 'catID') {
+    if (key === 'id' || key === 'price' || key === 'catID' || key === 'sotck') {
       return value.filter(item => item[key] == phrase)
     } else  {
       phrase = ('' + phrase).toLowerCase();

@@ -1,3 +1,4 @@
+
 th, .clickable {
     cursor: pointer;
 }
@@ -36,7 +37,8 @@ th, .clickable {
 	td:nth-of-type(4):before { content: "Category ID"; }
 	td:nth-of-type(5):before { content: "Description"; }
 	td:nth-of-type(6):before { content: "Price"; }
-	td:nth-of-type(7):before { content: "Featured"; }
-	td:nth-of-type(8):before { content: "Active"; }
-	td:nth-of-type(9):before { content: "Options"; }
+	td:nth-of-type(7):before { content: "Stock"; }
+	td:nth-of-type(8):before { content: "Featured"; }
+	td:nth-of-type(9):before { content: "Active"; }
+	td:nth-of-type(10):before { content: "Options"; }
 }

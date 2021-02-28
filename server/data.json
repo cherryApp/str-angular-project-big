@@ -4,10 +4,11 @@
       "id": 5,
       "name": "The Inhabited Island 2: Rebellion",
       "type": "Action / Adventure / Sci-Fi",
-      "catID": "2",
+      "catID": 5,
       "description": "posuere felis sed lacus morbi sem mauris laoreet ut rhoncus",
-      "price": "65713",
-      "featured": true,
+      "price": 5713,
+      "stock": 25,
+      "featured": false,
       "active": true
     },
     {
@@ -16,7 +17,8 @@
       "type": "Documentary",
       "catID": 5,
       "description": "nulla eget eros elementum pellentesque quisque porta volutpat erat quisque erat eros viverra eget congue eget semper",
-      "price": 51947,
+      "price": 4194,
+      "stock": 6,
       "featured": true,
       "active": false
     },
@@ -26,7 +28,8 @@
       "type": "Comedy",
       "catID": 1,
       "description": "in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante",
-      "price": 48356,
+      "price": 835,
+      "stock": 25,
       "featured": false,
       "active": false
     },
@@ -36,7 +39,8 @@
       "type": "Comedy",
       "catID": 2,
       "description": "nibh ligula nec sem duis aliquam convallis nunc proin at turpis a pede posuere",
-      "price": 9933,
+      "price": 2293,
+      "stock": 25,
       "featured": false,
       "active": false
     },
@@ -46,7 +50,8 @@
       "type": "Comedy / Drama / Romance / Sci-Fi",
       "catID": 2,
       "description": "mattis nibh ligula nec sem duis aliquam convallis nunc proin at turpis a pede posuere nonummy integer",
-      "price": 32116,
+      "price": 1211,
+      "stock": 25,
       "featured": true,
       "active": false
     },
@@ -56,7 +61,8 @@
       "type": "Drama",
       "catID": 5,
       "description": "id nisl venenatis lacinia aenean sit amet justo morbi ut odio",
-      "price": 58756,
+      "price": 875,
+      "stock": 4,
       "featured": true,
       "active": true
     },
@@ -66,7 +72,8 @@
       "type": "Crime / Drama / Film-Noir / Mystery",
       "catID": 5,
       "description": "tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse ornare consequat lectus",
-      "price": 85493,
+      "price": 549,
+      "stock": 25,
       "featured": true,
       "active": true
     },
@@ -76,7 +83,8 @@
       "type": "Drama",
       "catID": 1,
       "description": "egestas metus aenean fermentum donec ut mauris eget massa tempor convallis nulla neque libero convallis eget eleifend luctus",
-      "price": 72862,
+      "price": 1286,
+      "stock": 25,
       "featured": false,
       "active": true
     },
@@ -86,7 +94,8 @@
       "type": "Thriller",
       "catID": 2,
       "description": "cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor",
-      "price": 41804,
+      "price": 2180,
+      "stock": 25,
       "featured": false,
       "active": true
     },
@@ -96,7 +105,8 @@
       "type": "Action / Drama",
       "catID": 2,
       "description": "velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat erat quisque erat",
-      "price": 59683,
+      "price": 968,
+      "stock": 10,
       "featured": true,
       "active": false
     },
@@ -106,7 +116,8 @@
       "type": "Western",
       "catID": 2,
       "description": "amet lobortis sapien sapien non mi integer ac neque duis bibendum",
-      "price": 14918,
+      "price": 491,
+      "stock": 25,
       "featured": false,
       "active": true
     },
@@ -116,7 +127,8 @@
       "type": "Comedy / Drama",
       "catID": 4,
       "description": "amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum",
-      "price": 24885,
+      "price": 488,
+      "stock": 0,
       "featured": true,
       "active": true
     },
@@ -126,7 +138,8 @@
       "type": "Drama",
       "catID": 3,
       "description": "sapien urna pretium nisl ut volutpat sapien arcu sed augue",
-      "price": 12168,
+      "price": 1216,
+      "stock": 20,
       "featured": false,
       "active": true
     },
@@ -136,7 +149,8 @@
       "type": "Comedy / Drama / Romance",
       "catID": 3,
       "description": "ut suscipit a feugiat et eros vestibulum ac est lacinia nisi venenatis tristique fusce congue diam id",
-      "price": 15215,
+      "price": 521,
+      "stock": 25,
       "featured": false,
       "active": true
     },
@@ -146,7 +160,8 @@
       "type": "Documentary",
       "catID": 5,
       "description": "donec diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci",
-      "price": 66081,
+      "price": 608,
+      "stock": 25,
       "featured": false,
       "active": false
     },
@@ -156,7 +171,8 @@
       "type": "Comedy / Drama / Romance",
       "catID": 1,
       "description": "justo in hac habitasse platea dictumst etiam faucibus cursus urna ut tellus",
-      "price": 83217,
+      "price": 321,
+      "stock": 25,
       "featured": true,
       "active": true
     },
@@ -166,7 +182,8 @@
       "type": "Western",
       "catID": 3,
       "description": "pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam pharetra",
-      "price": 41474,
+      "price": 3147,
+      "stock": 25,
       "featured": false,
       "active": false
     },
@@ -176,7 +193,8 @@
       "type": "Comedy",
       "catID": 4,
       "description": "donec odio justo sollicitudin ut suscipit a feugiat et eros vestibulum ac est",
-      "price": 81949,
+      "price": 1194,
+      "stock": 25,
       "featured": true,
       "active": false
     },
@@ -186,7 +204,8 @@
       "type": "Drama / Romance",
       "catID": 5,
       "description": "vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl",
-      "price": 93564,
+      "price": 356,
+      "stock": 25,
       "featured": false,
       "active": false
     },
@@ -196,7 +215,8 @@
       "type": "Drama / Fantasy",
       "catID": 3,
       "description": "nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi nulla ac enim in",
-      "price": 40393,
+      "price": 2239,
+      "stock": 1,
       "featured": false,
       "active": true
     },
@@ -206,7 +226,8 @@
       "type": "Drama",
       "catID": 5,
       "description": "sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia",
-      "price": 33931,
+      "price": 393,
+      "stock": 25,
       "featured": true,
       "active": true
     },
@@ -216,7 +237,8 @@
       "type": "Drama",
       "catID": 4,
       "description": "amet justo morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit",
-      "price": 88266,
+      "price": 826,
+      "stock": 25,
       "featured": false,
       "active": false
     },
@@ -226,7 +248,8 @@
       "type": "Action / Comedy / Crime / Drama",
       "catID": 5,
       "description": "porta volutpat erat quisque erat eros viverra eget congue eget semper rutrum nulla",
-      "price": 47646,
+      "price": 764,
+      "stock": 25,
       "featured": true,
       "active": true
     },
@@ -236,7 +259,8 @@
       "type": "Comedy / Fantasy / Horror",
       "catID": 2,
       "description": "suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus sit amet sem",
-      "price": 95042,
+      "price": 504,
+      "stock": 25,
       "featured": true,
       "active": false
     },
@@ -246,7 +270,8 @@
       "type": "Comedy / Romance",
       "catID": 3,
       "description": "orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est donec odio",
-      "price": 44076,
+      "price": 407,
+      "stock": 25,
       "featured": false,
       "active": false
     },
@@ -256,7 +281,8 @@
       "type": "Fantasy / Musical",
       "catID": 5,
       "description": "id turpis integer aliquet massa id lobortis convallis tortor risus",
-      "price": 89192,
+      "price": 919,
+      "stock": 25,
       "featured": true,
       "active": true
     },
@@ -266,7 +292,8 @@
       "type": "Action / Crime / Drama / Thriller",
       "catID": 5,
       "description": "augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis",
-      "price": 45523,
+      "price": 552,
+      "stock": 25,
       "featured": true,
       "active": false
     },
@@ -276,7 +303,8 @@
       "type": "Drama / Romance",
       "catID": 4,
       "description": "dolor sit amet consectetuer adipiscing elit proin risus praesent lectus vestibulum quam sapien varius",
-      "price": 20922,
+      "price": 6092,
+      "stock": 25,
       "featured": false,
       "active": true
     },
@@ -286,7 +314,8 @@
       "type": "Adventure / Documentary / Drama",
       "catID": 5,
       "description": "velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat erat quisque erat eros viverra eget congue eget semper",
-      "price": 9034,
+      "price": 5303,
+      "stock": 25,
       "featured": true,
       "active": true
     },
@@ -296,7 +325,8 @@
       "type": "Comedy / Drama / Mystery / Romance",
       "catID": 4,
       "description": "sed magna at nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia",
-      "price": 90553,
+      "price": 1055,
+      "stock": 25,
       "featured": false,
       "active": false
     },
@@ -306,7 +336,8 @@
       "type": "Comedy / Western",
       "catID": 1,
       "description": "vel enim sit amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris",
-      "price": 44486,
+      "price": 448,
+      "stock": 3,
       "featured": true,
       "active": false
     },
@@ -316,7 +347,8 @@
       "type": "Comedy",
       "catID": 3,
       "description": "id nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras",
-      "price": 22160,
+      "price": 2216,
+      "stock": 25,
       "featured": false,
       "active": true
     },
@@ -326,7 +358,8 @@
       "type": "Comedy / Drama",
       "catID": 4,
       "description": "vivamus vestibulum sagittis sapien cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus",
-      "price": 34817,
+      "price": 481,
+      "stock": 25,
       "featured": false,
       "active": true
     },
@@ -336,7 +369,8 @@
       "type": "Comedy / Romance",
       "catID": 5,
       "description": "vel ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent",
-      "price": 91132,
+      "price": 3113,
+      "stock": 25,
       "featured": true,
       "active": false
     },
@@ -346,7 +380,8 @@
       "type": "Crime / Drama / Horror / Mystery / Thriller",
       "catID": 4,
       "description": "aliquam convallis nunc proin at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum eget vulputate",
-      "price": 98374,
+      "price": 837,
+      "stock": 22,
       "featured": false,
       "active": true
     },
@@ -356,7 +391,8 @@
       "type": "Action / Drama",
       "catID": 5,
       "description": "vitae consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum praesent",
-      "price": 76782,
+      "price": 678,
+      "stock": 25,
       "featured": true,
       "active": true
     },
@@ -366,7 +402,8 @@
       "type": "Drama",
       "catID": 5,
       "description": "nisl venenatis lacinia aenean sit amet justo morbi ut odio cras mi pede malesuada in imperdiet et commodo vulputate",
-      "price": 95427,
+      "price": 542,
+      "stock": 25,
       "featured": true,
       "active": false
     },
@@ -376,7 +413,8 @@
       "type": "Crime / Drama",
       "catID": 3,
       "description": "nulla ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque",
-      "price": 22185,
+      "price": 218,
+      "stock": 25,
       "featured": true,
       "active": true
     },
@@ -386,7 +424,8 @@
       "type": "Drama / War",
       "catID": 1,
       "description": "primis in faucibus orci luctus et ultrices posuere cubilia curae nulla dapibus dolor vel est donec odio justo",
-      "price": 70888,
+      "price": 1088,
+      "stock": 25,
       "featured": false,
       "active": true
     },
@@ -396,7 +435,8 @@
       "type": "Comedy",
       "catID": 3,
       "description": "egestas metus aenean fermentum donec ut mauris eget massa tempor convallis nulla",
-      "price": 15042,
+      "price": 504,
+      "stock": 25,
       "featured": false,
       "active": true
     },
@@ -406,7 +446,8 @@
       "type": "Comedy / Drama",
       "catID": 3,
       "description": "orci pede venenatis non sodales sed tincidunt eu felis fusce posuere felis sed lacus morbi sem",
-      "price": 58879,
+      "price": 887,
+      "stock": 25,
       "featured": false,
       "active": false
     },
@@ -416,7 +457,8 @@
       "type": "Drama",
       "catID": 2,
       "description": "odio cras mi pede malesuada in imperdiet et commodo vulputate justo",
-      "price": 2185,
+      "price": 24318,
+      "stock": 25,
       "featured": true,
       "active": true
     },
@@ -426,7 +468,8 @@
       "type": "Adventure / Animation / Romance",
       "catID": 3,
       "description": "quam nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus",
-      "price": 59572,
+      "price": 957,
+      "stock": 5,
       "featured": true,
       "active": false
     },
@@ -436,7 +479,8 @@
       "type": "Comedy / Romance",
       "catID": 4,
       "description": "nunc rhoncus dui vel sem sed sagittis nam congue risus semper porta volutpat quam pede lobortis ligula",
-      "price": 34915,
+      "price": 491,
+      "stock": 25,
       "featured": false,
       "active": true
     },
@@ -446,7 +490,8 @@
       "type": "Drama / Horror",
       "catID": 3,
       "description": "quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere",
-      "price": 77543,
+      "price": 754,
+      "stock": 25,
       "featured": true,
       "active": true
     },
@@ -456,7 +501,8 @@
       "type": "Action",
       "catID": 5,
       "description": "velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat erat quisque erat",
-      "price": 66740,
+      "price": 674,
+      "stock": 25,
       "featured": false,
       "active": true
     },
@@ -466,7 +512,8 @@
       "type": "Comedy / Sci-Fi",
       "catID": 2,
       "description": "amet turpis elementum ligula vehicula consequat morbi a ipsum integer a nibh in quis justo maecenas",
-      "price": 42019,
+      "price": 2201,
+      "stock": 25,
       "featured": true,
       "active": false
     },
@@ -476,7 +523,8 @@
       "type": "Adventure / Romance",
       "catID": 4,
       "description": "consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices",
-      "price": 25932,
+      "price": 593,
+      "stock": 13,
       "featured": false,
       "active": true
     },
@@ -486,7 +534,8 @@
       "type": "Drama",
       "catID": 4,
       "description": "felis donec semper sapien a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed",
-      "price": 85202,
+      "price": 520,
+      "stock": 25,
       "featured": true,
       "active": true
     },
@@ -496,7 +545,8 @@
       "type": "Adventure",
       "catID": 5,
       "description": "lorem ipsum dolor sit amet consectetuer adipiscing elit proin risus praesent lectus",
-      "price": 60472,
+      "price": 3047,
+      "stock": 25,
       "featured": true,
       "active": true
     },
@@ -506,7 +556,8 @@
       "type": "Crime / Drama / Thriller",
       "catID": 2,
       "description": "tristique est et tempus semper est quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante ipsum",
-      "price": 32651,
+      "price": 1265,
+      "stock": 25,
       "featured": false,
       "active": false
     },
@@ -516,7 +567,8 @@
       "type": "Action / Mystery",
       "catID": 4,
       "description": "cras mi pede malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum",
-      "price": 80723,
+      "price": 1072,
+      "stock": 25,
       "featured": true,
       "active": true
     },
@@ -526,7 +578,8 @@
       "type": "Drama",
       "catID": 1,
       "description": "donec odio justo sollicitudin ut suscipit a feugiat et eros vestibulum ac est lacinia nisi venenatis tristique",
-      "price": 94657,
+      "price": 465,
+      "stock": 25,
       "featured": true,
       "active": true
     },
@@ -536,7 +589,8 @@
       "type": "Drama",
       "catID": 5,
       "description": "ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris viverra diam vitae quam",
-      "price": 7417,
+      "price": 3341,
+      "stock": 1,
       "featured": false,
       "active": true
     },
@@ -546,7 +600,8 @@
       "type": "Crime / Drama / Thriller",
       "catID": 5,
       "description": "pulvinar sed nisl nunc rhoncus dui vel sem sed sagittis nam congue risus semper porta volutpat",
-      "price": 26948,
+      "price": 694,
+      "stock": 25,
       "featured": false,
       "active": false
     },
@@ -556,7 +611,8 @@
       "type": "Animation / Children",
       "catID": 4,
       "description": "ligula sit amet eleifend pede libero quis orci nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras",
-      "price": 98102,
+      "price": 810,
+      "stock": 25,
       "featured": false,
       "active": true
     },
@@ -566,7 +622,8 @@
       "type": "Comedy / Romance",
       "catID": 2,
       "description": "neque libero convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet",
-      "price": 2956,
+      "price": 1195,
+      "stock": 25,
       "featured": true,
       "active": true
     },
@@ -576,17 +633,19 @@
       "type": "Drama",
       "catID": 4,
       "description": "semper sapien a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed accumsan felis",
-      "price": 95966,
+      "price": 596,
+      "stock": 25,
       "featured": true,
       "active": false
     },
     {
       "id": 69,
       "name": "House Party: Tonight's the Night",
-      "type": "(no genres listed)",
+      "type": "Drama",
       "catID": 1,
       "description": "et tempus semper est quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante",
-      "price": 26681,
+      "price": 668,
+      "stock": 2,
       "featured": true,
       "active": true
     },
@@ -596,7 +655,8 @@
       "type": "Adventure / Animation / Children / Comedy",
       "catID": 2,
       "description": "fusce posuere felis sed lacus morbi sem mauris laoreet ut rhoncus aliquet",
-      "price": 8976,
+      "price": 2297,
+      "stock": 25,
       "featured": true,
       "active": true
     },
@@ -606,7 +666,8 @@
       "type": "Comedy",
       "catID": 3,
       "description": "elementum eu interdum eu tincidunt in leo maecenas pulvinar lobortis est phasellus sit amet erat nulla tempus vivamus in felis",
-      "price": 16172,
+      "price": 1617,
+      "stock": 25,
       "featured": false,
       "active": true
     },
@@ -616,7 +677,8 @@
       "type": "Drama",
       "catID": 4,
       "description": "lobortis est phasellus sit amet erat nulla tempus vivamus in",
-      "price": 78295,
+      "price": 4829,
+      "stock": 25,
       "featured": true,
       "active": false
     },
@@ -626,7 +688,8 @@
       "type": "Action / Comedy",
       "catID": 2,
       "description": "nisi venenatis tristique fusce congue diam id ornare imperdiet sapien urna pretium nisl ut",
-      "price": 98554,
+      "price": 4855,
+      "stock": 25,
       "featured": true,
       "active": false
     },
@@ -636,7 +699,8 @@
       "type": "Action / Thriller",
       "catID": 4,
       "description": "sapien non mi integer ac neque duis bibendum morbi non quam nec dui luctus rutrum nulla",
-      "price": 67976,
+      "price": 2797,
+      "stock": 25,
       "featured": false,
       "active": true
     },
@@ -646,7 +710,8 @@
       "type": "Drama",
       "catID": 2,
       "description": "ut massa quis augue luctus tincidunt nulla mollis molestie lorem quisque ut erat curabitur gravida nisi",
-      "price": 97287,
+      "price": 1728,
+      "stock": 25,
       "featured": false,
       "active": true
     },
@@ -656,7 +721,8 @@
       "type": "Crime / Drama / Romance / Thriller",
       "catID": 2,
       "description": "et tempus semper est quam pharetra magna ac consequat metus sapien ut",
-      "price": 27817,
+      "price": 1781,
+      "stock": 25,
       "featured": true,
       "active": false
     },
@@ -666,7 +732,8 @@
       "type": "Crime / Drama",
       "catID": 1,
       "description": "platea dictumst etiam faucibus cursus urna ut tellus nulla ut erat id",
-      "price": 99527,
+      "price": 1952,
+      "stock": 25,
       "featured": false,
       "active": false
     },
@@ -676,7 +743,8 @@
       "type": "Documentary",
       "catID": 5,
       "description": "malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet",
-      "price": 55508,
+      "price": 1550,
+      "stock": 25,
       "featured": true,
       "active": false
     },
@@ -686,7 +754,8 @@
       "type": "Drama",
       "catID": 3,
       "description": "in purus eu magna vulputate luctus cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus",
-      "price": 14316,
+      "price": 1431,
+      "stock": 20,
       "featured": false,
       "active": false
     },
@@ -696,7 +765,8 @@
       "type": "Drama",
       "catID": 3,
       "description": "diam erat fermentum justo nec condimentum neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris",
-      "price": 6580,
+      "price": 3358,
+      "stock": 25,
       "featured": true,
       "active": true
     },
@@ -706,7 +776,8 @@
       "type": "Horror",
       "catID": 2,
       "description": "congue diam id ornare imperdiet sapien urna pretium nisl ut volutpat sapien arcu sed",
-      "price": 12797,
+      "price": 2279,
+      "stock": 25,
       "featured": true,
       "active": true
     },
@@ -716,7 +787,8 @@
       "type": "Comedy / Drama",
       "catID": 1,
       "description": "neque sapien placerat ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet eros",
-      "price": 75841,
+      "price": 2584,
+      "stock": 25,
       "featured": true,
       "active": false
     },
@@ -726,7 +798,8 @@
       "type": "Children / Comedy",
       "catID": 5,
       "description": "convallis eget eleifend luctus ultricies eu nibh quisque id justo sit amet sapien dignissim vestibulum vestibulum ante ipsum",
-      "price": 10892,
+      "price": 1089,
+      "stock": 25,
       "featured": false,
       "active": true
     },
@@ -736,7 +809,8 @@
       "type": "Comedy / Thriller",
       "catID": 5,
       "description": "porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in tempus sit amet",
-      "price": 59404,
+      "price": 1940,
+      "stock": 25,
       "featured": true,
       "active": false
     },
@@ -746,7 +820,8 @@
       "type": "Comedy / Drama / Romance",
       "catID": 4,
       "description": "elit ac nulla sed vel enim sit amet nunc viverra",
-      "price": 76794,
+      "price": 1679,
+      "stock": 25,
       "featured": false,
       "active": true
     },
@@ -756,7 +831,8 @@
       "type": "Drama / Musical / Romance",
       "catID": 4,
       "description": "lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique in",
-      "price": 57792,
+      "price": 2779,
+      "stock": 25,
       "featured": false,
       "active": true
     },
@@ -766,7 +842,8 @@
       "type": "Animation",
       "catID": 1,
       "description": "tellus nisi eu orci mauris lacinia sapien quis libero nullam sit amet turpis elementum ligula vehicula consequat morbi a",
-      "price": 59650,
+      "price": 2965,
+      "stock": 25,
       "featured": false,
       "active": false
     },
@@ -776,7 +853,8 @@
       "type": "Action / Adventure / Animation / Children / Fantasy",
       "catID": 2,
       "description": "integer tincidunt ante vel ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo",
-      "price": 70369,
+      "price": 5036,
+      "stock": 25,
       "featured": false,
       "active": false
     },
@@ -786,7 +864,8 @@
       "type": "Drama / Horror / Thriller",
       "catID": 5,
       "description": "odio curabitur convallis duis consequat dui nec nisi volutpat eleifend donec ut dolor morbi vel lectus in quam fringilla rhoncus",
-      "price": 95104,
+      "price": 2510,
+      "stock": 25,
       "featured": false,
       "active": false
     },
@@ -796,7 +875,8 @@
       "type": "Documentary",
       "catID": 5,
       "description": "cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus",
-      "price": 50500,
+      "price": 1050,
+      "stock": 0,
       "featured": false,
       "active": true
     },
@@ -806,7 +886,8 @@
       "type": "Comedy / Drama / Fantasy / Romance",
       "catID": 2,
       "description": "felis eu sapien cursus vestibulum proin eu mi nulla ac enim in tempor turpis",
-      "price": 64432,
+      "price": 4431,
+      "stock": 25,
       "featured": true,
       "active": true
     },
@@ -816,7 +897,8 @@
       "type": "Comedy / Romance",
       "catID": 4,
       "description": "cubilia curae nulla dapibus dolor vel est donec odio justo sollicitudin ut",
-      "price": 9436,
+      "price": 4311,
+      "stock": 25,
       "featured": false,
       "active": true
     },
@@ -826,7 +908,8 @@
       "type": "Adventure / Comedy / Fantasy",
       "catID": 5,
       "description": "adipiscing elit proin risus praesent lectus vestibulum quam sapien varius ut",
-      "price": 31815,
+      "price": 1811,
+      "stock": 25,
       "featured": true,
       "active": true
     },
@@ -836,7 +919,8 @@
       "type": "Drama / Mystery / Romance / Thriller",
       "catID": 2,
       "description": "orci vehicula condimentum curabitur in libero ut massa volutpat convallis morbi",
-      "price": 14261,
+      "price": 426,
+      "stock": 25,
       "featured": true,
       "active": false
     },
@@ -846,7 +930,8 @@
       "type": "Horror",
       "catID": 3,
       "description": "ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at diam nam tristique tortor",
-      "price": 95927,
+      "price": 5922,
+      "stock": 25,
       "featured": true,
       "active": false
     },
@@ -856,7 +941,8 @@
       "type": "Adventure / Animation / Children / Comedy",
       "catID": 5,
       "description": "mattis pulvinar nulla pede ullamcorper augue a suscipit nulla elit ac nulla sed vel enim sit amet",
-      "price": 59274,
+      "price": 9271,
+      "stock": 25,
       "featured": true,
       "active": false
     },
@@ -866,7 +952,8 @@
       "type": "Crime / Drama",
       "catID": 3,
       "description": "ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec",
-      "price": 37686,
+      "price": 7683,
+      "stock": 25,
       "featured": false,
       "active": false
     },
@@ -876,7 +963,8 @@
       "type": "Drama",
       "catID": 4,
       "description": "at ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis vel",
-      "price": 35136,
+      "price": 5131,
+      "stock": 25,
       "featured": false,
       "active": false
     },
@@ -886,7 +974,8 @@
       "type": "Drama",
       "catID": 5,
       "description": "nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus",
-      "price": 68523,
+      "price": 8523,
+      "stock": 25,
       "featured": true,
       "active": true
     },
@@ -896,7 +985,8 @@
       "type": "Documentary",
       "catID": 5,
       "description": "sit amet consectetuer adipiscing elit proin risus praesent lectus vestibulum quam sapien varius",
-      "price": 65697,
+      "price": 56900,
+      "stock": 25,
       "featured": true,
       "active": false
     },
@@ -906,7 +996,8 @@
       "type": "Drama",
       "catID": "4",
       "description": "A classic American movie.",
-      "price": 12000,
+      "price": 2020,
+      "stock": 25,
       "featured": false,
       "active": true
     },
@@ -916,7 +1007,8 @@
       "type": "Western",
       "catID": "3",
       "description": "A classic American movie.",
-      "price": 10000,
+      "price": 1000,
+      "stock": 4,
       "featured": false,
       "active": true
     },
@@ -926,7 +1018,8 @@
       "type": "Drama",
       "catID": "4",
       "description": "Spielberg's classic Holocaust movie.",
-      "price": 12000,
+      "price": 15000,
+      "stock": 25,
       "featured": true,
       "active": true
     },
@@ -936,7 +1029,8 @@
       "type": "Drama",
       "catID": "1",
       "description": "A classic American movie.",
-      "price": 3000,
+      "price": 10000,
+      "stock": 25,
       "featured": false,
       "active": false
     }

@@ -32,6 +32,7 @@ export class OrderListComponent implements OnInit {
 
 
   orderList$: BehaviorSubject<Order[]> = this.orderService.list$;
+  updating: boolean = true
 
   phrase: string = '';
   filterKey = 'id';
@@ -47,6 +48,15 @@ export class OrderListComponent implements OnInit {
 
   ngOnInit(): void {
     this.orderService.getAll();
+    this.updatingValues();
+  }
+
+  updatingValues() {
+    this.orderList$.subscribe(item => {
+      if (item.length > 0) {
+        this.updating = false;
+      }
+    })
   }
 
   onDelete(order: Order): void {
@@ -61,18 +71,18 @@ export class OrderListComponent implements OnInit {
     this.filterKey = (event.target as HTMLInputElement).value;
   }
 
-  setDefault(key):boolean {
+  setDefault(key): boolean {
     return key === "id" ? true : false;
   }
 
-  originalOrder = (a: KeyValue<number,string>, b: KeyValue<number,string>): number => {
+  originalOrder = (a: KeyValue<number, string>, b: KeyValue<number, string>): number => {
     return 0;
   }
 
-  onColumnSelect(key: string) : void {
+  onColumnSelect(key: string): void {
     this.sorterKey = key;
     let clicked = true;
-    
+
     if (this.sortOrder[key] === "none" && clicked) {
       this.erasesortDirections();
       this.sortOrder[key] = "ascending"
@@ -94,7 +104,7 @@ export class OrderListComponent implements OnInit {
     this.sortDirection = this.sortOrder[key];
     console.log(this.sortDirection);
   }
-  
+
   erasesortDirections(): void {
     for (let key in this.sortOrder) {
       this.sortOrder[key] = "none";

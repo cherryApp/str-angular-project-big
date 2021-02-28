@@ -36,3 +36,9 @@ th {
 	td:nth-of-type(4):before { content: "Status"; }
 	td:nth-of-type(5):before { content: "Options"; }
 }
+.play{
+	background-color: yellowgreen;
+}
+.filter-field:hover{
+	background-color: rgba(119, 136, 153, .2);
+}

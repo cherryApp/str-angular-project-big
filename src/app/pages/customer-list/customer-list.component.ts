@@ -12,6 +12,7 @@ import { BehaviorSubject } from 'rxjs';
 export class CustomerListComponent implements OnInit {
 
   customerList$: BehaviorSubject<Customer[]> = this.customerService.list$;
+  updating: boolean = true
 
   phrase: string = '';
   filterKey = 'firstName';
@@ -29,6 +30,15 @@ export class CustomerListComponent implements OnInit {
 
   ngOnInit(): void {
     this.customerService.getAll();
+    this.updatingValues();
+  }
+
+  updatingValues() {
+    this.customerList$.subscribe(item => {
+      if (item.length > 0) {
+        this.updating = false;
+      }
+    })
   }
 
   onDelete(customer: Customer): void {
@@ -40,29 +50,29 @@ export class CustomerListComponent implements OnInit {
   }
 
   onChangeKey(event: Event): void {
-    if(this.attributes[this.filterKey].type==='check'){
+    if (this.attributes[this.filterKey].type === 'check') {
       this.phrase = '';
     }
     const value = (event.target as HTMLInputElement).value.split(',');
     this.filterKey = value[0];
     this.filterSubKey = this.attributes[this.filterKey].obj;
-    if(value.length>1){
-      this.phrase = value[1]==='1'? 't': 'f';
-    } 
+    if (value.length > 1) {
+      this.phrase = value[1] === '1' ? 't' : 'f';
+    }
   }
 
-  setDefault(key: string):boolean {
+  setDefault(key: string): boolean {
     return key === "firstName" ? true : false;
   }
 
-  originalOrder = (a: KeyValue<number,string>, b: KeyValue<number,string>): number => {
+  originalOrder = (a: KeyValue<number, string>, b: KeyValue<number, string>): number => {
     return 0;
   }
 
   onColumnSelect(key: string): void {
-    for(let k in this.attributes){
-      if(k===key){
-        this.attributes[k].order = ['','descending'].includes(this.attributes[k].order)? 'ascending': 'descending';
+    for (let k in this.attributes) {
+      if (k === key) {
+        this.attributes[k].order = ['', 'descending'].includes(this.attributes[k].order) ? 'ascending' : 'descending';
         this.sorterKey = key;
         this.sorterSubKey = this.attributes[key].obj;
         this.sortDirection = this.attributes[key].order;
