@@ -36,6 +36,12 @@ export class BillService {
     return this.http.delete<Bill>(`${this.billsUrl}/${bill.id}`)
   }
 
+  // remove(bill: Bill): void {
+  //   this.http
+  //     .delete<Bill>(`${this.billsUrl}/${bill.id}`)
+  //     .subscribe(() => this.getAll());
+  // }
+
 
 }
 
