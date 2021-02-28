@@ -3,7 +3,7 @@
       <form #billForm="ngForm" (ngSubmit)="onUpdate(bill)">
         <div class="form-group">
           <label for="orderId">Rendelés ID</label>
-          <input name="orderId" id="orderId" [(ngModel)]="bill.orderID" type="text" class="form-control" required>
+          <input name="orderId" id="orderId" [(ngModel)]="bill.orderID" type="number" class="form-control" required>
           <div [hidden]="billForm.controls.orderId?.valid || billForm.controls.orderId?.pristine" class="error-message">
             Hiányzó típus!
           </div>
@@ -17,9 +17,10 @@
         </div>
         <div class="form-group">
           <label for="status">Státusz</label>
-          <select class="form-control" name="status" id="status" [(ngModel)]="bill.status" required>
-            <option>New</option>
-            <option>Paid</option>
+          <select class="form-control" name="status" id="status" [(ngModel)]="bill.status"
+          pattern="^(new|paid)$" required>
+            <option value="new">New</option>
+            <option value="paid">Paid</option>
           </select>
           <div [hidden]="billForm.controls.status?.valid || billForm.controls.status?.pristine" class="error-message">
             Hiányzó leírás!
