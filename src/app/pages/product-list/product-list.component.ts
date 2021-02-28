@@ -1,7 +1,8 @@
 import { KeyValue } from '@angular/common';
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Category, CategoryAttributes } from 'app/model/category';
-import { Product, ProductAttributes } from 'app/model/product';
+import { Product, ProductAttributes, ProductSummaryData } from 'app/model/product';
 import { CategoryService } from 'app/services/category.service';
 import { ColumnSortOrder, ProductService } from 'app/services/product.service';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -42,7 +43,6 @@ export class ProductListComponent implements OnInit {
   attributes = new ProductAttributes();
 
   constructor(private productService: ProductService, private categoryService: CategoryService) {
-
   }
 
   ngOnInit(): void {
@@ -55,7 +55,9 @@ export class ProductListComponent implements OnInit {
       if (item.length > 0) {
         this.updating = false;
       }
+      this.getData(item);
     })
+
   }
 
   onDelete(product: Product): void {
@@ -119,5 +121,32 @@ export class ProductListComponent implements OnInit {
 
   sortOrder = new ColumnSortOrder();
 
+  scroll(id: string) {
+    const elmnt = document.getElementById(id);
+    elmnt.scrollIntoView(false);
+  }
 
+  //variables and functions for summaries//
+
+  productList: Product[] = [];
+  productSummaryData = new ProductSummaryData();
+
+  getData(products: Product[]): void {
+    this.productList = products;
+    for (let i = 0; i<this.productList.length; i++)
+    {
+      this.productSummaryData.totalProducts++
+      this.productSummaryData.totalItems = this.productSummaryData.totalItems + this.productList[i].stock
+      this.productSummaryData.totalValue = this.productSummaryData.totalValue + (this.productList[i].price*this.productList[i].stock)
+      let category = Number(this.productList[i].catID)-1
+      this.productSummaryData.totalinCategories[category]++;
+      if (this.productList[i].active) {
+        this.productSummaryData.totalActive++
+      }
+      if (this.productList[i].featured) {
+        this.productSummaryData.totalFeatured++
+      }
+    }
+    console.log(this.productSummaryData);
+  }
 }

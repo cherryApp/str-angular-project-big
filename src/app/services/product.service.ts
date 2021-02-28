@@ -67,6 +67,7 @@ export class ColumnSortOrder {
   catID: string = "none";
   description: string = "none";
   price: string = "none";
+  stock: string = "none";
   featured: string = "none";
   active: string = "none";
 }

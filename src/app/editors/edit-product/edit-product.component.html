@@ -39,15 +39,15 @@
                                     </select>
                                 </div>
 
-                                <!-- <div class="form-group">
-                                    <label for="catID">{{attributes.catID}}</label>
-                                    <input name="catID" [(ngModel)]="product.catID" type="number" class="form-control"
-                                        pattern="[1-5]" required>
-                                    <div [hidden]="productForm.controls.catID?.valid || productForm.controls.catID?.pristine"
+                                <div class="form-group">
+                                    <label for="stock">{{attributes.stock}}</label>
+                                    <input name="stock" [(ngModel)]="product.stock" type="number" class="form-control"
+                                        pattern="[0-9]*" required>
+                                    <div [hidden]="productForm.controls.stock?.valid || productForm.controls.stock?.pristine"
                                         class="error-message">
-                                        The {{attributes.catID}} must be a number between 1-5.
+                                        The {{attributes.stock}} must be a number.
                                     </div>
-                                </div> -->
+                                </div>
                                 <div class="form-group">
                                     <label for="description">{{attributes.description}}</label>
                                     <input name="description" [(ngModel)]="product.description" type="text"
