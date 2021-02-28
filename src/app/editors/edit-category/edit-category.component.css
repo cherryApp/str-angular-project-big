@@ -32,4 +32,7 @@
 .nemvalami{
   display: inherit;
 }
-  
+small{
+  font-style: oblique;
+  color: red;
+}

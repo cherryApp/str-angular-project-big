@@ -29,10 +29,10 @@
                           </div>
                           <div class="col-md-5 mb-4">
 
-                            <label  for="description">Description</label>
+                            <label  class=" bmd-label-floating" for="description">Description</label>
                             <input  name="description" type="text" id="description" #CatDesc="ngModel"
                             [(ngModel)]="currentCategory.description" placeholder="Category description"
-                            pattern="^[A-Z][A-Za-z\s,:\.0-9]+$" required="" class="form-control ng-pristine ng-invalid ng-touched"
+                            pattern="^[A-Z][A-Za-z\s,:\.0-9\-]+$" required="" class="form-control ng-pristine ng-invalid ng-touched"
                             >
                             <!-- {{CatDesc.value}} -->
                             <small [hidden]="CatDesc.valid || CatDesc.pristine" class="">
@@ -41,15 +41,16 @@
                           </div>
                           <div class="col-md-2" [class]="currentCategory.id==0 ? 'valami' : 'nemvalami'">
                             <button type="submit" [disabled]="!categoryForm.valid" 
+                            [class]="!categoryForm.valid ? 'btn-danger' : 'btn-success'"
                             [hidden]="currentCategory.id==0" 
-                            class="btn btn-danger pull-right">Category update                            
+                            class="btn  pull-right">Category update                            
                             </button></div>
 
                             <div class="col-md-2" >
                             <button type="submit" [disabled]="!categoryForm.valid" 
                             [hidden]="currentCategory.id>0"
-                            
-                            class="btn btn-danger pull-right">New Category                            
+                            [class]="!categoryForm.valid ? 'btn-danger' : 'btn-success'"
+                            class="btn  pull-right">New Category                            
                             </button></div>
                         </div>
                       </div>
@@ -57,6 +58,7 @@
                      <!-- {{categoryForm.valid}} -->
                      
                     </form>
+                    <button (click)="backToCategory()" type="button" class="btn btn-light"><i class="fa fa-caret-left"></i></button>
 
                    
                   </div> 
