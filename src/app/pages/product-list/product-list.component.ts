@@ -108,7 +108,7 @@ export class ProductListComponent implements OnInit {
     }
 
     this.sortDirection = this.sortOrder[key];
-    console.log(this.sortDirection);
+    // console.log(this.sortDirection);
   }
 
   erasesortDirections(): void {
@@ -133,12 +133,11 @@ export class ProductListComponent implements OnInit {
 
   getData(products: Product[]): void {
     this.productList = products;
-    for (let i = 0; i<this.productList.length; i++)
-    {
+    for (let i = 0; i < this.productList.length; i++) {
       this.productSummaryData.totalProducts++
       this.productSummaryData.totalItems = this.productSummaryData.totalItems + this.productList[i].stock
-      this.productSummaryData.totalValue = this.productSummaryData.totalValue + (this.productList[i].price*this.productList[i].stock)
-      let category = Number(this.productList[i].catID)-1
+      this.productSummaryData.totalValue = this.productSummaryData.totalValue + (this.productList[i].price * this.productList[i].stock)
+      let category = Number(this.productList[i].catID) - 1
       this.productSummaryData.totalinCategories[category]++;
       if (this.productList[i].active) {
         this.productSummaryData.totalActive++
@@ -147,6 +146,6 @@ export class ProductListComponent implements OnInit {
         this.productSummaryData.totalFeatured++
       }
     }
-    console.log(this.productSummaryData);
+    // console.log(this.productSummaryData);
   }
 }

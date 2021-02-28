@@ -18,7 +18,7 @@
       "catID": 5,
       "description": "nulla eget eros elementum pellentesque quisque porta volutpat erat quisque erat eros viverra eget congue eget semper",
       "price": 4194,
-      "stock": 25,
+      "stock": 6,
       "featured": true,
       "active": false
     },
@@ -62,7 +62,7 @@
       "catID": 5,
       "description": "id nisl venenatis lacinia aenean sit amet justo morbi ut odio",
       "price": 875,
-      "stock": 25,
+      "stock": 4,
       "featured": true,
       "active": true
     },
@@ -106,7 +106,7 @@
       "catID": 2,
       "description": "velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat erat quisque erat",
       "price": 968,
-      "stock": 25,
+      "stock": 10,
       "featured": true,
       "active": false
     },
@@ -128,7 +128,7 @@
       "catID": 4,
       "description": "amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum",
       "price": 488,
-      "stock": 25,
+      "stock": 0,
       "featured": true,
       "active": true
     },
@@ -216,7 +216,7 @@
       "catID": 3,
       "description": "nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi nulla ac enim in",
       "price": 2239,
-      "stock": 25,
+      "stock": 1,
       "featured": false,
       "active": true
     },
@@ -337,7 +337,7 @@
       "catID": 1,
       "description": "vel enim sit amet nunc viverra dapibus nulla suscipit ligula in lacus curabitur at ipsum ac tellus semper interdum mauris",
       "price": 448,
-      "stock": 25,
+      "stock": 3,
       "featured": true,
       "active": false
     },
@@ -381,7 +381,7 @@
       "catID": 4,
       "description": "aliquam convallis nunc proin at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum eget vulputate",
       "price": 837,
-      "stock": 25,
+      "stock": 22,
       "featured": false,
       "active": true
     },
@@ -469,7 +469,7 @@
       "catID": 3,
       "description": "quam nec dui luctus rutrum nulla tellus in sagittis dui vel nisl duis ac nibh fusce lacus",
       "price": 957,
-      "stock": 25,
+      "stock": 5,
       "featured": true,
       "active": false
     },
@@ -524,7 +524,7 @@
       "catID": 4,
       "description": "consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices",
       "price": 593,
-      "stock": 25,
+      "stock": 13,
       "featured": false,
       "active": true
     },
@@ -590,7 +590,7 @@
       "catID": 5,
       "description": "ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae mauris viverra diam vitae quam",
       "price": 3341,
-      "stock": 25,
+      "stock": 1,
       "featured": false,
       "active": true
     },
@@ -641,11 +641,11 @@
     {
       "id": 69,
       "name": "House Party: Tonight's the Night",
-      "type": "(no genres listed)",
+      "type": "Drama",
       "catID": 1,
       "description": "et tempus semper est quam pharetra magna ac consequat metus sapien ut nunc vestibulum ante",
       "price": 668,
-      "stock": 25,
+      "stock": 2,
       "featured": true,
       "active": true
     },
@@ -755,7 +755,7 @@
       "catID": 3,
       "description": "in purus eu magna vulputate luctus cum sociis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus",
       "price": 1431,
-      "stock": 25,
+      "stock": 20,
       "featured": false,
       "active": false
     },
@@ -876,7 +876,7 @@
       "catID": 5,
       "description": "cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus",
       "price": 1050,
-      "stock": 25,
+      "stock": 0,
       "featured": false,
       "active": true
     },
@@ -1008,7 +1008,7 @@
       "catID": "3",
       "description": "A classic American movie.",
       "price": 1000,
-      "stock": 25,
+      "stock": 4,
       "featured": false,
       "active": true
     },
