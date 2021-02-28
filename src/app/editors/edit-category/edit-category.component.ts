@@ -46,5 +46,8 @@ export class EditCategoryComponent implements OnInit {
          
     }
   }
+  backToCategory(){
+    this.router.navigateByUrl('category-list');
+  }
 
 }
