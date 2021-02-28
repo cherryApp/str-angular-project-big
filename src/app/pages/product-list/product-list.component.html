@@ -52,10 +52,10 @@
                                 </thead>
                                 <tbody>
                                     <tr
-                                        *ngFor="let product of productList$ | async | filter:phrase:filterKey | sorter:sorterKey:sortDirection">
+                                        *ngFor="let product of productList | filter:phrase:filterKey | sorter:sorterKey:sortDirection">
                                         <ng-container *ngFor="let attribute of attributes | keyvalue:originalOrder">
                                             <td
-                                                *ngIf="attribute.key!=='featured' && attribute.key!=='active' && attribute.key!=='catID'">
+                                                *ngIf="attribute.key!=='featured' && attribute.key!=='active' && attribute.key!=='catID' && attribute.key!=='price' ">
                                                 {{product[attribute.key]}}</td>
                                             <td *ngIf="attribute.key==='catID'"
                                                 (click)="getCategory(product[attribute.key])" class="clickable"
@@ -63,6 +63,11 @@
                                                 placement="bottom" triggers="manual" #p="ngbPopover" (click)="p.open()"
                                                 [popoverTitle]="popTitle">
                                                 {{product[attribute.key]}}</td>
+                                            <td *ngIf="attribute.key==='price'">{{ product[attribute.key].toLocaleString('hu-HU', {
+                                                style: 'currency',
+                                                currency: 'HUF',
+                                                maximumFractionDigits: 0
+                                                }) }}</td>
                                             <ng-template #popContent>
                                                 <ng-container *ngIf="category$ | async">
                                                     <div class="card user-card">
@@ -103,8 +108,8 @@
                                                 </button>
                                                 <button class="btn btn-danger" data-toggle="modal"
                                                     data-target="#confirmationDialog"
-                                                    (click)=setProducttoDelete(product)>
-                                                    <i class="fa fa-trash"></i>
+                                                    (click)="setProducttoDelete(product)">
+                                                    <i class="fa fa-trash" [id]="product.id"></i>
                                                 </button>
                                             </div>
                                         </td>
@@ -127,7 +132,11 @@
                                     <tr>
                                         <td>{{productSummaryData.totalProducts}}</td>
                                         <td>{{productSummaryData.totalItems}}</td>
-                                        <td>{{productSummaryData.totalValue}}</td>
+                                        <td>{{ productSummaryData.totalValue.toLocaleString('hu-HU', {
+                                            style: 'currency',
+                                            currency: 'HUF',
+                                            maximumFractionDigits: 0
+                                          }) }}</td>
                                         <td>{{productSummaryData.totalActive}}</td>
                                         <td>{{productSummaryData.totalFeatured}}</td>
                                         <td>{{productSummaryData.totalinCategories}}</td>
