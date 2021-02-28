@@ -1,1 +1,33 @@
-<p>edit-bill works!</p>
+<div class="row">
+    <div *ngIf="bill" class="col-6 offset-3 mt-5">
+      <form #billForm="ngForm" (ngSubmit)="onUpdate(bill)">
+        <div class="form-group">
+          <label for="orderId">Rendelés ID</label>
+          <input name="orderId" id="orderId" [(ngModel)]="bill.orderID" type="text" class="form-control" required>
+          <div [hidden]="billForm.controls.orderId?.valid || billForm.controls.orderId?.pristine" class="error-message">
+            Hiányzó típus!
+          </div>
+        </div>        
+        <div class="form-group">
+          <label for="amount">Összeg</label>
+          <input name="amount" id="amount" rows="2" class="form-control" [(ngModel)]="bill.amount" type="number" required>
+          <div [hidden]="billForm.controls.amount?.valid || billForm.controls.amount?.pristine" class="error-message">
+            Hiányzó leírás!
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="status">Státusz</label>
+          <select class="form-control" name="status" id="status" [(ngModel)]="bill.status" required>
+            <option>New</option>
+            <option>Paid</option>
+          </select>
+          <div [hidden]="billForm.controls.status?.valid || billForm.controls.status?.pristine" class="error-message">
+            Hiányzó leírás!
+          </div>
+        </div>
+        <button [disabled]="billForm.invalid || updating" type="submit" class="btn btn-primary btn-block">
+          <i *ngIf="!updating" class="material-icons">save</i>
+        </button>
+      </form>
+    </div>
+  </div>
