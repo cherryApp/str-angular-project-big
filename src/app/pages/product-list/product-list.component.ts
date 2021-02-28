@@ -1,6 +1,5 @@
 import { KeyValue } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Category, CategoryAttributes } from 'app/model/category';
 import { Product, ProductAttributes, ProductSummaryData } from 'app/model/product';
 import { CategoryService } from 'app/services/category.service';
@@ -18,10 +17,25 @@ export class ProductListComponent implements OnInit {
   product = new Product();
 
   setProducttoDelete(product: Product): void {
+    this.animateDeleteIcon(product);
     this.product = product;
     $('#confirmationDialog').on('shown.bs.modal', function () {
       $('#cancelButton').trigger('focus')
     })
+    $('#confirmationDialog').on('hidden.bs.modal', function () {
+      let deleteIcon = document.querySelector(".fa-spinner");
+      if (deleteIcon !== null) {
+        deleteIcon.classList.remove("fa-spinner", "fa-pulse");
+        deleteIcon.classList.add("fa-trash");
+      }
+    })
+  }
+
+  animateDeleteIcon(product: Product): void {
+    let buttonID = '' + product.id;
+    let deleteIcon = document.getElementById(buttonID);
+    deleteIcon.classList.remove("fa-trash");
+    deleteIcon.classList.add("fa-spinner", "fa-pulse");
   }
 
   category = new Category();
@@ -45,13 +59,12 @@ export class ProductListComponent implements OnInit {
   attributes = new ProductAttributes();
 
   constructor(private productService: ProductService, private categoryService: CategoryService) {
-    
-}
+
+  }
 
   ngOnInit(): void {
     this.productService.getAll();
     this.updatingValues();
-
   }
 
 
@@ -151,4 +164,6 @@ export class ProductListComponent implements OnInit {
     }
 
   }
+
+
 }
