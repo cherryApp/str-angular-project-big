@@ -70,16 +70,20 @@ export class DashboardComponent implements OnInit {
       footer: 'Good job!',
       barChartLabels: ['Customers', 'Products'],
       barChartData: [
-        { data: [10, 10], label: 'All' },
-        { data: [10, 10], label: 'Active' }
+        { data: [0, 0], label: 'All' },
+        { data: [0, 0], label: 'Active' }
       ],
       chartColors: [
         {
-          backgroundColor: '#6200EE',
+          // backgroundColor: '#6200EE',
+          backgroundColor: '#525252',
+          // hoverBackgroundColor: '#1c00db'
           hoverBackgroundColor: '#1c00db'
         },
         {
-          backgroundColor: '#90ee02',
+          // backgroundColor: '#90ee02',
+          backgroundColor: '#EEE',
+          // hoverBackgroundColor: '#61d800'
           hoverBackgroundColor: '#61d800'
         }],
       barChartType: 'horizontalBar'
@@ -92,17 +96,21 @@ export class DashboardComponent implements OnInit {
       footer: 'Make better job!',
       barChartLabels: ['Orders', 'Bills'],
       barChartData: [
-        { data: [10, 10], label: 'All' },
-        { data: [10, 10], label: 'Paid' }
+        { data: [0, 0], label: 'All' },
+        { data: [0, 0], label: 'Paid' }
       ],
       chartColors: [
         {
-          backgroundColor: '#d602ee',
-          hoverBackgroundColor: '#a200e0'
+          // backgroundColor: '#d602ee',
+          backgroundColor: '#EEE',
+          // hoverBackgroundColor: '#a200e0'
+          hoverBackgroundColor: '#f95d6a'
         },
         {
-          backgroundColor: '#ffde03',
-          hoverBackgroundColor: '#f95d6a'
+          // backgroundColor: '#ffde03',
+          backgroundColor: '#525252',
+          // hoverBackgroundColor: '#f95d6a'
+          hoverBackgroundColor: '#a200e0'
         }],
       barChartType: 'bar'
     }
@@ -125,17 +133,17 @@ export class DashboardComponent implements OnInit {
     this.billService.getAll();
 
     // Cards
-    this.cardFiller(this.productList$, this.cards, 0, 'content', true, true, '', 'active');
-    this.cardFiller(this.productList$, this.cards, 0, 'footer', true, true, 'Featured Products: ', 'featured');
+    this.cardFiller(this.productList$, this.cards, 0, 'content', 'true', true, '', 'active');
+    this.cardFiller(this.productList$, this.cards, 0, 'footer', 'less', 5, 'Nearly out of stock: ', 'stock');
 
-    this.cardFiller(this.customerList$, this.cards, 1, 'content', true, true, '', 'active');
-    this.cardFiller(this.customerList$, this.cards, 1, 'footer', true, 'London', 'Customers from London: ', 'address', 'city');
+    this.cardFiller(this.customerList$, this.cards, 1, 'content', 'true', true, '', 'active');
+    this.cardFiller(this.customerList$, this.cards, 1, 'footer', 'true', 'London', 'Customers from London: ', 'address', 'city');
 
-    this.cardFiller(this.orderList$, this.cards, 2, 'content', false, 'paid', '', 'status');
-    this.cardFiller(this.orderList$, this.cards, 2, 'footer', true, 'new', 'New Orders: ', 'status');
+    this.cardFiller(this.orderList$, this.cards, 2, 'content', 'false', 'paid', '', 'status');
+    this.cardFiller(this.orderList$, this.cards, 2, 'footer', 'true', 'new', 'New Orders: ', 'status');
 
-    this.cardFiller(this.billList$, this.cards, 3, 'content', false, 'paid', '', 'status');
-    this.cardFiller(this.billList$, this.cards, 3, 'footer', true, 'paid', 'Paid Bills: ', 'status');
+    this.cardFiller(this.billList$, this.cards, 3, 'content', 'false', 'paid', '', 'status');
+    this.cardFiller(this.billList$, this.cards, 3, 'footer', 'true', 'paid', 'Paid Bills: ', 'status');
 
     // Charts
     this.getCounts(this.customerList$, this.charts, 0, 'barChartData', 0, 'data', 0);
@@ -151,13 +159,25 @@ export class DashboardComponent implements OnInit {
     this.getOrdersPercentage()
   }
 
-  cardFiller(from: BehaviorSubject<any[]>, targetPlace, targetIndex: number, targetParam: string, bool: boolean, isWhat: boolean | string, bindingString: string, param1: string, param2?: string,) {
+  cardFiller(from: BehaviorSubject<any[]>, targetPlace, targetIndex: number, targetParam: string, bool: string, isWhat: boolean | string | number, bindingString: string, param1: string, param2?: string,) {
     from.subscribe(item => {
-      if (bool === true) {
+      if (bool === 'true') {
         if (param2) {
           targetPlace[targetIndex][targetParam] = bindingString + item.filter(filtered => filtered[param1][param2] === isWhat).length;
         } else {
           targetPlace[targetIndex][targetParam] = bindingString + item.filter(filtered => filtered[param1] === isWhat).length;
+        }
+      } else if (bool === 'more') {
+        if (param2) {
+          targetPlace[targetIndex][targetParam] = bindingString + item.filter(filtered => filtered[param1][param2] > isWhat).length;
+        } else {
+          targetPlace[targetIndex][targetParam] = bindingString + item.filter(filtered => filtered[param1] > isWhat).length;
+        }
+      } else if (bool === 'less') {
+        if (param2) {
+          targetPlace[targetIndex][targetParam] = bindingString + item.filter(filtered => filtered[param1][param2] < isWhat).length;
+        } else {
+          targetPlace[targetIndex][targetParam] = bindingString + item.filter(filtered => filtered[param1] < isWhat).length;
         }
       } else {
         if (param2) {
