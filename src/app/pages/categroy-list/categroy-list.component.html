@@ -12,9 +12,9 @@
                             Create new Category
                         </button>
                     </div>
-                    <div class="card-body col-6 d-flex">
-                        <input name="phrase" (keyup)="onChangePhrase($event)"
-                            class="form-control" type="text"
+                    <div class="card-body col-md-6 d-flex">
+                        <input name="phrase" (keyup)="onChangePhrase($event)" 
+                            class="form-control filter-field" type="text"
                             placeholder="Enter filtering phrase...">
                         <select class="custom-select ml-2"
                             (change)="onChangeKey($event)">
@@ -48,7 +48,7 @@
                                             {{ category[attribute.key] }}</td>                                            
                                         <td>
                                             <div class="btn-group">
-                                                <div class="btn btn-info" (click)="speak(category.name+category.description)" ><i class="fa  fa-play-circle"></i></div>
+                                                <div class="btn btn-info play" (click)="speak(category.name+category.description)" ><i class="fa  fa-play-circle"></i></div>
                                                 <button [routerLink]="['/category/',category.id]" 
                                                 
                                                     class="btn btn-info">
