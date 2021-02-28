@@ -57,10 +57,19 @@
             Hiányzó adat!
           </div>
         </div>
+        <div class="form-check my-3">
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" name="active" [(ngModel)]="customer.active">Aktív
+            <span class="form-check-sign">
+              <span class="check"></span>
+            </span>
+          </label>
+        </div>
         <div class="btn-group">
         </div>
         <button [disabled]="customerForm.invalid || updating" type="submit" class="btn btn-primary btn-block btn-lg">
-          <i  class="material-icons">save</i>
+          <i *ngIf="!updating" class="material-icons">save</i>
+          <i *ngIf="updating" class="material-icons refresh">cached</i>
         </button>
       </form>
     </div>
