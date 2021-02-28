@@ -1,11 +1,12 @@
 import { KeyValue } from '@angular/common';
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Category, CategoryAttributes } from 'app/model/category';
 import { Product, ProductAttributes, ProductSummaryData } from 'app/model/product';
 import { CategoryService } from 'app/services/category.service';
 import { ColumnSortOrder, ProductService } from 'app/services/product.service';
 import { BehaviorSubject, Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-product-list',
@@ -33,6 +34,7 @@ export class ProductListComponent implements OnInit {
   }
 
   productList$: BehaviorSubject<Product[]> = this.productService.list$;
+
   updating: boolean = true
 
   phrase: string = '';
@@ -43,19 +45,23 @@ export class ProductListComponent implements OnInit {
   attributes = new ProductAttributes();
 
   constructor(private productService: ProductService, private categoryService: CategoryService) {
-  }
+    
+}
 
   ngOnInit(): void {
     this.productService.getAll();
     this.updatingValues();
+
   }
 
+
   updatingValues() {
+
     this.productList$.subscribe(item => {
       if (item.length > 0) {
         this.updating = false;
+        this.getData(item);
       }
-      this.getData(item);
     })
 
   }
@@ -108,7 +114,6 @@ export class ProductListComponent implements OnInit {
     }
 
     this.sortDirection = this.sortOrder[key];
-    // console.log(this.sortDirection);
   }
 
   erasesortDirections(): void {
@@ -125,8 +130,6 @@ export class ProductListComponent implements OnInit {
     const elmnt = document.getElementById(id);
     elmnt.scrollIntoView(false);
   }
-
-  //variables and functions for summaries//
 
   productList: Product[] = [];
   productSummaryData = new ProductSummaryData();
@@ -146,6 +149,6 @@ export class ProductListComponent implements OnInit {
         this.productSummaryData.totalFeatured++
       }
     }
-    // console.log(this.productSummaryData);
+
   }
 }
