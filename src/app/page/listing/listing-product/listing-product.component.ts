@@ -5,6 +5,7 @@ import { Product } from 'src/app/model/product';
 import { ConfigService, ITableCol } from 'src/app/service/config.service';
 import { ProductService } from 'src/app/service/product.service';
 import { ToastrService } from 'ngx-toastr';
+import { StatisticsService } from 'src/app/service/statistics.service';
 
 @Component({
   selector: 'app-listing-product',
@@ -17,6 +18,7 @@ export class ListingProductComponent implements OnInit {
     private router: Router,
     private config: ConfigService,
     private toastr: ToastrService,
+    private statisticsService: StatisticsService
   ) { }
 
   productList: BehaviorSubject<Product[]> = this.productService.list$;
@@ -35,8 +37,11 @@ export class ListingProductComponent implements OnInit {
   columnKey: string = ''
   firstSorting = true;
 
+  numberOfActiveProducts$: BehaviorSubject<number> = this.statisticsService.numberOfActiveProducts$;
+
   ngOnInit(): void {
     this.productService.getAll();
+    this.statisticsService.subscribeForData();
   }
 
   onRemove(product: Product): void {
