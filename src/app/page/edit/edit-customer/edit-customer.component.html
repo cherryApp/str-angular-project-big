@@ -5,14 +5,14 @@
           <label for="">Keresztnév</label>
           <input name="firstName" [(ngModel)]="customer.firstName" type="text" class="form-control" pattern="^[A-ZÁÉÓÖŐÜÚŰ][a-záéüöóőú]{1,10}" required>
           <div [hidden]="customerForm.controls.firstName?.valid || customerForm.controls.firstName?.pristine" class="error-message">
-            Hiányzó adat!
+            Hiányzó adat! A keresztnévnek nagy betűvel kell kezdődnie!
           </div>
         </div>
         <div class="form-group">
           <label for="">Vezetéknév</label>
           <input name="lastName" [(ngModel)]="customer.lastName" type="text" class="form-control" pattern="^[A-ZÁÉÓÖŐÜÚŰ][a-záéüöóőú]{1,10}" required>   
           <div [hidden]="customerForm.controls.lastName?.valid || customerForm.controls.lastName?.pristine" class="error-message">
-            Hiányzó adat!
+            Hiányzó adat! A vezetéknévnek nagy betűvel kell kezdődnie!
           </div>       
         </div>
         <div class="form-group">
@@ -33,14 +33,14 @@
           <label for="">Ország</label>
           <input name="country" [(ngModel)]="customer.address.country" type="text" class="form-control" pattern="[A-Z][a-záéóöőúüű]{3,15}" required>
           <div [hidden]="customerForm.controls.country?.valid || customerForm.controls.country?.pristine" class="error-message">
-            Hiányzó adat!
+            Hiányzó adat! Nagy betűvel kell kezdődnie!
           </div>
         </div>
         <div class="form-group">
           <label for="">Város</label>
           <input name="city" [(ngModel)]="customer.address.city" type="text" class="form-control" pattern="[A-Z][a-záéóöőúüű]{2,15}" required>   
           <div [hidden]="customerForm.controls.city?.valid || customerForm.controls.city?.pristine" class="error-message">
-            Hiányzó adat!
+            Hiányzó adat! Nagy betűvel kell kezdődnie!
           </div>       
         </div>
         <div class="form-group">
