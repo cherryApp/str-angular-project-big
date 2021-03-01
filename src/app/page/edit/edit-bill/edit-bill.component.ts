@@ -8,7 +8,7 @@ import { BillService } from 'src/app/service/bill.service';
 @Component({
   selector: 'app-edit-bill',
   templateUrl: './edit-bill.component.html',
-  styleUrls: ['./edit-bill.component.scss']
+  styleUrls: ['../common/edit.scss']
 })
 export class EditBillComponent implements OnInit {
 
