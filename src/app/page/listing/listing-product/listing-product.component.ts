@@ -21,6 +21,11 @@ export class ListingProductComponent implements OnInit {
     private statisticsService: StatisticsService
   ) { }
 
+  scroll(id: string) {
+    const elmnt = document.getElementById(id);
+
+  }
+
   productList: BehaviorSubject<Product[]> = this.productService.list$;
   cols: ITableCol[] = this.config.productTableCols;
   phrase: string = '';

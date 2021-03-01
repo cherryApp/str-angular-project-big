@@ -7,10 +7,13 @@
         <div class="col-12 row">
             <div class="col-5">
                 <button class="btn btn-success btn-block mt-3 mb-5" [routerLink]="[0]">
-                    <i class="material-icons">add</i>ÚJ TÉTEL LÉTREHOZÁSA
+                    <i class="material-icons">add</i> ÚJ TÉTEL LÉTREHOZÁSA
                 </button>
             </div>
-            <div class="col-3 mt-3 mb-5"><select [(ngModel)]="filterKey" class="custom-select bg-light">
+
+
+            <div class="col-3 mt-3 mb-5">
+                <select [(ngModel)]="filterKey" class="custom-select bg-light">
                     <option *ngFor="let key of filterKeys" [value]="key">
                         {{ key }}
                     </option>
@@ -26,10 +29,12 @@
                     </button>
                 </form>
             </div>
+
+            <div class="col-5 mt-3 mb-5">
+                <button class="btn btn-success my-2 my-sm-0" (click)="scroll('summaries')">STATISZTIKA</button>
+            </div>
         </div>
-        <div *ngIf="numberOfActiveProducts$ | async">
-            ͏͏͏͏͏͏͏<p>Aktív termékek száma: {{ numberOfActiveProducts$ | async }}</p>
-        </div>
+
         <table class="table table-striped">
             <thead class="bg-dark text-light">
                 <tr>
@@ -79,5 +84,25 @@
                 </tr>
             </tbody>
         </table>
+        <div class="table-responsive">
+            <table class="table" id="summaries">
+                <thead class="bg-dark text-light">
+                    <th>Összes termék</th>
+                    <th></th>
+                    <th></th>
+                    <th>Kiemelt termékek</th>
+                    <th>Aktív termékek</th>
+                    <th></th>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+        </div>
+        <div *ngIf="numberOfActiveProducts$ | async">
+            ͏͏͏͏͏͏͏<p>Aktív termékek száma: {{ numberOfActiveProducts$ | async }}</p>
+        </div>
     </div>
+
+
 </div>
