@@ -1,1 +1,37 @@
-<p>edit-bill works!</p>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card d-flex">
+                    <div class="card-header card-header-primary mb-4 w-50 mx-auto">
+                        <ng-container *ngIf="(bill$ | async) as bill">
+                            <h4 *ngIf="bill.id == 0" class="card-title">Create new bill</h4>
+                            <h4 *ngIf="bill.id != 0" class="card-title">Edit bill</h4>
+                        </ng-container>
+                    </div>
+                    <div class="row">
+                        <div *ngIf="(bill$ | async) as bill" class="col-6 offset-3">
+                            <form #billForm="ngForm" (ngSubmit)="onUpdate(billForm, bill)">
+                                <div class="form-group">
+                                    <label for="amount">{{ attributes.amount }}<span class="star"> *</span></label>
+                                    <input name="amount" [(ngModel)]="bill.amount" type="number" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="status">{{ attributes.status }}<span class="star"> *</span></label>
+                                    <select name="status" class="custom-select" [(ngModel)]="bill.status" required>
+                                        <option>new</option>
+                                        <option>paid</option>
+                                    </select>
+                                </div>
+                                <button [disabled]="billForm.invalid" [disabled]="clicked" type="submit"
+                                    class="btn btn-primary btn-block btn-lg">
+                                    <i id="saveicon" class="fa fa-save"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
