@@ -13,8 +13,10 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Category[]> {
-    return this.http.get<Category[]>(this.apiUrl);
+  getAll(): void {
+    this.http.get<Category[]>(this.apiUrl).subscribe(
+      data => this.categoryList$.next(data)
+    )
   }
 
   getOneById(id: number | string): Observable<Category> {
@@ -34,7 +36,9 @@ export class CategoryService {
     return this.http.patch<Category>(`${this.apiUrl}/${category.id}`, category);
   }
 
-  remove(category: Category): Observable<Category> {
-    return this.http.delete<Category>(`${this.apiUrl}/${category.id}`);
+  remove(item: Category): void {
+    this.http.delete<Category>(`${this.apiUrl}/${item.id}`).subscribe(
+      () => this.getAll()
+    );
   }
 }

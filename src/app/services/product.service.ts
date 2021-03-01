@@ -36,7 +36,9 @@ export class ProductService {
     return this.http.patch<Product>(`${this.apiUrl}/${product.id}`, product);
   }
 
-  remove(product: Product): Observable<Product> {
-    return this.http.delete<Product>(`${this.apiUrl}/${product.id}`);
+  remove(product: Product): void {
+    this.http.delete<Product>(`${this.apiUrl}/${product.id}`).subscribe(
+      () => this.getAll()
+    );
   }
 }

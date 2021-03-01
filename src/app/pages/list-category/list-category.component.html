@@ -1,36 +1,30 @@
 <div class="row">
     <div class="col-md-10 offset-1">
-
-      <div class="input-group no-border col-md-5 pb-4">
-        <div class="filter-header">Szűrés: </div>
-        <select [(ngModel)]="filterKey" class="form-control mr-3" style="width: 200px;">
-            <option *ngFor="let fkey of filterKeys" [value]="fkey">{{ fkey }}</option>
-        </select>
-        <input [(ngModel)]="filterPhrase" type="text" value="" class="form-control" placeholder="Filter...">
-      </div>
-      <div class="border d-flex p-3 mb-3 bg-light">
-        <div class="filter-header">Rendezés: </div>
-        <div *ngFor="let skey of filterKeys" class="filter-button" (click)="changeOrder(skey)">{{ skey }}</div>
-        <select [(ngModel)]="sorterDirection" class="form-control mr-3" style="width: 200px;">
-            <option value="1">növekvő</option>
-            <option value="2">csökkenő</option>
-        </select>
-      </div>
-      
       <div class="card">
         <div class="card-header card-header-primary">
           <h4 class="card-title ">Category Table</h4>
-          <p class="card-category"> This is the Category list</p>
+          <div class="d-flex p-2 mb-3 filter__group">
+            <input [(ngModel)]="filterPhrase" class="form-control mr-sm-2 filter__input px-3" type="text" placeholder="Filter..." style="width: 200px;">
+            <select [(ngModel)]="filterKey" class="form-control mr-3 filter__select px-3" style="width: 150px;">
+                <option *ngFor="let fkey of filterKeys" [value]="fkey">{{ fkey }}</option>
+            </select>
+          </div>
         </div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table">
 
               <thead class=" text-primary">
-                <th>id</th>
-                <th>name</th>
-                <th>description</th>
-                <th>actions</th>
+                <th *ngFor="let fkey of filterKeys" [id]="'thead_'+fkey" class="th" (click)="changeOrder(fkey)">
+                  {{ fkey }} 
+                  <span [id]="'arrow_up_'+fkey" class="arrow material-icons md-18">keyboard_arrow_up</span>
+                  <span [id]="'arrow_down_'+fkey" class="arrow material-icons md-18">keyboard_arrow_down</span>
+                </th>
+                <th class="action">
+                  <button type="button" [routerLink]="'/category/0'" class="btn btn-success btn-block">
+                    <i class="fa fa-plus" aria-hidden="true"></i> New Category
+                  </button>
+                </th>
               </thead>
 
               <tbody>
@@ -40,10 +34,10 @@
                   <td>{{ category.description }}</td>
                   <td>
                     <div class="btn-group" role="group">
-                      <button type="button" rel="tooltip" title="Edit Customer" class="btn btn-primary btn-link btn-sm">
+                      <button type="button" [routerLink]="'/category/'+category.id" rel="tooltip" title="Edit this Category" class="btn btn-primary btn-link btn-sm">
                         <i class="material-icons">edit</i>
                       </button>
-                      <button type="button" rel="tooltip" title="Remove Customer" class="btn btn-danger btn-link btn-sm">
+                      <button type="button" (click)="deleteItem(category)" rel="tooltip" title="Remove this Category" class="btn btn-danger btn-link btn-sm">
                         <i class="material-icons">close</i>
                       </button>
                     </div>
