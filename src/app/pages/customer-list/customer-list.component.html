@@ -14,27 +14,31 @@
                         </button>
                     </div>
                     <div class="card-body col-6 d-flex">
-                        <input name="phrase" (keyup)="onChangePhrase($event)"
-                            class="form-control" type="text"
+                        <input name="phrase" (keyup)="onChangePhrase($event)" [value]="phrase" [ngClass]="{'hidden': phraseHidden}" class="form-control" type="text"
                             placeholder="Enter filtering phrase...">
-                        <select class="custom-select ml-2"
-                            (change)="onChangeKey($event)">
-                            <ng-container
-                                *ngFor="let attribute of attributes | keyvalue:originalOrder">
-                                <option *ngIf="attribute.value.type!='check'"
-                                    [value]="attribute.key"
-                                    [selected]="setDefault(attribute.key)">
-                                    Filter by {{attribute.value.title}}</option>
-                                <option *ngIf="attribute.value.type==='check'"
-                                    [value]="attribute.key+',1'"
-                                    [selected]="setDefault(attribute.key)">
-                                    {{attribute.value.title}} is true</option>
-                                <option *ngIf="attribute.value.type==='check'"
-                                    [value]="attribute.key+',0'"
-                                    [selected]="setDefault(attribute.key)">
-                                    {{attribute.value.title}} is false</option>
+                        <select class="custom-select ml-2" (change)="onChangeKey($event)">
+                            <ng-container *ngFor="let attribute of attributes">
+                                <option *ngIf="attribute.type!='check'" [value]="attribute.key" [selected]="setDefault(attribute.key)">Filter by {{attribute.title}}</option>
+                                <option *ngIf="attribute.type==='check'" [value]="attribute.key+',1'" [selected]="setDefault(attribute.key)">{{attribute.title}} is true</option>
+                                <option *ngIf="attribute.type==='check'" [value]="attribute.key+',0'" [selected]="setDefault(attribute.key)">{{attribute.title}} is false</option>
                             </ng-container>
                         </select>
+                    
+                        <label for="search" class="ml-3 mr-2">Pagesize: </label>
+                        <select class="custom-select width-3rem" [value]="pagination.pageSize" (change)="pagination.onChangePageSize($event)">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                        </select>
+                        <label for="page" class="ml-2">Page: </label>
+                        <a class="page-link" (click)="pagination.onNextPage(0)" title="first"><span class="material-icons">first_page</span></a>
+                        <a class="page-link" (click)="pagination.onNextPage(-1)" title="previous"><span class="material-icons">chevron_left</span></a>
+                        <select id="page" class="custom-select width-3rem" [value]="pagination.page" (change)="pagination.onChangePage($event)">
+                            <option *ngFor="let i of pagination.pages" [value]="i">{{ i }}</option>
+                        </select>
+                        <a class="page-link" (click)="pagination.onNextPage(1)" title="next"><span class="material-icons">chevron_right</span></a>
+                        <a class="page-link" (click)="pagination.onNextPage(9999)" title="last"><span class="material-icons">last_page</span></a>
                     </div>
                     <div *ngIf="updating" class="d-flex justify-content-center">
                         <mat-spinner></mat-spinner>
@@ -43,32 +47,19 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class="text-primary">
-                                    <th *ngFor="let attribute of attributes | keyvalue:originalOrder"
-                                        (click)="onColumnSelect(attribute.key)">
-                                        {{attribute.value.title}}
-                                        <span
-                                            *ngIf="attribute.value.order === 'ascending'"
-                                            class="material-icons"><i
-                                                class="fa fa-angle-up"></i></span>
-                                        <span
-                                            *ngIf="attribute.value.order === 'descending'"
-                                            class="material-icons"><i
-                                                class="fa fa-angle-down"></i></span>
+                                    <th *ngFor="let attribute of attributes" (click)="onColumnSelect(attribute.key)">
+                                        <span draggable="true" (dragstart)="drag($event)" (dragover)="allowDrop($event)" (drop)="drop($event)">{{attribute.title}}</span>
+                                        <span *ngIf="attribute.order === 'ascending'"  class="material-icons"><i class="fa fa-angle-up"></i></span>
+                                        <span *ngIf="attribute.order === 'descending'" class="material-icons"><i class="fa fa-angle-down"></i></span>
                                     </th>
-                                    <th>Buttons</th>
+                                    <th>Actions</th>
                                 </thead>
                                 <tbody>
-                                    <tr
-                                        *ngFor="let customer of customerList$ | async | filter:phrase:filterKey:filterSubKey | sorter:sorterKey:sortDirection:sorterSubKey">
-                                        <td
-                                            *ngFor="let attribute of attributes | keyvalue:originalOrder">
-                                            <span
-                                                *ngIf="attribute.value.type==='text' && !attribute.value.obj">{{customer[attribute.key]}}</span>
-                                            <span
-                                                *ngIf="attribute.value.type==='text' && attribute.value.obj">{{customer[attribute.value.obj][attribute.key]}}</span>
-                                            <span
-                                                *ngIf="attribute.value.type==='check' && customer[attribute.key]"
-                                                class="material-icons">check</span>
+                                    <tr *ngFor="let customer of customerList$ | async | filter:phrase:filterKey:filterSubKey:pagination | sorter:sorterKey:sortDirection:sorterSubKey | slice:((pagination.page-1)*pagination.pageSize):(pagination.page*pagination.pageSize)">
+                                        <td *ngFor="let attribute of attributes">
+                                            <span *ngIf="attribute.type==='text' && !attribute.obj">{{customer[attribute.key]}}</span>
+                                            <span *ngIf="attribute.type==='text' && attribute.obj">{{customer[attribute.obj][attribute.key]}}</span>
+                                            <span *ngIf="attribute.type==='check' && customer[attribute.key]" class="material-icons">check</span>
                                         </td>
                                         <td>
                                             <div class="btn-group special">

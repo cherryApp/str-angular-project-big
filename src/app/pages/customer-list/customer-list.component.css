@@ -19,6 +19,18 @@ table {
     padding-right: 0;
 }
 
+.hidden {
+	visibility: hidden;
+}
+.width-3rem {
+	width: 3rem;
+}
+.page-link {
+	cursor: pointer;
+	padding: 8px 4px;
+	user-select: none;
+}
+
 @media only screen and (max-width: 768px)  {
 
 	table, thead, tbody, th, td, tr { 

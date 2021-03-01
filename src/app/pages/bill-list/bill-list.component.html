@@ -8,7 +8,7 @@
                         <p class="card-category">List of bills for orders.</p>
                     </div>
                     <div class="card my-0 px-3">
-                        <button [routerLink]="" class="btn btn-primary my-3">
+                        <button [routerLink]="['bill/'+'0']" class="btn btn-primary my-3">
                             Create new bill
                         </button>
                     </div>
@@ -51,13 +51,9 @@
                                             {{ bill[attribute.key] }}</td>
                                         <td>
                                             <div class="btn-group">
-                                                <button [routerLink]=""
+                                                <button [routerLink]="['bill/'+ bill.id]"
                                                     class="btn btn-info">
                                                     <i class="fa fa-pencil"></i>
-                                                </button>
-                                                <button class="btn btn-danger"
-                                                    (click)="onDelete(bill)">
-                                                    <i class="fa fa-trash"></i>
                                                 </button>
                                             </div>
                                         </td>
