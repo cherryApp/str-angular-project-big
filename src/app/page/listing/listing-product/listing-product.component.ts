@@ -23,6 +23,7 @@ export class ListingProductComponent implements OnInit {
 
   scroll(id: string) {
     const elmnt = document.getElementById(id);
+    elmnt?.scrollIntoView(false);
 
   }
 
