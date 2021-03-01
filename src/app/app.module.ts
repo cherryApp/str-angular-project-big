@@ -30,6 +30,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { EditBillComponent } from './editors/edit-bill/edit-bill.component';
 
 @NgModule({
   imports: [
@@ -67,6 +68,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     CategroyListComponent,
     EditCategoryComponent,
     AboutUsComponent,
+    EditBillComponent,
     //EditCustomerComponent,
 
   ],
