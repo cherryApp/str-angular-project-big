@@ -72,5 +72,6 @@ export class ListingOrderComponent implements OnInit {
     this.phrase = (event.target as HTMLInputElement).value;
   }
 
+
 }
 
