@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StatisticsService } from 'src/app/service/statistics.service';
 import { InfoChart } from 'src/app/widget/chart/chart.component';
 import { InfoCard } from '../card/card.component';
 
@@ -72,8 +73,14 @@ export class DashboardComponent implements OnInit {
       footer: 'campaign sent 4 days ago',
     },
   ];
+  numberOfActiveCustomers: number = 0;
+  numberOfActiveProducts: number = 0;
+  numberOfUnpaidOrders: number = 0;
+  sumOfUnpaidBills: number = 0;
 
-  constructor() {}
+  constructor(statistics: StatisticsService) {
+    // this.numberOfActiveCustomers = statistics.numberOfActiveCustomers$.;
+  }
 
   ngOnInit(): void {}
 }
