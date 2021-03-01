@@ -24,6 +24,7 @@ import { ChartComponent } from './common/chart/chart.component';
 import { ChartsModule } from 'ng2-charts';
 import { EditProductComponent } from './editors/edit-product/edit-product.component';
 import { EditCustomerComponent } from './editors/edit-customer/edit-customer.component';
+import { EditOrderComponent } from './editors/edit-order/edit-order.component';
 import { CategroyListComponent } from './pages/categroy-list/categroy-list.component';
 import { EditCategoryComponent } from './editors/edit-category/edit-category.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -63,6 +64,7 @@ import { EditBillComponent } from './editors/edit-bill/edit-bill.component';
     CustomerListComponent,
     DashboardComponent,
     InfoCardComponent,
+    EditOrderComponent,
     ChartComponent,
     EditProductComponent,
     CategroyListComponent,
