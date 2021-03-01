@@ -14,11 +14,19 @@ export class CustomerService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<Customer[]> {
-    return this.http.get<Customer[]>(this.apiUrl);
+  getAll(): void {
+    this.http.get<Customer[]>(this.apiUrl).subscribe(
+      data => this.customerList$.next(data)
+    )
   }
 
+  get(id: number | string): Observable<Customer> {
+    id = parseInt(('' + id), 10);
+    return this.http.get<Customer>(`${this.apiUrl}/${id}`);
+  }
+  
   getOneById(id: number | string): Observable<Customer> {
+    console.log(id);
     id = typeof id === 'string' ? parseInt(id, 10) : id;
     let customer$ : BehaviorSubject<Customer> = new BehaviorSubject<Customer>(new Customer);
     this.http.get<Customer>(`${this.apiUrl}/${id}`).subscribe(
@@ -35,8 +43,10 @@ export class CustomerService {
     return this.http.patch<Customer>(`${this.apiUrl}/${customer.id}`, customer);
   }
 
-  remove(customer: Customer): Observable<Customer> {
-    return this.http.delete<Customer>(`${this.apiUrl}/${customer.id}`);
+  remove(customer: Customer): void {
+    this.http.delete<Customer>(`${this.apiUrl}/${customer.id}`).subscribe(
+      () => this.getAll()
+    );
   }
 
 }

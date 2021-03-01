@@ -13,7 +13,8 @@ import { ConfigService, ITableCol } from 'src/app/services/config.service';
 })
 export class ListCategoryComponent implements OnInit {
 
-  categoryList$: Observable<Category[]> = this.categoryService.getAll();
+  categoryList$: Observable<Category[]> = this.categoryService.categoryList$;
+
   cols: ITableCol[] = this.configService.tableColsCategoryList;
 
   filterPhrase: string = '';
@@ -28,10 +29,29 @@ export class ListCategoryComponent implements OnInit {
     ) { }
  
   ngOnInit(): void {
+    this.categoryService.getAll()
   }
 
-  changeOrder(sortby: string): void {
-    this.sortby = sortby;
+  changeOrder(param: string): void {
+    if (this.sorterDirection === 1)  this.sorterDirection = 2;
+    else this.sorterDirection = 1;
+    this.sortby = param;
+    let allArrow = document.querySelectorAll('.arrow');
+    allArrow.forEach( element => {
+      element.classList.remove('arrow__active');
+    });
+    let allTHead = document.querySelectorAll('.th');
+    allTHead.forEach( element => {
+      element.classList.remove('th__active');
+    });
+    document.querySelector('#thead_'+param)?.classList.add('th__active');
+    if (this.sorterDirection == 1) document.querySelector('#arrow_up_'+param)?.classList.add('arrow__active');
+    else document.querySelector('#arrow_down_'+param)?.classList.add('arrow__active');
+  }
+
+
+  deleteItem(item: Category): void {
+    this.categoryService.remove(item);
   }
 
 }
