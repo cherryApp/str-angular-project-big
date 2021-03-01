@@ -14,25 +14,20 @@
           <div class="table-responsive">
             <table class="table">
               <thead class=" text-primary">
-                <th *ngFor="let fkey of filterKeys" class="th__active" (click)="changeOrder(fkey)">
+                <th *ngFor="let fkey of filterKeys" [id]="'thead_'+fkey" class="th" (click)="changeOrder(fkey)">
                   {{ fkey }} 
-                  <span [id]="'arrow_up_'+fkey" class="arrow material-icons md-18 arrow__active">keyboard_arrow_up</span>
+                  <span [id]="'arrow_up_'+fkey" class="arrow material-icons md-18">keyboard_arrow_up</span>
                   <span [id]="'arrow_down_'+fkey" class="arrow material-icons md-18">keyboard_arrow_down</span>
                 </th>
                 <th>actions</th>
               </thead>
 
               <tbody>
-                <tr *ngFor="let customer of customerList$ | async | filter:filterPhrase:filterKey | sorter:sortby:sorterDirection ">
-                  <td>{{ customer.id }}</td>
-                  <td>{{ customer.firstName }}</td>
-                  <td>{{ customer.lastName }}</td>
-                  <td>{{ customer.email }}</td>
-                  <td>
-                        {{ customer.address.zip+' '+customer.address.country+' '+customer.address.city+' '+customer.address.street }}<br />
-                        <small><i>{{ customer.address.notes }}</i></small>
+                <tr *ngFor="let customer of customerList$ | async | filter:filterPhrase:filterKey | sorter:sortby:sorterDirection">
+                  <td *ngFor="let item of customer | keyvalue : originalOrder">
+                    
+                    {{item.key == 'address' ? getAddress(customer) : item.value}}
                   </td>
-                  <td>{{ customer.active }}</td>
                   <td>
                     <div class="btn-group" role="group">
                       <button type="button" [routerLink]="'/customer/'+customer.id" rel="tooltip" title="Edit this Customer" class="btn btn-primary btn-link btn-sm">

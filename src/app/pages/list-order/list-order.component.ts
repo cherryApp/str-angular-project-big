@@ -34,8 +34,17 @@ export class ListOrderComponent implements OnInit {
     if (this.sorterDirection === 1)  this.sorterDirection = 2;
     else this.sorterDirection = 1;
     this.sortby = param;
-    document.querySelector('#arrow_up_'+param)?.classList.toggle('arrow__active');
-    document.querySelector('#arrow_down_'+param)?.classList.toggle('arrow__active');
+    let allArrow = document.querySelectorAll('.arrow');
+    allArrow.forEach( element => {
+      element.classList.remove('arrow__active');
+    });
+    let allTHead = document.querySelectorAll('.th');
+    allTHead.forEach( element => {
+      element.classList.remove('th__active');
+    });
+    document.querySelector('#thead_'+param)?.classList.add('th__active');
+    if (this.sorterDirection == 1) document.querySelector('#arrow_up_'+param)?.classList.add('arrow__active');
+    else document.querySelector('#arrow_down_'+param)?.classList.add('arrow__active');
   }
 
   originalOrder = (a:any, b:any): number => {
