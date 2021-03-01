@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Customer } from 'src/app/model/customer';
 import { CustomerService } from 'src/app/service/customer.service';
 import { ConfigService, ITableCol } from 'src/app/service/config.service';
+
 @Component({
   selector: 'app-listing-customer',
   templateUrl: './listing-customer.component.html',
@@ -45,6 +46,17 @@ export class ListingCustomerComponent implements OnInit {
     this.columnKey = key;
     this.direction = !this.direction;
   }
+
+  // onColumnSelect(columnName: string): void {
+  //   if (this.firstSorting) {
+  //     this.sortedOrder = 'ASC';
+  //     this.firstSorting = false;
+  //   }
+  //   else this.sortedOrder == 'ASC' ? this.sortedOrder = 'DESC' : this.sortedOrder = 'ASC';
+  //   this.sortedColumn = columnName;
+  //   this.direction = !this.direction;
+  // }
+
   onRemove(customer: Customer): void {
     this.customerService.remove(customer), this.router.navigate(['/customers']);
     this.onDelete.emit(customer);
