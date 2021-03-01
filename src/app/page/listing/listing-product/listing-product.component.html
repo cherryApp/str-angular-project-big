@@ -54,10 +54,12 @@
                     <td>{{product.catId}}</td>
                     <td>{{product.description}}</td>
                     <td>{{product.price}}</td>
-                    <td><input class="form-control form-control-sm" [(ngModel)]="product.featured" type="checkbox"
-                            value="readonly"></td>
+                    <td>
+                        <input class="form-control form-control-sm" [(ngModel)]="product.featured" type="checkbox"
+                            disabled>
+                    </td>
                     <td><input class="form-control form-control-sm" [(ngModel)]="product.active" type="checkbox"
-                            value="readonly"></td>
+                            disabled></td>
                     <td>{{product.operations}}
                         <div class="btn-group">
                             <button [routerLink]="[product.id]" class="btn btn-info">
