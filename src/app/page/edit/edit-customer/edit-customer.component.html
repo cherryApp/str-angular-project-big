@@ -68,8 +68,8 @@
         <div class="btn-group">
         </div>
         <button [disabled]="customerForm.invalid || updating" type="submit" class="btn btn-primary btn-block btn-lg">
-          <i *ngIf="!updating" class="material-icons">save</i>
-          <i *ngIf="updating" class="material-icons refresh">cached</i>
+          <i *ngIf="!updating" class="fa fa-floppy-o"></i>
+          <i *ngIf="updating" class="fa fa-refresh"></i>
         </button>
       </form>
     </div>
