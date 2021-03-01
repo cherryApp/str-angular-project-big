@@ -48,31 +48,29 @@ export class StatisticsService {
 
   setNumberOfActiveCustomers(): void {
     this.customerList$.subscribe(
-      customerList => {
-        return this.numberOfActiveCustomers$.next(customerList.filter(customer => customer.active).length);
-      });
+      customerList => this.numberOfActiveCustomers$.next(customerList.filter(customer => customer.active).length)
+    );
   }
 
   setNumberOfActiveProducts(): void {
     this.productList$.subscribe(
-      productList => {
-        return this.numberOfActiveProducts$.next(productList.filter(product => product.active).length);
-      }
+      productList => this.numberOfActiveProducts$.next(productList.filter(product => product.active).length)
     );
   }
 
   setNumberOfUnpaidOrders(): void {
-    this.orderList$.subscribe(orderList => {
-      return this.numberOfUnpaidOrders$.next(orderList.filter(order => order.status === 'new').length);
-    });
+    this.orderList$.subscribe(
+      orderList => this.numberOfUnpaidOrders$.next(orderList.filter(order => order.status === 'new').length)
+    );
   }
 
   setSumOfUnpaidBills(): void {
     this.billList$.subscribe(
       billList => {
-        return this.sumOfUnpaidBills$.next(billList.filter(bill => bill.status === 'new')
+        this.sumOfUnpaidBills$.next(billList.filter(bill => bill.status === 'new')
           .map(bill => bill['amount'])
-          .reduce((previous, next) => previous + next, 0));
+          .reduce((previous, next) => previous + next, 0)
+        );
       }
     );
   }
