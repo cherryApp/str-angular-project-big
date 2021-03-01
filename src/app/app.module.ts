@@ -26,6 +26,7 @@ import { ListingBillComponent } from './page/listing/listing-bill/listing-bill.c
 import { EditBillComponent } from './page/edit/edit-bill/edit-bill.component';
 import { OrderBindingsPipe } from './pipe/order-bindings.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HeaderComponent } from './page/header/header.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ListingBillComponent,
     EditBillComponent,
     OrderBindingsPipe,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,
