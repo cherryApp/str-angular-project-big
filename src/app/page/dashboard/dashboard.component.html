@@ -5,7 +5,7 @@
       [icon]="card.icon"
       [cardClass]="card.cardClass"
       [content]="card.content"
-      [title]="card.title"
+      [title]="statistics[card.i] | async | tostring"
       [footIcon]="card.footIcon"
       [footer]="card.footer"
     ></app-card>

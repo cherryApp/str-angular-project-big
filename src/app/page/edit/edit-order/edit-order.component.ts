@@ -43,7 +43,7 @@ export class EditOrderComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) =>
       this.orderService.get(params.id).subscribe((order) => {
-        console.log(order);
+        // console.log(order);
         this.order = order || new Order();
         this.order.status = this.order.id ? this.order.status : 'new';
       })
