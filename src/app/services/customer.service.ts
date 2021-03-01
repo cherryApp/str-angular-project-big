@@ -1,52 +1,30 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Customer } from '../models/customer';
+import { tap } from 'rxjs/operators';
+import { BaseService } from './base.service';
+import { ConfigService } from './config.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CustomerService {
+export class CustomerService extends BaseService<Customer> {
 
   apiUrl: string = 'http://localhost:3000/customers';
 
   customerList$: BehaviorSubject<Customer[]> = new BehaviorSubject<Customer[]>([]);
 
-  constructor(private http: HttpClient) { }
-
-  getAll(): void {
-    this.http.get<Customer[]>(this.apiUrl).subscribe(
-      data => this.customerList$.next(data)
-    )
-  }
-
-  get(id: number | string): Observable<Customer> {
-    id = parseInt(('' + id), 10);
-    return this.http.get<Customer>(`${this.apiUrl}/${id}`);
-  }
-  
-  getOneById(id: number | string): Observable<Customer> {
-    console.log(id);
-    id = typeof id === 'string' ? parseInt(id, 10) : id;
-    let customer$ : BehaviorSubject<Customer> = new BehaviorSubject<Customer>(new Customer);
-    this.http.get<Customer>(`${this.apiUrl}/${id}`).subscribe(
-      data => customer$.next(data)
-    )
-    return customer$;
-  }
-
-  create(customer: Customer):Observable<Customer> {
-    return this.http.post<Customer>(this.apiUrl, customer);
-  }
-
-  update(customer: Customer): Observable<Customer> {
-    return this.http.patch<Customer>(`${this.apiUrl}/${customer.id}`, customer);
-  }
-
-  remove(customer: Customer): void {
-    this.http.delete<Customer>(`${this.apiUrl}/${customer.id}`).subscribe(
-      () => this.getAll()
-    );
+  constructor(
+    public http: HttpClient,
+    public config: ConfigService,
+  ) {
+    super(http, config, 'customers');
+    this.list$
+      .pipe(
+        //
+      )
+      .subscribe(list => this.customerList$.next(list))
   }
 
 }

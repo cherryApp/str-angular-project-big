@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-export interface InfoCard {
-  icon : string;
-  cardClass : string;
-  title : string;
-  content : string;
-  footer : string;
+export interface IInfoCard {
+  iconClass: string;
+  iconText: string;
+  cardClass: string;
+  title: string;
+  content: string;
+  footer: string;
 }
 
 @Component({
@@ -15,12 +16,12 @@ export interface InfoCard {
 })
 export class InfoCardComponent implements OnInit {
 
-  @Input() icon : string = '';
-  @Input() cardClass : string = '#fff';
-  @Input() title : string = 'title';
-  @Input() content : string = '';
-  @Input() footer : string = '';
-
+  @Input() iconClass: string = '';
+  @Input() iconText: string = '';
+  @Input() cardClass: string = '';
+  @Input() title: string = '';
+  @Input() content: string = '';
+  @Input() footer: string = '';
 
   constructor() { }
 
