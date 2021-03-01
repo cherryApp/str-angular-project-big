@@ -27,6 +27,7 @@ import { EditBillComponent } from './page/edit/edit-bill/edit-bill.component';
 import { OrderBindingsPipe } from './pipe/order-bindings.pipe';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './page/header/header.component';
+import { TostringPipe } from './pipe/tostring.pipe';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { HeaderComponent } from './page/header/header.component';
     EditBillComponent,
     OrderBindingsPipe,
     HeaderComponent,
+    TostringPipe,
   ],
   imports: [
     BrowserModule,
