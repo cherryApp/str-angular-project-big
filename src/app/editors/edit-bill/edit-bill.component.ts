@@ -25,7 +25,7 @@ export class EditBillComponent implements OnInit {
   constructor(    
     private activatedRoute: ActivatedRoute,
     private billService: BillService,
-    private router: Router,) { }
+    private router: Router) { }
 
   ngOnInit(): void { }
 
