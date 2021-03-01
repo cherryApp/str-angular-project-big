@@ -19,7 +19,11 @@
                   <span [id]="'arrow_up_'+fkey" class="arrow material-icons md-18">keyboard_arrow_up</span>
                   <span [id]="'arrow_down_'+fkey" class="arrow material-icons md-18">keyboard_arrow_down</span>
                 </th>
-                <th>actions</th>
+                <th class="action">
+                  <button type="button" [routerLink]="'/bill/0'" class="btn btn-success btn-block">
+                    <i class="fa fa-plus" aria-hidden="true"></i> New Bill
+                  </button>
+                </th>
             </thead>
             <tbody>
               <tr *ngFor="let bill of billList$ | async | filter:filterPhrase:filterKey | sorter:sortby:sorterDirection">
