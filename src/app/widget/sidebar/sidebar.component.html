@@ -2,31 +2,31 @@
   <div class="logo"><a routerLink="/" class="simple-text logo-normal">Filmes webshop</a></div>
   <div class="sidebar-wrapper">
     <ul class="nav">
-      <li class="nav-item" (click)=onClickListItem($event)>
+      <li class="nav-item" (click)=onClickListItem($event) (click)="onClickListItemForOutput('Dashboard')">
         <a class="nav-link " routerLink="/">
           <i class="material-icons">dashboard</i>
           <p>Dashboard</p>
         </a>
       </li>
-      <li class="nav-item" (click)=onClickListItem($event)>
+      <li class="nav-item" (click)=onClickListItem($event) (click)="onClickListItemForOutput('Termékek')">
         <a class="nav-link" routerLink="/products">
           <i class="material-icons">cases</i>
           <p>Termékek</p>
         </a>
       </li>
-      <li class="nav-item" (click)=onClickListItem($event)>
+      <li class="nav-item" (click)=onClickListItem($event) (click)="onClickListItemForOutput('Vásárlók')">
         <a class="nav-link" routerLink="/customers">
           <i class="material-icons">people_alt</i>
           <p>Vásárlók</p>
         </a>
       </li>
-      <li class="nav-item" (click)=onClickListItem($event)>
+      <li class="nav-item" (click)=onClickListItem($event) (click)="onClickListItemForOutput('Rendelések')">
         <a class="nav-link" routerLink="/orders">
           <i class="material-icons">shopping_cart</i>
           <p>Rendelések</p>
         </a>
       </li>
-      <li class="nav-item" (click)=onClickListItem($event)>
+      <li class="nav-item" (click)=onClickListItem($event) (click)="onClickListItemForOutput('Pénztár')">
         <a class="nav-link" routerLink="/bills">
           <i class="material-icons">point_of_sale</i>
           <p>Pénztár</p>
