@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Category } from 'app/model/category';
 import { Bill, BillAttributes } from 'app/model/bill';
-import { CategoryService } from 'app/services/category.service';
 import { BillService } from 'app/services/bill.service';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 @Component({
@@ -22,19 +20,14 @@ export class EditBillComponent implements OnInit {
     switchMap(params => this.billService.get(params.id))
   );
 
-  categoryList$: BehaviorSubject<Category[]> = this.categoryService.list$;
-
   attributes = new BillAttributes();
 
   constructor(    
     private activatedRoute: ActivatedRoute,
     private billService: BillService,
-    private categoryService: CategoryService,
     private router: Router,) { }
 
-  ngOnInit(): void {
-    this.categoryService.getAll(); 
-  }
+  ngOnInit(): void { }
 
   onUpdate(form: NgForm, bill: Bill): void {
     this.clicked = true;
