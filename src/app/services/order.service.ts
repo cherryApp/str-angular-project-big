@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { Order } from '../model/order';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class OrderService {
   list$: BehaviorSubject<Order[]> = new BehaviorSubject<Order[]>([]);
   serverUrl: string = "http://localhost:3000/order";
 
-  constructor(private http: HttpClient,  private toastr: ToastrService) { }
+  constructor(private http: HttpClient,  private toastr: ToastrService, private router: Router) { }
 
   getAll(): void {
     this.list$.next([]);
@@ -32,7 +33,7 @@ export class OrderService {
     ).pipe(
       tap(() => {
         this.getAll();
-        this.toastr.info('The order has been updated.', 'UPDATED');
+        this.toastr.info(`#${order.id} order has been updated.`, 'UPDATED');
       })
     );
   }
@@ -42,19 +43,24 @@ export class OrderService {
       `${this.serverUrl}`,
       order
     ).subscribe(
-      () => this.getAll()
+      () => this.router.navigate(['order-list'])
     );
-    this.toastr.success('A new order has been created.', 'NEW Order');
+    this.toastr.success(`A new order</br>${order.id}</br>has been created.`, 'NEW Order');
   }
 
   remove(order: Order): void {
     this.http.delete<Order>(
       `${this.serverUrl}/${order.id}`
     ).subscribe(
-      () => this.getAll()
+      () => this.redirectTo('//product-list')
     );
-    this.toastr.error('The order has been deleted.', 'DELETED');
+    this.toastr.error(`#${order.id} order has been deleted.`, 'DELETED');
   }
+
+  redirectTo(uri:string){
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate([uri]));
+ }
 }
 
 export class ColumnSortOrder {

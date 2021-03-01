@@ -8,23 +8,28 @@
                         <p class="card-category">List of current orders.</p>
                     </div>
                     <div class="card my-0 px-3">
-                        <button [routerLink]="['/order/'+'0']" class="btn btn-primary my-3">
+                        <button [routerLink]="['order/'+'0']" class="btn btn-primary my-3">
                             Create new order
                         </button>
+                    </div>
+                    <div class="card-body col-6 d-flex my-0">
+                        <button class="btn btn-primary" (click)="scroll('summaries')">Scroll To Summaries</button>
                     </div>
                     <div class="card-body col-6 d-flex">
                         <input id="phrase" name="phrase" (keyup)="onChangePhrase($event)" class="form-control"
                             type="text" placeholder="Enter phrase..."
-                            [disabled]="filterKey==='active' || filterKey==='featured'">
+                            [disabled]="filterKey==='paid' || filterKey==='shipped' || filterKey==='new'">
                         <select class="custom-select ml-2" (change)="onChangeKey($event)">
                             <ng-container *ngFor="let attribute of attributes | keyvalue:originalOrder">
-                                <option *ngIf="attribute.key!=='featured' && attribute.key!=='active'"
+                                <option *ngIf="attribute.key!=='paid' && attribute.key!=='shipped' && attribute.key!=='new'"
                                     [value]="attribute.key" [selected]="setDefault(attribute.key)">Filter by
                                     {{attribute.value}}
                                 </option>
-                                <option *ngIf="attribute.key==='featured'" [value]="attribute.key">Show
+                                <option *ngIf="attribute.key==='paid'" [value]="attribute.key">Show
                                     {{attribute.value}} only</option>
-                                <option *ngIf="attribute.key==='active'" [value]="attribute.key">Show
+                                <option *ngIf="attribute.key==='shipped'" [value]="attribute.key">Show
+                                    {{attribute.value}} only</option>
+                                <option *ngIf="attribute.key==='new'" [value]="attribute.key">Show
                                     {{attribute.value}} only</option>
                             </ng-container>
                         </select>
@@ -51,39 +56,24 @@
                                     <tr *ngFor="let order of orderList$ | async | filter:phrase:filterKey | sorter:sorterKey:sortDirection">
                                             <ng-container *ngFor="let attribute of attributes | keyvalue:originalOrder">
                                                 <td
-                                                    *ngIf="attribute.key!=='featured' && attribute.key!=='active' && attribute.key!=='catID'">
+                                                    *ngIf="attribute.key!=='paid' && attribute.key!=='shipped' && attribute.key!=='new'">
                                                     {{order[attribute.key]}}</td>
-                                                <td *ngIf="attribute.key==='catID'"
-                                                    (click)="getCategory(order[attribute.key])" class="clickable" 
-                                                    [ngbPopover]="popContent" container="body" animation="true" placement="bottom"
-                                                    triggers="manual" #p="ngbPopover" (click)="p.open()"
-                                                    [popoverTitle]="popTitle">{{order[attribute.key]}}</td>
-                                                <ng-template #popContent>
-                                                    <ng-container *ngIf="category$ | async">
-                                                        <div class="card user-card">
-                                                            <div #popTitle class="card-header text-primary text-center">
-                                                                {{attribute.value}} details</div>
-                                                            <div class="card-body">
-                                                                <p><b>{{categoryAttributes.id}}:</b> {{category.id}}</p>
-                                                                <p><b>{{categoryAttributes.name}}:</b> {{category.name}}</p>
-                                                                <p><b>{{categoryAttributes.description}}</b>
-                                                                    {{category.description}}</p>
-                                                            </div>
-                                                        </div>
-                                                    </ng-container>
-                                                </ng-template>
-                                                <td *ngIf="attribute.key==='featured' && order[attribute.key]"><i
+                                                <td *ngIf="attribute.key==='paid' && order[attribute.key]"><i
                                                         class="fa fa-check"></i></td>
-                                                <td *ngIf="attribute.key==='featured' && !order[attribute.key]"><i
+                                                <td *ngIf="attribute.key==='paid' && !order[attribute.key]"><i
                                                         class="fa fa-times"></i></td>
-                                                <td *ngIf="attribute.key==='active' && order[attribute.key]"><i
+                                                <td *ngIf="attribute.key==='shipped' && order[attribute.key]"><i
                                                         class="fa fa-check"></i></td>
-                                                <td *ngIf="attribute.key==='active' && !order[attribute.key]"><i
+                                                <td *ngIf="attribute.key==='shipped' && !order[attribute.key]"><i
+                                                        class="fa fa-times"></i></td>
+                                                <td *ngIf="attribute.key==='new' && order[attribute.key]"><i
+                                                        class="fa fa-check"></i></td>
+                                                <td *ngIf="attribute.key==='new' && !order[attribute.key]"><i
                                                         class="fa fa-times"></i></td>
                                             </ng-container>
                                             <td>
                                                 <div class="btn-group">
-                                                    <button [routerLink]="['order/' + order.id]" class="btn btn-info">
+                                                    <button [routerLink]="['order/'+order.id]" class="btn btn-info">
                                                         <i class="fa fa-pencil"></i>
                                                     </button>
                                                     <button class="btn btn-danger" data-toggle="modal"
@@ -97,6 +87,26 @@
                                 </tbody>
                             </table>
                         </div>
+                        <hr>
+                        <div class="table-responsive">
+                            <table class="table" id="summaries">
+                                <thead class="text-primary">
+                                    <th>Total # of Different Orders</th>
+                                    <th>Total # of Paid Orders</th>
+                                    <th>Total # of New Orders</th>
+                                    <th>Total # of Shipped Orders</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{orderSummaryData.totalOrders}}</td>
+                                        <td>{{orderSummaryData.totalPaid}}</td>
+                                        <td>{{orderSummaryData.totalNew}}</td>
+                                        <td>{{orderSummaryData.totalShipped}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
                     </div>
                 </div>
             </div>
