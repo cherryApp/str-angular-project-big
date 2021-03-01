@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Location } from '@angular/common';
 
 @Component({
@@ -7,6 +7,8 @@ import { Location } from '@angular/common';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
+
+  @Output() listItemName = new EventEmitter<string>();
 
   constructor(private location: Location) { }
 
@@ -30,6 +32,10 @@ export class SidebarComponent implements OnInit {
     const currentListItem = (event.currentTarget as HTMLElement);
     navItems.forEach(item => item.classList.remove('active'));
     currentListItem?.classList.add('active');
+  }
+
+  onClickListItemForOutput(listItemName: string): void {
+    this.listItemName.emit(listItemName);
   }
 
 }
