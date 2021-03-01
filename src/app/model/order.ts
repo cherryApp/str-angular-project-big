@@ -12,3 +12,12 @@ export class OrderAttributes{
   amount:string="Amount";
   status:string="Status"; 
 }
+
+export class OrderSummaryData {
+  totalOrders: number = 0;
+  totalCustomers: number = 0;
+  totalItems: number = 0;
+  totalPaid: number = 0;
+  totalNew: number = 0;
+  totalShipped: number = 0;
+}

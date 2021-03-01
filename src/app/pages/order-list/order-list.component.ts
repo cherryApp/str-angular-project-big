@@ -15,9 +15,15 @@ export class OrderListComponent implements OnInit {
   order = new Order();
 
   setOrdertoDelete(order: Order): void {
+    this.animateDeleteIcon(order);
     this.order = order;
     $('#confirmationDialog').on('shown.bs.modal', function () {
       $('#cancelButton').trigger('focus')
+      let deleteIcon = document.querySelector(".fa-spinner");
+      if (deleteIcon !== null) {
+        deleteIcon.classList.remove("fa-spinner", "fa-pulse");
+        deleteIcon.classList.add("fa-trash");
+      }
     })
   }
 
@@ -28,6 +34,13 @@ export class OrderListComponent implements OnInit {
   getCategory(id: number) {
     this.category$ = this.categoryService.get(id)
     this.category$.forEach(item => this.category = item);
+  }
+
+  animateDeleteIcon(order: Order): void {
+    let buttonID = '' + order.id;
+    let deleteIcon = document.getElementById(buttonID);
+    deleteIcon.classList.remove("fa-trash");
+    deleteIcon.classList.add("fa-spinner", "fa-pulse");
   }
 
 
