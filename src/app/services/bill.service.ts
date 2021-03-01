@@ -46,7 +46,7 @@ export class BillService {
     ).subscribe(
       () => this.getAll()
     );
-    this.toastr.success('The bill has been created.', 'NEW Product');
+    this.toastr.success('The bill has been created.', 'NEW Bill');
   }
 
   remove(bill: Bill): void {

@@ -12,6 +12,7 @@ import { BehaviorSubject } from 'rxjs';
 export class CustomerListComponent implements OnInit {
 
   customerList$: BehaviorSubject<Customer[]> = this.customerService.list$;
+  updating: boolean = true
 
   phrase: string = '';
   phraseHidden: boolean = false;
@@ -31,10 +32,15 @@ export class CustomerListComponent implements OnInit {
 
   ngOnInit(): void {
     this.customerService.getAll();
-    // this.customerList$.subscribe(observer => {
-    //   this.pagination.itemCount=observer.length;
-    //   this.pagination.computePageParams();
-    // });
+    this.updatingValues();
+  }
+
+  updatingValues() {
+    this.customerList$.subscribe(item => {
+      if (item.length > 0) {
+        this.updating = false;
+      }
+    })
   }
 
 

@@ -4,17 +4,17 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header card-header-info">
-                        <h4 class="card-title ">Bills</h4>
-                        <p class="card-category">List of bills for orders.</p>
+                        <h4 class="card-title ">Categories</h4>
+                        <p class="card-category">List of categories for orders.</p>
                     </div>
                     <div class="card my-0 px-3">
-                        <button [routerLink]="['bill/'+'0']" class="btn btn-primary my-3">
-                            Create new bill
+                        <button [routerLink]="'/category/0'" class="btn btn-primary my-3">
+                            Create new Category
                         </button>
                     </div>
-                    <div class="card-body col-6 d-flex">
-                        <input name="phrase" (keyup)="onChangePhrase($event)"
-                            class="form-control" type="text"
+                    <div class="card-body col-md-6 d-flex">
+                        <input name="phrase" (keyup)="onChangePhrase($event)" 
+                            class="form-control filter-field" type="text"
                             placeholder="Enter filtering phrase...">
                         <select class="custom-select ml-2"
                             (change)="onChangeKey($event)">
@@ -25,10 +25,7 @@
                                 {{attribute.value}}</option>
                         </select>
                     </div>
-                    <div *ngIf="updating" class="d-flex justify-content-center">
-                        <mat-spinner></mat-spinner>
-                    </div>
-                    <div *ngIf="!updating" class="card-body">
+                    <div class="card-body">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class="text-primary">
@@ -45,19 +42,27 @@
                                 </thead>
                                 <tbody>
                                     <tr
-                                        *ngFor="let bill of billList$ | async | filter:phrase:filterKey | sorter:sorterKey:sortDirection">
+                                        *ngFor="let category of categoryList$ | async | filter:phrase:filterKey | sorter:sorterKey:sortDirection">
                                         <td
                                             *ngFor="let attribute of attributes | keyvalue:originalOrder">
-                                            {{ bill[attribute.key] }}</td>
+                                            {{ category[attribute.key] }}</td>                                            
                                         <td>
                                             <div class="btn-group">
-                                                <button [routerLink]="['bill/'+ bill.id]"
+                                                <div class="btn btn-info play" (click)="speak(category.name+category.description)" ><i class="fa  fa-play-circle"></i></div>
+                                                <button [routerLink]="['/category/',category.id]" 
+                                                
                                                     class="btn btn-info">
                                                     <i class="fa fa-pencil"></i>
                                                 </button>
+                                                <button class="btn btn-danger"
+                                                    (click)="onDelete(category)">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
                                             </div>
                                         </td>
+                                        <!-- {{ category |json}} -->
                                     </tr>
+                                    
                                 </tbody>
                             </table>
                         </div>

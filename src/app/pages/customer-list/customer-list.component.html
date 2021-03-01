@@ -8,7 +8,8 @@
                         <p class="card-category">List of customers.</p>
                     </div>
                     <div class="card my-0 px-3">
-                        <button [routerLink]="['/customer/0']" class="btn btn-primary my-3">
+                        <button [routerLink]="['/customer/0']"
+                            class="btn btn-primary my-3">
                             Create new customer
                         </button>
                     </div>
@@ -39,7 +40,10 @@
                         <a class="page-link" (click)="pagination.onNextPage(1)" title="next"><span class="material-icons">chevron_right</span></a>
                         <a class="page-link" (click)="pagination.onNextPage(9999)" title="last"><span class="material-icons">last_page</span></a>
                     </div>
-                    <div class="card-body">
+                    <div *ngIf="updating" class="d-flex justify-content-center">
+                        <mat-spinner></mat-spinner>
+                    </div>
+                    <div *ngIf="!updating" class="card-body">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class="text-primary">
@@ -59,10 +63,13 @@
                                         </td>
                                         <td>
                                             <div class="btn-group special">
-                                                <button [routerLink]="['/customer', customer.id]" class="btn btn-info">
+                                                <button
+                                                    [routerLink]="['/customer', customer.id]"
+                                                    class="btn btn-info">
                                                     <i class="fa fa-pencil"></i>
                                                 </button>
-                                                <button class="btn btn-danger" (click)="onDelete(customer)">
+                                                <button class="btn btn-danger"
+                                                    (click)="onDelete(customer)">
                                                     <i class="fa fa-trash"></i>
                                                 </button>
                                             </div>

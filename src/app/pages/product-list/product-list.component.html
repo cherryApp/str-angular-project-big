@@ -5,23 +5,39 @@
                 <div class="card">
                     <div class="card-header card-header-info">
                         <h4 class="card-title ">Products</h4>
-                        <p class="card-category">List of products currently on stock.</p>
+                        <p class="card-category">List of products currently on
+                            stock.</p>
                     </div>
                     <div class="card my-0 px-3">
                         <button [routerLink]="['product/'+'0']" class="btn btn-primary my-3">
                             Create new product
                         </button>
                     </div>
+                    <div class="card-body col-6 d-flex my-0">
+                        <button class="btn btn-primary" (click)="scroll('summaries')">Scroll To Summaries</button>
+                    </div>
                     <div class="card-body col-6 d-flex">
-                        <input name="phrase" (keyup)="onChangePhrase($event)" class="form-control" type="text"
-                            placeholder="Enter filtering phrase...">
+                        <input id="phrase" name="phrase" (keyup)="onChangePhrase($event)" class="form-control"
+                            type="text" placeholder="Enter phrase..."
+                            [disabled]="filterKey==='active' || filterKey==='featured'">
                         <select class="custom-select ml-2" (change)="onChangeKey($event)">
-                            <option *ngFor="let attribute of attributes | keyvalue:originalOrder"
-                                [value]="attribute.key" [selected]="setDefault(attribute.key)">Filter by
-                                {{attribute.value}}</option>
+                            <ng-container *ngFor="let attribute of attributes | keyvalue:originalOrder">
+                                <option *ngIf="attribute.key!=='featured' && attribute.key!=='active'"
+                                    [value]="attribute.key" [selected]="setDefault(attribute.key)">
+                                    Filter by
+                                    {{attribute.value}}
+                                </option>
+                                <option *ngIf="attribute.key==='featured'" [value]="attribute.key">Show
+                                    {{attribute.value}} only</option>
+                                <option *ngIf="attribute.key==='active'" [value]="attribute.key">Show
+                                    {{attribute.value}} only</option>
+                            </ng-container>
                         </select>
                     </div>
-                    <div class="card-body">
+                    <div *ngIf="updating" class="d-flex justify-content-center">
+                        <mat-spinner></mat-spinner>
+                    </div>
+                    <div *ngIf="!updating" class="card-body">
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class="text-primary">
@@ -36,21 +52,64 @@
                                 </thead>
                                 <tbody>
                                     <tr
-                                        *ngFor="let product of productList$ | async | filter:phrase:filterKey | sorter:sorterKey:sortDirection">
+                                        *ngFor="let product of productList | filter:phrase:filterKey | sorter:sorterKey:sortDirection">
                                         <ng-container *ngFor="let attribute of attributes | keyvalue:originalOrder">
-                                            <td *ngIf="attribute.key!=='featured' && attribute.key!=='active'">{{product[attribute.key]}}</td>
-                                            <td *ngIf="attribute.key==='featured' && product[attribute.key]"><i class="fa fa-check"></i></td>
-                                            <td *ngIf="attribute.key==='featured' && !product[attribute.key]"><i class="fa fa-times"></i></td>
-                                            <td *ngIf="attribute.key==='active' && product[attribute.key]"><i class="fa fa-check"></i></td>
-                                            <td *ngIf="attribute.key==='active' && !product[attribute.key]"><i class="fa fa-times"></i></td>
+                                            <td
+                                                *ngIf="attribute.key!=='featured' && attribute.key!=='active' && attribute.key!=='catID' && attribute.key!=='price' ">
+                                                {{product[attribute.key]}}</td>
+                                            <td *ngIf="attribute.key==='catID'"
+                                                (click)="getCategory(product[attribute.key])" class="clickable"
+                                                [ngbPopover]="popContent" container="body" animation="true"
+                                                placement="bottom" triggers="manual" #p="ngbPopover" (click)="p.open()"
+                                                [popoverTitle]="popTitle">
+                                                {{product[attribute.key]}}</td>
+                                            <td *ngIf="attribute.key==='price'">{{ product[attribute.key].toLocaleString('hu-HU', {
+                                                style: 'currency',
+                                                currency: 'HUF',
+                                                maximumFractionDigits: 0
+                                                }) }}</td>
+                                            <ng-template #popContent>
+                                                <ng-container *ngIf="category$ | async">
+                                                    <div class="card user-card">
+                                                        <div #popTitle class="card-header text-primary text-center">
+                                                            {{attribute.value}}
+                                                            details</div>
+                                                        <div class="card-body">
+                                                            <p><b>{{categoryAttributes.id}}:</b>
+                                                                {{category.id}}
+                                                            </p>
+                                                            <p><b>{{categoryAttributes.name}}:</b>
+                                                                {{category.name}}
+                                                            </p>
+                                                            <p><b>{{categoryAttributes.description}}</b>
+                                                                {{category.description}}
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </ng-container>
+                                            </ng-template>
+                                            <td *ngIf="attribute.key==='featured' && product[attribute.key]">
+                                                <i class="fa fa-check"></i>
+                                            </td>
+                                            <td *ngIf="attribute.key==='featured' && !product[attribute.key]">
+                                                <i class="fa fa-times"></i>
+                                            </td>
+                                            <td *ngIf="attribute.key==='active' && product[attribute.key]">
+                                                <i class="fa fa-check"></i>
+                                            </td>
+                                            <td *ngIf="attribute.key==='active' && !product[attribute.key]">
+                                                <i class="fa fa-times"></i>
+                                            </td>
                                         </ng-container>
                                         <td>
                                             <div class="btn-group">
                                                 <button [routerLink]="['product/' + product.id]" class="btn btn-info">
                                                     <i class="fa fa-pencil"></i>
                                                 </button>
-                                                <button class="btn btn-danger" (click)="onDelete(product)">
-                                                    <i class="fa fa-trash"></i>
+                                                <button class="btn btn-danger" data-toggle="modal"
+                                                    data-target="#confirmationDialog"
+                                                    (click)="setProducttoDelete(product)">
+                                                    <i class="fa fa-trash" [id]="product.id"></i>
                                                 </button>
                                             </div>
                                         </td>
@@ -58,8 +117,65 @@
                                 </tbody>
                             </table>
                         </div>
+                        <hr>
+                        <div class="table-responsive">
+                            <table class="table" id="summaries">
+                                <thead class="text-primary">
+                                    <th>Total # of Different Products</th>
+                                    <th>Total # of Items on Stock</th>
+                                    <th>Total Value of Stock</th>
+                                    <th>Total # of Active Items</th>
+                                    <th>Total # of Featured Items</th>
+                                    <th>Items in Categories 1/2/3/4/5</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{productSummaryData.totalProducts}}</td>
+                                        <td>{{productSummaryData.totalItems}}</td>
+                                        <td>{{ productSummaryData.totalValue.toLocaleString('hu-HU', {
+                                            style: 'currency',
+                                            currency: 'HUF',
+                                            maximumFractionDigits: 0
+                                          }) }}</td>
+                                        <td>{{productSummaryData.totalActive}}</td>
+                                        <td>{{productSummaryData.totalFeatured}}</td>
+                                        <td>{{productSummaryData.totalinCategories}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal" id="confirmationDialog" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger font-weight-bold">
+                    CONFIRMATION REQUIRED</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Are you sure you want to delete <span class="text-primary">{{product.name}}</span>?</strong>
+                </p>
+                <p>All information associated to this product will be
+                    permanently deleted.
+                    <span class="text-danger">This operation can not be
+                        undone.</span>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary" id="cancelButton"
+                    data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" (click)="onDelete(product)"
+                    data-dismiss="modal">Delete</button>
             </div>
         </div>
     </div>

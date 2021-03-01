@@ -1,10 +1,10 @@
 export class Category {
     id: number=0;
-  product: string='';
+  name: string='';
   description: string='';
 }
 export class CategoryAttributes{
   id: string="ID";
-  product: string="Product";
+  name: string="Product";
   description: string="Description";
 }

@@ -13,18 +13,30 @@ import { BehaviorSubject } from 'rxjs';
 export class BillListComponent implements OnInit {
 
   billList$: BehaviorSubject<Bill[]> = this.billService.list$;
+  updating: boolean = true
 
   phrase: string = '';
   filterKey = 'id';
 
-  sorterKey: string ='';
+  sorterKey: string = '';
 
   attributes = new BillAttributes();
 
-  constructor(private billService: BillService) { }
+  constructor(private billService: BillService) {
+
+  }
 
   ngOnInit(): void {
     this.billService.getAll();
+    this.updatingValues();
+  }
+
+  updatingValues() {
+    this.billList$.subscribe(item => {
+      if (item.length > 0) {
+        this.updating = false;
+      }
+    })
   }
 
   onDelete(bill: Bill): void {
@@ -42,15 +54,15 @@ export class BillListComponent implements OnInit {
   setDefault(key): boolean {
     return key === "id" ? true : false;
   }
-  
-  originalOrder = (a: KeyValue<number,string>, b: KeyValue<number,string>): number => {
+
+  originalOrder = (a: KeyValue<number, string>, b: KeyValue<number, string>): number => {
     return 0;
   }
 
   onColumnSelect(key: string): void {
     this.sorterKey = key;
     let clicked = true;
-    
+
     if (this.sortOrder[key] === "none" && clicked) {
       this.eraseSortDirections();
       this.sortOrder[key] = "ascending"
@@ -72,14 +84,14 @@ export class BillListComponent implements OnInit {
     this.sortDirection = this.sortOrder[key];
     console.log(this.sortDirection);
   }
-  
+
   eraseSortDirections(): void {
     for (let key in this.sortOrder) {
       this.sortOrder[key] = "none";
     }
   }
-  
+
   sortDirection = "none";
-  
+
   sortOrder = new ColumnSortOrder();
 }
