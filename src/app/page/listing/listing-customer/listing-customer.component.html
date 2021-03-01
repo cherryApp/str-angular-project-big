@@ -44,7 +44,7 @@
       </thead>
       <tbody>
         <!-- | filter:filterKey:phrase | sorter:sortedColumn:sortedOrder -->
-        <tr *ngFor="let customer of customerList$ | async">
+        <tr *ngFor="let customer of customerList$ | async | filter:filterKey:phrase | sorter:sortedColumn:sortedOrder">
           <td>
             {{ customer.id }}
           </td>
@@ -58,7 +58,7 @@
             {{ customer.email }}
           </td>
           <td>
-            {{ customer.address }}
+            {{ customer.address.zip }} {{ customer.address.country }} {{ customer.address.city }}
           </td>
           <td>
             {{ customer.active }}
