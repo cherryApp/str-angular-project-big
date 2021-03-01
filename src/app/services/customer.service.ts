@@ -19,8 +19,14 @@ export class CustomerService {
       data => this.customerList$.next(data)
     )
   }
+
+  get(id: number | string): Observable<Customer> {
+    id = parseInt(('' + id), 10);
+    return this.http.get<Customer>(`${this.apiUrl}/${id}`);
+  }
   
   getOneById(id: number | string): Observable<Customer> {
+    console.log(id);
     id = typeof id === 'string' ? parseInt(id, 10) : id;
     let customer$ : BehaviorSubject<Customer> = new BehaviorSubject<Customer>(new Customer);
     this.http.get<Customer>(`${this.apiUrl}/${id}`).subscribe(
