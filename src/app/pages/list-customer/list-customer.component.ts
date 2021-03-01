@@ -12,7 +12,14 @@ import { ConfigService, ITableCol } from 'src/app/services/config.service';
 })
 export class ListCustomerComponent implements OnInit {
 
-  customerList$: Observable<Customer[]> = this.customerService.getAll()
+  customerProperties: {count: number} = {
+    count: 0,
+  };
+
+  customerList$: Observable<Customer[]> = this.customerService.customerList$.pipe(
+    tap( customers => this.customerProperties.count = customers.length)
+  );
+
   cols: ITableCol[] = this.configService.tableColsCustomerList;
 
   filterPhrase: string = '';
@@ -27,6 +34,7 @@ export class ListCustomerComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.customerService.getAll()
   }
 
   changeOrder(param: string): void {
@@ -35,6 +43,14 @@ export class ListCustomerComponent implements OnInit {
     this.sortby = param;
     document.querySelector('#arrow_up_'+param)?.classList.toggle('arrow__active');
     document.querySelector('#arrow_down_'+param)?.classList.toggle('arrow__active');
+  }
+
+  originalOrder = (a:any, b:any): number => {
+    return 0;
+  }
+
+  deleteItem(item: Customer): void {
+    this.customerService.remove(item);
   }
 
 }

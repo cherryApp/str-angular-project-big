@@ -13,10 +13,15 @@ import { ConfigService, ITableCol } from 'src/app/services/config.service';
 export class ListBillComponent implements OnInit {
 
   billList$: Observable<Bill[]> = this.billService.billList$;
-  filterkeys: string[] = Object.keys(new Bill);
+  
   cols: ITableCol[] = this.config.tableColsBillList;
-  phrase: string = '';
-  filterKey: string = 'orderID';
+
+  filterPhrase: string = '';
+  filterKey: string = 'status';
+  filterKeys: string[] = Object.keys(new Bill());
+  sorterDirection: number = 1;
+  sortby: string = '';
+  
 
   constructor(
     private billService: BillService,
@@ -27,8 +32,20 @@ export class ListBillComponent implements OnInit {
     this.billService.getAll()
   }
 
+  changeOrder(param: string): void {
+    if (this.sorterDirection === 1)  this.sorterDirection = 2;
+    else this.sorterDirection = 1;
+    this.sortby = param;
+    document.querySelector('#arrow_up_'+param)?.classList.toggle('arrow__active');
+    document.querySelector('#arrow_down_'+param)?.classList.toggle('arrow__active');
+  }
+
   originalOrder = (a:any, b:any): number => {
     return 0;
+  }
+
+  deleteItem(customer: Bill): void {
+    this.billService.remove(customer);
   }
 
 }

@@ -1,54 +1,44 @@
-<div class="content">
-  <div class="container">
-    <div class="row">
-      <div class="col-3 offset-4 mt-3 mb-3 pt-2 text-right">
-        <span>Select column to search in: </span>
+<div class="row">
+  <div class="col-md-8 offset-md-2">
+    <div class="card">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title ">Bill Table</h4>
+        <div class="d-flex p-2 mb-3 filter__group">
+          <input [(ngModel)]="filterPhrase" class="form-control mr-sm-2 filter__input px-3" type="text" placeholder="Filter..." style="width: 200px;">
+          <select [(ngModel)]="filterKey" class="form-control mr-3 filter__select px-3" style="width: 150px;">
+              <option *ngFor="let fkey of filterKeys" [value]="fkey">{{ fkey }}</option>
+          </select>
+        </div>
       </div>
-      <div class="col-2 mt-3 mb-3">
-        <select [(ngModel)]="filterKey" class="form-control">
-          <option *ngFor="let key of filterkeys" [value]="key">{{ key }}</option>
-        </select>
-      </div>
-      <div class="col-3 mt-3 mb-3">
-        <input [(ngModel)]="phrase" type="text" class="form-control" placeholder="type search phrase here...">
-      </div>
-    </div>
-  </div>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="card card-plain">
-          <div class="card-header card-header-primary">
-            <h4 class="card-title mt-0"> Table on Plain Background</h4>
-            <p class="card-category"> Here is a subtitle for this table</p>
-          </div>
-          <div class="card-body">
-            <div class="table-responsive">
-              <table class="table table-hover">
-                <thead class="">
-                  <tr>
-                    <th *ngFor="let col of cols">
-                      {{col.text}}
-                    </th>
-                    <th class="billTableBtnGroup">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let bill of billList$ | async">
-                    <td *ngFor="let item of bill | keyvalue : originalOrder">
-                      {{item.value}}
-                    </td>
-                    <td>
-                      <div class="btn-group billTableBtnGroup">
-                        <button class="btn btn-info">E</button>
-                        <button class="btn btn-danger">D</button>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="text-primary">
+                <th *ngFor="let fkey of filterKeys" class="th__active" (click)="changeOrder(fkey)">
+                  {{ fkey }} 
+                  <span [id]="'arrow_up_'+fkey" class="arrow material-icons md-18 arrow__active">keyboard_arrow_up</span>
+                  <span [id]="'arrow_down_'+fkey" class="arrow material-icons md-18">keyboard_arrow_down</span>
+                </th>
+                <th>actions</th>
+            </thead>
+            <tbody>
+              <tr *ngFor="let bill of billList$ | async | filter:filterPhrase:filterKey | sorter:sortby:sorterDirection">
+                <td *ngFor="let item of bill | keyvalue : originalOrder">
+                  {{item.value}}
+                </td>
+                <td>
+                  <div class="btn-group" role="group">
+                    <button type="button" [routerLink]="'/bill/'+bill.id" rel="tooltip" title="Edit this Bill" class="btn btn-primary btn-link btn-sm">
+                      <i class="material-icons">edit</i>
+                    </button>
+                    <button type="button" (click)="deleteItem(bill)" rel="tooltip" title="Remove this Bill" class="btn btn-danger btn-link btn-sm">
+                      <i class="material-icons">close</i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

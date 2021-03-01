@@ -1,56 +1,49 @@
-<div class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-primary">
-                        <h4 class="card-title ">Products</h4>
-                        <p class="card-category"> Product list</p>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table">
-
-                                <thead class=" text-primary">
-                                    <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>catID</th>
-                                    <th>Description</th>
-                                    <th>Price</th>
-                                    <th>Featured</th>
-                                    <th>Active</th>
-                                    <th></th>
-                                </thead>
-
-                                <tbody>
-                                    <tr *ngFor="let product of productList$ | async ">
-                                        <td>{{ product.id }}</td>
-                                        <td>{{ product.name }}</td>
-                                        <td>{{ product.type }}</td>
-                                        <td>{{ product.catID }}</td>
-                                        <td>{{ product.description }}</td>
-                                        <td>{{ product.price }}</td>
-                                        <td>{{ product.featured }}</td>
-                                        <td>{{ product.active }}</td>
-                                        <td>
-                                            <div class="btn-group">
-                                                <button type="button" rel="tooltip" title="szerkesztés" class="btn btn-primary btn-link btn-sm">
-                                                    szerkesztés
-                                                </button>
-                                                <button type="button" rel="tooltip" title="törlés" class="btn btn-danger btn-link btn-sm">
-                                                    törlés
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title ">Product Table</h4>
+          <div class="d-flex p-2 mb-3 filter__group">
+            <input [(ngModel)]="filterPhrase" class="form-control mr-sm-2 filter__input px-3" type="text" placeholder="Filter..." style="width: 200px;">
+            <select [(ngModel)]="filterKey" class="form-control mr-3 filter__select px-3" style="width: 150px;">
+                <option *ngFor="let fkey of filterKeys" [value]="fkey">{{ fkey }}</option>
+            </select>
+          </div>
         </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+                <th *ngFor="let fkey of filterKeys" class="th__active" (click)="changeOrder(fkey)">
+                  {{ fkey }} 
+                  <span [id]="'arrow_up_'+fkey" class="arrow material-icons md-18 arrow__active">keyboard_arrow_up</span>
+                  <span [id]="'arrow_down_'+fkey" class="arrow material-icons md-18">keyboard_arrow_down</span>
+                </th>
+                <th>actions</th>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let product of productList$ | async | filter:filterPhrase:filterKey | sorter:sortby:sorterDirection ">
+                    <td *ngFor="let item of product | keyvalue : originalOrder">
+                        {{item.value}}
+                    </td>
+                    <td>
+                        <div class="btn-group" role="group">
+                        <button type="button" [routerLink]="'/product/'+product.id" rel="tooltip" title="Edit this Product" class="btn btn-primary btn-link btn-sm">
+                            <i class="material-icons">edit</i>
+                        </button>
+                        <button type="button" (click)="deleteItem(product)" rel="tooltip" title="Remove this Product" class="btn btn-danger btn-link btn-sm">
+                            <i class="material-icons">close</i>
+                        </button>
+                        </div>
+                    </td>
+                </tr>
+              
+              </tbody>
+
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+   

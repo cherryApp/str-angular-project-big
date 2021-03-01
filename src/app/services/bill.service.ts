@@ -37,7 +37,10 @@ export class BillService {
     return this.http.patch<Bill>(`${this.apiUrl}/${bill.id}`, bill);
   }
 
-  remove(bill: Bill): Observable<Bill> {
-    return this.http.delete<Bill>(`${this.apiUrl}/${bill.id}`);
+  remove(bill: Bill): void {
+    this.http.delete<Bill>(`${this.apiUrl}/${bill.id}`).subscribe(
+      () => this.getAll()
+    );
   }
+
 }
