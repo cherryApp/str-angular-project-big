@@ -1,41 +1,45 @@
 <div class="container">
     <div class="row">
-        <div class="col-12">
-            <h2 class="text-center mb-5 mt-3 font-weight-bold">Pénztár</h2>
+        <div class="col-4 offset-5 mb-5">
+            <h2>PÉNZTÁR</h2>
         </div>
 
-        <div class="col-12 d-flex justify-content-center my-3">
-            <button class="btn btn-success btn-block font-weight-bold" [routerLink]="[0]">
-                <i class="material-icons">add</i>
-                Új számla létrehozása
-            </button>
-        </div>
+        <div class="col-12 row">
+            <div class="col-5">
+                <button class="btn btn-success btn-block mt-0 mb-5" [routerLink]="[0]">
+                    <i class="material-icons">add</i>
+                    ÚJ SZÁMLA LÉTREHOZÁSA
+                </button>
+            </div>
 
-        <div class="col-4 text-center font-weight-bold">Kiválasztás
-            <select [(ngModel)]="filterKey" class="custom-select mb-3">
-                <option *ngFor="let key of filterKeys" [value]="key">
-                    {{ key }}
-                </option>
-            </select>
-        </div>
+            <div class="col-3"><select [(ngModel)]="filterKey" class="custom-select bg-light">
+                    <option *ngFor="let key of filterKeys" [value]="key">
+                        {{ key }}
+                    </option>
+                </select>
+            </div>
 
-        <div class="col-6 mt-4 search-bar">
-            <form class="form-inline my-2 my-lg-0 d-flex justify-content-center">
-                <input class="form-control mr-sm-2" type="text" placeholder="Keresés" (keyup)="onChangePhrase($event)">
-                <button class="btn btn-success mt-4 my-2 my-sm-0 font-weight-bold" type="submit">
-                    Keresés</button>
-            </form>
+            <div class="col-4 search-bar">
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Keresés"
+                        (keyup)="onChangePhrase($event)">
+                    <button class="btn btn-success my-2 my-sm-0" type="submit">
+                        <i class="material-icons">manage_search</i>
+                        Keresés
+                    </button>
+                </form>
+            </div>
         </div>
 
         <table class="table table-striped">
-            <thead class="thead-dark">
+            <thead class="bg-dark text-light">
                 <tr>
                     <th (click)="onColumnSelect('id')"> <b>#</b></th>
                     <th (click)="onColumnSelect('orderID')"><b>Rendelés azonosító</b></th>
                     <th (click)="onColumnSelect('amount')"><b>Összeg</b></th>
                     <th (click)="onColumnSelect('status')"><b>Státusz</b></th>
-                    <th><i *ngIf="!direction" class="material-icons">north</i>
-                        <i *ngIf="direction" class="material-icons">south</i>
+                    <th><i *ngIf="!direction" class="material-icons">keyboard_arrow_up</i>
+                        <i *ngIf="direction" class="material-icons">keyboard_arrow_down</i>
                     </th>
                 </tr>
             </thead>
