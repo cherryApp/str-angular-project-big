@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-8 offset-2">
-      <h3>Vásárlók</h3>
+    <div class="col-4 offset-5 mb-5">
+      <h2>VÁSÁRLÓK</h2>
     </div>
 
     <div class="col-5">
@@ -10,8 +10,15 @@
         Új vásárló
       </button>
     </div>
-    <div class="col-3">
+    <!-- <div class="col-3">
       <select [(ngModel)]="filterKey" class="form-control">
+        <option *ngFor="let key of filterKeys" [value]="key">
+          {{ key }}
+        </option>
+      </select>
+    </div> -->
+    <div class="col-3 mt-3 mb-5">
+      <select [(ngModel)]="filterKey" class="custom-select bg-light" style="font-size: 20px">
         <option *ngFor="let key of filterKeys" [value]="key">
           {{ key }}
         </option>
@@ -59,7 +66,7 @@
             {{ customer.address.zip }} {{ customer.address.country }}, {{ customer.address.city }}  {{ customer.address.street }}
           </td>
           <td>
-            {{ customer.active }}
+            <input class="form-control form-control-sm" [(ngModel)]="customer.active" type="checkbox" disabled>
           </td>
           <td>
             <div class="btn-group d-flex justify-content-end">
