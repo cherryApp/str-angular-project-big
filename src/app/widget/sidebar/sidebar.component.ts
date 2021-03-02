@@ -38,4 +38,10 @@ export class SidebarComponent implements OnInit {
     this.listItemName.emit(listItemName);
   }
 
+  onClickLogo(): void {
+    const navItems = document.querySelectorAll('ul.nav li.nav-item');
+    navItems.forEach(item => item.classList.remove('active'));
+    navItems[0].classList.add('active');
+  }
+
 }

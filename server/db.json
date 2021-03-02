@@ -787,7 +787,7 @@
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, numquam sunt obcaecati quas minus deserunt excepturi eum perferendis earum quo ducimus officia. Odio itaque officia aspernatur aut a fuga cum?",
       "price": 1700,
       "featured": false,
-      "active": true,
+      "active": false,
       "image": "https://www.mafab.hu/static/profiles/2014/293/04/20821_6.jpg"
     },
     {
@@ -853,7 +853,7 @@
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, numquam sunt obcaecati quas minus deserunt excepturi eum perferendis earum quo ducimus officia. Odio itaque officia aspernatur aut a fuga cum?",
       "price": 5999,
       "featured": false,
-      "active": true,
+      "active": false,
       "image": "https://www.mafab.hu/static/2018/199/11/106803_1531992321.5824.jpg"
     },
     {
@@ -897,7 +897,7 @@
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, numquam sunt obcaecati quas minus deserunt excepturi eum perferendis earum quo ducimus officia. Odio itaque officia aspernatur aut a fuga cum?",
       "price": 1700,
       "featured": true,
-      "active": true,
+      "active": false,
       "image": "https://www.mafab.hu/static/profiles/2015/35/22/148789.jpg"
     },
     {
@@ -963,7 +963,7 @@
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, numquam sunt obcaecati quas minus deserunt excepturi eum perferendis earum quo ducimus officia. Odio itaque officia aspernatur aut a fuga cum?",
       "price": 999,
       "featured": true,
-      "active": true,
+      "active": false,
       "image": "https://www.mafab.hu/static/profiles/2014/293/04/20046_50.jpg"
     },
     {
@@ -1040,7 +1040,7 @@
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, numquam sunt obcaecati quas minus deserunt excepturi eum perferendis earum quo ducimus officia. Odio itaque officia aspernatur aut a fuga cum?",
       "price": 3000,
       "featured": true,
-      "active": true,
+      "active": false,
       "image": "https://www.mafab.hu/static/2018/287/09/311671_1539589186.5596.jpg"
     },
     {
@@ -1161,7 +1161,7 @@
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, numquam sunt obcaecati quas minus deserunt excepturi eum perferendis earum quo ducimus officia. Odio itaque officia aspernatur aut a fuga cum?",
       "price": 6574,
       "featured": true,
-      "active": true,
+      "active": false,
       "image": "https://www.mafab.hu/static/2018/213/11/302639_1533202189.4645.jpg"
     },
     {
