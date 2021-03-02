@@ -1,13 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-8 offset-2">
-      <h3>All customers are listed below</h3>
+      <h3>Vásárlók</h3>
     </div>
 
     <div class="col-5">
       <button class="btn btn-success btn-block" [routerLink]="[0]">
         <i class="fa fa-edit"></i>
-        New Customer
+        Új vásárló
       </button>
     </div>
     <div class="col-3">
@@ -16,7 +16,6 @@
           {{ key }}
         </option>
       </select>
-      -->
     </div>
     <div class="col-4">
       <form class="form-inline my-2 my-lg-0">
@@ -27,23 +26,22 @@
           (keyup)="onChangePhrase($event)"
         />
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-          Search
+          Keresés
         </button>
       </form>
     </div>
     <table class="table table-striped">
-      <thead>
+      <thead class="bg-dark text-light">
         <tr>
-          <th>ID</th>
-          <th>Firstname</th>
-          <th>Lastname</th>
-          <th>Email</th>
-          <th>Address</th>
-          <th>Active</th>
+          <th (click)="onColumnSelect('id')">#</th>
+          <th (click)="onColumnSelect('firstNamee')">Vezetéknév</th>
+          <th (click)="onColumnSelect('lastName')">Keresztnév</th>
+          <th (click)="onColumnSelect('Email')">Email</th>
+          <th (click)="onColumnSelect('Address')">Cím</th>
+          <th (click)="onColumnSelect('Aktív')">Aktív</th>
         </tr>
       </thead>
       <tbody>
-        <!-- | filter:filterKey:phrase | sorter:sortedColumn:sortedOrder -->
         <tr *ngFor="let customer of customerList$ | async | filter:filterKey:phrase | sorter:sortedColumn:sortedOrder">
           <td>
             {{ customer.id }}
@@ -58,12 +56,7 @@
             {{ customer.email }}
           </td>
           <td>
-<<<<<<< HEAD
-            {{ customer.address.zip }} {{customer.address.country  }} {{customer.address.city }}
-            {{ customer.address.street }}
-=======
-            {{ customer.address.zip }} {{ customer.address.country }} {{ customer.address.city }}
->>>>>>> origin/dev
+            {{ customer.address.zip }} {{ customer.address.country }}, {{ customer.address.city }}  {{ customer.address.street }}
           </td>
           <td>
             {{ customer.active }}
