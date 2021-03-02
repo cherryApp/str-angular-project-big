@@ -12,18 +12,18 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput [placeholder]="attributes.firstName.title" type="text" [(ngModel)]="customer.firstName" name="firstName" required>
+                                        <input matInput [placeholder]="attributes.firstName.title" type="text" [(ngModel)]="customer.firstName" name="firstName" required pattern="[A-Z].{2,}">
                                     </mat-form-field>
                                     <div [hidden]="customerFrom.controls.firstName?.valid" class="error-message">
-                                        {{attributes.firstName.title}} is required!
+                                        {{attributes.firstName.title}} is required and must start with a capital letter and be at least 3 characters long!
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput [placeholder]="attributes.lastName.title" type="text" [(ngModel)]="customer.lastName" name="lastName" required>
+                                        <input matInput [placeholder]="attributes.lastName.title" type="text" [(ngModel)]="customer.lastName" name="lastName" required pattern="[A-Z].{2,}">
                                     </mat-form-field>
                                     <div [hidden]="customerFrom.controls.lastName?.valid" class="error-message">
-                                        {{attributes.lastName.title}} is required!
+                                        {{attributes.lastName.title}} is required and must start with a capital letter and be at least 3 characters long!
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -40,34 +40,34 @@
                             <div class="row">
                                 <div class="col-md-1">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput [placeholder]="attributes.zip.title" type="text" [(ngModel)]="customer.address.zip" name="zip" required>
+                                        <input matInput [placeholder]="attributes.zip.title" type="text" [(ngModel)]="customer.address.zip" name="zip" required pattern="[A-Z\d]{3,4}">
                                     </mat-form-field>
                                     <div [hidden]="customerFrom.controls.zip?.valid" class="error-message">
-                                        {{attributes.zip.title}} is required!
+                                        {{attributes.zip.title}} is required must be 3 or 4 characters and can contain only uppercase letters or numbers!
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput [placeholder]="attributes.country.title" type="text" [(ngModel)]="customer.address.country" name="country" required>
+                                        <input matInput [placeholder]="attributes.country.title" type="text" [(ngModel)]="customer.address.country" name="country" required pattern="[A-Z].{2,}">
                                     </mat-form-field>
                                     <div [hidden]="customerFrom.controls.country?.valid" class="error-message">
-                                        {{attributes.country.title}} is required!
+                                        {{attributes.country.title}} is required and must start with a capital letter and be at least 3 characters long!
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <mat-form-field class="example-full-width">
-                                        <input matInput [placeholder]="attributes.city.title" type="text" [(ngModel)]="customer.address.city" name="city" required>
+                                        <input matInput [placeholder]="attributes.city.title" type="text" [(ngModel)]="customer.address.city" name="city" required pattern="[A-Z].{2,}">
                                     </mat-form-field>
                                     <div [hidden]="customerFrom.controls.city?.valid" class="error-message">
-                                        {{attributes.email.title}} is required!
+                                        {{attributes.city.title}} is required and must start with a capital letter and be at least 3 characters long!
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                   <mat-form-field class="example-full-width">
-                                    <input matInput [placeholder]="attributes.street.title" type="text" [(ngModel)]="customer.address.street" name="street" required>
+                                    <input matInput [placeholder]="attributes.street.title" type="text" [(ngModel)]="customer.address.street" name="street" required pattern="[A-Z].{2,}">
                                   </mat-form-field>
                                   <div [hidden]="customerFrom.controls.street?.valid" class="error-message">
-                                    {{attributes.street.title}} is required!
+                                    {{attributes.street.title}} is required and must start with a capital letter and be at least 3 characters long!
                                 </div>
                             </div>
                             </div>

@@ -2388,7 +2388,7 @@
       "firstName": "Ragnar",
       "lastName": "Pattini",
       "email": "rpattini7@guardian.co.uk",
-      "active": true,
+      "active": false,
       "address": {
         "zip": "CH48",
         "country": "United Kingdom",
