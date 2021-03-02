@@ -8,7 +8,7 @@
                         <p class="card-category">List of current orders.</p>
                     </div>
                     <div class="card my-0 px-3">
-                        <button [routerLink]="['order/'+'0']" class="btn btn-primary my-3">
+                        <button [routerLink]="['/order/0']" class="btn btn-primary my-3">
                             Create new order
                         </button>
                     </div>
@@ -73,13 +73,13 @@
                                             </ng-container>
                                             <td>
                                                 <div class="btn-group">
-                                                    <button [routerLink]="['order/'+order.id]" class="btn btn-info">
+                                                    <button [routerLink]="['/order', order.id]" class="btn btn-info">
                                                         <i class="fa fa-pencil"></i>
                                                     </button>
                                                     <button class="btn btn-danger" data-toggle="modal"
                                                         data-target="#confirmationDialog"
                                                         (click)=setOrdertoDelete(order)>
-                                                        <i class="fa fa-trash"></i>
+                                                        <i class="fa fa-trash" [id]="order.id"></i>
                                                     </button>
                                                 </div>
                                         </td>

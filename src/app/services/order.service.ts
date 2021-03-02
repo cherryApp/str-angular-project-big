@@ -52,7 +52,7 @@ export class OrderService {
     this.http.delete<Order>(
       `${this.serverUrl}/${order.id}`
     ).subscribe(
-      () => this.redirectTo('//product-list')
+      () => this.redirectTo('//order-list')
     );
     this.toastr.error(`#${order.id} order has been deleted.`, 'DELETED');
   }
