@@ -11,8 +11,6 @@ import { ConfigService } from './config.service';
 })
 export class OrderService extends BaseService<Order> {
 
-  apiUrl: string = 'http://localhost:3000/orders';
-
   orderList$: BehaviorSubject<Order[]> = new BehaviorSubject<Order[]>([]);
 
   constructor(
