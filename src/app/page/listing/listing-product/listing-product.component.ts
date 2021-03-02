@@ -5,6 +5,7 @@ import { Product } from 'src/app/model/product';
 import { ConfigService, ITableCol } from 'src/app/service/config.service';
 import { ProductService } from 'src/app/service/product.service';
 import { ToastrService } from 'ngx-toastr';
+import { StatisticsService } from 'src/app/service/statistics.service';
 
 @Component({
   selector: 'app-listing-product',
@@ -17,7 +18,16 @@ export class ListingProductComponent implements OnInit {
     private router: Router,
     private config: ConfigService,
     private toastr: ToastrService,
+    private statisticsService: StatisticsService
   ) { }
+
+  scroll(id: string) {
+    const elmnt = document.getElementById(id);
+    elmnt?.scrollIntoView(false);
+
+  }
+
+
 
   productList: BehaviorSubject<Product[]> = this.productService.list$;
   cols: ITableCol[] = this.config.productTableCols;
@@ -35,8 +45,11 @@ export class ListingProductComponent implements OnInit {
   columnKey: string = ''
   firstSorting = true;
 
+  numberOfActiveProducts$: BehaviorSubject<number> = this.statisticsService.numberOfActiveProducts$;
+
   ngOnInit(): void {
     this.productService.getAll();
+    this.statisticsService.subscribeForData();
   }
 
   onRemove(product: Product): void {

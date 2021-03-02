@@ -1644,7 +1644,7 @@
       "id": 47,
       "orderID": 47,
       "amount": 36000,
-      "status": "paid"
+      "status": "new"
     },
     {
       "id": 48,
@@ -1706,7 +1706,7 @@
       "customerID": 13,
       "productID": 50,
       "amount": 6,
-      "status": "paid"
+      "status": "new"
     },
     {
       "id": 8,
@@ -1720,7 +1720,7 @@
       "customerID": 31,
       "productID": 21,
       "amount": 76,
-      "status": "paid"
+      "status": "new"
     },
     {
       "id": 10,
@@ -1762,7 +1762,7 @@
       "customerID": 2,
       "productID": 14,
       "amount": 93,
-      "status": "paid"
+      "status": "new"
     },
     {
       "id": 16,
@@ -1797,7 +1797,7 @@
       "customerID": 17,
       "productID": 21,
       "amount": 18,
-      "status": "paid"
+      "status": "new"
     },
     {
       "id": 21,
@@ -1846,14 +1846,14 @@
       "customerID": 34,
       "productID": 12,
       "amount": 84,
-      "status": "paid"
+      "status": "new"
     },
     {
       "id": 28,
       "customerID": 2,
       "productID": 30,
       "amount": 35,
-      "status": "paid"
+      "status": "new"
     },
     {
       "id": 29,
@@ -1867,7 +1867,7 @@
       "customerID": 33,
       "productID": 49,
       "amount": 69,
-      "status": "paid"
+      "status": "new"
     },
     {
       "id": 31,
@@ -1881,7 +1881,7 @@
       "customerID": 7,
       "productID": 28,
       "amount": 96,
-      "status": "shipped"
+      "status": "new"
     },
     {
       "id": 33,
@@ -1895,21 +1895,21 @@
       "customerID": 46,
       "productID": 17,
       "amount": 68,
-      "status": "shipped"
+      "status": "new"
     },
     {
       "id": 35,
       "customerID": 32,
       "productID": 3,
       "amount": 24,
-      "status": "shipped"
+      "status": "new"
     },
     {
       "id": 36,
       "customerID": 35,
       "productID": 40,
       "amount": 93,
-      "status": "shipped"
+      "status": "new"
     },
     {
       "id": 37,
@@ -1937,35 +1937,35 @@
       "customerID": 16,
       "productID": 29,
       "amount": 62,
-      "status": "shipped"
+      "status": "new"
     },
     {
       "id": 41,
       "customerID": 16,
       "productID": 11,
       "amount": 90,
-      "status": "shipped"
+      "status": "new"
     },
     {
       "id": 42,
       "customerID": 21,
       "productID": 46,
       "amount": 14,
-      "status": "shipped"
+      "status": "new"
     },
     {
       "id": 43,
       "customerID": 8,
       "productID": 30,
       "amount": 77,
-      "status": "shipped"
+      "status": "new"
     },
     {
       "id": 44,
       "customerID": 10,
       "productID": 4,
       "amount": 92,
-      "status": "shipped"
+      "status": "new"
     },
     {
       "id": 45,
