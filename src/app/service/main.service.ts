@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { ConfigService } from './config.service';
 import { tap } from 'rxjs/operators';
 
@@ -28,7 +28,9 @@ export class MainService<T extends { id: number }> {
   }
 
   get(id: number): Observable<T> {
-    return this.http.get<T>(`${this.config.apiUrl}/${this.entityName}/${id}`);
+    return Number(id) === 0
+      ? new Observable<T>()
+      : this.http.get<T>(`${this.config.apiUrl}/${this.entityName}/${id}`);
   }
 
   create(entity: T): Observable<T> {
@@ -42,12 +44,17 @@ export class MainService<T extends { id: number }> {
       `${this.config.apiUrl}/${this.entityName}/${entity.id}`,
       entity
     );
+    // ).pipe(tap(() => this.getAll()));
   }
 
-  remove(entity: T): Observable<T> {
+  // remove(entity: T): Observable<T> {
+  remove(entity: T | number): Observable<T> {
+    let entityId = typeof entity === 'number' ? entity : entity.id;
     return this.http.delete<T>(
-      `${this.config.apiUrl}/${this.entityName}/${entity.id}`
+      // `${this.config.apiUrl}/${this.entityName}/${entity.id}`
+      `${this.config.apiUrl}/${this.entityName}/${entityId}`
     );
+    // ).pipe(tap(() => this.getAll()));
   }
 
   like(key: string, value: string, limit: number = 10): Observable<T[]> {
