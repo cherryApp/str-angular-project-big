@@ -45,7 +45,9 @@ export class ListingProductComponent implements OnInit {
   columnKey: string = ''
   firstSorting = true;
 
-  numberOfActiveProducts$: BehaviorSubject<number> = this.statisticsService.numberOfActiveProducts$;
+  numberOfActiveProducts$ = this.statisticsService.numberOfActiveProducts$;
+  numberOfAllProducts$ = this.statisticsService.numberOfAllProducts$;
+  numberOfFeaturedProducts$ = this.statisticsService.numberOfFeaturedProducts$;
 
   ngOnInit(): void {
     this.productService.getAll();
