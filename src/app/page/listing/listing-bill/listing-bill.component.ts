@@ -5,6 +5,7 @@ import { Bill } from 'src/app/model/bill';
 import { BillService } from 'src/app/service/bill.service';
 import { ConfigService, ITableCol } from 'src/app/service/config.service';
 import { ToastrService } from 'ngx-toastr';
+import { StatisticsService } from 'src/app/service/statistics.service';
 
 @Component({
   selector: 'app-listing-bill',
@@ -24,7 +25,14 @@ export class ListingBillComponent implements OnInit {
     private router: Router,
     private configService: ConfigService,
     private toastr: ToastrService,
+    private statisticsService: StatisticsService
   ) { }
+
+  scroll(id: string) {
+    const elmnt = document.getElementById(id);
+    elmnt?.scrollIntoView(false);
+
+  }
 
   filterKey: string = 'id';
   filterKeys: string[] = Object.keys(new Bill());
@@ -40,9 +48,11 @@ export class ListingBillComponent implements OnInit {
   direction: boolean = false;
   columnKey: string = '';
 
+  sumOfUnpaidBills$: BehaviorSubject<number> = this.statisticsService.sumOfUnpaidBills$;
 
   ngOnInit(): void {
     this.billService.getAll();
+    this.statisticsService.subscribeForData();
   }
 
   onRemove(bill: Bill): void {
