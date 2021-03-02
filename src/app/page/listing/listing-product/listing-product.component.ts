@@ -27,6 +27,8 @@ export class ListingProductComponent implements OnInit {
 
   }
 
+
+
   productList: BehaviorSubject<Product[]> = this.productService.list$;
   cols: ITableCol[] = this.config.productTableCols;
   phrase: string = '';
