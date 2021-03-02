@@ -1,99 +1,112 @@
 <div class="row">
-    <div class="col-6 offset-3">
-      <form #productFrom="ngForm" (ngSubmit)="onFormSubmit(productFrom)">
+    <div class="col-md-8 offset-md-2">
+        <div class="card">
+
+            <!-- CARD HEADER -->
+            <div class="card-header card-header-primary">
+                <h4 class="card-title ">Customer Editor</h4>
+            </div>
+
+            <!-- CARD BODY -->
+            <div class="card-body">
+                <form class="form__border" #productFrom="ngForm" (ngSubmit)="onFormSubmit(productFrom)">
         
-        <div class="form-group">
-            <label>ID</label>
-            <input [(ngModel)]="customer.id" name="id" type="number" 
-                class="form-control" pattern="" required>
-            <div [hidden]="productFrom.controls.id?.valid" class="error-message">
-                The ID must be a minimum of 5 and a maximum of 20 number long! 
+                    <div class="form-group">
+                        <label>ID</label>
+                        <input [(ngModel)]="customer.id" name="id" type="number" 
+                            class="form-control" pattern="" required>
+                        <div [hidden]="productFrom.controls.id?.valid" class="error-message">
+                            The ID must be a minimum of 5 and a maximum of 20 number long! 
+                        </div>
+                    </div>        
+            
+                    <div class="form-group">
+                        <label>First name</label>
+                        <input [(ngModel)]="customer.firstName" name="firstname" type="text" 
+                            class="form-control" pattern=".{5,20}" required>
+                        <div [hidden]="productFrom.controls.firstname?.valid" class="error-message">
+                            The first name must be a minimum of 5 and a maximum of 20 characters long! 
+                        </div>
+                    </div>
+            
+                    <div class="form-group">
+                        <label>Last name</label>
+                        <input [(ngModel)]="customer.lastName" name="lastname" type="text" 
+                            class="form-control" pattern=".{5,20}" required>
+                        <div [hidden]="productFrom.controls.lastname?.valid" class="error-message">
+                            The last name must be a minimum of 5 and a maximum of 20 characters long! 
+                        </div>
+                    </div>
+            
+                    <div class="form-group">
+                        <label>email</label>
+                        <input [(ngModel)]="customer.email" name="email" type="text" 
+                            class="form-control" pattern=".{5,20}" required>
+                        <div [hidden]="productFrom.controls.email?.valid" class="error-message">
+                            The email must be a minimum of 5 and a maximum of 20 characters long! 
+                        </div>
+                    </div>
+            
+                    <div class="form-group">
+                        <label>zip</label>
+                        <input [(ngModel)]="customer.address.zip" name="address_zip" type="text" 
+                            class="form-control" pattern=".{5,20}" required>
+                        <div [hidden]="productFrom.controls.address_zip?.valid" class="error-message">
+                            The zip must be a minimum of 5 and a maximum of 20 characters long! 
+                        </div>
+                    </div>
+            
+                    <div class="form-group">
+                        <label>country</label>
+                        <input [(ngModel)]="customer.address.country" name="country" type="text" 
+                            class="form-control" pattern=".{5,50}" required>
+                        <div [hidden]="productFrom.controls.country?.valid" class="error-message">
+                            The country must be a minimum of 5 and a maximum of 50 characters long! 
+                        </div>
+                    </div>
+            
+                    <div class="form-group">
+                        <label>city</label>
+                        <input [(ngModel)]="customer.address.city" name="city" type="text" 
+                            class="form-control" pattern=".{5,50}" required>
+                        <div [hidden]="productFrom.controls.city?.valid" class="error-message">
+                            The city must be a minimum of 5 and a maximum of 50 characters long! 
+                        </div>
+                    </div>
+            
+                    <div class="form-group">
+                        <label>street</label>
+                        <input [(ngModel)]="customer.address.street" name="street" type="text" 
+                            class="form-control" pattern=".{5,100}" required>
+                        <div [hidden]="productFrom.controls.street?.valid" class="error-message">
+                            The street must be a minimum of 5 and a maximum of 100 characters long! 
+                        </div>
+                    </div>
+            
+                    <div class="form-group">
+                        <label>notes</label>
+                        <input [(ngModel)]="customer.address.notes" name="notes" type="text" 
+                            class="form-control" pattern=".{5,100}" required>
+                        <div [hidden]="productFrom.controls.notes?.valid" class="error-message">
+                            The address notes must be a minimum of 5 and a maximum of 100 characters long! 
+                        </div>
+                    </div>
+            
+                    <div class="form-group">
+                        <label>active</label><br>
+                        <input [(ngModel)]="customer.active" name="active" type="checkbox" 
+                            class="form-check-input">
+                    </div>
+            
+                    
+                    <button [disabled]="productFrom.invalid || updating" class="btn btn-block btn-primary">
+                      <i *ngIf="!updating" class="fa fa-save"></i>
+                      <i *ngIf="updating" class="fa fa-refresh"></i>
+                    </button>
+
+                </form>
             </div>
-        </div>        
 
-        <div class="form-group">
-            <label>First name</label>
-            <input [(ngModel)]="customer.firstName" name="firstname" type="text" 
-                class="form-control" pattern=".{5,20}" required>
-            <div [hidden]="productFrom.controls.firstname?.valid" class="error-message">
-                The first name must be a minimum of 5 and a maximum of 20 characters long! 
-            </div>
         </div>
-
-        <div class="form-group">
-            <label>Last name</label>
-            <input [(ngModel)]="customer.lastName" name="lastname" type="text" 
-                class="form-control" pattern=".{5,20}" required>
-            <div [hidden]="productFrom.controls.lastname?.valid" class="error-message">
-                The last name must be a minimum of 5 and a maximum of 20 characters long! 
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label>email</label>
-            <input [(ngModel)]="customer.email" name="email" type="text" 
-                class="form-control" pattern=".{5,20}" required>
-            <div [hidden]="productFrom.controls.email?.valid" class="error-message">
-                The email must be a minimum of 5 and a maximum of 20 characters long! 
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label>zip</label>
-            <input [(ngModel)]="customer.address.zip" name="address_zip" type="text" 
-                class="form-control" pattern=".{5,20}" required>
-            <div [hidden]="productFrom.controls.address_zip?.valid" class="error-message">
-                The zip must be a minimum of 5 and a maximum of 20 characters long! 
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label>country</label>
-            <input [(ngModel)]="customer.address.country" name="country" type="text" 
-                class="form-control" pattern=".{5,50}" required>
-            <div [hidden]="productFrom.controls.country?.valid" class="error-message">
-                The country must be a minimum of 5 and a maximum of 50 characters long! 
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label>city</label>
-            <input [(ngModel)]="customer.address.city" name="city" type="text" 
-                class="form-control" pattern=".{5,50}" required>
-            <div [hidden]="productFrom.controls.city?.valid" class="error-message">
-                The city must be a minimum of 5 and a maximum of 50 characters long! 
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label>street</label>
-            <input [(ngModel)]="customer.address.street" name="street" type="text" 
-                class="form-control" pattern=".{5,100}" required>
-            <div [hidden]="productFrom.controls.street?.valid" class="error-message">
-                The street must be a minimum of 5 and a maximum of 100 characters long! 
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label>notes</label>
-            <input [(ngModel)]="customer.address.notes" name="notes" type="text" 
-                class="form-control" pattern=".{5,100}" required>
-            <div [hidden]="productFrom.controls.notes?.valid" class="error-message">
-                The address notes must be a minimum of 5 and a maximum of 100 characters long! 
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label>active</label><br>
-            <input [(ngModel)]="customer.active" name="active" type="checkbox" 
-                class="form-check-input">
-        </div>
-
-        
-        <button [disabled]="productFrom.invalid || updating" class="btn btn-block btn-primary">
-          <i *ngIf="!updating" class="fa fa-save"></i>
-          <i *ngIf="updating" class="fa fa-refresh"></i>
-        </button>
-      </form>
     </div>
-  </div>
+</div>
