@@ -10,7 +10,9 @@ import { ConfigService } from './config.service';
   providedIn: 'root'
 })
 export class CategoryService extends BaseService<Category> {
-  
+
+  apiUrl: string = 'http://localhost:3000/categories';
+
   categoryList$: BehaviorSubject<Category[]> = new BehaviorSubject<Category[]>([]);
 
   constructor(
