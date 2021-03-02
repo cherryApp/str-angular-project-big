@@ -27,11 +27,13 @@ export class FilterPipe implements PipeTransform {
   }
 
   refreshPagination(pagination: any, length: number): void {
-    setTimeout(() => {
-      pagination.itemCount = length;
-      pagination.computePageParams();
-      pagination.page = 1;
-    });
+    if(pagination.computePageParams){   // real pagination object :)
+      setTimeout(() => {
+        pagination.itemCount = length;
+        pagination.computePageParams();
+        pagination.page = 1;
+      });
+    }
   }
 }
 
