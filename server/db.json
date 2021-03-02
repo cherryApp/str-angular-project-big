@@ -699,17 +699,31 @@
         "notes": "Something note."
       },
       "active": true
+    },
+    {
+      "id": 51,
+      "firstName": "Kiss",
+      "lastName": "Tóbiás",
+      "email": "kt@gmail.com",
+      "address": {
+        "zip": 1118,
+        "country": "Magyarország",
+        "city": "Budapest",
+        "street": "BAJZA",
+        "notes": "készpénzes"
+      },
+      "active": true
     }
   ],
   "products": [
     {
       "id": 1,
-      "name": "Szombat esti őrület",
+      "name": "Szombat esti őrült keringő",
       "type": "film",
-      "catId": 1,
+      "catId": 2,
       "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, numquam sunt obcaecati quas minus deserunt excepturi eum perferendis earum quo ducimus officia. Odio itaque officia aspernatur aut a fuga cum?",
-      "price": 5999,
-      "featured": true,
+      "price": 6000,
+      "featured": false,
       "active": true,
       "image": "https://www.mafab.hu/static/profiles/2014/293/00/5212_32.jpg"
     },
@@ -1368,7 +1382,7 @@
       "id": 1,
       "orderID": 1,
       "amount": 41220,
-      "status": "new"
+      "status": "paid"
     },
     {
       "id": 2,
@@ -1663,15 +1677,21 @@
       "orderID": 50,
       "amount": 21290,
       "status": "new"
+    },
+    {
+      "id": 51,
+      "orderID": 1,
+      "amount": 4111,
+      "status": "new"
     }
   ],
   "orders": [
     {
       "id": 1,
-      "customerID": 23,
-      "productID": 31,
-      "amount": 31,
-      "status": "shipped"
+      "customerID": 50,
+      "productID": 50,
+      "amount": 50,
+      "status": "paid"
     },
     {
       "id": 3,
@@ -2007,6 +2027,20 @@
       "customerID": 30,
       "productID": 9,
       "amount": 53,
+      "status": "shipped"
+    },
+    {
+      "id": 51,
+      "customerID": 1,
+      "productID": 1,
+      "amount": 1,
+      "status": "new"
+    },
+    {
+      "id": 52,
+      "customerID": 12,
+      "productID": 12,
+      "amount": 12,
       "status": "shipped"
     }
   ],

@@ -4,21 +4,20 @@ import { CustomerService } from '../service/customer.service';
 import { ProductService } from '../service/product.service';
 
 @Pipe({
-  name: 'orderBindings'
+  name: 'orderBindings',
 })
 export class OrderBindingsPipe implements PipeTransform {
-
   transform(orders: any[]): Order[] {
-
-    orders.forEach(order => {
+    orders.forEach((order) => {
       this.customerService.get(order.customerID).subscribe(
-        customer => order.customerID = `${order.customerID} (${customer.firstName} ${customer.lastName})`,
-        () => order.customerID = `${order.customerID} ()`
-      )
-      this.productService.getOne(order.productID).subscribe(
-        product => order.productID = `${order.productID} (${product.name})`,
-        () => order.productID = `${order.productID} ()`
-      )
+        (customer) =>
+          (order.customerID = `${order.customerID} (${customer.firstName} ${customer.lastName})`),
+        () => (order.customerID = `${order.customerID} ()`)
+      );
+      this.productService.get(order.productID).subscribe(
+        (product) => (order.productID = `${order.productID} (${product.name})`),
+        () => (order.productID = `${order.productID} ()`)
+      );
     });
 
     return orders;
@@ -27,6 +26,5 @@ export class OrderBindingsPipe implements PipeTransform {
   constructor(
     private customerService: CustomerService,
     private productService: ProductService
-  ) { }
-
+  ) {}
 }
