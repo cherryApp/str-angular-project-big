@@ -22,7 +22,7 @@ export class EditCategoryComponent implements OnInit {
   ngOnInit(): void {
     const routeParams = this.route.snapshot.paramMap;
     this.categoryIdFromRoute = Number(routeParams.get('id'));
-    console.log("Router paraméter id: ",this.categoryIdFromRoute);
+   
     this.getCurrentCategory(this.categoryIdFromRoute);
     
   }

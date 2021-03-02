@@ -15,16 +15,44 @@ export class CategroyListComponent implements OnInit {
 
   phrase: string = '';
   filterKey = 'id';
-
+  myArray: Category[]=[];
+  arrayLength: number=0;
   sorterKey: string ='';
+  delCategory: Category={id:0, name:'', description: ''};
 
   attributes = new CategoryAttributes();
 
-  constructor( private categoryService: CategoryService) { }
+  constructor( private categoryService: CategoryService) {
+    
+   }
 
-  ngOnInit(): void {
+  ngOnInit():any {
     this.categoryService.getAll();
+    this.categoryList$.subscribe(
+      val=> {this.myArray=val;
+        this.myLength()},
+    );       
   }
+  myLength(){
+    this.arrayLength=this.myArray.length
+            
+  }
+  setCategoryDelete(category: Category): void {
+    this.delCategory = category;
+    
+    $('#confirmationDialog').on('show.bs.modal', function () {
+      // $('#confirmationDialog').modal('show');
+      $('#cancelButton').trigger('focus')
+    })
+    $('#confirmationDialog').on('hidden.bs.modal', function () {
+      let deleteIcon = document.querySelector(".fa-spinner");
+      if (deleteIcon !== null) {
+        deleteIcon.classList.remove("fa-spinner", "fa-pulse");
+        deleteIcon.classList.add("fa-trash");
+      }
+    })
+  }
+
   onDelete(category: Category): void {
     this.categoryService.remove(category);
   }
