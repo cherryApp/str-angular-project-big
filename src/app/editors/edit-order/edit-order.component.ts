@@ -5,6 +5,7 @@ import { Order, OrderAttributes } from 'app/model/order';
 import { OrderService } from 'app/services/order.service';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-edit-order',
@@ -24,7 +25,8 @@ export class EditOrderComponent implements OnInit {
   constructor(    
     private activatedRoute: ActivatedRoute,
     private orderService: OrderService,
-    private router: Router,) { }
+    private router: Router,
+    private _location: Location,) { }
 
   ngOnInit(): void {
   }
@@ -44,5 +46,9 @@ export class EditOrderComponent implements OnInit {
     let saveIcon = document.getElementById("saveicon");
     saveIcon.classList.remove("fa-save");
     saveIcon.classList.add("fa-spinner", "fa-pulse");
+  }
+
+  backClicked() {
+    this._location.back();
   }
 }
