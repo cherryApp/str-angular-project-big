@@ -30,7 +30,7 @@
                 </form>
             </div>
 
-            <div class="col-5 mt-3 mb-5">
+            <div class="col-5 mt-0 mb-5">
                 <button class="btn btn-success my-2 my-sm-0" (click)="scroll('summaries')">STATISZTIKA</button>
             </div>
         </div>
@@ -93,17 +93,16 @@
                     <th>Kiemelt termékek</th>
                     <th>Aktív termékek</th>
                     <th></th>
-
-
+                    <div *ngIf="numberOfActiveProducts$ | async">
+                        ͏͏͏͏͏͏͏<p>Aktív termékek száma: {{ numberOfActiveProducts$ | async }}</p>
+                    </div>
                 </thead>
                 <tbody>
-
                 </tbody>
+
             </table>
         </div>
-        <div *ngIf="numberOfActiveProducts$ | async">
-            ͏͏͏͏͏͏͏<p>Aktív termékek száma: {{ numberOfActiveProducts$ | async }}</p>
-        </div>
+
     </div>
 
 
