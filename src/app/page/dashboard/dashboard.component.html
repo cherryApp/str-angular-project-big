@@ -5,7 +5,8 @@
       [icon]="card.icon"
       [cardClass]="card.cardClass"
       [content]="card.content"
-      [title]="statistics[card.i] | async | tostring"
+      [title]="statistics[card.i] | async | tostring | hunFormat"
+      [unit]="card.unit"
       [footIcon]="card.footIcon"
       [footer]="card.footer"
     ></app-card>

@@ -4,7 +4,7 @@ export interface InfoCard {
   icon: string;
   cardClass: string;
   content: string;
-  title: string;
+  title: string | null;
   footIcon: string;
   footer: string;
 }
@@ -18,7 +18,8 @@ export class CardComponent implements OnInit {
   @Input() icon: string = '';
   @Input() cardClass: string = 'card-header-warning';
   @Input() content: string = 'content';
-  @Input() title: string = 'title';
+  @Input() title: string | null = 'title';
+  @Input() unit: string = '';
   @Input() footIcon: string = '';
   @Input() footer: string = '';
 
