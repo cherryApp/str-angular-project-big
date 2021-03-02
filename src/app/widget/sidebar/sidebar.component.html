@@ -1,5 +1,5 @@
 <div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg">
-  <div class="logo"><a routerLink="/" class="simple-text logo-normal">Filmes webshop</a></div>
+  <div class="logo" (click)="onClickLogo()"><a routerLink="/" class="simple-text logo-normal">Filmes webshop</a></div>
   <div class="sidebar-wrapper">
     <ul class="nav">
       <li class="nav-item" (click)=onClickListItem($event) (click)="onClickListItemForOutput('Dashboard')">
