@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Order } from 'src/app/model/order';
 import { OrderService } from 'src/app/service/order.service';
 import { ConfigService, ITableCol } from 'src/app/service/config.service';
+import { StatisticsService } from 'src/app/service/statistics.service';
 
 @Component({
   selector: 'app-listing-order',
@@ -13,9 +14,9 @@ import { ConfigService, ITableCol } from 'src/app/service/config.service';
 })
 export class ListingOrderComponent implements OnInit {
 
-  @Output() onUpdate: EventEmitter<Order> = new EventEmitter();
-  @Output() onDelete: EventEmitter<Order> = new EventEmitter();
-
+  // @Output() onUpdate: EventEmitter<Order> = new EventEmitter();
+  // @Output() onDelete: EventEmitter<Order> = new EventEmitter();
+  numberOfUnpaidOrders$: BehaviorSubject<number> = this.statisticsService.numberOfUnpaidOrders$;
   orderList$: BehaviorSubject<Order[]> = this.orderService.list$;
   // orderList$: Observable<Order[]>= this.orderService.getAll();
   phrase: string = '';
@@ -27,7 +28,14 @@ export class ListingOrderComponent implements OnInit {
     private router: Router,
     private configService: ConfigService,
     private toastr: ToastrService,
+    private statisticsService: StatisticsService,
   ) { }
+
+  scroll(id: string) {
+    const elmnt = document.getElementById(id);
+    elmnt?.scrollIntoView(false);
+
+  }
 
   filterKey: string = 'id';
   filterKeys: string[] = Object.keys(new Order());
@@ -43,6 +51,7 @@ export class ListingOrderComponent implements OnInit {
 
   ngOnInit(): void {
     this.orderService.getAll();
+    this.statisticsService.subscribeForData();
   }
 
   onColumnSelect(columnName: string): void {
