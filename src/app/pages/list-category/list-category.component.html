@@ -29,9 +29,9 @@
 
               <tbody>
                 <tr *ngFor="let category of categoryList$ | async | filter:filterPhrase:filterKey | sorter:sortby:sorterDirection">
-                  <td>{{ category.id }}</td>
-                  <td>{{ category.name }}</td>
-                  <td>{{ category.description }}</td>
+                  <td *ngFor="let col of cols">
+                    <span>{{ category[col.key] }}</span>
+                  </td>
                   <td>
                     <div class="btn-group" role="group">
                       <button type="button" [routerLink]="'/category/'+category.id" rel="tooltip" title="Edit this Category" class="btn btn-primary btn-link btn-sm">

@@ -28,9 +28,10 @@
 
               <tbody>
                 <tr *ngFor="let customer of customerList$ | async | filter:filterPhrase:filterKey | sorter:sortby:sorterDirection">
-                  <td *ngFor="let item of customer | keyvalue : originalOrder">
-                    
-                    {{item.key == 'address' ? getAddress(customer) : item.value}}
+                  <td *ngFor="let col of cols">
+                    <input *ngIf="col.type === 'check'" [(ngModel)]="customer[col.key]" type="checkbox" class="form-control-sm text-right" disabled>
+                    <span *ngIf="col.type != 'check' && col.key != 'address'">{{customer[col.key]}}</span>
+                    <span *ngIf="col.key === 'address'">{{ customer[col.key] | json }}</span>
                   </td>
                   <td>
                     <div class="btn-group" role="group">
