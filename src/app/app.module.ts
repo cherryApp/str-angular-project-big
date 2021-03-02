@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
+import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FilterPipe } from './pipe/filter.pipe';
@@ -64,6 +66,7 @@ import { HunFormatPipe } from './pipe/hun-format.pipe';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     NgbModule,
+    Ng2GoogleChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
