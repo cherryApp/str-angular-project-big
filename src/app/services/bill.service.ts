@@ -1,46 +1,28 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { Bill } from '../models/bill';
+import { BaseService } from './base.service';
+import { ConfigService } from './config.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BillService {
-
-  apiUrl: string = 'http://localhost:3000/bills';
-
+export class BillService extends BaseService<Bill> {
   billList$: BehaviorSubject<Bill[]> = new BehaviorSubject<Bill[]>([]);
+  notPaidNr$: Observable<number> = of(0);
 
-  constructor(private http: HttpClient) { }
-
-  getAll(): void {
-    this.http.get<Bill[]>(this.apiUrl).subscribe(
-      data => this.billList$.next(data)
-    )
-  }
-
-  getOneById(id: number | string): Observable<Bill> {
-    id = typeof id === 'string' ? parseInt(id, 10) : id;
-    let bill$ : BehaviorSubject<Bill> = new BehaviorSubject<Bill>(new Bill);
-    this.http.get<Bill>(`${this.apiUrl}/${id}`).subscribe(
-      data => bill$.next(data)
-    )
-    return bill$;
-  }
-
-  create(bill: Bill):Observable<Bill> {
-    return this.http.post<Bill>(this.apiUrl, bill);
-  }
-
-  update(bill: Bill): Observable<Bill> {
-    return this.http.patch<Bill>(`${this.apiUrl}/${bill.id}`, bill);
-  }
-
-  remove(bill: Bill): void {
-    this.http.delete<Bill>(`${this.apiUrl}/${bill.id}`).subscribe(
-      () => this.getAll()
-    );
+  constructor(
+    public http: HttpClient,
+    public config: ConfigService,
+  ) {
+    super(http, config, 'bills');
+    this.list$
+      .pipe(
+        tap(list => this.notPaidNr$ = of(list.filter( bill => bill.status === 'new').length) )
+        )
+      .subscribe( list => this.billList$.next(list) )
   }
 
 }
