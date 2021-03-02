@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { ToastrService } from 'ngx-toastr';
 import { Bill } from 'app/model/bill';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class BillService {
   
   list$: BehaviorSubject<Bill[]> = new BehaviorSubject<Bill[]>([]);
 
-  constructor(private http: HttpClient, private toastr: ToastrService) { }
+  constructor(private http: HttpClient, private toastr: ToastrService, private router: Router,) { }
 
   getAll(): void {
     this.list$.next([]);
@@ -34,7 +35,7 @@ export class BillService {
     ).pipe(
       tap(() => {
         this.getAll();
-        this.toastr.info('The bill has been updated.', 'UPDATED');
+        this.toastr.info(`The bill has been updated.`, 'UPDATED');
       })
     );
   }
@@ -44,9 +45,9 @@ export class BillService {
       `${this.serverUrl}`,
       bill
     ).subscribe(
-      () => this.getAll()
+      () => this.router.navigate(['bill-list'])
     );
-    this.toastr.success('The bill has been created.', 'NEW Bill');
+    this.toastr.success(`The #${bill.orderID} OrderID bill has been created.`, 'NEW Bill');
   }
 
   remove(bill: Bill): void {
@@ -58,7 +59,10 @@ export class BillService {
     this.toastr.warning('The bill has been deleted.', 'DELETED');
   }
 
-
+  redirectTo(uri:string){
+    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
+    this.router.navigate([uri]));
+ }
 
 }
 
