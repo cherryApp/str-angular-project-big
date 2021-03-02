@@ -10,6 +10,6 @@ export class AppComponent {
   itemName = ' : Dashboard';
 
   listItemName(item: string) {
-    this.itemName = ` : ${item}`;
+    this.itemName = item ? ` : ${item}` : ' : Dashboard';
   }
 }
