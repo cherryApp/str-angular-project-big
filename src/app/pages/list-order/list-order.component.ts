@@ -13,7 +13,7 @@ export class ListOrderComponent implements OnInit {
 
   orderList$: BehaviorSubject<Order[]> = this.orderService.orderList$;
   
-  cols: ITableCol[] = this.configService.tableColsCustomerList;
+  cols: ITableCol[] = this.configService.tableColsOrderList;
 
   filterPhrase: string = '';
   filterKey: string = 'status';

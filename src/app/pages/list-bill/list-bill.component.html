@@ -27,9 +27,13 @@
             </thead>
             <tbody>
               <tr *ngFor="let bill of billList$ | async | filter:filterPhrase:filterKey | sorter:sortby:sorterDirection">
-                <td *ngFor="let item of bill | keyvalue : originalOrder">
-                  {{item.value}}
+                <td *ngFor="let col of cols">
+                  <input *ngIf="col.type === 'check'" [(ngModel)]="bill[col.key]" type="checkbox" class="form-control-sm text-right" disabled>
+                  <span *ngIf="col.type != 'check'">{{ bill[col.key] }}</span>
                 </td>
+                <!--td *ngFor="let item of bill | keyvalue : originalOrder">
+                  {{item.value}}
+                </td-->
                 <td>
                   <div class="btn-group" role="group">
                     <button type="button" [routerLink]="'/bill/'+bill.id" rel="tooltip" title="Edit this Bill" class="btn btn-primary btn-link btn-sm">

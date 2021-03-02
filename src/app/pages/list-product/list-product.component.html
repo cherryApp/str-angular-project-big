@@ -28,19 +28,20 @@
 
               <tbody>
                 <tr *ngFor="let product of productList$ | async | filter:filterPhrase:filterKey | sorter:sortby:sorterDirection ">
-                    <td *ngFor="let item of product | keyvalue : originalOrder">
-                        {{item.value}}
-                    </td>
-                    <td>
-                        <div class="btn-group" role="group">
+                  <td *ngFor="let col of cols">
+                    <input *ngIf="col.type === 'check'" [(ngModel)]="product[col.key]" type="checkbox" class="form-control-sm text-right" disabled>
+                    <span *ngIf="col.type != 'check'">{{ product[col.key] }}</span>
+                  </td>
+                  <td>
+                      <div class="btn-group" role="group">
                         <button type="button" [routerLink]="'/product/'+product.id" rel="tooltip" title="Edit this Product" class="btn btn-primary btn-link btn-sm">
                             <i class="material-icons">edit</i>
                         </button>
                         <button type="button" (click)="deleteItem(product)" rel="tooltip" title="Remove this Product" class="btn btn-danger btn-link btn-sm">
                             <i class="material-icons">close</i>
                         </button>
-                        </div>
-                    </td>
+                      </div>
+                  </td>
                 </tr>
               
               </tbody>
