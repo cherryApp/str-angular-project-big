@@ -45,7 +45,7 @@ export class OrderService {
     ).subscribe(
       () => this.router.navigate(['order-list'])
     );
-    this.toastr.success(`A new order</br>${order.id}</br>has been created.`, 'NEW Order');
+    this.toastr.success(`A new order has been created.`, 'NEW Order');
   }
 
   remove(order: Order): void {

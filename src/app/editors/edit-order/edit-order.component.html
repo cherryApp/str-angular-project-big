@@ -14,22 +14,32 @@
                             <form #orderForm="ngForm" (ngSubmit)="onUpdate(orderForm, order)">
                                 <div class="form-group">
                                     <label for="customerID">{{ attributes.customerID }}<span class="star"> *</span></label>
-                                    <input name="customerID" [(ngModel)]="order.customerID" type="number" class="form-control" required>
+                                    <input name="customerID" [(ngModel)]="order.customerID" type="number" class="form-control"
+                                    pattern="^\d+$" required>
+                                    <div [hidden]="orderForm.controls.customerID?.valid || orderForm.controls.customerID?.pristine" class="error-message">
+                                        {{attributes.customerID}} is required and can only be a number.
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="productID">{{ attributes.productID }}<span class="star"> *</span></label>
-                                    <input name="productID" [(ngModel)]="order.productID" type="number" class="form-control" required>
+                                    <input name="productID" [(ngModel)]="order.productID" type="number" class="form-control" pattern="^\d+$" required>
+                                    <div [hidden]="orderForm.controls.productID?.valid || orderForm.controls.productID?.pristine" class="error-message">
+                                        {{attributes.productID}} is required and can only be a number.
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="amount">{{ attributes.amount }}<span class="star"> *</span></label>
-                                    <input name="amount" [(ngModel)]="order.amount" type="number" class="form-control" required>
+                                    <input name="amount" [(ngModel)]="order.amount" type="number" class="form-control" pattern="^\d+$" required>
+                                    <div [hidden]="orderForm.controls.amount?.valid || orderForm.controls.amount?.pristine" class="error-message">
+                                        {{attributes.amount}} is required and can only be a number.
+                                    </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="status">{{ attributes.status }}<span class="star"> *</span></label>
                                     <select name="status" class="custom-select" [(ngModel)]="order.status" required>
                                         <option>new</option>
                                         <option>paid</option>
-                                        <option>sihpped</option>
+                                        <option>shipped</option>
                                     </select>
                                 </div>
                                 <button [disabled]="orderForm.invalid" [disabled]="clicked" type="submit"
