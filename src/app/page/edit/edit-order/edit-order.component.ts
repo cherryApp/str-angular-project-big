@@ -34,11 +34,11 @@ export class EditOrderComponent implements OnInit {
     // this.entityName = entityName;
   }
 
-  search = (text$: Observable<string>) =>
-    text$.pipe(
-      debounceTime(300),
-      switchMap((txt) => this.like('firstName', txt))
-    );
+  // search = (text$: Observable<string>) =>
+  //   text$.pipe(
+  //     debounceTime(300),
+  //     switchMap((txt) => this.like('firstName', txt))
+  //   );
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) =>
@@ -62,11 +62,11 @@ export class EditOrderComponent implements OnInit {
     return `(${customer.id}) ${customer.firstName} ${customer.lastName}`;
   }
 
-  like(key: string, value: string, limit: number = 10): Observable<Customer[]> {
-    key = `${key}_like`;
-    const query = `${this.orderService.apiUrl}/${this.entityName}?${key}=${value}&_limit=${limit}`;
-    return this.http.get<Customer[]>(query);
-  }
+  // like(key: string, value: string, limit: number = 10): Observable<Customer[]> {
+  //   key = `${key}_like`;
+  //   const query = `${this.orderService.apiUrl}/${this.entityName}?${key}=${value}&_limit=${limit}`;
+  //   return this.http.get<Customer[]>(query);
+  // }
 
   onFormSubmit(form: NgForm): void {
     this.updating = true;
