@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 
 @Component({
@@ -8,6 +8,7 @@ import { Location } from '@angular/common';
 })
 export class HeaderComponent implements OnInit {
   headerText: string = 'Filmes webáruház';
+  @Input() listItemName: string = '';
 
   constructor() {}
 
