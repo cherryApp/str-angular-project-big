@@ -15,7 +15,7 @@
                                 <div class="form-group">
                                     <label for="amount">{{ attributes.amount }}<span class="star"> *</span></label>
                                     <input name="amount" [(ngModel)]="bill.amount" type="number" class="form-control"
-                                        required pattern="[\d]">
+                                        required pattern="^[1-9]\d*$">
                                 </div>
                                 <div class="form-group">
                                     <label for="status">{{ attributes.status }}<span class="star"> *</span></label>
