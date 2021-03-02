@@ -7,9 +7,10 @@ export interface ITableCol {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ConfigService {
+  apiUrl: string = 'http://localhost:3000';
 
   productTableCols: ITableCol[] = [
     { key: 'id', text: '#', editable: false },
@@ -17,7 +18,7 @@ export class ConfigService {
     { key: 'típus', text: 'Típus', editable: true },
     { key: 'catID', text: 'CatId', editable: false },
     { key: 'leírás', text: 'Leírás', editable: true },
-    { key: 'ár', text: 'Ár', editable: true }
+    { key: 'ár', text: 'Ár', editable: true },
   ];
 
   orderTableCols: ITableCol[] = [
@@ -25,7 +26,7 @@ export class ConfigService {
     { key: 'customerID', text: 'Vásárló Id', editable: false },
     { key: 'productID', text: 'Termék Id', editable: false },
     { key: 'amount', text: 'Összeg', editable: true },
-    { key: 'status', text: 'Státusz', editable: true }
+    { key: 'status', text: 'Státusz', editable: true },
   ];
 
   customerTableCols: ITableCol[] = [
@@ -40,8 +41,8 @@ export class ConfigService {
     { key: 'id', text: '#', editable: false },
     { key: 'orderId', text: 'RendelésId', editable: false },
     { key: 'amount', text: 'Összeg', editable: true },
-    { key: 'status', text: 'Státusz', editable: true }
+    { key: 'status', text: 'Státusz', editable: true },
   ];
 
-  constructor() { }
+  constructor() {}
 }
