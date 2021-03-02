@@ -12,7 +12,7 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class EditCategoryComponent implements OnInit {
 
-  customer: Category = new Category();
+  category: Category = new Category();
   updating: boolean = false;
   cols: ITableCol[] = this.configService.tableColsCategoryList;
 
@@ -28,7 +28,7 @@ export class EditCategoryComponent implements OnInit {
       params =>
         this.categoryService.get(params.id).subscribe(
           category => {
-            this.category = category || new category();
+            this.category = category || new Category();
           }
         )
     );
