@@ -16,7 +16,7 @@ export class ListingOrderComponent implements OnInit {
 
   // @Output() onUpdate: EventEmitter<Order> = new EventEmitter();
   // @Output() onDelete: EventEmitter<Order> = new EventEmitter();
-
+  numberOfUnpaidOrders$: BehaviorSubject<number> = this.statisticsService.numberOfUnpaidOrders$;
   orderList$: BehaviorSubject<Order[]> = this.orderService.list$;
   // orderList$: Observable<Order[]>= this.orderService.getAll();
   phrase: string = '';
