@@ -32,6 +32,8 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { EditBillComponent } from './editors/edit-bill/edit-bill.component';
+import { GoogleMapComponent } from './common/google-map/google-map.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   imports: [
@@ -51,7 +53,8 @@ import { EditBillComponent } from './editors/edit-bill/edit-bill.component';
     ChartsModule,
     NgbModule,
     MatProgressSpinnerModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    GoogleMapsModule
   ],
   declarations: [
     AppComponent,
@@ -71,6 +74,7 @@ import { EditBillComponent } from './editors/edit-bill/edit-bill.component';
     EditCategoryComponent,
     AboutUsComponent,
     EditBillComponent,
+    GoogleMapComponent,
     //EditCustomerComponent,
 
   ],
