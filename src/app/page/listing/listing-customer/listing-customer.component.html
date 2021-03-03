@@ -48,7 +48,7 @@
         <th></th>
         <th></th>
         <th></th>
-        <th></th>
+        <th>Műveletek</th>
       </tr>
     </thead>
     <tbody>
@@ -101,10 +101,16 @@
           <th></th>
           <th></th>
           <th></th>
+          <div *ngIf="numberOfActiveCustomers$| async">
+            ͏͏͏͏͏͏͏<p> <b style="font-size: 18px">Aktív vásárló: {{ numberOfActiveCustomers$ | async }}</b></p>
+          </div>
           <th></th>
           <th></th>
           <th></th>
-
+          <th></th>
+          <div *ngIf="numberOfPassiveCustomers$| async">
+            ͏͏͏͏͏͏͏<p> <b style="font-size: 18px">Passzív vásárló: {{ numberOfPassiveCustomers$ | async }}</b></p>
+          </div>
           <th></th>
 
         </tr>

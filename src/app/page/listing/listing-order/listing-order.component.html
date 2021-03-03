@@ -64,7 +64,8 @@
 
           {{ col.text }}
         </th>
-        <th></th>
+
+        <th class="d-flex justify-content-center">Műveletek</th>
         <!-- <th (click)="onColumnSelect('id')"><b>#</b></th>
           <th (click)="onColumnSelect('customerID')"><b style="font-size: 18px">Vásárlók</b></th>
           <th (click)="onCnolumnSelect('productID')"><b style="font-size: 18px">Termékek</b></th>
@@ -108,7 +109,7 @@
           <th></th>
           <th></th>
           <th></th>
-          <div class="row mt-4 d-flex justify-content: space-evenly">
+          <div class="row mt-4 d-flex justify-content-space-evenly">
             <th></th>
             <div *ngIf="numberOfAllOrders$ | async">
               <p>
