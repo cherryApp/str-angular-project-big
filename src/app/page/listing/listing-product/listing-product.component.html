@@ -46,8 +46,8 @@
 
                     {{ col.text }}
                 </th>
-                <th></th>
                 <th>Műveletek</th>
+                <th></th>
                 <!-- <th (click)="onColumnSelect('id')"> <b>#</b></th>
                 <th (click)="onColumnSelect('name')"><b style="font-size: 18px">Termék név</b></th>
                 <th (click)="onColumnSelect('type')"><b style="font-size: 18px">Típus</b></th>
@@ -125,7 +125,14 @@
             <tbody>
         </table>
         <footer>
-            <a href="#top" onclick="self.scrollTo(0, 0); return false;">Ugrás az oldal tetejére</a>
+
+            <button class="btn btn-success my-2 my-sm-0">
+                <a href="product" onclick="self.scrollTo(0, 0); return false;">
+                    <span class="material-icons">
+                        arrow_circle_up
+                    </span>
+                    Ugrás az oldal tetejére</a></button>
+
         </footer>
     </div>
 </div>
