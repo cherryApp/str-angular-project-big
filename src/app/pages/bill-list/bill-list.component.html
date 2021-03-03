@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header card-header-info">
                         <h4 class="card-title ">Bills</h4>
-                        <p class="card-category">List of bills for orders.</p>
+                        <strong><p class="card-category">List of bills for orders.</p></strong>
                     </div>
                     <div class="card my-0 px-3">
                         <button [routerLink]="['bill/'+'0']" class="btn btn-primary my-3">
@@ -13,12 +13,12 @@
                         </button>
                     </div>
                     <div class="card-body col-12 col-md-6 d-flex">
-                        <input name="phrase" (keyup)="onChangePhrase($event)" class="form-control" type="text"
+                        <input name="phrase" (keyup)="onChangePhrase($event)" class="form-control px-2" type="text"
                             placeholder="Enter phrase...">
-                        <select class="custom-select ml-2" (change)="onChangeKey($event)">
+                        <select class="custom-select ml-2 px-2" (change)="onChangeKey($event)">
                             <option *ngFor="let attribute of attributes | keyvalue:originalOrder"
                                 [value]="attribute.key" [selected]="setDefault(attribute.key)">Filter by
-                                {{attribute.value}}</option>
+                                {{ attribute.value }}</option>
                         </select>
                     </div>
                     <div *ngIf="updating" class="d-flex justify-content-center">
