@@ -1,11 +1,10 @@
 <div class="container">
-
     <div class="row">
         <div class="col-4 offset-5 mb-5">
-            <h2>ÖSSZES TERMÉK</h2>
+            <h2>TERMÉKEK</h2>
         </div>
-        <div class="col-12 my-3 mb-3">
 
+        <div class="col-12 my-3 mb-3">
             <button class="btn btn-success btn-block mt-3 mb-5" style="font-size:14px" [routerLink]="[0]">
                 <i class="material-icons">add</i> ÚJ TÉTEL LÉTREHOZÁSA
             </button>
@@ -46,8 +45,8 @@
 
                     {{ col.text }}
                 </th>
-                <th></th>
                 <th>Műveletek</th>
+                <th></th>
                 <!-- <th (click)="onColumnSelect('id')"> <b>#</b></th>
                 <th (click)="onColumnSelect('name')"><b style="font-size: 18px">Termék név</b></th>
                 <th (click)="onColumnSelect('type')"><b style="font-size: 18px">Típus</b></th>
@@ -125,7 +124,10 @@
             <tbody>
         </table>
         <footer>
-            <a href="#top" onclick="self.scrollTo(0, 0); return false;">Ugrás az oldal tetejére</a>
+            <div class="d-flex justify-content-end">
+                <a href="#top" onclick="self.scrollTo(0, 0); return false;" class="material-icons icon-white" d-flex
+                    justify-content-end>backup</a>
+            </div>
         </footer>
     </div>
 </div>

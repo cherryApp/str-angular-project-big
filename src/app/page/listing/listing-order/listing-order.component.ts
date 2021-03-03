@@ -15,6 +15,8 @@ import { StatisticsService } from 'src/app/service/statistics.service';
 export class ListingOrderComponent implements OnInit {
 
 
+
+  numberOfShippedOrders$: BehaviorSubject<number> = this.statisticsService.numberOfShippedOrders$
   numberOfUnpaidOrders$: BehaviorSubject<number> = this.statisticsService.numberOfUnpaidOrders$;
   numberOfAllOrders$: BehaviorSubject<number> = this.statisticsService.numberOfAllOrders$;
   orderList$: BehaviorSubject<Order[]> = this.orderService.list$;
@@ -87,6 +89,7 @@ export class ListingOrderComponent implements OnInit {
   onChangePhrase(event: any): void {
     this.phrase = (event.target as HTMLInputElement).value;
   }
+
 
 
 }
