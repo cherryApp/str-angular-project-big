@@ -12,11 +12,35 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class BillListComponent implements OnInit {
 
+  bill = new Bill();
+
+  setBillToDelete(bill: Bill): void {
+    this.animateDeleteIcon(bill);
+    this.bill = bill;
+    $('#confirmationDialog').on('shown.bs.modal', function() {
+      $('#cancelButton').trigger('focus')
+    })
+    $('#confirmationDialog').on('hidden.bs.modal', function() {
+      let deleteIcon = document.querySelector(".fa-spinner");
+      if (deleteIcon !== null) {
+        deleteIcon.classList.remove("fa-spinner", "fa-pulse");
+        deleteIcon.classList.add("fa-trash");
+      }
+    })
+  }
+
+  animateDeleteIcon(bill: Bill): void {
+    let buttonID = '' + bill.id;
+    let deleteIcon = document.getElementById(buttonID);
+    deleteIcon.classList.remove("fa-trash");
+    deleteIcon.classList.add("fa-spinner", "fa-pulse");
+  }
+
   billList$: BehaviorSubject<Bill[]> = this.billService.list$;
   updating: boolean = true
 
   phrase: string = '';
-  filterKey = 'id';
+  filterKey: string = 'id';
 
   sorterKey: string = '';
 
