@@ -14,17 +14,21 @@
 </div>
 <div class="row">
   <div *ngFor="let chart of charts" class="col-md-4">
-    <app-chart
+<app-chart-container
+here come chart data array
+
+
+></app-chart-container>
+    <!--old one <app-chart
       [chartClass]="chart.chartClass"
       [id]="chart.id"
       [title]="chart.title"
       [category]="chart.category"
       [footIcon]="chart.footIcon"
       [footer]="chart.footer"
-    ></app-chart>
+    ></app-chart> -->
   </div>
 </div>
-
 
 <!-- <div class="row">
   <div class="col-lg-6 col-md-12">
