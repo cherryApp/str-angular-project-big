@@ -5,6 +5,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
+import { ChartsModule } from 'ng2-charts';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FilterPipe } from './pipe/filter.pipe';
@@ -25,10 +28,10 @@ import { ListComponent } from './widget/list/list.component';
 import { ListingBillComponent } from './page/listing/listing-bill/listing-bill.component';
 import { EditBillComponent } from './page/edit/edit-bill/edit-bill.component';
 import { OrderBindingsPipe } from './pipe/order-bindings.pipe';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './page/header/header.component';
 import { TostringPipe } from './pipe/tostring.pipe';
 import { HunFormatPipe } from './pipe/hun-format.pipe';
+import { ChartNewComponent } from './common/chart-new/chart-new.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +57,7 @@ import { HunFormatPipe } from './pipe/hun-format.pipe';
     HeaderComponent,
     TostringPipe,
     HunFormatPipe,
+    ChartNewComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +68,7 @@ import { HunFormatPipe } from './pipe/hun-format.pipe';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     NgbModule,
+    ChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
