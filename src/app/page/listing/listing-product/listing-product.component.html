@@ -6,7 +6,7 @@
         </div>
         <div class="col-12 my-3 mb-3">
 
-            <button class="btn btn-success btn-block mt-3 mb-5 ml-0" style="font-size:14px" [routerLink]="[0]">
+            <button class="btn btn-success btn-block mt-3 mb-5" style="font-size:14px" [routerLink]="[0]">
                 <i class="material-icons">add</i> ÚJ TÉTEL LÉTREHOZÁSA
             </button>
         </div>
@@ -14,8 +14,8 @@
 
         <div class="col-3 mt-0 mb-5">
             <select [(ngModel)]="filterKey" class="custom-select bg-light" style="font-size: 20px">
-                <option *ngFor="let key of filterKeys" [value]="key">
-                    {{ key }}
+                <option *ngFor="let col of cols" [value]="col.key">
+                    {{ col.text }}
                 </option>
             </select>
         </div>
@@ -38,19 +38,15 @@
     <table class="table table-striped">
         <thead class="bg-dark text-light">
             <tr>
-                <th (click)="onColumnSelect('id')"> <b>#</b></th>
-                <th (click)="onColumnSelect('name')"><b style="font-size: 18px">Termék név</b></th>
-                <th (click)="onColumnSelect('type')"><b style="font-size: 18px">Típus</b></th>
-                <th (click)="onColumnSelect('catId')"><b style="font-size: 18px">catId</b></th>
-                <th (click)="onColumnSelect('description')"><b style="font-size: 18px">Leírás</b></th>
-                <th (click)="onColumnSelect('price')"><b style="font-size: 18px">Ár(Ft)</b></th>
-                <th (click)="onColumnSelect('featured')"><b style="font-size: 18px">Kiemelt</b></th>
-                <th (click)="onColumnSelect('active')"><b style="font-size: 18px">Aktív</b></th>
-                <th (click)="onColumnSelect('operations')"><b style="font-size: 18px">Műveletek</b></th>
-                <th><i *ngIf="!direction" class="material-icons">keyboard_arrow_up</i>
-                    <i *ngIf="direction" class="material-icons">keyboard_arrow_down</i>
-                </th>
+                <th (click)="onColumnSelect(col.key)" *ngFor="let col of cols">
+                    <span *ngIf='col.key === sortedColumn'>
+                        <i *ngIf="!direction" class="fa fa-sort-alpha-desc"></i>
+                        <i *ngIf="direction" class="fa fa-sort-alpha-asc"></i>
+                    </span>
 
+                    {{ col.text }}
+                </th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -79,7 +75,6 @@
                         </button>
                     </div>
                 </td>
-                <td></td>
             </tr>
         </tbody>
     </table>
@@ -110,11 +105,11 @@
                                 }}</b></p>
                     </div>
                 </tr>
-
             </thead>
             <tbody>
-
-
         </table>
+        <footer>
+            <a href="#top" onclick="self.scrollTo(0, 0); return false;">Ugrás az oldal tetejére</a>
+        </footer>
     </div>
 </div>
