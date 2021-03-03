@@ -1,1 +1,40 @@
-<p>edit-bill works!</p>
+<div class="row">
+  <div class="col-6 offset-3">
+    <form #billForm="ngForm" (ngSubmit)="onFormSubmit(billForm)">
+      <div class="form-group">
+          <label>ID</label>
+          {{ bill.id }}
+      </div>
+
+      <div class="form-group">
+          <label>Amount</label>
+          <input [(ngModel)]="bill.amount" name="amount" type="text"
+              class="form-control" pattern="[0-9]*" required>
+          <div [hidden]="billForm.controls.amount?.valid" class="error-message">
+              The amount must be a number!
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label>orderID</label>
+          <input [(ngModel)]="bill.orderID" name="orderID" type="text"
+              class="form-control" pattern="[0-9]*" required>
+          <div [hidden]="billForm.controls.orderID?.valid" class="error-message">
+              The orderID must be a number!
+          </div>
+      </div>
+
+      <div class="form-group">
+          <label>Status</label>
+          <select class="form-control" name="status" [(ngModel)]="bill.status" >
+            <option value="new">New</option>
+            <option value="paid">Paid</option>
+          </select>
+      </div>
+      <button [disabled]="billForm.invalid || updating" class="btn btn-block btn-primary">
+        <i *ngIf="!updating" class="fa fa-save"></i>
+        <i *ngIf="updating" class="fa fa-refresh"></i>
+      </button>
+    </form>
+  </div>
+</div>
