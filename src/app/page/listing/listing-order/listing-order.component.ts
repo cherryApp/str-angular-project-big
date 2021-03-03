@@ -75,7 +75,7 @@ export class ListingOrderComponent implements OnInit {
     // this.orderService.remove(order),
     //   this.router.navigate(['/orders']);
     // this.onDelete.emit(order);
-    of(this.orderService.remove(order)).subscribe(
+    this.orderService.remove(order.id).subscribe(
       () => {
         this.toastr.success('Sikeresen törölted a terméket!', 'Törlés!', { timeOut: 3000 });
         this.orderService.getAll();
