@@ -14,7 +14,7 @@
                     <input name="id" [(ngModel)]="product.id" type="number" 
                         class="form-control" pattern="" required>
                     <div [hidden]="productForm.controls.id?.valid" class="error-message">
-                        The id must contain at least 1 number! 
+                        The id must contain numbers! 
                     </div>
                 </div>
 
@@ -41,7 +41,7 @@
                     <input name="catID" [(ngModel)]="product.catID" type="number" 
                         class="form-control" pattern="" required>
                     <div [hidden]="productForm.controls.catID?.valid" class="error-message">
-                        The catID must contain at least of 1 number!
+                        The catID must contain numbers!
                     </div>
                 </div>
 
@@ -59,7 +59,7 @@
                     <input name="price" [(ngModel)]="product.price" type="number" 
                         class="form-control" pattern="" required>
                     <div [hidden]="productForm.controls.price?.valid" class="error-message">
-                        The price must be a minimum of 1 character long and can only contain numbers!
+                        The price must contain numbers!
                     </div>
                 </div>
 
