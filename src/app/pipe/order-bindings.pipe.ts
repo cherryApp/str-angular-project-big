@@ -10,13 +10,12 @@ export class OrderBindingsPipe implements PipeTransform {
   transform(orders: any[]): Order[] {
     orders.forEach((order) => {
       this.customerService.get(order.customerID).subscribe(
-        (customer) =>
-          (order.customerID = `${order.customerID} (${customer.firstName} ${customer.lastName})`),
-        () => (order.customerID = `${order.customerID} ()`)
+        customer => (order.customerID = `${order.customerID} (${customer.firstName} ${customer.lastName})`),
+        () => (order.customerID = `${order.customerID}`)
       );
       this.productService.get(order.productID).subscribe(
-        (product) => (order.productID = `${order.productID} (${product.name})`),
-        () => (order.productID = `${order.productID} ()`)
+        product => (order.productID = `${order.productID} (${product.name})`),
+        () => (order.productID = `${order.productID}`)
       );
     });
 
