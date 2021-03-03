@@ -11,6 +11,9 @@ export class ChartNewComponent implements OnInit {
 
   @Input() pieChartLabels: Label[] = [];
   @Input() pieChartData: ChartDataSets[] = [];
+  @Input() pieChartColors: Color[] = [];
+  @Input() pieChartType: ChartType = 'pie';
+  @Input() chartColors: Color[] = [];
 
   public pieChartOptions: ChartOptions = {
     responsive: true,
@@ -23,10 +26,8 @@ export class ChartNewComponent implements OnInit {
     },
   };
 
-  public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
   public pieChartPlugins = [];
-  public chartColors: Color[] = [];
 
   constructor() { }
 
