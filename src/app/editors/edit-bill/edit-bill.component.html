@@ -17,6 +17,11 @@
                                     <input name="amount" [(ngModel)]="bill.amount" type="number" class="form-control"
                                         required pattern="^[1-9]\d*$">
                                 </div>
+                                <div [hidden]="billForm.controls.amount?.valid || billForm.controls.amount?.pristine"
+                                    class="error-message">
+                                    <i class="fa fa-info-circle" aria-hidden="true"></i>
+                                    {{ attributes.amount }} must be a positive integer.
+                                </div>
                                 <div class="form-group">
                                     <label for="status">{{ attributes.status }}<span class="star"> *</span></label>
                                     <select name="status" class="custom-select" [(ngModel)]="bill.status" required>
