@@ -1,1 +1,12 @@
-<app-chart-new></app-chart-new>
+<div class="col-md-6">
+  <div class="card">
+      <div class="card-header card-header-text card-header-primary">
+        <div class="card-text">
+          <h4 class="card-title">Termékek megoszlása állapot szerint</h4>
+        </div>
+      </div>
+      <div class="card-body">
+        <app-chart-new [pieChartLabels]="productChartLabels" [pieChartData]="productChartData"></app-chart-new>
+      </div>
+  </div>
+</div>
