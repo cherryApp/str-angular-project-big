@@ -54,7 +54,8 @@ export class ListingBillComponent implements OnInit {
   direction: boolean = false;
   columnKey: string = '';
 
-  sumOfUnpaidBills$: BehaviorSubject<number> = this.statisticsService.sumOfUnpaidBills$;
+  sumOfUnpaidBills$ = this.statisticsService.sumOfUnpaidBills$;
+  numberOfAllBills$ = this.statisticsService.numberOfAllBills$;
 
   ngOnInit(): void {
     this.billService.getAll();
