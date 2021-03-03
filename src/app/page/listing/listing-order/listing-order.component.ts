@@ -14,13 +14,19 @@ import { StatisticsService } from 'src/app/service/statistics.service';
 })
 export class ListingOrderComponent implements OnInit {
 
-  // @Output() onUpdate: EventEmitter<Order> = new EventEmitter();
-  // @Output() onDelete: EventEmitter<Order> = new EventEmitter();
+
   numberOfUnpaidOrders$: BehaviorSubject<number> = this.statisticsService.numberOfUnpaidOrders$;
   orderList$: BehaviorSubject<Order[]> = this.orderService.list$;
-  // orderList$: Observable<Order[]>= this.orderService.getAll();
+
   phrase: string = '';
   cols: ITableCol[] = this.configService.orderTableCols
+ cols2= {
+   "id":"#",
+   "customerID": "Vásárlói id" ,
+   "productID": "Termék id",
+   "amount": "Mennyiség",
+   "status": "Státusz",
+ }
 
 
   constructor(
