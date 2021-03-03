@@ -17,22 +17,22 @@ export class DashboardComponent implements OnInit {
   cards: any[] = [
     {
       i: 0,
-      cardClass: 'card-header-warning',
-      icon: 'people_alt',
-      title: '279',
-      unit: '',
-      content: 'Vásárlók',
-      footer: 'Vásárlói statisztika: az aktív vásárlók száma',
-      footIcon: this.footIcon(),
-    },
-    {
-      i: 1,
       cardClass: 'card-header-success',
       icon: 'cases',
       title: '533',
       unit: '',
       content: 'Termékek',
       footer: 'Termékstatisztika: az aktív termékek száma',
+      footIcon: this.footIcon(),
+    },
+    {
+      i: 1,
+      cardClass: 'card-header-warning',
+      icon: 'people_alt',
+      title: '279',
+      unit: '',
+      content: 'Vásárlók',
+      footer: 'Vásárlói statisztika: az aktív vásárlók száma',
       footIcon: this.footIcon(),
     },
     {
