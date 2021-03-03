@@ -1,0 +1,89 @@
+<div class="row">
+    <div class="col-md-12">
+      <div class="card">
+
+        <div class="card-header card-header-primary">
+          <h4 class="card-title ">Product Editor - ID: {{ product.id }} Name: {{ product.name }}</h4>
+        </div>
+
+        <div class="card-body">
+            <form #productForm="ngForm" (ngSubmit)="onFormSubmit(productForm)">
+        
+                <div class="form-group">
+                    <label>ID</label>
+                    <input name="id" [(ngModel)]="product.id" type="number" 
+                        class="form-control" pattern="" required>
+                    <div [hidden]="productForm.controls.id?.valid" class="error-message">
+                        The id must contain numbers! 
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Name</label>
+                    <input name="name" [(ngModel)]="product.name" type="text" 
+                        class="form-control" pattern=".{2,20}" required>
+                    <div [hidden]="productForm.controls.name?.valid" class="error-message">
+                        The name must contain at least 2 and maximum of 20 characters!
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Type</label>
+                    <input name="type" [(ngModel)]="product.type" type="text"
+                        class="form-control" pattern=".{2,20}" required>
+                    <div [hidden]="productForm.controls.type?.valid" class="error-message">
+                        The type must contain at least 2 and maximum of 20 characters!
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>CatID</label>
+                    <input name="catID" [(ngModel)]="product.catID" type="number" 
+                        class="form-control" pattern="" required>
+                    <div [hidden]="productForm.controls.catID?.valid" class="error-message">
+                        The catID must contain numbers!
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Description</label>
+                    <input name="description" [(ngModel)]="product.description" type="text" 
+                        class="form-control" pattern=".{5,50}" required>
+                    <div [hidden]="productForm.controls.description?.valid" class="error-message">
+                        The Description must contain at least 5 and maximum of 50 characters! 
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Price</label>
+                    <input name="price" [(ngModel)]="product.price" type="number" 
+                        class="form-control" pattern="" required>
+                    <div [hidden]="productForm.controls.price?.valid" class="error-message">
+                        The price must contain numbers!
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Featured</label>
+                    <input name="featured" [(ngModel)]="product.featured" type="checkbox" 
+                        class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label>Active</label>
+                    <input name="active" [(ngModel)]="product.active" type="checkbox" 
+                        class="form-control">
+                </div>
+        
+                                        
+                <button [disabled]="productForm.invalid || updating" class="btn btn-block btn-primary">
+                  <i *ngIf="!updating" class="fa fa-save"></i>
+                  <i *ngIf="updating" class="fa fa-refresh"></i>
+                </button>
+
+            </form>
+        </div>
+        
+    </div>
+</div>
+</div>
