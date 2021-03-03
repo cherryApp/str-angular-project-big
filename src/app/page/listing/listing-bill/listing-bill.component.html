@@ -35,12 +35,12 @@
         </div>
 
         <table class="table table-striped">
-            <thead class="bg-dark text-light">
+            <thead class="bg-dark text-light text-center">
                 <tr>
                     <th (click)="onColumnSelect(col.key)" *ngFor="let col of cols">
                         <span *ngIf='col.key === sortedColumn'>
-                            <i *ngIf="!direction" class="fa fa-sort-alpha-desc"></i>
-                            <i *ngIf="direction" class="fa fa-sort-alpha-asc"></i>
+                            <i *ngIf="!direction" class="fa fa-sort-alpha-asc"></i>
+                            <i *ngIf="direction" class="fa fa-sort-alpha-desc"></i>
                         </span>
 
                         {{ col.text }}
@@ -72,7 +72,7 @@
                 <tr *ngFor="let bill of billList$ | async | filter:filterKey:phrase | sorter:sortedColumn:sortedOrder">
                     <td>{{bill.id}}</td>
                     <td>{{bill.orderID}} </td>
-                    <td>{{bill.amount}}</td>
+                    <td>{{bill.amount | hunFormat }}</td>
                     <td>{{bill.status}}</td>
                     <td>
                         <div class="btn-group d-flex justify-content-end">
@@ -90,16 +90,19 @@
         <div class="table-responsive">
             <table class="table" id="summaries">
                 <thead class="bg-dark text-light">
-                    <th style="font-size: 18px">Összes számla</th>
+                    <!-- <th style="font-size: 18px">Összes számla</th> -->
+                    <div class="ml-3" *ngIf="numberOfAllBills$ | async">
+                        ͏͏͏͏͏͏͏<p> <b style="font-size: 18px">Összes számla: {{ numberOfAllBills$ | async }}</b></p>
+                    </div>
                     <th></th>
                     <th></th>
                     <th></th>
                     <th></th>
                     <th></th>
-                    <div *ngIf="sumOfUnpaidBills$ | async">
+                    <div class="ml-3" *ngIf="sumOfUnpaidBills$ | async | hunFormat">
                         ͏͏͏͏͏͏͏<p>
                             <b style="font-size: 18px">Fizetetlen számlák összege: {{ sumOfUnpaidBills$ | async }}
-                                Ft</b>
+                            </b>
 
                         </p>
                     </div>
@@ -109,7 +112,10 @@
 
             </table>
             <footer>
-                <a href="#top" onclick="self.scrollTo(0, 0); return false;">Ugrás az oldal tetejére</a>
+                <div class="d-flex justify-content-end">
+                    <a href="#top" onclick="self.scrollTo(0, 0); return false;" class="material-icons icon-white" d-flex
+                        justify-content-end>backup</a>
+                </div>
             </footer>
         </div>
     </div>
