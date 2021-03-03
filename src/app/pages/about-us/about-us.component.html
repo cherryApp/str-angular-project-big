@@ -1,182 +1,23 @@
 <div class="main-content">
   <div class="container-fluid">
-    <div class="card-deck">
+    <div class="card-deck justify-content-center">
 
-      <!-- First row -->
-      <div class="row">
-
-        <div class="col-12 col-md-4 mb-5">
-          <div class="card card-profile">
-            <div class="card-avatar">
-              <a href="#">
-                <img class="img" src="./assets/img/faces/marc.jpg" />
-              </a>
-            </div>
-            <div class="card-body">
-              <h6 class="card-category text-gray">Angular master pro elite</h6>
-              <h4 class="card-title">Bonyai Péter</h4>
-              <p class="card-description">
-                Working on everything!
-              </p>
-              <a href="#" class="btn btn-danger btn-round">Follow</a>
-            </div>
+      <div *ngFor="let teamMember of teamMembers"
+        class="col-12 col-sm-6 col-md-4 col-lg-3 mb-5 d-flex">
+        <div class="card card-profile">
+          <div class="card-avatar">
+            <img class="img" [src]="teamMember.imgSrc">
+          </div>
+          <div class="card-body">
+            <h6 class="card-category text-gray">{{ teamMember.title }}</h6>
+            <h4 class="card-title">{{ teamMember.name }}</h4>
+            <p class="card-description">
+              {{ teamMember.description }}
+            </p>
+            <a [href]="teamMember.href"
+              class="btn btn-danger btn-round">Follow</a>
           </div>
         </div>
-
-        <div class="col-12 col-md-4 mb-5">
-          <div class="card card-profile">
-            <div class="card-avatar">
-              <a href="#">
-                <img class="img" src="./assets/img/faces/marc.jpg" />
-              </a>
-            </div>
-            <div class="card-body">
-              <h6 class="card-category text-gray">Angular master pro elite</h6>
-              <h4 class="card-title">Bonyai Péter</h4>
-              <p class="card-description">
-                Working on everything!
-              </p>
-              <a href="#" class="btn btn-danger btn-round">Follow</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-4 mb-5">
-          <div class="card card-profile">
-            <div class="card-avatar">
-              <a href="#">
-                <img class="img" src="./assets/img/faces/marc.jpg" />
-              </a>
-            </div>
-            <div class="card-body">
-              <h6 class="card-category text-gray">Angular master pro elite</h6>
-              <h4 class="card-title">Bonyai Péter</h4>
-              <p class="card-description">
-                Working on everything!
-              </p>
-              <a href="#" class="btn btn-danger btn-round">Follow</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Second row -->
-      <div class="row">
-
-        <div class="col-12 col-md-4 mb-5">
-          <div class="card card-profile">
-            <div class="card-avatar">
-              <a href="#">
-                <img class="img" src="./assets/img/faces/marc.jpg" />
-              </a>
-            </div>
-            <div class="card-body">
-              <h6 class="card-category text-gray">Angular master pro elite</h6>
-              <h4 class="card-title">Bonyai Péter</h4>
-              <p class="card-description">
-                Working on everything!
-              </p>
-              <a href="#" class="btn btn-danger btn-round">Follow</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-4 mb-5">
-          <div class="card card-profile">
-            <div class="card-avatar">
-              <a href="#">
-                <img class="img" src="./assets/img/faces/marc.jpg" />
-              </a>
-            </div>
-            <div class="card-body">
-              <h6 class="card-category text-gray">Angular master pro elite</h6>
-              <h4 class="card-title">Bonyai Péter</h4>
-              <p class="card-description">
-                Working on everything!
-              </p>
-              <a href="#" class="btn btn-danger btn-round">Follow</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-4 mb-5">
-          <div class="card card-profile">
-            <div class="card-avatar">
-              <a href="#">
-                <img class="img" src="./assets/img/faces/marc.jpg" />
-              </a>
-            </div>
-            <div class="card-body">
-              <h6 class="card-category text-gray">Angular master pro elite</h6>
-              <h4 class="card-title">Bonyai Péter</h4>
-              <p class="card-description">
-                Working on everything!
-              </p>
-              <a href="#" class="btn btn-danger btn-round">Follow</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Third row -->
-      <div class="row">
-
-        <div class="col-12 col-md-4 mb-5">
-          <div class="card card-profile">
-            <div class="card-avatar">
-              <a href="#">
-                <img class="img" src="./assets/img/faces/marc.jpg" />
-              </a>
-            </div>
-            <div class="card-body">
-              <h6 class="card-category text-gray">Angular master pro elite</h6>
-              <h4 class="card-title">Bonyai Péter</h4>
-              <p class="card-description">
-                Working on everything!
-              </p>
-              <a href="#" class="btn btn-danger btn-round">Follow</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-4 mb-5">
-          <div class="card card-profile">
-            <div class="card-avatar">
-              <a href="#">
-                <img class="img" src="./assets/img/faces/marc.jpg" />
-              </a>
-            </div>
-            <div class="card-body">
-              <h6 class="card-category text-gray">Angular master pro elite</h6>
-              <h4 class="card-title">Bonyai Péter</h4>
-              <p class="card-description">
-                Working on everything!
-              </p>
-              <a href="#" class="btn btn-danger btn-round">Follow</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-4 mb-5">
-          <div class="card card-profile">
-            <div class="card-avatar">
-              <a href="#">
-                <img class="img" src="./assets/img/faces/marc.jpg" />
-              </a>
-            </div>
-            <div class="card-body">
-              <h6 class="card-category text-gray">Angular master pro elite</h6>
-              <h4 class="card-title">Bonyai Péter</h4>
-              <p class="card-description">
-                Working on everything!
-              </p>
-              <a href="#" class="btn btn-danger btn-round">Follow</a>
-            </div>
-          </div>
-        </div>
-
       </div>
 
     </div>
