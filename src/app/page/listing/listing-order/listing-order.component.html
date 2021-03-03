@@ -86,13 +86,27 @@
               <th></th>
               <th></th>
               <th></th>
-              <div *ngIf="numberOfUnpaidOrders$ | async">
-                ͏͏͏͏͏͏͏<p>Összes rendelések száma: {{ numberOfAllOrders$ | async }}</p>
+              <div class="row align-items:space-between">
+
+                <div *ngIf="numberOfAllOrders$ | async">
+                  <p><b style="font-size: 18px">
+                  ͏͏͏͏͏͏͏Összes rendelések száma: {{ numberOfAllOrders$ | async }}</b></p>
+                </div>
+                <th></th>
+                <th></th>
+                  <div *ngIf="numberOfShippedOrders$ | async">
+                    <p><b style="font-size: 18px">Kiszállított rendelések száma:
+                      {{ numberOfShippedOrders$ | async }}</b></p>
                   </div>
                   <th></th>
-              <div *ngIf="numberOfUnpaidOrders$ | async">
-               ͏͏͏͏͏͏͏<p>Még nem fizetett rendelések száma: {{ numberOfUnpaidOrders$ | async }}</p>
+                  <th></th>
+                  <div *ngIf="numberOfUnpaidOrders$ | async">
+
+                    <p><b style="font-size: 18px">
+                   ͏͏͏͏͏͏͏Még nem fizetett rendelések száma: {{ numberOfUnpaidOrders$ | async }}</b></p>
+                  </div>
               </div>
+
             </tr>
 
           </thead>
