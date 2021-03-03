@@ -16,6 +16,7 @@ export class ListingOrderComponent implements OnInit {
 
 
   numberOfUnpaidOrders$: BehaviorSubject<number> = this.statisticsService.numberOfUnpaidOrders$;
+  numberOfAllOrders$: BehaviorSubject<number> = this.statisticsService.numberOfAllOrders$;
   orderList$: BehaviorSubject<Order[]> = this.orderService.list$;
 
   phrase: string = '';

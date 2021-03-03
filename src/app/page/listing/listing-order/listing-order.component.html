@@ -82,16 +82,19 @@
     <div class="table-responsive">
       <table class="table" id="summaries">
           <thead class="bg-dark text-light">
-              <th>Összes rendelés</th>
+            <tr>
               <th></th>
               <th></th>
-              <th></th>
-              <th></th>
-
               <th></th>
               <div *ngIf="numberOfUnpaidOrders$ | async">
-                ͏͏͏͏͏͏͏<p>Még nem fizetett rendelések száma: {{ numberOfUnpaidOrders$ | async }}</p>
-            </div>
+                ͏͏͏͏͏͏͏<p>Összes rendelések száma: {{ numberOfAllOrders$ | async }}</p>
+                  </div>
+                  <th></th>
+              <div *ngIf="numberOfUnpaidOrders$ | async">
+               ͏͏͏͏͏͏͏<p>Még nem fizetett rendelések száma: {{ numberOfUnpaidOrders$ | async }}</p>
+              </div>
+            </tr>
+
           </thead>
           <tbody>
           </tbody>
