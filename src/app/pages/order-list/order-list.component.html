@@ -15,7 +15,7 @@
                     <div class="card-body col-6 d-flex my-0">
                         <button class="btn btn-primary" (click)="scroll('summaries')">Scroll To Summaries</button>
                     </div>
-                    <div class="card-body col-6 d-flex">
+                    <div class="card-body col-12 col-md-6 d-flex">
                         <input id="phrase" name="phrase" (keyup)="onChangePhrase($event)" class="form-control"
                             type="text" placeholder="Enter phrase..."
                             [disabled]="filterKey==='paid' || filterKey==='shipped' || filterKey==='new'">
