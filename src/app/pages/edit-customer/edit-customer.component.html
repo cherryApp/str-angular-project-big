@@ -3,7 +3,7 @@
         <div class="card">
 
             <!-- CARD HEADER -->
-            <div class="card-header card-header-primary">
+            <div class="card-header card-header-info">
                 <h4 class="card-title ">{{ title }} {{ cusId }}</h4>
             </div>
 
@@ -108,7 +108,7 @@
                 
                     </div>
                     
-                    <button [disabled]="customerForm.invalid || updating" class="btn btn-block btn-primary">
+                    <button [disabled]="customerForm.invalid || updating" class="btn btn-block btn-success">
                       <i *ngIf="!updating" class="fa fa-save"></i>
                       <i *ngIf="updating" class="fa fa-refresh"></i>
                     </button>
