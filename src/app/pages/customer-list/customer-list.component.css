@@ -1,3 +1,15 @@
+input, select {
+	min-width: 50px;
+}
+
+select {
+	padding: 0 .5em;
+}
+
+.filterBlock {
+	max-width: 900px;
+}
+
 th {
     cursor: pointer;
     user-select: none;
@@ -32,6 +44,14 @@ table {
 }
 
 @media only screen and (max-width: 768px)  {
+
+	select, input {
+		margin-bottom: 1em;
+	}
+
+	.filterBlock {
+		flex-wrap: wrap;
+	}
 
 	table, thead, tbody, th, td, tr { 
 		display: block; 
