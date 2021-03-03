@@ -14,10 +14,10 @@
         <div class="table-responsive">
           <table class="table">
             <thead class="text-primary">
-                <th *ngFor="let fkey of filterKeys" [id]="'thead_'+fkey" class="th" (click)="changeOrder(fkey)">
-                  {{ fkey }} 
-                  <span [id]="'arrow_up_'+fkey" class="arrow material-icons md-18">keyboard_arrow_up</span>
-                  <span [id]="'arrow_down_'+fkey" class="arrow material-icons md-18">keyboard_arrow_down</span>
+                <th *ngFor="let col of cols" [id]="'thead_'+col.key" class="th" (click)="changeOrder(col.key)">
+                  {{ col.text }} 
+                  <span [id]="'arrow_up_'+col.key" class="arrow material-icons md-18">keyboard_arrow_up</span>
+                  <span [id]="'arrow_down_'+col.key" class="arrow material-icons md-18">keyboard_arrow_down</span>
                 </th>
                 <th class="action">
                   <button type="button" [routerLink]="'/order/0'" class="btn btn-success btn-block">

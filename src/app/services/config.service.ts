@@ -48,7 +48,7 @@ export class ConfigService {
     {key: 'firstName', text: 'First name', type: TableCellType.Input},
     {key: 'lastName', text: 'Last name', type: TableCellType.Input},
     {key: 'email', text: 'E-mail address', type: TableCellType.Input},
-    {key: 'address', text: 'Address', type: TableCellType.Input},
+    {key: 'fullAddress', text: 'Address', type: TableCellType.Input},
     {key: 'active', text: 'Active', type: TableCellType.Check},
   ];
 

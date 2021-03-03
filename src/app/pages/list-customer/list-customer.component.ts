@@ -3,6 +3,7 @@ import { CustomerService } from 'src/app/services/customer.service';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Customer } from 'src/app/models/customer';
+import { Router } from '@angular/router';
 import { ConfigService, ITableCol } from 'src/app/services/config.service';
 
 @Component({
@@ -17,7 +18,13 @@ export class ListCustomerComponent implements OnInit {
   };
 
   customerList$: Observable<Customer[]> = this.customerService.customerList$.pipe(
-    tap( customers => this.customerProperties.count = customers.length)
+    tap( customers => {
+      this.customerProperties.count = customers.length;
+      customers.forEach(element => {
+        // address modification
+        element.fullAddress = this.getAddress(element);
+      })
+    })
   );
 
   cols: ITableCol[] = this.configService.tableColsCustomerList;
@@ -31,6 +38,7 @@ export class ListCustomerComponent implements OnInit {
   constructor(
     private customerService: CustomerService,
     private configService: ConfigService,
+    private router: Router,
     ) { }
 
   ngOnInit(): void {
@@ -38,8 +46,13 @@ export class ListCustomerComponent implements OnInit {
   }
 
   changeOrder(param: string): void {
-    if (this.sorterDirection === 1)  this.sorterDirection = 2;
-    else this.sorterDirection = 1;
+    if (this.sortby === '' || this.sortby != param) {
+      this.sorterDirection = 1;
+    }
+    if (this.sortby === param) {
+      if (this.sorterDirection === 1)  this.sorterDirection = 2;
+      else this.sorterDirection = 1;
+    }
     this.sortby = param;
     let allArrow = document.querySelectorAll('.arrow');
     allArrow.forEach( element => {
@@ -59,10 +72,11 @@ export class ListCustomerComponent implements OnInit {
   }
   
   getAddress(item: Customer): string {
-    return `${item.address.zip} ${item.address.country} ${item.address.city} ${item.address.street} ${item.address.notes}`;
+    return `${item.address.zip} ${item.address.country} ${item.address.city} ${item.address.street}\n${item.address.notes}`;
   }
   
   deleteItem(item: Customer): void {
-    this.customerService.remove(item);
+    this.customerService.remove(item).subscribe();
   }
+
 }
