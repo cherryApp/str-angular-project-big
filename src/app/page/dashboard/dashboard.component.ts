@@ -58,68 +58,16 @@ export class DashboardComponent implements OnInit {
   ];
 
   charts: InfoChart[] = [
-    //   {
-    //     chartClass: 'card-header-success',
-    //     id: 'dailySalesChart',
-    //     title: 'Completed Tasks',
-    //     category: 'Last Campaign Performance',
-    //     footIcon: 'access_time',
-    //     footer: 'campaign sent 2 days ago',
-    //   },
-    //   {
-    //     chartClass: 'card-header-warning',
-    //     id: 'websiteViewsChart',
-    //     title: 'Completed Tasks',
-    //     category: 'Last Campaign Performance',
-    //     footIcon: 'access_time',
-    //     footer: 'campaign sent 3 days ago',
-    //   },
-    //   {
-    //     chartClass: 'card-header-danger',
-    //     id: 'completedTasksChart',
-    //     title: 'Completed Tasks',
-    //     category: 'Last Campaign Performance',
-    //     footIcon: 'access_time',
-    //     footer: 'campaign sent 4 days ago',
-    //   },
   ];
 
   statistics: BehaviorSubject<number>[] = [
-    this.statisticsService.numberOfActiveCustomers$,
     this.statisticsService.numberOfActiveProducts$,
+    this.statisticsService.numberOfActiveCustomers$,
     this.statisticsService.numberOfUnpaidOrders$,
     this.statisticsService.sumOfUnpaidBills$,
   ];
 
-  // numberOfActiveCustomers$: BehaviorSubject<number> = this.statisticsService
-  //   .numberOfActiveCustomers$;
-  numberOfActiveProducts$: BehaviorSubject<number> = this.statisticsService
-    .numberOfActiveProducts$;
-  numberOfUnpaidOrders$: BehaviorSubject<number> = this.statisticsService
-    .numberOfUnpaidOrders$;
-  sumOfUnpaidBills$: BehaviorSubject<number> = this.statisticsService
-    .sumOfUnpaidBills$;
-
-  numberOfActiveCustomers: number = 0;
-  numberOfActiveProducts: number = 0;
-  numberOfUnpaidOrders: number = 0;
-  sumOfUnpaidBills: number = 0;
-
-  constructor(private statisticsService: StatisticsService) {
-    this.statisticsService.numberOfActiveCustomers$.subscribe((data) => {
-      this.numberOfActiveCustomers + data;
-      this.cards[0].title = '' + this.numberOfActiveCustomers;
-    });
-    // this.statisticsService.numberOfActiveProducts$.subscribe(console.log);
-    // this.statisticsService.numberOfUnpaidOrders$.subscribe(console.log);
-    // this.statisticsService.sumOfUnpaidBills$.subscribe(console.log);
-    // this.cards[0].title = '' + this.numberOfActiveCustomers;
-    // this.cards[1].title = '' + this.numberOfActiveProducts;
-    // this.cards[2].title = '' + this.numberOfUnpaidOrders;
-    // this.cards[3].title = '' + this.sumOfUnpaidBills;
-  }
-
-  // .reduce((previous, next) => previous + next, 0)
+  constructor(private statisticsService: StatisticsService) {}
 
   ngOnInit(): void {
     this.statisticsService.subscribeForData();
