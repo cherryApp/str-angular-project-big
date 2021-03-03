@@ -65,7 +65,7 @@ export class ListingProductComponent implements OnInit {
     //   )
     // }
 
-    this.productService.remove(product.id).subscribe(
+    this.productService.remove(product).subscribe(
       () => {
         this.toastr.success('Sikeresen törölted a terméket!', 'Törlés!', { timeOut: 3000 });
         this.productService.getAll();
