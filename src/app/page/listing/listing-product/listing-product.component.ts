@@ -24,12 +24,11 @@ export class ListingProductComponent implements OnInit {
   scroll(id: string) {
     const elmnt = document.getElementById(id);
     elmnt?.scrollIntoView(false);
-
   }
-
 
   productList: BehaviorSubject<Product[]> = this.productService.list$;
   cols: ITableCol[] = this.config.productTableCols;
+
 
   phrase: string = '';
   filterKey: string = 'name';
@@ -74,10 +73,7 @@ export class ListingProductComponent implements OnInit {
       },
       error => this.toastr.error('Hiba történt a termék törlésekor!', 'Hiba!', { timeOut: 3000 })
     )
-
   }
-
-
 
   onColumnSelect(columnName: string): void {
     if (this.firstSorting) {
@@ -88,8 +84,6 @@ export class ListingProductComponent implements OnInit {
     this.sortedColumn = columnName;
     this.direction = !this.direction;
   }
-
-
 
   onChangePhrase(event: any): void {
     this.phrase = (event.target as HTMLInputElement).value;
