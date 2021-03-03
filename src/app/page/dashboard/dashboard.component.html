@@ -14,11 +14,7 @@
 </div>
 <div class="row">
   <div *ngFor="let chart of charts" class="col-md-4">
-<app-chart-container
-here come chart data array
 
-
-></app-chart-container>
     <!--old one <app-chart
       [chartClass]="chart.chartClass"
       [id]="chart.id"
@@ -28,6 +24,7 @@ here come chart data array
       [footer]="chart.footer"
     ></app-chart> -->
   </div>
+  <app-chart-container></app-chart-container>
 </div>
 
 <!-- <div class="row">
