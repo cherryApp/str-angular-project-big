@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
       <div class="card">
-        <div class="card-header card-header-primary">
+        <div class="card-header card-header-danger">
           <h4 class="card-title ">Product Table</h4>
           <div class="d-flex p-2 mb-3 filter__group">
             <input [(ngModel)]="filterPhrase" class="form-control mr-sm-2 filter__input px-3" type="text" placeholder="Filter..." style="width: 200px;">
@@ -14,10 +14,10 @@
           <div class="table-responsive">
             <table class="table">
               <thead class=" text-primary">
-                <th *ngFor="let fkey of filterKeys" [id]="'thead_'+fkey" class="th" (click)="changeOrder(fkey)">
-                  {{ fkey }} 
-                  <span [id]="'arrow_up_'+fkey" class="arrow material-icons md-18">keyboard_arrow_up</span>
-                  <span [id]="'arrow_down_'+fkey" class="arrow material-icons md-18">keyboard_arrow_down</span>
+                <th *ngFor="let col of cols" [id]="'thead_'+col.key" class="th" (click)="changeOrder(col.key)">
+                  {{ col.text }} 
+                  <span [id]="'arrow_up_'+col.key" class="arrow material-icons md-18">keyboard_arrow_up</span>
+                  <span [id]="'arrow_down_'+col.key" class="arrow material-icons md-18">keyboard_arrow_down</span>
                 </th>
                 <th class="action">
                   <button type="button" [routerLink]="'/product/0'" class="btn btn-success btn-block">
@@ -28,19 +28,20 @@
 
               <tbody>
                 <tr *ngFor="let product of productList$ | async | filter:filterPhrase:filterKey | sorter:sortby:sorterDirection ">
-                    <td *ngFor="let item of product | keyvalue : originalOrder">
-                        {{item.value}}
-                    </td>
-                    <td>
-                        <div class="btn-group" role="group">
+                  <td *ngFor="let col of cols">
+                    <input *ngIf="col.type === 'check'" [(ngModel)]="product[col.key]" type="checkbox" class="form-control-sm text-right" disabled>
+                    <span *ngIf="col.type != 'check'">{{ product[col.key] }}</span>
+                  </td>
+                  <td>
+                      <div class="btn-group" role="group">
                         <button type="button" [routerLink]="'/product/'+product.id" rel="tooltip" title="Edit this Product" class="btn btn-primary btn-link btn-sm">
                             <i class="material-icons">edit</i>
                         </button>
                         <button type="button" (click)="deleteItem(product)" rel="tooltip" title="Remove this Product" class="btn btn-danger btn-link btn-sm">
                             <i class="material-icons">close</i>
                         </button>
-                        </div>
-                    </td>
+                      </div>
+                  </td>
                 </tr>
               
               </tbody>

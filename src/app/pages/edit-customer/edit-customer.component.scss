@@ -1,0 +1,60 @@
+.card-body {
+    background-color: rgba(252, 252, 252, 1);
+}
+
+.form__border {
+    border-radius: .2rem;
+    margin: 1rem 2rem;
+    padding: 1rem 2rem;
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(0, 0, 0, .1);
+}
+
+.form__column {
+    width: 50%;
+    padding: 0 1rem;
+}
+
+.form-group {
+    position: relative;
+    margin: 0;
+    padding: .7rem 2rem;
+    border-radius: none;
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-bottom: 1px dotted rgba(0, 0, 0, .2);
+    &:focus-within {
+        border-radius: .2rem;
+        border: 1px solid rgba(156, 39, 176, .5);
+        & label  {
+            font-weight: 600;
+            color: rgba(156, 39, 176, 1);
+        }
+    }
+}
+
+.alert {
+    position: absolute;
+    top: 2px;
+    right: .5rem;
+    opacity: 1;
+    padding: .5rem 1rem;
+    animation: alert_anim .3s;
+}
+
+@keyframes alert_anim {
+    0% {
+        top: 10px;
+        opacity: 0;
+    }
+    100% {
+        top: 2px;
+        opacity: 1;
+    }
+}
+
+.fa-exclamation-triangle {
+    color: #ef5350;
+    position: absolute;
+    top: 1rem;
+    left: .6rem;
+}
