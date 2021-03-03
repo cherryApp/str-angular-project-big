@@ -41,7 +41,8 @@ export class DashboardComponent implements OnInit {
       content: '+245',
       footer: 'Just Updated',
     },
-  ]
+  ];
+
 
   constructor() { }
 

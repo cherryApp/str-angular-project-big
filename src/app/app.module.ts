@@ -21,7 +21,10 @@ import { FooterComponent } from './common/footer/footer.component';
 import { FilterPipe } from './pipe/filter.pipe';
 import { InfoCardComponent } from './common/info-card/info-card.component';
 import { SorterPipe } from './pipe/sorter.pipe';
-
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InprogressComponent } from './inprogress/inprogress.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,13 +44,15 @@ import { SorterPipe } from './pipe/sorter.pipe';
     FooterComponent,
     FilterPipe,
     InfoCardComponent,
-    SorterPipe
+    SorterPipe,
+    InprogressComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    MatProgressBarModule, MatProgressSpinnerModule, BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
