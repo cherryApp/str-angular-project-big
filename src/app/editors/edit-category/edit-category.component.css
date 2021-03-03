@@ -40,3 +40,13 @@ small{
   border-radius: 100%;
   padding: 12px 17px;
 }
+.fa{
+  
+  transition: 0.9s;
+  transform: rotateY(180deg);
+}
+.fa{
+  display: inline-block;
+  text-align: center;
+  rotate: 0deg ;
+}
