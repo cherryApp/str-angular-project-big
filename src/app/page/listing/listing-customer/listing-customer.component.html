@@ -4,12 +4,19 @@
       <h2>VÁSÁRLÓK</h2>
     </div>
 
-    <div class="col-5">
-      <button class="btn btn-success btn-block" [routerLink]="[0]">
-        <i class="fa fa-edit"></i>
-        Új vásárló
-      </button>
-    </div>
+    <div class="col-4 search-bar">
+      <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Keresés"
+              (keyup)="onChangePhrase($event)">
+          <button class="btn btn-success my-2 my-sm-0" type="submit">
+              <i class="material-icons">manage_search</i>
+              Keresés
+          </button>
+      </form>
+  </div>
+    <div class="col-5 mt-0 mb-5 d-flex justify-content-end">
+      <button class="btn btn-success my-2 my-sm-0" (click)="scroll('summaries')">STATISZTIKA</button>
+  </div>
     <!-- <div class="col-3">
       <select [(ngModel)]="filterKey" class="form-control">
         <option *ngFor="let key of filterKeys" [value]="key">

@@ -27,6 +27,12 @@ export class ListingCustomerComponent implements OnInit {
     private toastr: ToastrService
   ) {}
 
+  scroll(id: string) {
+    const elmnt = document.getElementById(id);
+    elmnt?.scrollIntoView(false);
+
+  }
+
   filterKey: string = 'id';
   filterKeys: string[] = Object.keys(new Customer());
   currentSelectProperty: string = 'name';
