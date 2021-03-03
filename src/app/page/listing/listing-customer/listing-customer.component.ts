@@ -45,6 +45,8 @@ export class ListingCustomerComponent implements OnInit {
   firstSorting = true;
 
   numberOfAllCustomers$ = this.statisticsService.numberOfAllCustomers$;
+  numberOfActiveCustomers$ = this.statisticsService.numberOfActiveCustomers$;
+  numberOfPassiveCustomers$ = this.statisticsService.numberOfPassiveCustomers$;
 
   ngOnInit(): void {
     this.customerService.getAll();
