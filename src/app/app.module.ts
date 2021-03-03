@@ -32,6 +32,7 @@ import { HeaderComponent } from './page/header/header.component';
 import { TostringPipe } from './pipe/tostring.pipe';
 import { HunFormatPipe } from './pipe/hun-format.pipe';
 import { ChartNewComponent } from './common/chart-new/chart-new.component';
+import { ChartContainerComponent } from './widget/chart-container/chart-container.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { ChartNewComponent } from './common/chart-new/chart-new.component';
     TostringPipe,
     HunFormatPipe,
     ChartNewComponent,
+    ChartContainerComponent,
   ],
   imports: [
     BrowserModule,

@@ -15,18 +15,20 @@ export class ConfigService {
 
   productTableCols: ITableCol[] = [
     { key: 'id', text: '#', editable: false, visible: true || false },
-    { key: 'név', text: 'Név', editable: true, visible: true || false },
-    { key: 'típus', text: 'Típus', editable: true, visible: true || false },
+    { key: 'name', text: 'Termék név', editable: true, visible: true || false },
+    { key: 'type', text: 'Típus', editable: true, visible: true || false },
     { key: 'catID', text: 'CatId', editable: false, visible: true || false },
-    { key: 'leírás', text: 'Leírás', editable: true, visible: true || false },
-    { key: 'ár', text: 'Ár', editable: true, visible: true || false },
+    { key: 'description', text: 'Leírás', editable: true, visible: true || false },
+    { key: 'price', text: 'Ár', editable: true, visible: true || false },
+    { key: 'featured', text: 'Kiemelt', editable: true, visible: true || false },
+    { key: 'active', text: 'Aktív', editable: true, visible: true || false },
   ];
 
   orderTableCols: ITableCol[] = [
     { key: 'id', text: '#', editable: false, visible: true || false },
     { key: 'customerID', text: 'Vásárló Id', editable: false, visible: true || false },
     { key: 'productID', text: 'Termék Id', editable: false, visible: true || false },
-    { key: 'amount', text: 'Összeg', editable: true, visible: true || false },
+    { key: 'amount', text: 'Mennyiség', editable: true, visible: true || false },
     { key: 'status', text: 'Státusz', editable: true, visible: true || false },
   ];
 
@@ -40,10 +42,10 @@ export class ConfigService {
 
   billTableCols: ITableCol[] = [
     { key: 'id', text: '#', editable: false, visible: true || false },
-    { key: 'orderId', text: 'RendelésId', editable: false, visible: true || false },
+    { key: 'orderId', text: 'Rendelés Id', editable: false, visible: true || false },
     { key: 'amount', text: 'Összeg', editable: true, visible: true || false },
     { key: 'status', text: 'Státusz', editable: true, visible: true || false },
   ];
 
-  constructor() {}
+  constructor() { }
 }

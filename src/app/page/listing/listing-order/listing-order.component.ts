@@ -14,13 +14,20 @@ import { StatisticsService } from 'src/app/service/statistics.service';
 })
 export class ListingOrderComponent implements OnInit {
 
-  // @Output() onUpdate: EventEmitter<Order> = new EventEmitter();
-  // @Output() onDelete: EventEmitter<Order> = new EventEmitter();
+
   numberOfUnpaidOrders$: BehaviorSubject<number> = this.statisticsService.numberOfUnpaidOrders$;
+  numberOfAllOrders$: BehaviorSubject<number> = this.statisticsService.numberOfAllOrders$;
   orderList$: BehaviorSubject<Order[]> = this.orderService.list$;
-  // orderList$: Observable<Order[]>= this.orderService.getAll();
+
   phrase: string = '';
   cols: ITableCol[] = this.configService.orderTableCols
+ cols2= {
+   "id":"#",
+   "customerID": "Vásárlói id" ,
+   "productID": "Termék id",
+   "amount": "Mennyiség",
+   "status": "Státusz",
+ }
 
 
   constructor(
@@ -68,7 +75,7 @@ export class ListingOrderComponent implements OnInit {
     // this.orderService.remove(order),
     //   this.router.navigate(['/orders']);
     // this.onDelete.emit(order);
-    of(this.orderService.remove(order)).subscribe(
+    this.orderService.remove(order.id).subscribe(
       () => {
         this.toastr.success('Sikeresen törölted a terméket!', 'Törlés!', { timeOut: 3000 });
         this.orderService.getAll();

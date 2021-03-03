@@ -28,12 +28,11 @@ export class ListingProductComponent implements OnInit {
   }
 
 
-
   productList: BehaviorSubject<Product[]> = this.productService.list$;
   cols: ITableCol[] = this.config.productTableCols;
-  phrase: string = '';
 
-  filterKey: string = 'id';
+  phrase: string = '';
+  filterKey: string = 'name';
   filterKeys: string[] = Object.keys(new Product());
   currentSelectProperty: string = 'name';
   orderProperties: string[] = Object.keys(new Product());
