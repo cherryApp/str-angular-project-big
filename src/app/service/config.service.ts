@@ -42,7 +42,7 @@ export class ConfigService {
 
   billTableCols: ITableCol[] = [
     { key: 'id', text: '#', editable: false, visible: true || false },
-    { key: 'orderId', text: 'Rendelés Id', editable: false, visible: true || false },
+    { key: 'orderID', text: 'Rendelés Id', editable: false, visible: true || false },
     { key: 'amount', text: 'Összeg', editable: true, visible: true || false },
     { key: 'status', text: 'Státusz', editable: true, visible: true || false },
   ];
