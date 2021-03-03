@@ -29,15 +29,7 @@ export class ListingProductComponent implements OnInit {
 
 
   productList: BehaviorSubject<Product[]> = this.productService.list$;
-  cols: ITableCol[] = this.config.productTableCols
-  cols2 = {
-    "id": "#",
-    "név": "Név",
-    "típus": "Típus",
-    "catID": "CatId",
-    "leírás": "Leírás",
-    "ár": "Ár",
-  }
+  cols: ITableCol[] = this.config.productTableCols;
 
   phrase: string = '';
   filterKey: string = 'name';

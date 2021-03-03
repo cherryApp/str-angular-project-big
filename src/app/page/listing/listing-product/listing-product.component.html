@@ -46,8 +46,7 @@
 
                     {{ col.text }}
                 </th>
-                <th>Kiemelt</th>
-                <th>Aktív</th>
+                <th></th>
                 <th>Műveletek</th>
                 <!-- <th (click)="onColumnSelect('id')"> <b>#</b></th>
                 <th (click)="onColumnSelect('name')"><b style="font-size: 18px">Termék név</b></th>
@@ -112,7 +111,8 @@
                     <th></th>
                     <th></th>
                     <div *ngIf="(numberOfFeaturedProducts$ | async) !==-1">
-                        ͏͏͏͏͏͏͏<p> <b style="font-size: 18px"> termékek száma: {{ numberOfFeaturedProducts$ | async }}
+                        ͏͏͏͏͏͏͏<p> <b style="font-size: 18px"> Kiemelt termékek száma: {{ numberOfFeaturedProducts$ |
+                                async }}
                             </b></p>
                     </div>
                     <th></th>
