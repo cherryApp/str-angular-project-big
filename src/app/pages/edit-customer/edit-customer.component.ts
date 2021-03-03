@@ -12,6 +12,8 @@ import { CustomerService } from 'src/app/services/customer.service';
 })
 export class EditCustomerComponent implements OnInit {
 
+  title: string = '';
+  cusId: number = 0;
   customer: Customer = new Customer();
   updating: boolean = false;
   cols: ITableCol[] = this.configService.tableColsCustomerList;
@@ -24,22 +26,41 @@ export class EditCustomerComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
     this.activatedRoute.params.subscribe(
-      params =>
-        this.customerService.getOneById(params.id).subscribe(
-          customer => {
-            this.customer = customer || new Customer();
-          }
-        )
-    );
+      params =>{
+        if(params.id == 0){
+          this.title = 'Create New Customer';
+          this.customer = new Customer();
+        }
+        else
+          this.customerService.getOneById(params.id).subscribe(
+            item => {
+              this.cusId = params.id;
+              this.title = 'Edit this Customer';
+              this.customer = item;
+            })
+      }
+    )
   }
 
-  onFormSubmit(form: NgForm): void {
-    this.updating = true;
-    this.customerService.update(this.customer).subscribe(
-      () => this.router.navigate(['customers'])
-    );
+  onFormSubmit(form: NgForm, element: Customer): void {
+    try {
+      if (element.id == 0) {
+        this.customerService.create(element).subscribe(
+          () => this.router.navigate(['/customers'])
+        );
+        // toaster üzenet sikeres létrehozásról
+      }
+      else {
+        this.customerService.update(element).subscribe(
+          () => this.router.navigate(['/customers'])
+        );
+        // toaster üzenet sikeres módosításról
+      }
+    } catch (error) {
+      // toaster üzenet hibáról
+    }
   }
-
 
 }
