@@ -13,7 +13,7 @@ import { debounceTime, map, switchMap } from 'rxjs/operators';
 @Component({
   selector: 'app-edit-order',
   templateUrl: './edit-order.component.html',
-  styleUrls: ['./edit-order.component.scss'],
+  styleUrls: ['../common/edit.scss'],
 })
 export class EditOrderComponent implements OnInit {
   order: Order = new Order();
