@@ -33,8 +33,13 @@ export class ListBillComponent implements OnInit {
   }
 
   changeOrder(param: string): void {
-    if (this.sorterDirection === 1)  this.sorterDirection = 2;
-    else this.sorterDirection = 1;
+    if (this.sortby === '' || this.sortby != param) {
+      this.sorterDirection = 1;
+    }
+    if (this.sortby === param) {
+      if (this.sorterDirection === 1)  this.sorterDirection = 2;
+      else this.sorterDirection = 1;
+    }
     this.sortby = param;
     let allArrow = document.querySelectorAll('.arrow');
     allArrow.forEach( element => {
