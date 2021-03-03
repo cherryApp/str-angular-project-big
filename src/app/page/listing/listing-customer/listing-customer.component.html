@@ -39,8 +39,8 @@
       <tr>
         <th (click)="onColumnSelect(col.key)" *ngFor="let col of cols">
           <span *ngIf='col.key === sortedColumn'>
-            <i *ngIf="!direction" class="fa fa-sort-alpha-desc"></i>
-            <i *ngIf="direction" class="fa fa-sort-alpha-asc"></i>
+            <i *ngIf="!direction" class="fa fa-sort-alpha-asc"></i>
+            <i *ngIf="direction" class="fa fa-sort-alpha-desc"></i>
           </span>
 
           {{ col.text }}
@@ -112,13 +112,10 @@
       <tbody>
     </table>
     <footer>
-      <button class="btn btn-success my-2 my-sm-0">
-        <a href="product" onclick="self.scrollTo(0, 0); return false;">
-          <span class="material-icons">
-            arrow_circle_up
-          </span>
-          Ugrás az oldal tetejére</a></button>
-
+      <div class="d-flex justify-content-end">
+        <a href="#top" onclick="self.scrollTo(0, 0); return false;" class="material-icons icon-white" d-flex
+          justify-content-end>backup</a>
+      </div>
     </footer>
   </div>
 </div>
