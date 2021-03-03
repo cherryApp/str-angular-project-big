@@ -26,7 +26,7 @@ export class ConfigService {
     { key: 'id', text: '#', editable: false, visible: true || false },
     { key: 'customerID', text: 'Vásárló Id', editable: false, visible: true || false },
     { key: 'productID', text: 'Termék Id', editable: false, visible: true || false },
-    { key: 'amount', text: 'Összeg', editable: true, visible: true || false },
+    { key: 'amount', text: 'Mennyiség', editable: true, visible: true || false },
     { key: 'status', text: 'Státusz', editable: true, visible: true || false },
   ];
 
@@ -40,7 +40,7 @@ export class ConfigService {
 
   billTableCols: ITableCol[] = [
     { key: 'id', text: '#', editable: false, visible: true || false },
-    { key: 'orderId', text: 'RendelésId', editable: false, visible: true || false },
+    { key: 'orderId', text: 'Rendelés Id', editable: false, visible: true || false },
     { key: 'amount', text: 'Összeg', editable: true, visible: true || false },
     { key: 'status', text: 'Státusz', editable: true, visible: true || false },
   ];
