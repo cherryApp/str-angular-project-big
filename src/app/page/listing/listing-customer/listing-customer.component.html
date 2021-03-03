@@ -4,26 +4,12 @@
       <h2>VÁSÁRLÓK</h2>
     </div>
 
-    <div class="col-4 search-bar">
-      <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Keresés"
-              (keyup)="onChangePhrase($event)">
-          <button class="btn btn-success my-2 my-sm-0" type="submit">
-              <i class="material-icons">manage_search</i>
-              Keresés
-          </button>
-      </form>
-  </div>
-    <div class="col-5 mt-0 mb-5 d-flex justify-content-end">
-      <button class="btn btn-success my-2 my-sm-0" (click)="scroll('summaries')">STATISZTIKA</button>
-  </div>
-    <!-- <div class="col-3">
-      <select [(ngModel)]="filterKey" class="form-control">
-        <option *ngFor="let key of filterKeys" [value]="key">
-          {{ key }}
-        </option>
-      </select>
-    </div> -->
+    <div class="col-12 my-3 mb-3">
+      <button class="btn btn-success btn-block mt-3 mb-5" style="font-size:14px" [routerLink]="[0]">
+        <i class="material-icons">add</i> Új vásárló
+      </button>
+    </div>
+
     <div class="col-3 mt-3 mb-5">
       <select [(ngModel)]="filterKey" class="custom-select bg-light" style="font-size: 20px">
         <option *ngFor="let key of filterKeys" [value]="key">
@@ -31,28 +17,43 @@
         </option>
       </select>
     </div>
-    <div class="col-4">
+
+    <div class="col-4 search-bar mt-0 mb-5">
       <form class="form-inline my-2 my-lg-0">
         <input
-          class="form-control mr-sm-2"
-          type="text"
-          placeholder="Search"
           (keyup)="onChangePhrase($event)"
-        />
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-          Keresés
+          class="form-control mr-sm-2" type="text"
+          placeholder="Keresés" />
+        <button class="btn btn-success my-2 my-sm-0" type="submit" style="font-size: 14px">
+          <i class="material-icons">manage_search</i> Keresés
         </button>
       </form>
-    </div>
+  </div>
+    <div class="col-5 mt-0 mb-5 d-flex justify-content-end">
+      <button class="btn btn-success my-2 my-sm-0" (click)="scroll('summaries')">STATISZTIKA</button>
+  </div>
+
     <table class="table table-striped">
-      <thead class="bg-dark text-light">
+      <thead class="bg-dark text-light" >
         <tr>
-          <th (click)="onColumnSelect('id')">#</th>
-          <th (click)="onColumnSelect('firstNamee')">Vezetéknév</th>
-          <th (click)="onColumnSelect('lastName')">Keresztnév</th>
-          <th (click)="onColumnSelect('Email')">Email</th>
-          <th (click)="onColumnSelect('Address')">Cím</th>
-          <th (click)="onColumnSelect('Aktív')">Aktív</th>
+          <th (click)="onColumnSelect(col.key)"
+          *ngFor="let col of cols">
+        <span *ngIf='col.key === sortedColumn'>
+          <i *ngIf="!direction" class="fa fa-sort-alpha-desc"></i>
+          <i *ngIf="direction" class="fa fa-sort-alpha-asc"></i>
+        </span>
+
+          {{ col.text }}
+          </th>
+          <th></th>
+          <th></th>
+
+          <!-- <th (click)="onColumnSelect('id')"><b>#</b></th>
+          <th (click)="onColumnSelect('customerID')"><b style="font-size: 18px">Vásárlók</b></th>
+          <th (click)="onCnolumnSelect('productID')"><b style="font-size: 18px">Termékek</b></th>
+          <th (click)="onColumnSelect('amount')"><b style="font-size: 18px">Mennyiség</b></th>
+          <th (click)="onColumnSelect('status')"><b style="font-size: 18px">Státusz</b></th> -->
+
         </tr>
       </thead>
       <tbody>
