@@ -2042,6 +2042,72 @@
       "productID": 12,
       "amount": 12,
       "status": "shipped"
+    },
+    {
+      "id": 53,
+      "customerID": 0,
+      "productID": 1,
+      "amount": 1,
+      "status": "new"
+    },
+    {
+      "id": 54,
+      "customerID": 21,
+      "productID": 21,
+      "amount": 21,
+      "status": "new"
+    },
+    {
+      "id": 55,
+      "customerID": 14,
+      "productID": {
+        "id": 47,
+        "name": "A massza",
+        "type": "film",
+        "catId": 1,
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, numquam sunt obcaecati quas minus deserunt excepturi eum perferendis earum quo ducimus officia. Odio itaque officia aspernatur aut a fuga cum?",
+        "price": 1478,
+        "featured": true,
+        "active": true,
+        "image": "https://www.mafab.hu/static/profiles/2014/293/03/17082_53.jpg"
+      },
+      "amount": 17,
+      "status": "new"
+    },
+    {
+      "id": 56,
+      "customerID": 14,
+      "productID": 0,
+      "amount": 17,
+      "status": "new"
+    },
+    {
+      "id": 57,
+      "customerID": 14,
+      "productID": 43,
+      "amount": 13,
+      "status": "new"
+    },
+    {
+      "id": 58,
+      "customerID": 14,
+      "productID": 47,
+      "amount": 17,
+      "status": "new"
+    },
+    {
+      "id": 59,
+      "customerID": 17,
+      "productID": 23,
+      "amount": 72,
+      "status": "new"
+    },
+    {
+      "id": 60,
+      "customerID": 13,
+      "productID": 32,
+      "amount": 12,
+      "status": "new"
     }
   ],
   "category": [

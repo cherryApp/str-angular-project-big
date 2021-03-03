@@ -57,7 +57,7 @@ export class MainService<T extends { id: number }> {
     // ).pipe(tap(() => this.getAll()));
   }
 
-  like(key: string, value: string, limit: number = 10): Observable<T[]> {
+  like(key: string, value: string, limit: number = 20): Observable<T[]> {
     key = `${key}_like`;
     const query = `${this.config.apiUrl}/${this.entityName}?${key}=${value}&_limit=${limit}`;
     return this.http.get<T[]>(query);
