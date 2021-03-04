@@ -5,6 +5,9 @@ import { Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip, SingleDataS
 export interface IPieChart {
   pieChartLabels: Label[];
   pieChartData: SingleDataSet;
+  chartCardTitle: string;
+  chartCardInfo: string;
+  chartCardFooter: string;
 }
 
 @Component({
@@ -13,6 +16,10 @@ export interface IPieChart {
   styleUrls: ['./pie-chart.component.scss']
 })
 export class PieChartComponent implements OnInit {
+  // Chart card
+  @Input() cardTitle: string = '';
+  @Input() cardInfo: string = '';
+  @Input() cardFooter: string = '';
 
   // Pie
   public pieChartOptions: ChartOptions = {
@@ -23,6 +30,7 @@ export class PieChartComponent implements OnInit {
   public pieChartType: ChartType = 'pie';
   public pieChartLegend = true;
   public pieChartPlugins = [];
+
 
   constructor() {
     monkeyPatchChartJsTooltip();

@@ -57,14 +57,23 @@ export class DashboardComponent implements OnInit {
     {
       pieChartLabels: [['Active', 'customers'], ['Inactive', 'Customers']],
       pieChartData: [],
+      chartCardTitle: 'Customer statistics',
+      chartCardInfo: 'string',
+      chartCardFooter: `<i class="material-icons">access_time</i> based on the total database`,
     },
     {
       pieChartLabels: [['New', 'Orders'], ['Paid', 'Orders'], ['Shipped', 'Orders']],
       pieChartData: [],
+      chartCardTitle: 'Order number statistics',
+      chartCardInfo: 'string',
+      chartCardFooter:  `<i class="material-icons">access_time</i> based on the total database`,
     },
     {
       pieChartLabels: [['Amount', 'of New', 'Orders'], ['Amount', 'of Paid', 'Orders'], ['Amount', 'of Shipped', 'Orders']],
       pieChartData: [],
+      chartCardTitle: 'Order amoint statistics',
+      chartCardInfo: 'string',
+      chartCardFooter:  `<i class="material-icons">access_time</i> based on the total database`,
     }
   ];
 
@@ -72,7 +81,7 @@ export class DashboardComponent implements OnInit {
 
   orderChartLabels: Label[] = ['new', 'shipped', 'paid'];
   ordelChartData: ChartDataSets[] = [
-    { data: [0, 0, 0], label: 'Orders'},
+    { data: [0, 0, 0], label: 'Orders' },
   ];
 
 

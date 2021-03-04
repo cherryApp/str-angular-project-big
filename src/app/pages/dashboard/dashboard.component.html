@@ -6,10 +6,13 @@
   </div>
 </div>
 <div class="row">
-  <div *ngFor="let pie of pieCharts" class="col-md-3">
+  <div *ngFor="let pie of pieCharts" class="col-md-4">
     <app-pie-chart
       [pieChartLabels]="pie.pieChartLabels"
       [pieChartData]="pie.pieChartData"
+      [cardTitle]="pie.chartCardTitle"
+      [cardInfo]="pie.chartCardInfo"
+      [cardFooter]="pie.chartCardFooter"
     ></app-pie-chart>
   </div>
 </div>
