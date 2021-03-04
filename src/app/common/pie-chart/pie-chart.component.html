@@ -1,0 +1,24 @@
+<div class="card card-chart">
+    <div class="card-header" class= "{{ cardColor }}">
+        <div style="display: block;">
+            <canvas baseChart
+                [data]="pieChartData"
+                [labels]="pieChartLabels"
+                [chartType]="pieChartType"
+                [options]="pieChartOptions"
+                [plugins]="pieChartPlugins"
+                [legend]="pieChartLegend">
+            </canvas>
+        </div>
+    </div>
+    <div class="card-body">
+      <h4 class="card-title" [innerHTML]="cardTitle"></h4>
+      <p class="card-category" [innerHTML]="cardInfo"></p>
+    </div>
+    <div class="card-footer">
+      <div class="stats" [innerHTML]="cardFooter"></div>
+    </div>
+  </div>
+
+
+

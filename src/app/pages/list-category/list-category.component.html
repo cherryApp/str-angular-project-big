@@ -1,0 +1,85 @@
+<div class="row">
+  <div class="col-md-10 offset-1">
+    <div *ngIf="waiting">
+      <app-inprogress></app-inprogress>
+    </div>
+
+    <div *ngIf="!waiting">
+      <div class="card">
+        <div class="card-header card-header-warning">
+          <h4 class="card-title ">Category Table</h4>
+          <div class="d-flex p-2 mb-3 filter__group">
+            <input [(ngModel)]="filterPhrase" class="form-control mr-sm-2 filter__input px-3" type="text"
+              placeholder="Filter..." style="width: 200px;">
+            <select [(ngModel)]="filterKey" class="form-control mr-3 filter__select px-3" style="width: 150px;">
+              <option *ngFor="let fkey of filterKeys" [value]="fkey">{{ fkey }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+
+              <thead class=" text-primary">
+                <th *ngFor="let col of cols" [id]="'thead_'+col.key" class="th" (click)="changeOrder(col.key)">
+                  {{ col.text }}
+                  <span [id]="'arrow_up_'+col.key" class="arrow material-icons md-18">keyboard_arrow_up</span>
+                  <span [id]="'arrow_down_'+col.key" class="arrow material-icons md-18">keyboard_arrow_down</span>
+                </th>
+                <th class="action">
+                  <button type="button" [routerLink]="'/category/0'" class="btn btn-success btn-block">
+                    <i class="fa fa-plus" aria-hidden="true"></i> New Category
+                  </button>
+                </th>
+              </thead>
+
+              <tbody>
+                <tr class="table__row" 
+                  *ngFor="let category of categoryList$ | async | filter:filterPhrase:filterKey | sorter:sortby:sorterDirection">
+                  <td *ngFor="let col of cols">
+                    <span>{{ category[col.key] }}</span>
+                  </td>
+                  <td>
+                    <div class="btn-group" role="group">
+                      <button type="button" [routerLink]="'/category/'+category.id" rel="tooltip"
+                        title="Edit this Category" class="btn btn-primary btn-link btn-sm">
+                        <i class="material-icons">edit</i>
+                      </button>
+                      <button type="button" (click)="setToDelete(category)" rel="tooltip" title="Remove this Category" data-toggle="modal" data-target="#myModal"
+                        class="btn btn-danger btn-link btn-sm">
+                        <i class="material-icons">close</i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- MODAL -->
+<div id="myModal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm delete</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure to delete this Category?</p>
+        <p>#{{selectedItemToDelete.id}}</p>
+      </div>
+      <div class="modal-footer">
+        <button (click)="deleteItem()"  type="button" class="btn btn-danger" data-dismiss="modal">Yes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div>
