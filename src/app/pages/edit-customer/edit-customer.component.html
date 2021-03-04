@@ -79,10 +79,10 @@
                         <div class="form-group form__group">
                             <label>city</label>
                             <input [(ngModel)]="customer.address.city" name="city" type="text" 
-                                class="form-control" pattern=".{5,50}" required>
+                                class="form-control" pattern=".{3,50}" required>
                             <i class="fa fa-exclamation-triangle alert__triangle" aria-hidden="true" [hidden]="customerForm.controls.city?.valid"></i>
                             <div [hidden]="customerForm.controls.city?.valid || customerForm.controls.city?.pristine" class="alert alert-danger alert__anim">
-                                The city must be a minimum of 5 and a maximum of 50 characters long! 
+                                The city must be a minimum of 3 and a maximum of 50 characters long! 
                             </div>
                         </div>
                 

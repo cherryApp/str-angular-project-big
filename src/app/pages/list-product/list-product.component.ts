@@ -68,7 +68,9 @@ export class ListProductComponent implements OnInit {
 
   deleteItem(): void {
     const deletedId: string = `${this.selectedItemToDelete.id}`;
-    this.productService.remove(this.selectedItemToDelete);
+    this.productService.remove(this.selectedItemToDelete).subscribe(
+      () => this.productService.getAll()
+    );
     this.configService.showSuccess('Deleted successfuly.', `Product #${deletedId}`);
   }
 

@@ -31,7 +31,7 @@
                 </th>
               </thead>
               <tbody>
-                <tr
+                <tr class="table__row" 
                   *ngFor="let bill of billList$ | async | filter:filterPhrase:filterKey | sorter:sortby:sorterDirection">
                   <td *ngFor="let col of cols">
                     <input *ngIf="col.type === 'check'" [(ngModel)]="bill[col.key]" type="checkbox"
