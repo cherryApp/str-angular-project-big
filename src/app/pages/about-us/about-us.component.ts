@@ -24,10 +24,10 @@ export class AboutUsComponent implements OnInit {
     },
     {
       name: "Anna Kiss",
-      title: "angular master pro elite",
-      imgSrc: "./assets/img/faces/anna_foto.jpg",
+      title: "angular student",
+      imgSrc: "./assets/img/faces/ka.jpg",
       href: "#",
-      description: "Working on everything."
+      description: "Just learning Angular universe."
     },
     {
       name: "Kalman Kovacsics",
@@ -38,10 +38,10 @@ export class AboutUsComponent implements OnInit {
     },
     {
       name: "Gyorgy Liptak",
-      title: "angular master pro elite",
-      imgSrc: "./assets/img/faces/lgy.png",
+      title: "Teacher/Copy Editor",
+      imgSrc: "./assets/img/faces/lgy.jpg",
       href: "#",
-      description: "Working on everything."
+      description: "Teaching English, learning Angular."
     },
     {
       name: "Laszlo Szollosi",
@@ -52,10 +52,10 @@ export class AboutUsComponent implements OnInit {
     },
     {
       name: "Gyozo Urbancsok",
-      title: "angular master pro elite",
-      imgSrc: "./assets/img/faces/marc.jpg",
+      title: "intrigued",
+      imgSrc: "./assets/img/faces/gyozo.jpg",
       href: "#",
-      description: "Working on everything."
+      description: "Wondering how all this works."
     },
   ]
 
