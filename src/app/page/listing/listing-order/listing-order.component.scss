@@ -15,22 +15,10 @@
   justify-content: flex-end,
 }
 
-.icon-white {
-  color: red;
-  font-size: 50px;
-  padding-right: 4px;
-
-}
-
 th {
   user-select: none;
 }
 
-#backup {
-  position: absolute;
-  bottom: 4rem;
-  right: 0;
-}
 tbody > tr > td {
 
   height:20px;
@@ -41,7 +29,13 @@ tbody > tr > td {
  margin-top: 0;
  margin-bottom: 0;
 }
-
+.jump-top i {
+  color: #4098D4;
+  font-size: 60px;
+  position: fixed;
+  bottom: 50px;
+  right: 15px;
+}
 
 
 
