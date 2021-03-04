@@ -14,17 +14,20 @@
 </div>
 <div class="row">
   <div *ngFor="let chart of charts" class="col-md-4">
-    <app-chart
+
+    <!--old one <app-chart
       [chartClass]="chart.chartClass"
       [id]="chart.id"
       [title]="chart.title"
       [category]="chart.category"
       [footIcon]="chart.footIcon"
       [footer]="chart.footer"
-    ></app-chart>
+    ></app-chart> -->
   </div>
 </div>
-<div class="row">
+<app-chart-container></app-chart-container>
+
+<!-- <div class="row">
   <div class="col-lg-6 col-md-12">
     <div class="card">
       <div class="card-header card-header-tabs card-header-primary">
@@ -468,4 +471,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

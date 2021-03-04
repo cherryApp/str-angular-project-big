@@ -6,7 +6,7 @@
 
 
 th {
-    cursor: pointer;
+    
     user-select: none;
 }
 
@@ -22,4 +22,11 @@ td {
 #arrow {
   display: flex;
   justify-content: flex-end,
+}
+
+.icon-white {
+  color: red;
+  font-size: 50px;
+  padding-right: 4px;
+
 }

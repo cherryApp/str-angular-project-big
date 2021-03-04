@@ -9,12 +9,13 @@ import { Label, Color } from 'ng2-charts';
 })
 export class ChartNewComponent implements OnInit {
 
-  @Input() barChartLabels: Label[] = ['new', 'shipped', 'paid'];
-  @Input() barChartData: ChartDataSets[] = [
-    { data: [10, 20, 30], label: 'Orders' },
-  ];
+  @Input() pieChartLabels: Label[] = [];
+  @Input() pieChartData: ChartDataSets[] = [];
+  @Input() pieChartColors: Color[] = [];
+  @Input() pieChartType: ChartType = 'pie';
+  @Input() chartColors: Color[] = [];
 
-  public barChartOptions: ChartOptions = {
+  public pieChartOptions: ChartOptions = {
     responsive: true,
     scales: { xAxes: [{}], yAxes: [{}] },
     plugins: {
@@ -25,14 +26,8 @@ export class ChartNewComponent implements OnInit {
     },
   };
 
-  public barChartType: ChartType = 'bar';
-  public barChartLegend = true;
-  public barChartPlugins = [];
-  public chartColors: Color[] = [
-    {
-      backgroundColor: 'rgba(0,0,255,0.4)',
-    },
-  ];
+  public pieChartLegend = true;
+  public pieChartPlugins = [];
 
   constructor() { }
 
