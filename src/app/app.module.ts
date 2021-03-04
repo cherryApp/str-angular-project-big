@@ -31,6 +31,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { InprogressComponent } from './inprogress/inprogress.component';
 import { PieChartComponent } from './common/pie-chart/pie-chart.component';
+import { SettingsComponent } from './pages/settings/settings.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { LogoutComponent } from './pages/logout/logout.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,6 +56,9 @@ import { PieChartComponent } from './common/pie-chart/pie-chart.component';
     SorterPipe,
     InprogressComponent,
     PieChartComponent,
+    SettingsComponent,
+    ProfileComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,

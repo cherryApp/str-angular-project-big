@@ -1,0 +1,88 @@
+.glass {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .7);
+    background: linear-gradient(120deg, rgba(0, 0, 0, .9) 0%, rgba(0, 0, 0, .7) 50%, rgba(0, 0, 0, .8) 100%);
+    backdrop-filter: blur(.2rem);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    animation: show_magic 3s ease-in-out;
+    opacity: 1;
+}
+
+@keyframes show_magic {
+    0% {
+        opacity: 0;
+    }
+    80% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.perspective-text {
+    color: white;
+    font-family: Arial;
+    font-size: 58px;
+    font-weight: 900;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    transform: scale(1.1);
+  }
+  
+  .perspective-line {
+    height: 50px;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  p {
+    margin: 0;
+    height: 50px;
+    line-height: 50px;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .perspective-line:nth-child(odd) {
+    transform: skew(60deg, -30deg) scaleY(0.667);
+  }
+  
+  .perspective-line:nth-child(even) {
+    transform: skew(0deg, -30deg) scaleY(1.337);
+  }
+  
+  .perspective-text:hover p {
+    transform: translate(0, -50px);
+  }
+  
+  .perspective-line:nth-child(1) {
+    left: 29px;
+  }
+  
+  .perspective-line:nth-child(2) {
+    left: 58px;
+    background: #f07e6e;
+  }
+  
+  .perspective-line:nth-child(3) {
+    left: 87px;
+    background: #84cdfa;
+  }
+  
+  .perspective-line:nth-child(4) {
+    left: 116px;
+    background: #5ad1cd;
+  }
+  
+  .perspective-line:nth-child(5) {
+    left: 145px;
+  }
+  
