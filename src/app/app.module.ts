@@ -26,8 +26,14 @@ import { InfoCardComponent } from './common/info-card/info-card.component';
 import { SorterPipe } from './pipe/sorter.pipe';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 import { InprogressComponent } from './inprogress/inprogress.component';
+import { PieChartComponent } from './common/pie-chart/pie-chart.component';
+import { SettingsComponent } from './pages/settings/settings.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { LogoutComponent } from './pages/logout/logout.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +55,10 @@ import { InprogressComponent } from './inprogress/inprogress.component';
     InfoCardComponent,
     SorterPipe,
     InprogressComponent,
+    PieChartComponent,
+    SettingsComponent,
+    ProfileComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +66,9 @@ import { InprogressComponent } from './inprogress/inprogress.component';
     HttpClientModule,
     FormsModule,
     ChartsModule,
+    CommonModule,
     MatProgressBarModule, MatProgressSpinnerModule, BrowserAnimationsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

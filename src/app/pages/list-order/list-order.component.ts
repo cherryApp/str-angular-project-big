@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { Order } from 'src/app/models/order';
 import { ConfigService, ITableCol } from 'src/app/services/config.service';
 import { OrderService } from 'src/app/services/order.service';
@@ -19,8 +19,13 @@ export class ListOrderComponent implements OnInit {
   filterKey: string = 'status';
   filterKeys: string[] = Object.keys(new Order());
   sorterDirection: number = 1;
+  selectedItemToDelete: Order = new Order();
   sortby: string = '';
   waiting = true;
+  colspan: number = this.cols.length + 1;
+  statOrdersSubscription: Subscription = new Subscription();
+  statOrderText: string = '';
+
   constructor(
     private orderService: OrderService,
     private configService: ConfigService,
@@ -31,7 +36,15 @@ export class ListOrderComponent implements OnInit {
     let time = (Math.floor(Math.random() * 4) + 1) * 1000;
     this.orderList$.subscribe(
       () => setTimeout(() => { this.waiting = false }, time)
-    )
+    );
+    this.statOrdersSubscription = this.orderService.orderStats$ .subscribe(
+      data => {
+        this.statOrderText = `<span class="text-info">Total ${data.totalOrderNr} orders; </span>
+        <span class="text-success">${data.paidOrderNr} paid orders worth ${data.paidOrderAmount} EUR; </span>
+        <span class="text-danger">${data.shippedOrderNr} shipped, unpaid orders worth ${data.shippedOrderAmount} EUR; </span>
+        <span class="text-warning">there are ${data.newOrderNr} new orders worth ${data.newOrderAmount} EUR</span>`;
+      }
+    );
   }
 
   changeOrder(param: string): void {
@@ -60,8 +73,22 @@ export class ListOrderComponent implements OnInit {
     return 0;
   }
 
-  deleteItem(item: Order): void {
-    this.orderService.remove(item);
+  setToDelete(order: Order): void {
+    this.selectedItemToDelete = order;
+  }
+
+  deleteItem(): void {
+    const deletedId: number = this.selectedItemToDelete.id;
+    this.orderService.remove(this.selectedItemToDelete).subscribe(
+      () => {
+        this.orderService.getAll();
+        this.configService.showSuccess('Deleted successfuly.', `Order #${deletedId}`);
+      }
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.statOrdersSubscription.unsubscribe();
   }
 
 }

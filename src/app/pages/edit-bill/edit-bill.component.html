@@ -1,40 +1,65 @@
-<div class="row">
-  <div class="col-6 offset-3">
-    <form #billForm="ngForm" (ngSubmit)="onFormSubmit(billForm)">
-      <div class="form-group">
-          <label>ID</label>
-          {{ bill.id }}
-      </div>
+<div class="row" *ngIf="bill">
+  <div class="col-12 col-xl-10 offset-xl-1">
+      <div class="card">
 
-      <div class="form-group">
-          <label>Amount</label>
-          <input [(ngModel)]="bill.amount" name="amount" type="text"
-              class="form-control" pattern="[0-9]*" required>
-          <div [hidden]="billForm.controls.amount?.valid" class="error-message">
-              The amount must be a number!
+          <!-- CARD HEADER -->
+          <div class="card-header card-header-primary">
+              <h4 class="card-title ">{{ title }}: {{ id }}</h4>
           </div>
-      </div>
 
-      <div class="form-group">
-          <label>orderID</label>
-          <input [(ngModel)]="bill.orderID" name="orderID" type="text"
-              class="form-control" pattern="[0-9]*" required>
-          <div [hidden]="billForm.controls.orderID?.valid" class="error-message">
-              The orderID must be a number!
+          <!-- CARD BODY -->
+          <div class="card-body">
+              <form class="form__border" #billForm="ngForm" (ngSubmit)="onFormSubmit(billForm, bill)">
+
+                  <div class="form__column">
+                      <div class="form-group form__group" *ngIf="id > 0" title="ID is not editable.">
+                          <label>ID</label>
+                          <input [(ngModel)]="bill.id" name="id" type="number"  
+                              class="form-control" pattern="" disabled>
+                      </div>        
+              
+                      <div class="form-group form__group">
+                        <label>Amount</label>
+                          <input [(ngModel)]="bill.amount" name="amount" type="text" 
+                              class="form-control" pattern="[0-9]*" required>
+                          <i class="fa fa-exclamation-triangle alert__triangle" aria-hidden="true" [hidden]="billForm.controls.amount?.valid"></i>
+                          <div [hidden]="billForm.controls.amount?.valid || billForm.controls.amount?.pristine" class="alert alert-danger alert__anim">
+                            Please get a number!
+                          </div>
+                      </div>
+                  </div>
+
+
+                  <div class="form__column">
+              
+                      <div class="form-group form__group">
+                        <label>orderID</label>
+                          <input [(ngModel)]="bill.orderID" name="orderID" type="text" 
+                              class="form-control" pattern="[0-9]*" required>
+                          <i class="fa fa-exclamation-triangle alert__triangle" aria-hidden="true" [hidden]="billForm.controls.orderID?.valid"></i>
+                          <div [hidden]="billForm.controls.orderID?.valid || billForm.controls.orderID?.pristine" class="alert alert-danger alert__anim">
+                            Please get a number!
+                          </div>
+                      </div>
+              
+                      <div class="form-group form__group">
+                          <label>Status</label>
+                          <select class="form-control" name="status" [(ngModel)]="bill.status" >
+                            <option value="new">New</option>
+                            <option value="paid">Paid</option>
+                          </select>
+                      </div>
+
+                  </div>
+                  
+                  <button [disabled]="billForm.invalid || updating" class="btn btn-block btn-success">
+                    <i *ngIf="!updating" class="fa fa-save"></i>
+                    <i *ngIf="updating" class="fa fa-refresh"></i>
+                  </button>
+
+              </form>
           </div>
-      </div>
 
-      <div class="form-group">
-          <label>Status</label>
-          <select class="form-control" name="status" [(ngModel)]="bill.status" >
-            <option value="new">New</option>
-            <option value="paid">Paid</option>
-          </select>
       </div>
-      <button [disabled]="billForm.invalid || updating" class="btn btn-block btn-primary">
-        <i *ngIf="!updating" class="fa fa-save"></i>
-        <i *ngIf="updating" class="fa fa-refresh"></i>
-      </button>
-    </form>
   </div>
 </div>
