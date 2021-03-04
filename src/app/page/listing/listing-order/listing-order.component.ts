@@ -74,9 +74,10 @@ export class ListingOrderComponent implements OnInit {
   }
 
   onRemove(order: Order): void {
-    // this.orderService.remove(order),
-    //   this.router.navigate(['/orders']);
-    // this.onDelete.emit(order);
+    if (!confirm(`Biztosan törli ezt a számlát?
+    (id: ${order.id} vásárlóID: ${order.customerID} mennyiség: ${order.amount})`)) {
+      return
+    }
     this.orderService.remove(order.id).subscribe(
       () => {
         this.toastr.success('Sikeresen törölted a terméket!', 'Törlés!', { timeOut: 3000 });
