@@ -27,7 +27,6 @@ import { SorterPipe } from './pipe/sorter.pipe';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { InprogressComponent } from './inprogress/inprogress.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +48,6 @@ import { InprogressComponent } from './inprogress/inprogress.component';
     FilterPipe,
     InfoCardComponent,
     SorterPipe,
-    InprogressComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +55,6 @@ import { InprogressComponent } from './inprogress/inprogress.component';
     HttpClientModule,
     FormsModule,
     ChartsModule,
-    MatProgressBarModule, MatProgressSpinnerModule, BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
