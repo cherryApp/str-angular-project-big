@@ -38,6 +38,7 @@ export class ConfigService {
     { key: 'lastName', text: 'Vezetéknév', editable: true, visible: true || false },
     { key: 'email', text: 'Email', editable: true, visible: true || false },
     { key: 'address', text: 'Cím', editable: true, visible: true || false },
+    { key: 'active', text: 'Aktív', editable: true, visible: true || false }
   ];
 
   billTableCols: ITableCol[] = [
