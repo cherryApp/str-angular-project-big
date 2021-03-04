@@ -22,6 +22,7 @@ export class CustomerListComponent implements OnInit {
   sorterKey = '';
   sorterSubKey = '';
   sortDirection = '';
+  
 
   attributes = CustomerAttributesArray;
   attributes_count: number = 0;
@@ -33,6 +34,7 @@ export class CustomerListComponent implements OnInit {
   ngOnInit(): void {
     this.customerService.getAll();
     this.updatingValues();
+    this.setSortParams();
   }
 
   updatingValues() {
@@ -98,6 +100,15 @@ export class CustomerListComponent implements OnInit {
         item.order = '';
       }
     })
+  }
+  setSortParams(): void {
+    this.attributes.forEach(item => {
+      if(item.order){   // sorting is set
+        this.sorterKey = item.key;
+        this.sorterSubKey = item.obj;
+        this.sortDirection = item.order;
+      }
+    })    
   }
 
 
@@ -176,4 +187,19 @@ export class CustomerListComponent implements OnInit {
     }
   }
 
+  customer = new Customer();
+
+  setCustomerDelete(customer: Customer): void {
+    this.customer = customer;
+    $('#confirmationDialog').on('shown.bs.modal', function () {
+      $('#cancelButton').trigger('focus')
+    })
+    $('#confirmationDialog').on('hidden.bs.modal', function () {
+      let deleteIcon = document.querySelector(".fa-spinner");
+      if (deleteIcon !== null) {
+        deleteIcon.classList.remove("fa-spinner", "fa-pulse");
+        deleteIcon.classList.add("fa-trash");
+      }
+    })
+  }
 }
