@@ -4052,20 +4052,6 @@
         "street": "Bayside, 94",
         "notes": ""
       }
-    },
-    {
-      "id": 101,
-      "firstName": "Peter",
-      "lastName": "Griffin",
-      "email": "peter@griffin.com",
-      "address": {
-        "zip": "QQQ",
-        "country": "USA",
-        "city": "Quahog",
-        "street": "Spooner",
-        "notes": ""
-      },
-      "active": true
     }
   ],
   "category": [

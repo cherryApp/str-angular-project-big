@@ -187,4 +187,19 @@ export class CustomerListComponent implements OnInit {
     }
   }
 
+  customer = new Customer();
+
+  setCustomerDelete(customer: Customer): void {
+    this.customer = customer;
+    $('#confirmationDialog').on('shown.bs.modal', function () {
+      $('#cancelButton').trigger('focus')
+    })
+    $('#confirmationDialog').on('hidden.bs.modal', function () {
+      let deleteIcon = document.querySelector(".fa-spinner");
+      if (deleteIcon !== null) {
+        deleteIcon.classList.remove("fa-spinner", "fa-pulse");
+        deleteIcon.classList.add("fa-trash");
+      }
+    })
+  }
 }

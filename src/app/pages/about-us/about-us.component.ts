@@ -32,7 +32,7 @@ export class AboutUsComponent implements OnInit {
     {
       name: "Kalman Kovacsics",
       title: "angular master pro elite",
-      imgSrc: "./assets/img/faces/marc.jpg",
+      imgSrc: "./assets/img/faces/kk.jpg",
       href: "#",
       description: "Working on everything."
     },
