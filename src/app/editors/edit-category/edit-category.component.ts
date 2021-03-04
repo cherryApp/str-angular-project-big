@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CategoryService } from 'app/services/category.service';
 import { NgForm } from '@angular/forms';
 
+
 @Component({
   selector: 'app-edit-category',
   templateUrl: './edit-category.component.html',
@@ -12,6 +13,7 @@ import { NgForm } from '@angular/forms';
 export class EditCategoryComponent implements OnInit {
   categoryIdFromRoute: number=0;
   currentCategory: Category=new Category();
+  
 
   constructor(private route: ActivatedRoute,
                private router: Router,
@@ -24,7 +26,7 @@ export class EditCategoryComponent implements OnInit {
     this.categoryIdFromRoute = Number(routeParams.get('id'));
    
     this.getCurrentCategory(this.categoryIdFromRoute);
-    
+       
   }
   getCurrentCategory(id: number): void{
     this.categoryService.get(this.categoryIdFromRoute).subscribe(
@@ -49,5 +51,6 @@ export class EditCategoryComponent implements OnInit {
   backToCategory(){
     this.router.navigateByUrl('category-list');
   }
+  
 
 }

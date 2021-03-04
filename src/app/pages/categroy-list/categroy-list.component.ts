@@ -19,6 +19,9 @@ export class CategroyListComponent implements OnInit {
   arrayLength: number=0;
   sorterKey: string ='';
   delCategory: Category={id:0, name:'', description: ''};
+  pText: string="Enter filtering phrase...";
+  i: number=0;
+  animPlaceholder: any='';
 
   attributes = new CategoryAttributes();
 
@@ -30,8 +33,21 @@ export class CategroyListComponent implements OnInit {
     this.categoryService.getAll();
     this.categoryList$.subscribe(
       val=> {this.myArray=val;
-        this.myLength()},
+        this.myLength()},         
     );       
+    this.animPlaceholder=setInterval(()=> {if(this.i==this.pText.length) 
+      {this.i=0 }else{
+        this.i++;
+      }
+      let printOut: string =this.pText.slice(0,this.i);    
+      $(".filter-field").attr('placeholder',printOut);
+      // console.log("start");
+    }
+      , 100)
+  }
+  ngOnDestroy(): void{
+    // console.log("Stop");
+    clearInterval(this.animPlaceholder)
   }
   myLength(){
     this.arrayLength=this.myArray.length
@@ -111,4 +127,7 @@ export class CategroyListComponent implements OnInit {
       let msg = new SpeechSynthesisUtterance(); msg.text =text; 
       msg.rate = 0.5;
       window.speechSynthesis.speak(msg);  }
+
+
+
 }
