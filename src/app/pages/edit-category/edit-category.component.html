@@ -1,38 +1,53 @@
-<div class="row">
-  <div class="col-6 offset-3">
-    <form #categoryForm="ngForm" (ngSubmit)="onFormSubmit(categoryForm)">
-      
-      <div class="form-group">
-          <label>ID</label>
-          <input [(ngModel)]="category.id" name="id" type="number" 
-              class="form-control" pattern="" required>
-          <div [hidden]="categoryForm.controls.id?.valid" class="error-message">
-              The ID must be a minimum of 1 and a maximum of 5 number long! 
-          </div>
-      </div>        
-      
-      <div class="form-group">
-          <label>Name</label>
-          <input [(ngModel)]="category.name" name="name" type="text" 
-              class="form-control" pattern=".{5,20}" required>
-          <div [hidden]="categoryForm.controls.name?.valid" class="error-message">
-              The name must be a minimum of 5 and a maximum of 20 characters long! 
-          </div>
-      </div>
-
-      <div class="form-group">
-          <label>Description</label>
-          <input [(ngModel)]="category.description" name="name" type="text" 
-              class="form-control" pattern=".{5,20}" required>
-          <div [hidden]="categoryForm.controls.description?.valid" class="error-message">
-              The description must be a minimum of 5 and a maximum of 20 characters long! 
-          </div>
-      </div>
-      
-      <button [disabled]="categoryForm.invalid || updating" class="btn btn-block btn-primary">
-        <i *ngIf="!updating" class="fa fa-save"></i>
-        <i *ngIf="updating" class="fa fa-refresh"></i>
-      </button>
-    </form>
-  </div>
+<div class="row" *ngIf="category">
+    <div class="col-6 offset-3">
+        <div class="card">
+ 
+            <!-- CARD HEADER -->
+            <div class="card-header card-header-warning">
+                <h4 class="card-title ">{{ title }} {{ catId }}</h4>
+            </div>
+ 
+            <!-- CARD BODY -->
+            <div class="card-body">
+                <form class="form_border" #categoryForm="ngForm" (ngSubmit)="onFormSubmit(categoryForm, category)">
+ 
+                    
+                        <div class="form-group form__group" *ngIf="catId > 0" title="ID is not editable.">
+                            <label>ID</label>
+                            <input [(ngModel)]="category.id" name="id" type="number" class="form-control" pattern=""
+                                disabled>
+                        </div>
+ 
+                        <div class="form-group form__group">
+                            <label>Name</label>
+                            <input [(ngModel)]="category.name" name="name" type="text" class="form-control"
+                                pattern=".{5,20}" required>
+                            <i class="fa fa-exclamation-triangle alert__triangle" aria-hidden="true" [hidden]="categoryForm.controls.name?.valid"></i>
+                            <div [hidden]="categoryForm.controls.name?.valid || categoryForm.controls.name?.pristine" class="alert alert-danger alert__anim">
+                                The name must be a minimum of 5 and a maximum of 20 characters long!
+                            </div>
+                        </div>
+ 
+                        <div class="form-group form__group">
+                            <label>Description</label>
+                            <input [(ngModel)]="category.description" name="description" type="text" class="form-control"
+                                pattern=".{5,20}" required>
+                            <i class="fa fa-exclamation-triangle alert__triangle" aria-hidden="true"
+                                [hidden]="categoryForm.controls.description?.valid"></i>
+                            <div [hidden]="categoryForm.controls.description?.valid || categoryForm.controls.description?.pristine"
+                                class="alert alert-danger alert__anim">
+                                The description must be a minimum of 5 and a maximum of 20 characters long!
+                            </div>
+                        </div>
+ 
+                        <button [disabled]="categoryForm.invalid || updating" class="btn btn-block btn-warning">
+                            <i *ngIf="!updating" class="fa fa-save"></i>
+                            <i *ngIf="updating" class="fa fa-refresh"></i>
+                        </button>
+                
+                    
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

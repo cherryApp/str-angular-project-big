@@ -20,7 +20,7 @@
               
                       <div class="form-group form__group">
                         <label>Amount</label>
-                          <input [(ngModel)]="bill.amount" name="amount" type="text" 
+                          <input [(ngModel)]="bill.amount" name="amount" type="number" 
                               class="form-control" pattern="[0-9]*" required>
                           <i class="fa fa-exclamation-triangle alert__triangle" aria-hidden="true" [hidden]="billForm.controls.amount?.valid"></i>
                           <div [hidden]="billForm.controls.amount?.valid || billForm.controls.amount?.pristine" class="alert alert-danger alert__anim">
@@ -34,7 +34,7 @@
               
                       <div class="form-group form__group">
                         <label>orderID</label>
-                          <input [(ngModel)]="bill.orderID" name="orderID" type="text" 
+                          <input [(ngModel)]="bill.orderID" name="orderID" type="number" 
                               class="form-control" pattern="[0-9]*" required>
                           <i class="fa fa-exclamation-triangle alert__triangle" aria-hidden="true" [hidden]="billForm.controls.orderID?.valid"></i>
                           <div [hidden]="billForm.controls.orderID?.valid || billForm.controls.orderID?.pristine" class="alert alert-danger alert__anim">

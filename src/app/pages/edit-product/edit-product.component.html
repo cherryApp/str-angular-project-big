@@ -41,7 +41,7 @@
                         <div class="form-group form__group">
                             <label>catID</label>
                             <input [(ngModel)]="product.catID" name="catID" type="number" 
-                                class="form-control" pattern="[0-9]{1,4}+$" required>
+                                class="form-control" pattern="[0-9]*" required>
                             <i class="fa fa-exclamation-triangle alert__triangle" aria-hidden="true" [hidden]="productForm.controls.catID?.valid"></i>
                             <div [hidden]="productForm.controls.catID?.valid || productForm.controls.catID?.pristine" class="alert alert-danger alert__anim">
                                 Please get a number!
@@ -63,7 +63,7 @@
                         <div class="form-group form__group">
                             <label>Price</label>
                             <input [(ngModel)]="product.price" name="price" type="number" 
-                                class="form-control" pattern="[0-9]{1,20}" required>
+                                class="form-control" pattern="[0-9]*" required>
                             <i class="fa fa-exclamation-triangle alert__triangle" aria-hidden="true" [hidden]="productForm.controls.price?.valid"></i>
                             <div [hidden]="productForm.controls.price?.valid || productForm.controls.price?.pristine" class="alert alert-danger alert__anim">
                                 Please get a number!
