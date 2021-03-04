@@ -1,0 +1,98 @@
+<div class="container-fluid p-4">
+
+  <div class="form-group d-flex justify-content-center my-4">
+    <button [routerLink]="['/customers/0']" class="btn btn-success">Add new
+      customer</button>
+  </div>
+
+
+  <div class="col-12">
+    <div class="form-inline mt-4 border-0">
+      <select [(ngModel)]="filterKey" class="form-control select-css">
+        <option [hidden]="key === 'image'" *ngFor="let key of filterKeys" [value]="key">
+          <span *ngIf="key !== 'image'">{{ key }}</span>
+        </option>
+      </select>
+      <div class="col-12 mt-4">
+        <form class="form-inline my-2 my-lg-0 py-2 d-flex justify-content-center">
+          <input (keyup)="searchEvent($event)" class="search-input form-control mr-sm-2" type="text"
+            placeholder="Search">
+          <button class="btn btn-search my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+        <div class="row mt-4">
+          <div class="col-12">
+            <nav class="d-flex justify-content-center">
+              <ul class="pagination text-center">
+                <li class="page-item">
+                  <a (click)="onStepPage($event, -1)" class="page-link" href="#">«</a></li>
+                <li *ngFor="let btn of paginator" class="page-item" [class.active]="btn.page === currentPage">
+                  <a (click)="onPaginate($event, btn)" class="page-link" href="#">
+                    {{ btn.page }}
+                  </a>
+                </li>
+                <li class="page-item">
+                  <a (click)="onStepPage($event, +1)" class="page-link" href="#">»</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header card-header-success">
+              <h4 class="card-title">List of Customers</h4>
+            </div>
+            <div class="card-content table-responsive table-full-width">
+              <table class="table mx-auto w-auto">
+                <thead class="text-success">
+                  <tr>
+                    <th (click)="onColumnSelect(col.key)" *ngFor="let col of cols">
+                      <i *ngIf="columnKey === col.key && (col.key === 'id' || col.key === 'address') && sortDir === 1" class="fa fa-sort-numeric-asc"></i>
+                      <i *ngIf="columnKey === col.key && (col.key === 'id' || col.key === 'address') && sortDir === -1" class="fa fa-sort-numeric-desc"></i>
+                      <i *ngIf="columnKey === col.key && (col.key === 'firstName' || col.key === 'lastName' || col.key === 'email' || col.key === 'active') && sortDir === 1" class="fa fa-sort-alpha-asc"></i>
+                      <i *ngIf="columnKey === col.key && (col.key === 'firstName' || col.key === 'lastName' || col.key === 'email' || col.key === 'active') && sortDir === -1" class="fa fa-sort-alpha-desc"></i>
+                      {{ col.title }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr
+                    *ngFor="let customer of customers$ | async | filter: filterKey:phrase:customersProperties | sorter:columnKey:sortDir | slice:pageSliceStart:pageSliceEnd">
+                    <td class="text-success">{{customer.id}}</td>
+                    <td>{{customer.firstName}}</td>
+                    <td>{{customer.lastName}}</td>
+                    <td>{{customer.email}} </td>
+                    <td>{{customer.address.zip}} {{customer.address.country}},  {{customer.address.city}} / {{customer.address.street}} 
+                       <br> <span class="font-italic">({{customer.address.notes}})</span>
+                    </td>
+                    <td>{{customer.active}} </td>
+                    <td>
+                      <div class="btn-group">
+                        <button [routerLink]="[customer.id]" class="btn btn-info px-3"><i
+                            class="fa fa-edit"></i></button>
+                        <button (click)="onDelete(customer)" (click)="showHtmlToasterDelete()"
+                          class="btn btn-danger px-3"><i class="fa fa-trash"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="row">
+              <div class="col-12">
+                <nav class="d-flex justify-content-center">
+                  <ul class="pagination text-center">
+                    <li class="page-item">
+                      <a (click)="onStepPage($event, -1)" class="page-link" href="#">«</a></li>
+                    <li *ngFor="let btn of paginator" class="page-item" [class.active]="btn.page === currentPage">
+                      <a (click)="onPaginate($event, btn)" class="page-link" href="#">
+                        {{ btn.page }}
+                      </a>
+                    </li>
+                    <li class="page-item">
+                      <a (click)="onStepPage($event, +1)" class="page-link" href="#">»</a></li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+          </div>

@@ -1,0 +1,120 @@
+<!-- <div class="row">
+  <div *ngIf="(product$ | async) as product" class="col-6 offset-3">
+    <form #editForm="ngForm" (ngSubmit)="onUpdate(editForm, product)">
+      <div *ngFor="let field of fields" class="form-group">
+        <label>
+          <i class="material-icons">{{ field.icon || '&nbsp;' }}</i>
+          {{ field.title }}
+        </label>
+
+        <input [(ngModel)]="product[field.key]" [name]="field.key" [pattern]="field.pattern || '.*'" type="text"
+          class="form-control">
+
+      </div>
+
+      <button class="btn btn-block btn-primary">
+        <i class="material-icons">save</i>
+      </button>
+    </form>
+  </div>
+</div> -->
+
+<div class="row">
+  <div *ngIf="(product$ | async) as product" class="col-6 offset-3">
+    <div class="offset-4 m-5">
+      <h1 class="h2 text-center">Product details</h1>
+    </div>
+    <form #productForm="ngForm" (ngSubmit)="onUpdate(productForm, product)">
+
+      <div class="form-group">
+        <label for="id">ID</label>
+        <input [(ngModel)]="product.id" class="form-control" name="id" type="text" readonly>
+      </div>
+
+      <div class="form-group">
+        <label for="name">* Name</label>
+        <input [(ngModel)]="product.name" class="form-control" name="name" type="text" pattern="^[A-Z0-9].{2,24}"
+          required>
+        <div [hidden]="productForm.controls.name?.valid" class="error-message">
+          The name of the product must be minimum 3 characters and maximum 25 characters and must begin with a capital
+          letter or a number.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="type">* type</label>
+        <input [(ngModel)]="product.type" class="form-control" name="type" type="text" pattern="^[A-Z0-9].{1,24}"
+          required>
+        <div [hidden]="productForm.controls.type?.valid" class="error-message">
+          The type of the product must be minimum 2 characters and maximum 25 characters and must begin with a capital
+          letter or a number.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="catID">* catID</label>
+        <input [(ngModel)]="product.catID" class="form-control" name="catID" type="text" pattern="[1-9]{1}" required>
+        <div [hidden]="productForm.controls.catID?.valid" class="error-message">
+          The category Id of the product must be a numeric value between 1 and 9.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="description">* description</label>
+        <input [(ngModel)]="product.description" class="form-control" name="description" type="text"
+          pattern="^[A-Z0-9].{7,50}" required>
+        <div [hidden]="productForm.controls.description?.valid" class="error-message">
+          The description of the product must be minimum 8 characters and maximum 50 characters and must begin with a
+          capital letter or a number.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="price">* price</label>
+        <input [(ngModel)]="product.price" class="form-control" name="price" type="text" pattern="^[1-9]\d*$" required>
+        <div [hidden]="productForm.controls.price?.valid" class="error-message">
+          The price of the product must be a numeric value.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="featured">* featured</label><br>
+        <select class="form-select custom-select" name="featured" id="featured" [(ngModel)]="product.featured"
+          pattern="^(true|false)$" required>
+          <option value="true">true</option>
+          <option value="false">false</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="active">* active</label><br>
+        <select class="form-select custom-select" name="active" id="active" [(ngModel)]="product.active"
+          pattern="^(true|false)$" required>
+          <option value="true">true</option>
+          <option value="false">false</option>
+        </select>
+      </div>
+
+      <pre class="text-right mt-3">
+            <small>* required</small>
+          </pre>
+
+      <div class="btn-group d-flex justify-content-center">
+
+        <button [routerLink]="['/products/']" type="reset" class="btn btn-secondary cancelBtn ml-5"><span
+            class="material-icons">
+            exit_to_app
+          </span></button>
+
+        <button (click)="showHtmlToasterUpdate()" [disabled]="productForm.invalid || updating"
+          class="btn btn-success mr-5" type="submit">
+          <i *ngIf="!updating" class="fa fa-save"></i>
+          <i *ngIf="updating" class="fa fa-refresh"></i>
+        </button>
+      </div>
+      <!-- teszteleshez -->
+      <!--           <pre>
+            {{product | json}}
+         </pre> -->
+
+    </form>
+  </div>
+</div>

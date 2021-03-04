@@ -1,0 +1,131 @@
+<div class="row">
+  <div *ngIf="customer$ | async as customer" class="col-6 offset-3">
+    <div class="offset-4 m-5">
+      <h1 class="h2 text-center">Customer details</h1>
+    </div>
+
+    <form #customerForm="ngForm" (ngSubmit)="onUpdate(customerForm, customer)">
+      <div class="form-group">
+        <label for="id">ID</label>
+        <input [(ngModel)]="customer.id" class="form-control" name="id" type="text" readonly />
+      </div>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="firstName">* firstName</label>
+            <input [(ngModel)]="customer.firstName" class="form-control" name="firstName" type="text"
+              pattern="^[A-Z].{2,24}" required />
+            <div [hidden]="customerForm.controls.firstName?.valid" class="error-message">
+              The first name of the customer must be between 3 and 25 characters
+              and must begin with a capital letter.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="lastName">* lastName</label>
+            <input [(ngModel)]="customer.lastName" class="form-control" name="lastName" type="text"
+              pattern="^[A-Z].{2,24}" required />
+            <div [hidden]="customerForm.controls.lastName?.valid" class="error-message">
+              The last name of the customer must be between 3 and 25 characters
+              and must begin with a capital letter.
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="amount">* e-mail</label>
+            <input [(ngModel)]="customer.email" class="form-control" name="email" type="text"
+              pattern="^[a-zA-Z0-9]+@{1}[a-zA-Z0-9|-]+.{1}[a-z]{2,3}" required />
+            <div [hidden]="customerForm.controls.email?.valid" class="error-message">
+              The e-mail must be a valid e-mail address.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2 form-group">
+          <label for="zip">* zip</label>
+          <input [(ngModel)]="customer.address.zip" class="form-control" name="zip" type="text" pattern="^[0-9]{5}"
+            required />
+          <div [hidden]="customerForm.controls.zip?.valid" class="error-message">
+            The ZIP must be a 5-digit number.
+          </div>
+        </div>
+
+        <div class="col-md-3 form-group">
+          <label for="country">* country</label>
+          <input [(ngModel)]="customer.address.country" class="form-control" name="country" type="text"
+            pattern="^[A-Z].{3,25}" required />
+          <div [hidden]="customerForm.controls.country?.valid" class="error-message">
+            The country name must be between 4 and 25 characters and must begin
+            with a capital letter.
+          </div>
+
+        </div>
+        <div class="col-md-3 form-group">
+          <label for="city">* city</label>
+          <input [(ngModel)]="customer.address.city" class="form-control" name="city" type="text"
+            pattern="^[A-Z].{1,25}" required />
+          <div [hidden]="customerForm.controls.city?.valid" class="error-message">
+            The city name must be between 2 and 25 characters and must begin
+            with a capital letter.
+          </div>
+
+        </div>
+        <div class="col-md-4 form-group">
+          <label for="street">* street</label>
+          <input [(ngModel)]="customer.address.street" class="form-control" name="street" type="text"
+            pattern="^[0-9]{1,5}[ |,][ |\S+][a-zA-Z]+ ?[a-zA-Z]+" required />
+          <div [hidden]="customerForm.controls.street?.valid" class="error-message">
+            The street name must begin with at least one number and must include a comma or space and at least three
+            more characters.
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 form-group">
+          <label for="notes">* address notes</label>
+          <input [(ngModel)]="customer.address.notes" class="form-control" name="notes" type="text"
+            pattern="^[A-Z0-9].{7,150}" required />
+          <div [hidden]="customerForm.controls.notes?.valid" class="error-message">
+            The address notes must be between 8 and 150 characters and must begin with a
+            capital letter or a number.
+          </div>
+          <div class="form-group">
+            <label for="status">* active</label><br />
+            <select class="form-select custom-select" name="active" id="active" [(ngModel)]="customer.active"
+              pattern="^(true|false)$" required>
+              <option value="true">true</option>
+              <option value="false">false</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <pre class="text-right mt-3">
+              <small>* required</small>
+            </pre>
+
+      <div class="btn-group d-flex justify-content-center">
+        <button [routerLink]="['/customers/']" type="reset" class="btn btn-secondary cancelBtn ml-5"><span
+            class="material-icons">
+            exit_to_app
+          </span></button>
+
+        <button (click)="showHtmlToasterUpdate()" [disabled]="customerForm.invalid || updating"
+          class="btn btn-success mr-5" type="submit">
+          <i *ngIf="!updating" class="fa fa-save"></i>
+          <i *ngIf="updating" class="fa fa-refresh"></i>
+        </button>
+      </div>
+      <!-- teszteleshez -->
+      <!--
+            <pre>
+                {{customer | json}}
+            </pre>
+ -->
+    </form>
+  </div>
+</div>

@@ -1,0 +1,91 @@
+<div class="row">
+  <div *ngFor="let card of cards" class="col-xl-3 col-md-6 col-sm-6">
+    <app-info-card [cardClass]="card.cardClass" [icon]="card.icon" [title]="card.title" [content]="card.content"
+      [footer]="card.footer" [routerLink]="card.routerLink"></app-info-card>
+  </div>
+</div>
+
+<div class="row">
+
+  <div class="col-md-6">
+    <div class="card card-chart">
+      <div class="card-header card-header-warning">
+        <app-chart
+        [barChartLabels]="productChartLabels"
+        [barChartData]="productChartData">
+      </app-chart>
+        <div class="ct-chart" id="completedTasksChart"></div>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title mt-2 mb-0">Number of Products</h4>
+        <p class="card-category"></p>
+      </div>
+      <div class="card-footer">
+        <div>
+          <span class="text-warning pl-1">webshop performance #1</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card card-chart">
+      <div class="card-header card-header-success">
+        <app-chart
+        [barChartLabels]="customerChartLabels"
+        [barChartData]="customerChartData">
+      </app-chart>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title mt-2 mb-0">Number of Customers</h4>
+        <p class="card-category"></p>
+      </div>
+      <div class="card-footer">
+        <div>
+          <span class="text-success pl-1">webshop performance #2</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card card-chart">
+      <div class="card-header card-header-danger">
+      <app-chart
+        [barChartLabels]="orderChartLabels"
+        [barChartData]="orderChartData">
+      </app-chart>
+      </div>
+      <div class="card-body">
+        <h4 class="card-title mt-2 mb-0">Number of Orders</h4>
+        <p class="card-category"></p>
+      </div>
+      <div class="card-footer">
+        <div>
+          <span class="text-danger pl-1">webshop performance #3</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <div class="card card-chart">
+      <div class="card-header card-header-info">
+        <app-chart
+        [barChartLabels]="billChartLabels"
+        [barChartData]="billChartData">
+      </app-chart>
+          </div>
+      <div class="card-body">
+        <h4 class="card-title mt-2 mb-0">Sum of Bills</h4>
+        <p class="card-category"></p>
+      </div>
+      <div class="card-footer">
+        <div>
+          <span class="text-info pl-1">webshop performance #4</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

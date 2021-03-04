@@ -1,0 +1,65 @@
+<div class="row">
+  <div *ngIf="(bill$ | async) as bill" class="col-6 offset-3">
+    <div class="offset-4 m-5">
+      <h1 class="h2 text-center">Bill details</h1>
+    </div>
+
+    <form #billForm="ngForm" (ngSubmit)="onUpdate(billForm, bill)">
+
+      <div class="form-group">
+        <label for="id">ID</label>
+        <input [(ngModel)]="bill.id" class="form-control" name="id" type="text" readonly>
+      </div>
+
+      <div class="form-group">
+        <label for="orderID">* orderID</label>
+        <input [(ngModel)]="bill.orderID" class="form-control" name="orderID" type="text" pattern="[0-9]{3,8}" required>
+        <div [hidden]="billForm.controls.orderID?.valid" class="error-message">
+          The order Id of the bill must be a numeric value and must contain minimum 5 characters and maximum 8
+          characters.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="amount">* amount</label>
+        <input [(ngModel)]="bill.amount" class="form-control" name="amount" type="text" pattern="^[1-9]\d*$" required>
+        <div [hidden]="billForm.controls.amount?.valid" class="error-message">
+          The amount of the bill must be a numeric value.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="status">* status</label><br>
+        <select class="form-select custom-select" name="status" id="status" [(ngModel)]="bill.status"
+          pattern="^(new|paid)$" required>
+          <option value="new">new</option>
+          <option value="paid">paid</option>
+        </select>
+      </div>
+
+
+      <pre class="text-right mt-3">
+          <small>* required </small>
+        </pre>
+
+      <div class="btn-group d-flex justify-content-center">
+
+        <button [routerLink]="['/bills/']" type="reset" class="btn btn-secondary cancelBtn ml-5"><span
+            class="material-icons">
+            exit_to_app
+          </span></button>
+
+        <button (click)="showHtmlToasterUpdate()" [disabled]="billForm.invalid || updating" class="btn btn-success mr-5"
+          type="submit">
+          <i *ngIf="!updating" class="fa fa-save"></i>
+          <i *ngIf="updating" class="fa fa-refresh"></i>
+        </button>
+      </div>
+      <!-- teszteleshez -->
+      <!--           <pre>
+          {{bill | json}}
+       </pre> -->
+
+    </form>
+  </div>
+</div>
