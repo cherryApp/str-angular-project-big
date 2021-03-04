@@ -68,7 +68,9 @@ export class ListOrderComponent implements OnInit {
 
   deleteItem(): void {
     const deletedId: string = `${this.selectedItemToDelete.id}`;
-    this.orderService.remove(this.selectedItemToDelete);
+    this.orderService.remove(this.selectedItemToDelete).subscribe(
+      () => this.orderService.getAll()
+    );
     this.configService.showSuccess('Deleted successfuly.', `Order #${deletedId}`);
   }
 

@@ -40,6 +40,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     }
 }
 
+.table__row {
+    &:hover td {
+        background-color: rgba(0, 0, 0, .05);
+    }
+}
+
 .th {
     cursor: pointer;
     user-select: none;

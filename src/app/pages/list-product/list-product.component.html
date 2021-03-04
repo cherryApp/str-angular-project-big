@@ -32,7 +32,7 @@
               </thead>
 
               <tbody>
-                <tr
+                <tr class="table__row" 
                   *ngFor="let product of productList$ | async | filter:filterPhrase:filterKey | sorter:sortby:sorterDirection ">
                   <td *ngFor="let col of cols">
                     <input *ngIf="col.type === 'check'" [(ngModel)]="product[col.key]" type="checkbox"

@@ -66,7 +66,9 @@ export class ListCategoryComponent implements OnInit {
 
   deleteItem(): void {
     const deletedId: string = `${this.selectedItemToDelete.id}`;
-    this.categoryService.remove(this.selectedItemToDelete);
+    this.categoryService.remove(this.selectedItemToDelete).subscribe(
+      () => this.categoryService.getAll()
+    );
     this.configService.showSuccess('Deleted successfuly.', `Category #${deletedId}`);
   }
 
