@@ -7,6 +7,58 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutUsComponent implements OnInit {
 
+  teamMembers = [
+    {
+      name: "Peter Bonyai",
+      title: "angular master pro elite",
+      imgSrc: "./assets/img/faces/bp.png",
+      href: "#",
+      description: "Working on everything."
+    },
+    {
+      name: "Peter Gyorffy",
+      title: "angular master pro elite",
+      imgSrc: "./assets/img/faces/gyp.png",
+      href: "#",
+      description: "Working on everything."
+    },
+    {
+      name: "Anna Kiss",
+      title: "angular master pro elite",
+      imgSrc: "./assets/img/faces/anna_foto.jpg",
+      href: "#",
+      description: "Working on everything."
+    },
+    {
+      name: "Kalman Kovacsics",
+      title: "angular master pro elite",
+      imgSrc: "./assets/img/faces/marc.jpg",
+      href: "#",
+      description: "Working on everything."
+    },
+    {
+      name: "Gyorgy Liptak",
+      title: "Teacher/Copy Editor",
+      imgSrc: "./assets/img/faces/lgy.jpg",
+      href: "#",
+      description: "Teaching English, learning Angular."
+    },
+    {
+      name: "Laszlo Szollosi",
+      title: "angular css",
+      imgSrc: "./assets/img/faces/szl.png",
+      href: "#",
+      description: "In the daytime just a sysadmin, but at night an Angular fan."
+    },
+    {
+      name: "Gyozo Urbancsok",
+      title: "angular master pro elite",
+      imgSrc: "./assets/img/faces/marc.jpg",
+      href: "#",
+      description: "Working on everything."
+    },
+  ]
+
   constructor() { }
 
   ngOnInit(): void {
