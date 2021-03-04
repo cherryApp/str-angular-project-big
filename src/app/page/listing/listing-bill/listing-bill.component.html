@@ -5,9 +5,9 @@
             <h2>PÉNZTÁR</h2>
         </div>
 
-        <div class="col-12 my-3 mb-3">
+        <div class="create col-12 my-3">
             <!-- <div class="col-5"> -->
-            <button class="btn btn-success btn-block mt-3 mb-5" style="font-size:14px" [routerLink]="[0]">
+            <button class="btn btn-success btn-block mt-3 mb-3" style="font-size:14px" [routerLink]="[0]">
                 <i class="material-icons">add</i>
                 ÚJ SZÁMLA LÉTREHOZÁSA
             </button>
@@ -72,7 +72,7 @@
             </thead> -->
         <tbody>
 
-            <tr class="tablerow mr-5" style="padding-bottom: 1px;"
+            <tr class="tablerow"
                 *ngFor="let bill of billList$ | async | filter:filterKey:phrase | sorter:sortedColumn:sortedOrder">
                 <td>{{bill.id}}</td>
                 <td>{{bill.orderID}} </td>
