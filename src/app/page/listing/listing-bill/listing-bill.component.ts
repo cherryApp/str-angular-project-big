@@ -37,8 +37,14 @@ export class ListingBillComponent implements OnInit {
   filterKey: string = 'id';
   filterKeys: string[] = Object.keys(new Bill());
   cols: ITableCol[] = this.configService.billTableCols;
+  cols2 = {
+    "id": "#",
+    "orderID": "Rendelés Id",
+    "amount": "Összeg",
+    "status": "Státusz",
+  }
   currentSelectProperty: string = 'name';
-  productProperties: string[] = Object.keys(new Bill());
+  billProperties: string[] = Object.keys(new Bill());
   sortedOrder = 'ASC';
   sortedColumn = 'id';
   firstSorting = true;
@@ -48,7 +54,8 @@ export class ListingBillComponent implements OnInit {
   direction: boolean = false;
   columnKey: string = '';
 
-  sumOfUnpaidBills$: BehaviorSubject<number> = this.statisticsService.sumOfUnpaidBills$;
+  sumOfUnpaidBills$ = this.statisticsService.sumOfUnpaidBills$;
+  numberOfAllBills$ = this.statisticsService.numberOfAllBills$;
 
   ngOnInit(): void {
     this.billService.getAll();

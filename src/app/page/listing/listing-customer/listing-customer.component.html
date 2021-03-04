@@ -6,81 +6,121 @@
 
     <div class="col-12 my-3 mb-3">
       <button class="btn btn-success btn-block mt-3 mb-5" style="font-size:14px" [routerLink]="[0]">
-        <i class="material-icons">add</i> Új vásárló
+        <i class="material-icons">add</i> ÚJ VÁSÁRLÓ LÉTREHOZÁSA
       </button>
     </div>
 
-    <div class="col-3 mt-3 mb-5">
+    <div class="col-3 mt-0 mb-5">
       <select [(ngModel)]="filterKey" class="custom-select bg-light" style="font-size: 20px">
-        <option *ngFor="let key of filterKeys" [value]="key">
-          {{ key }}
+        <option *ngFor="let col of cols" [value]="col.key">
+          {{ col.text }}
         </option>
       </select>
     </div>
 
     <div class="col-4 search-bar mt-0 mb-5">
       <form class="form-inline my-2 my-lg-0">
-        <input
-          (keyup)="onChangePhrase($event)"
-          class="form-control mr-sm-2" type="text"
-          placeholder="Keresés" />
-        <button class="btn btn-success my-2 my-sm-0" type="submit" style="font-size: 14px">
+        <input (keyup)="onChangePhrase($event)" class="form-control mr-sm-2" type="text" placeholder="Keresés" />
+        <button class="btn btn-success my-2 my-sm-0" type="submit">
           <i class="material-icons">manage_search</i> Keresés
         </button>
       </form>
-  </div>
+    </div>
+
     <div class="col-5 mt-0 mb-5 d-flex justify-content-end">
       <button class="btn btn-success my-2 my-sm-0" (click)="scroll('summaries')">STATISZTIKA</button>
+    </div>
   </div>
 
-    <table class="table table-striped">
-      <thead class="bg-dark text-light" >
-        <tr>
-          <th (click)="onColumnSelect(col.key)"
-          *ngFor="let col of cols">
-        <span *ngIf='col.key === sortedColumn'>
-          <i *ngIf="!direction" class="fa fa-sort-alpha-desc"></i>
-          <i *ngIf="direction" class="fa fa-sort-alpha-asc"></i>
-        </span>
+
+  <table class="table table-striped">
+    <thead class="bg-dark text-light">
+      <tr>
+        <th (click)="onColumnSelect(col.key)" *ngFor="let col of cols">
+          <span *ngIf='col.key === sortedColumn'>
+            <i *ngIf="!direction" class="fa fa-sort-alpha-desc"></i>
+            <i *ngIf="direction" class="fa fa-sort-alpha-asc"></i>
+          </span>
 
           {{ col.text }}
-          </th>
-          <th>Aktív</th>
+        </th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th>Műveletek</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- | filter:filterKey:phrase | sorter:sortedColumn:sortedOrder -->
+      <tr *ngFor="let customer of customerList$ | async | filter:filterKey:phrase | sorter:sortedColumn:sortedOrder">
+        <td>
+          {{ customer.id }}
+        </td>
+        <td>
+          {{ customer.firstName }}
+        </td>
+        <td>
+          {{ customer.lastName }}
+        </td>
+        <td>
+          {{ customer.email }}
+        </td>
+        <td>
+          {{ customer.address.zip }} {{ customer.address.country }} {{ customer.address.city }}
+        </td>
+        <td>
+          {{ customer.active }}
+        </td>
+        <td></td>
+        <td></td>
+        <td>
+          <div class="btn-group d-flex justify-content-end">
+            <button [routerLink]="[customer.id]" class="btn btn-info">
+              <i class="material-icons">edit</i>
+            </button>
+            <button (click)="onRemove(customer)" class="btn btn-danger">
+              <i class="material-icons">delete_outline</i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="table-responsive">
+    <table class="table" id="summaries">
+      <thead class="bg-dark text-light">
+        <tr>
           <th></th>
+          <th></th>
+          <div *ngIf="numberOfAllCustomers$| async">
+            ͏͏͏͏͏͏͏<p> <b style="font-size: 18px">Összes vásárló: {{ numberOfAllCustomers$ | async }}</b></p>
+          </div>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <div *ngIf="numberOfActiveCustomers$| async">
+            ͏͏͏͏͏͏͏<p> <b style="font-size: 18px">Aktív vásárló: {{ numberOfActiveCustomers$ | async }}</b></p>
+          </div>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <div *ngIf="numberOfPassiveCustomers$| async">
+            ͏͏͏͏͏͏͏<p> <b style="font-size: 18px">Passzív vásárló: {{ numberOfPassiveCustomers$ | async }}</b></p>
+          </div>
+          <th></th>
+
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let customer of customerList$ | async | filter:filterKey:phrase | sorter:sortedColumn:sortedOrder">
-          <td>
-            {{ customer.id }}
-          </td>
-          <td>
-            {{ customer.firstName }}
-          </td>
-          <td>
-            {{ customer.lastName }}
-          </td>
-          <td>
-            {{ customer.email }}
-          </td>
-          <td>
-            {{ customer.address.zip }} {{ customer.address.country }}, {{ customer.address.city }}  {{ customer.address.street }}
-          </td>
-          <td>
-            <input class="form-control form-control-sm" [(ngModel)]="customer.active" type="checkbox" disabled>
-          </td>
-          <td>
-            <div class="btn-group d-flex justify-content-end">
-              <button [routerLink]="[customer.id]" class="btn btn-info">
-                <i class="material-icons">edit</i>
-              </button>
-              <button (click)="onRemove(customer)" class="btn btn-danger">
-                <i class="material-icons">delete_outline</i>
-              </button>
-            </div>
-          </td>
-        </tr>
-      </tbody>
     </table>
+    <footer>
+      <div class="d-flex justify-content-end">
+        <a href="#top" onclick="self.scrollTo(0, 0); return false;" class="material-icons icon-white" d-flex
+          justify-content-end>backup</a>
+      </div>
+    </footer>
   </div>
 </div>
