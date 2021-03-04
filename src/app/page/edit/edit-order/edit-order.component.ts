@@ -80,15 +80,18 @@ this.productService.get(this.order.productID).subscribe((product) => {
   }
 
   customerResultFormatter(customer: Customer): string {
-    return `${customer.firstName} ${customer.lastName}`;
+    console.log(customer);
+    // return `${customer.firstName} ${customer.lastName}`;
+        return `${customer.firstName} ${customer.lastName}   ${customer.address.zip} ${customer.address.country}, ${customer.address.city}, ${customer.address.street}`;
   }
 
   customerIputFormatter(customer: Customer): string {
     if (!customer.id) {
       return '';
     }
-    // return `(${customer.id}) ${customer.firstName} ${customer.lastName}`;
     return `${customer.firstName} ${customer.lastName}`;
+    // return `(${customer.id}) ${customer.firstName} ${customer.lastName}`;
+    // return `${customer.firstName} ${customer.lastName}   ${customer.address.zip} ${customer.address.country}, ${customer.address.city} ${customer.address.street}`;
   }
 
   productResultFormatter(product: Product): string {
