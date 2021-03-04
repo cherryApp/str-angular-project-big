@@ -52,6 +52,7 @@ import { SorterPipe } from './pipe/sorter.pipe';
     HttpClientModule,
     FormsModule,
     ChartsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
