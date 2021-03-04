@@ -11,6 +11,9 @@ import { ListCategoryComponent } from './pages/list-category/list-category.compo
 import { ListCustomerComponent } from './pages/list-customer/list-customer.component';
 import { ListOrderComponent } from './pages/list-order/list-order.component';
 import { ListProductComponent } from './pages/list-product/list-product.component';
+import { LogoutComponent } from './pages/logout/logout.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 const routes: Routes = [
   {
@@ -56,6 +59,18 @@ const routes: Routes = [
   {
     path: 'bill/:id',
     component: EditBillComponent,
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+  },
+  {
+    path: 'settings',
+    component: SettingsComponent,
+  },
+  {
+    path: 'logout',
+    component: LogoutComponent,
   },
   {
     path: '**',

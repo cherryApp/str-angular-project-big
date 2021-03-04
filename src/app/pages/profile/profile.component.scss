@@ -1,0 +1,59 @@
+.card {
+    background-color: #31354e;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.5rem;
+    box-shadow: 0 1rem 3rem rgba(49, 53, 78, .5);
+    animation: show_card 2s ease-in-out;
+    opacity: 1;
+    transform: translateY(0);
+
+    &-img {
+        background-image: url('/assets/img/angular_hero.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50% 50%;
+        border-radius: 50%;
+        width: 40%;
+        padding-top: 40%;
+        box-shadow: 0 1rem 1rem rgba(0, 0, 0, .7);
+        transition: .3s ease-in-out;
+        &:hover {
+            transform: scale(1.03) translateY(-.5rem);
+            box-shadow: 0 1rem 1.5rem rgba(0, 0, 0, .5);
+        }
+    }
+    &-name {
+        font-size: 1.8rem;
+        line-height: 2.1rem;
+        letter-spacing: .05rem;
+        color: rgba(255, 255, 255, 1);
+        font-weight: 100;
+    }
+    &-title {
+        font-size: 1rem;
+        letter-spacing: .05rem;
+        color: rgba(255, 255, 255, .6);
+        font-weight: 100;
+    }
+    &-body {
+        text-align: center;
+    }
+}
+
+@keyframes show_card {
+    0% {
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+    70% {
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
