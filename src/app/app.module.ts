@@ -30,6 +30,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { InprogressComponent } from './inprogress/inprogress.component';
+import { PieChartComponent } from './common/pie-chart/pie-chart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +52,7 @@ import { InprogressComponent } from './inprogress/inprogress.component';
     InfoCardComponent,
     SorterPipe,
     InprogressComponent,
+    PieChartComponent,
   ],
   imports: [
     BrowserModule,

@@ -8,12 +8,46 @@ export enum TableCellType {
   Check = 'check',
   Select = 'select',
   Input = 'input',
-}
+};
 
 export interface ITableCol {
   key: string;
   text: string;
   type: TableCellType;
+};
+
+export interface IBillStats {
+  totalBillNr: number,
+  paidBillNr: number,
+  paidAmount: number,
+  unPaidBillNr: number,
+  unPaidAmount: number,
+};
+
+export interface ICategoryStats {
+  categoryNr: number,
+};
+
+export interface IcustomerStats {
+  customerNr: number,
+  activeCustomerNr: number,
+  inactiveCustomerNr: number,
+};
+
+export interface IOrderStats {
+  newOrderNr: number,
+  newOrderAmount: number,
+  shippedOrderNr: number,
+  shippedOrderAmount: number,
+  paidOrderNr: number,
+  paidOrderAmount: number,
+  totalOrderNr: number,
+};
+
+export interface IProductStats {
+  totalNr: number,
+  featuredNr: number,
+  activeNr: number,
 }
 
 @Injectable({

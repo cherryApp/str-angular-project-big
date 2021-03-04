@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ChartDataSets } from 'chart.js';
-import { Label } from 'ng2-charts';
+import { ChartDataSets, ChartType } from 'chart.js';
+import { Label, SingleDataSet } from 'ng2-charts';
 import { Subscription } from 'rxjs';
 import { combineLatest } from 'rxjs';
 import { IInfoCard } from 'src/app/common/info-card/info-card.component';
+import { IPieChart } from 'src/app/common/pie-chart/pie-chart.component';
 import { BillService } from 'src/app/services/bill.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { CustomerService } from 'src/app/services/customer.service';
@@ -52,12 +53,45 @@ export class DashboardComponent implements OnInit {
     },
   ];
 
-  combinedSubscription: Subscription = new Subscription();
+  pieCharts: IPieChart[] = [
+    {
+      pieChartLabels: [['Active', 'customers'], ['Inactive', 'Customers']],
+      pieChartData: [],
+      chartCardTitle: 'Customer statistics',
+      chartCardInfo: 'string',
+      chartCardFooter: `<i class="material-icons">access_time</i> based on the total database`,
+    },
+    {
+      pieChartLabels: [['New', 'Orders'], ['Paid', 'Orders'], ['Shipped', 'Orders']],
+      pieChartData: [],
+      chartCardTitle: 'Order number statistics',
+      chartCardInfo: 'string',
+      chartCardFooter:  `<i class="material-icons">access_time</i> based on the total database`,
+    },
+    {
+      pieChartLabels: [['Amount', 'of New', 'Orders'], ['Amount', 'of Paid', 'Orders'], ['Amount', 'of Shipped', 'Orders']],
+      pieChartData: [],
+      chartCardTitle: 'Order amoint statistics',
+      chartCardInfo: 'string',
+      chartCardFooter:  `<i class="material-icons">access_time</i> based on the total database`,
+    }
+  ];
+
+  statObjectsSubscription: Subscription = new Subscription();
 
   orderChartLabels: Label[] = ['new', 'shipped', 'paid'];
   ordelChartData: ChartDataSets[] = [
-    { data: [0, 0, 0], label: 'Orders'},
+    { data: [0, 0, 0], label: 'Orders' },
   ];
+
+
+  //Pie charts
+  public pieChartLabels: Label[] = [['Download', 'Sales'], ['In', 'Store', 'Sales'], 'Mail Sales'];
+  public pieChartData: SingleDataSet = [300, 500, 100];
+  public pieChartType: ChartType = 'pie';
+  public pieChartLegend = true;
+  public pieChartPlugins = [];
+
 
   constructor(
     private billService: BillService,
@@ -68,66 +102,28 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.combinedSubscription = combineLatest([
-      this.billService.list$,
-      this.categoryService.list$,
-      this.customerService.list$,
-      this.orderService.list$,
-      this.productService.list$,
+    this.statObjectsSubscription = combineLatest([
+      this.billService.billStats$,
+      this.categoryService.categoryStats$,
+      this.customerService.customerStats$,
+      this.orderService.orderStats$,
+      this.productService.productStats$
     ]).subscribe(
       data => {
-        const totalBillNr: number = data[0].length;
-        const paidBillNr: number = data[0].filter(b => b.status === 'paid').length;
-        const paidAmount: number = data[0]
-          .filter(b => b.status === 'paid')
-          .map(b => b.amount)
-          .reduce((acc, curr) => acc + curr, 0);
-        const unPaidBillNr: number = data[0].filter(b => b.status === 'new').length;
-        const unPaidAmount: number = data[0]
-          .filter(b => b.status === 'new')
-          .map(b => b.amount)
-          .reduce((acc, curr) => acc + curr, 0);
-        
-        const categoryNr: number = data[1].length;
+        this.cards[0].content = `There are ${data[0].unPaidBillNr} unpaid invoices worth ${data[0].unPaidAmount} EUR`;
+        this.cards[0].footer = `<span class="text-danger"><i class="material-icons">request_quote</i></span>${data[0].unPaidBillNr} of ${data[0].totalBillNr} bills are unpaid`;
+        this.cards[1].content = `Total ${data[0].paidAmount} EUR<br>&nbsp;`;
+        this.cards[1].footer = `<span class="text-success"><i class="material-icons">point_of_sale</i></span>${data[0].paidBillNr} sales closed successfully`;
 
-        const customerNr: number = data[2].length;
-        const activeCustomerNr: number = data[2].filter(c => c.active === true).length;
+        this.cards[2].content = `${data[3].newOrderNr} new <small>(${data[3].newOrderAmount} EUR)</small><br>${data[3].shippedOrderNr} shipped <small>(${data[3].shippedOrderAmount} EUR)</small>`;
+        this.cards[2].footer = `<span class="text-success"><i class="material-icons">info</i></span>${data[3].paidOrderNr} orders fulfilled for ${data[3].paidOrderAmount} EUR`;
 
-        const newOrderNr: number = data[3]
-          .filter(o => o.status === 'new').length;
-        const newOrderAmount: number = data[3]
-          .filter(o => o.status === 'new')
-          .map(o => o.amount)
-          .reduce((acc, curr) => acc + curr, 0);
-        const shippedOrderNr: number = data[3]
-          .filter(o => o.status === 'shipped').length;
-        const shippedOrderAmount: number = data[3]
-          .filter(o => o.status === 'shipped')
-          .map(o => o.amount)
-          .reduce((acc, curr) => acc + curr, 0);
-        const paidOrderNr: number = data[3]
-          .filter(o => o.status === 'paid').length;
-        const paidOrderAmount: number = data[3]
-          .filter(o => o.status === 'paid')
-          .map(o => o.amount)
-          .reduce((acc, curr) => acc + curr, 0);
-        const totalOrderNr = newOrderNr + shippedOrderNr + paidOrderNr;
+        this.cards[3].content = `active: ${data[2].activeCustomerNr}<br>inactive: ${data[2].inactiveCustomerNr}`;
+        this.cards[3].footer = `<span class="text-info"><i class="material-icons">people_outline</i></span>total customers: ${data[2].customerNr}`;
 
-        const productNr: number = data[4].length;
-        const featuredProdNr: number = data[4].filter(p => p.featured).length;
-        const activeProdNr: number = data[4].filter(p => p.active).length;
-
-        this.cards[0].content = `There are ${unPaidBillNr} unpaid invoices worth ${unPaidAmount} EUR`;
-        this.cards[0].footer = `<i class="material-icons">request_quote</i>${unPaidBillNr} of ${totalBillNr} bills are unpaid`;
-
-        this.cards[1].content = `Total ${paidAmount} EUR<br>&nbsp;`;
-        this.cards[1].footer = `<i class="material-icons">point_of_sale</i>${paidBillNr} sales closed successfully`;
-
-        this.cards[2].content = `${newOrderNr} new <small>(${newOrderAmount} EUR)</small><br>${shippedOrderNr} shipped <small>(${shippedOrderAmount} EUR)</small>`;
-        this.cards[2].footer = `<i class="material-icons">info_outline</i>${paidOrderNr} orders fulfilled for ${paidOrderAmount} EUR`;
-
-        this.cards[3].content = `active: ${activeCustomerNr}<br>inactive: ${customerNr-activeCustomerNr}`;
-        this.cards[3].footer = `<i class="material-icons">people_outline</i>total customers: ${customerNr}`;
+        this.pieCharts[0].pieChartData = [data[2].activeCustomerNr, data[2].inactiveCustomerNr];
+        this.pieCharts[1].pieChartData = [data[3].newOrderNr, data[3].paidOrderNr, data[3].shippedOrderNr];
+        this.pieCharts[2].pieChartData = [data[3].newOrderAmount, data[3].paidOrderAmount, data[3].shippedOrderAmount];
       }
     );
     this.billService.getAll();
@@ -138,7 +134,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    this.combinedSubscription.unsubscribe();
+    this.statObjectsSubscription.unsubscribe();
   }
 
 }
