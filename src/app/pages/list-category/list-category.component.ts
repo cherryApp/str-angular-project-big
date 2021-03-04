@@ -65,11 +65,13 @@ export class ListCategoryComponent implements OnInit {
   }
 
   deleteItem(): void {
-    const deletedId: string = `${this.selectedItemToDelete.id}`;
+    const deletedId: number = this.selectedItemToDelete.id;
     this.categoryService.remove(this.selectedItemToDelete).subscribe(
-      () => this.categoryService.getAll()
+      () => {
+        this.categoryService.getAll();
+        this.configService.showSuccess('Deleted successfuly.', `Category #${deletedId}`);
+      }
     );
-    this.configService.showSuccess('Deleted successfuly.', `Category #${deletedId}`);
   }
 
 }

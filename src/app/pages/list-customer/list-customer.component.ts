@@ -85,11 +85,13 @@ export class ListCustomerComponent implements OnInit {
   }
 
   deleteItem(): void {
-    const deletedId: string = `${this.selectedItemToDelete.id}`;
+    const deletedId: number = this.selectedItemToDelete.id;
     this.customerService.remove(this.selectedItemToDelete).subscribe(
-      () => this.customerService.getAll()
+      () => {
+        this.customerService.getAll()
+        this.configService.showSuccess('Deleted successfuly.', `Customer #${deletedId}`);
+      }
     );
-    this.configService.showSuccess('Deleted successfuly.', `Customer #${deletedId}`);
   }
-
+  
 }
