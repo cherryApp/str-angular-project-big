@@ -6,6 +6,7 @@ import { OrderService } from 'app/services/order.service';
 import { Observable } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 import {Location} from '@angular/common';
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-edit-order',
@@ -13,6 +14,8 @@ import {Location} from '@angular/common';
   styleUrls: ['./edit-order.component.css']
 })
 export class EditOrderComponent implements OnInit {
+
+  model: NgbDateStruct;
 
   clicked: boolean = false;
 
