@@ -1,6 +1,7 @@
-<div class="container">
+<div class="container top">
+    <a class="jump-top" href="bills#top"><i class="fa fa-arrow-circle-up"></i></a>
     <div class="row">
-        <div class="col-4 offset-5 mb-5">
+        <div class="col-4 offset-5 mb-3">
             <h2>PÉNZTÁR</h2>
         </div>
 
@@ -23,7 +24,7 @@
         <div class="col-4 search-bar mt-0 mb-5">
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Keresés" (keyup)="onChangePhrase($event)">
-                <button class="btn btn-success my-2 my-sm-0" type="submit">
+                <button class="btn btn-success ml-3 my-2 my-sm-0" type="submit">
                     <i class="material-icons">manage_search</i>
                     Keresés
                 </button>
@@ -44,9 +45,10 @@
                         <i *ngIf="!direction" class="fa fa-sort-alpha-desc"></i>
                         <i *ngIf="direction" class="fa fa-sort-alpha-asc"></i>
                     </span>
+
                     {{ col.text }}
                 </th>
-                <th>Műveletek</th>
+                <th class="d-flex justify-content-end mr-5">Műveletek</th>
                 <!-- <th (click)="onColumnSelect('id')"> <b>#</b></th>
                     <th (click)="onColumnSelect('orderID')"><b style="font-size: 18px">Rendelés azonosító</b></th>
                     <th (click)="onColumnSelect('amount')"><b style="font-size: 18px">Összeg (Ft)</b></th>
@@ -70,13 +72,14 @@
             </thead> -->
         <tbody>
 
-            <tr *ngFor="let bill of billList$ | async | filter:filterKey:phrase | sorter:sortedColumn:sortedOrder">
+            <tr class="tablerow mr-5" style="padding-bottom: 1px;"
+                *ngFor="let bill of billList$ | async | filter:filterKey:phrase | sorter:sortedColumn:sortedOrder">
                 <td>{{bill.id}}</td>
                 <td>{{bill.orderID}} </td>
                 <td>{{bill.amount | hunFormat }}</td>
                 <td>{{bill.status}}</td>
                 <td>
-                    <div class="btn-group d-flex justify-content-center">
+                    <div class="btn-group d-flex justify-content-end">
                         <button [routerLink]="[bill.id]" class="btn btn-info">
                             <i class="material-icons">edit</i>
                         </button>
@@ -102,22 +105,12 @@
                 <th></th>
                 <div class="ml-3" *ngIf="sumOfUnpaidBills$ | async | hunFormat">
                     ͏͏͏͏͏͏͏<p>
-                        <b style="font-size: 18px">Fizetetlen számlák összege: {{ sumOfUnpaidBills$ | async }}
+                        <b style="font-size: 18px">Fizetetlen számlák összege: {{ sumOfUnpaidBills$ | async }} Ft
                         </b>
-
                     </p>
                 </div>
             </thead>
-            <tbody>
-            </tbody>
-
+            <tbody></tbody>
         </table>
-        <footer>
-            <div class="d-flex justify-content-end">
-                <a href="#top" onclick="self.scrollTo(0, 0); return false;" class="material-icons icon-white" d-flex
-                    justify-content-end>backup</a>
-            </div>
-        </footer>
     </div>
-
 </div>
