@@ -26,6 +26,22 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="firstName">{{ attributes.firstName }}<span class="star"> *</span></label>
+                                    <input name="firstName" [(ngModel)]="order.firstName" type="text" class="form-control"
+                                    pattern="[A-ZÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ](.{2,19})" required>
+                                    <div [hidden]="orderForm.controls.firstName?.valid || orderForm.controls.firstName?.pristine" class="error-message">
+                                        {{attributes.firstName}} must be between 3-20 characters and must start with a capital letter.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">{{ attributes.lastName }}<span class="star"> *</span></label>
+                                    <input name="lastName" [(ngModel)]="order.lastName" type="text" class="form-control"
+                                    pattern="[A-ZÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ](.{2,19})" required>
+                                    <div [hidden]="orderForm.controls.lastName?.valid || orderForm.controls.lastName?.pristine" class="error-message">
+                                        {{attributes.lastName}} must be between 3-20 characters and must start with a capital letter.
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label for="productID">{{ attributes.productID }}<span class="star"> *</span></label>
                                     <input name="productID" [(ngModel)]="order.productID" type="number" class="form-control" pattern="^[1-9]\d*$" required>
                                     <div [hidden]="orderForm.controls.productID?.valid || orderForm.controls.productID?.pristine" class="error-message">
@@ -42,28 +58,20 @@
                                 <div class="form-group">
                                     <label for="orderDate">{{ attributes.orderDate }}<span class="star"> *</span></label>
                                     <div class="input-group">
-                                     <input name="orderDate" [(ngModel)]="order.orderDate" class="form-control"
-                                        placeholder="yyyy-mm-dd" type="text"
-                                        ngbDatepicker #d="ngbDatepicker"
-                                         required>
+                                     <input name="orderDate" [(ngModel)]="order.orderDate"
+                                     class="form-control" type="date" required>
                                         <div [hidden]="orderForm.controls.orderDate?.valid || orderForm.controls.orderDate?.pristine"           class="error-message">
-                                            {{attributes.orderDate}} is required and can only be a number.
-                                        </div>
-                                        <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                                            {{attributes.orderDate}} is required and please use the date picker for the correct date.
                                         </div>
                                     </div>
                                 </div>
-
-                    
-
                                 <div class="form-group">
                                     <label for="paymentDueDate">{{ attributes.paymentDueDate }}<span class="star"> *</span></label>
                                     <div class="input-group">
                                         <input name="paymentDueDate" [(ngModel)]="order.paymentDueDate"
                                         class="form-control" type="date" required>
                                         <div [hidden]="orderForm.controls.paymentDueDate?.valid || orderForm.controls.paymentDueDate?.pristine" class="error-message">
-                                        {{attributes.paymentDueDate}} is required and can only be a number.
+                                        {{attributes.paymentDueDate}} is required and please use the date picker for the correct date.
                                         </div>
                                     </div>
                                 </div>
