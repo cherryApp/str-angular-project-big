@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+.table {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+
+th {
+  justify-content: center;
+    text-align: center;
+    user-select: none;
+}
+
+td {
+  text-align: center; 
+  vertical-align: middle;
+}
+
+.material-icons {
+  font-size: 24px;
+}
+
+#arrow {
+  display: flex;
+  justify-content: flex-end,
+}
+
+.icon-white {
+  color: red;
+  font-size: 50px;
+  padding-right: 4px;
+
+}

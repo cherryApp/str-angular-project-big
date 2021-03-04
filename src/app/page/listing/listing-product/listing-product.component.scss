@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+.table {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+.bg-dark:hover {
+  cursor: pointer,
+}
+.material-icons {
+  font-size: 24px,
+}
+#arrow {
+  display: flex;
+  justify-content: flex-end,
+}
+
+th {
+  user-select: none;
+  text-align: center;
+}
+
+tbody > tr > td {
+
+  height:20px;
+  padding:0px;
+  border-top: 0px;
+}
+
+.jump-top i {
+  color: #4098D4;
+  font-size: 60px;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+}

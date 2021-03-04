@@ -1,0 +1,125 @@
+<div class="row">
+  <div *ngIf="order" class="col-6 offset-3 mt-5">
+    <form #orderForm="ngForm" (ngSubmit)="setOrderToDatabase(order)">
+      <div *ngIf="!updating && order.id" class="form-group">
+      <!-- <div *ngIf="!updating" class="form-group"> -->
+        <label for="order">Rendelésszám</label>
+        <input
+          [(ngModel)]="order.id"
+          id="order"
+          name="order"
+          type="number"
+          class="form-control"
+          disabled
+        />
+        <!-- pattern="[1-9]\d?\d?\d?" -->
+      </div>
+      <div class="form-group">
+        <label for="customer">Vásárló neve</label>
+        <input
+          [(ngModel)]="chosenCustomer"
+          id="customer"
+          name="customer"
+          type="text"
+          class="form-control"
+          [ngbTypeahead]="search"
+          [resultFormatter]="customerResultFormatter"
+          [inputFormatter]="customerIputFormatter"
+          #instance="ngbTypeahead"
+          required
+          placeholder="Kezdjen gépelni, majd válasszon a menüből!"
+          autofocus
+          />
+          <!-- pattern="[A-Za-z]{1-30}" -->
+                    <!-- pattern=".{1-40}" -->
+                    <!-- pattern="\([0-9]{1-3}\) \w{1-40}" -->
+
+        <div
+          [hidden]="
+            orderForm.controls.customer?.valid ||
+            orderForm.controls.customer?.pristine
+          "
+          class="error-message"
+        >
+          Kötelezően kitöltendő mező!
+        </div>
+
+      </div>
+      <div class="form-group">
+        <label for="product">Film címe</label>
+        <input
+          id="product"
+          [(ngModel)]="chosenProduct"
+          name="product"
+          type="text"
+          class="form-control"
+          [ngbTypeahead]="searchProduct"
+          [resultFormatter]="productResultFormatter"
+          [inputFormatter]="productIputFormatter"
+          #instance="ngbTypeahead"
+          required
+          placeholder="Kezdjen gépelni, majd válasszon a menüből!"
+          />
+          <!-- pattern="[A-Za-z]{1-30}" -->
+          <!-- pattern="\([0-9]{1-3}\) \w{1-40}" -->
+          <!-- pattern="[1-9]\d?\d?\d?\d?" -->
+        <div
+          [hidden]="
+            orderForm.controls.product?.valid ||
+            orderForm.controls.product?.pristine
+          "
+          class="error-message"
+        >
+          Kötelezően kitöltendő mező!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="amount">Mennyiség</label>
+        <input
+          [(ngModel)]="order.amount"
+          id="amount"
+          name="amount"
+          type="number"
+          class="form-control"
+          pattern="[1-9]\d?"
+          required
+        />
+        <div
+          [hidden]="
+            orderForm.controls.amount?.valid ||
+            orderForm.controls.amount?.pristine
+          "
+          class="error-message"
+        >
+          Kötelezően kitöltendő mező! Maximum 2-jegyű szám.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="status">Státusz</label>
+        <!-- pattern="^(new|shipped|paid)$" /> -->
+        <select
+          [(ngModel)]="order.status"
+          class="form-control"
+          id="status"
+          name="status"
+          pattern="^(new|shipped|paid)$"
+        >
+          <option value="new">new</option>
+          <option value="shipped">shipped</option>
+          <option value="paid">paid</option>
+        </select>
+
+        <!-- new|shipped|paid -->
+      </div>
+      <!-- [disabled]="orderForm.invalid || updating || (!orderForm.controls.customer?.valid && orderForm.controls.customer.touched)" -->
+      <!-- [disabled]="!orderForm?.valid || !orderForm.controls.customer?.valid || !orderForm.controls.product?.valid || !orderForm.controls.amount?.valid" -->
+      <button
+      [disabled]="orderForm.invalid"
+        class="btn btn-block btn-primary"
+      >
+        <i *ngIf="!updating" class="fa fa-save"></i>
+        <i *ngIf="updating" class="fa fa-refresh"></i>
+      </button>
+    </form>
+  </div>
+</div>
