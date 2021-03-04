@@ -5,6 +5,7 @@ import { Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip, SingleDataS
 export interface IPieChart {
   pieChartLabels: Label[];
   pieChartData: SingleDataSet;
+  cardColor: string;
   chartCardTitle: string;
   chartCardInfo: string;
   chartCardFooter: string;
@@ -17,6 +18,7 @@ export interface IPieChart {
 })
 export class PieChartComponent implements OnInit {
   // Chart card
+  @Input() cardColor: string = '';
   @Input() cardTitle: string = '';
   @Input() cardInfo: string = '';
   @Input() cardFooter: string = '';

@@ -57,6 +57,7 @@ export class DashboardComponent implements OnInit {
     {
       pieChartLabels: [['Active', 'customers'], ['Inactive', 'Customers']],
       pieChartData: [],
+      cardColor:  'card-header-danger',
       chartCardTitle: 'Customer statistics',
       chartCardInfo: 'string',
       chartCardFooter: `<i class="material-icons">access_time</i> based on the total database`,
@@ -64,6 +65,7 @@ export class DashboardComponent implements OnInit {
     {
       pieChartLabels: [['New', 'Orders'], ['Paid', 'Orders'], ['Shipped', 'Orders']],
       pieChartData: [],
+      cardColor:  'card-header-info',
       chartCardTitle: 'Order number statistics',
       chartCardInfo: 'string',
       chartCardFooter:  `<i class="material-icons">access_time</i> based on the total database`,
@@ -71,7 +73,8 @@ export class DashboardComponent implements OnInit {
     {
       pieChartLabels: [['Amount', 'of New', 'Orders'], ['Amount', 'of Paid', 'Orders'], ['Amount', 'of Shipped', 'Orders']],
       pieChartData: [],
-      chartCardTitle: 'Order amoint statistics',
+      cardColor:  'card-header-success',
+      chartCardTitle: 'Order amount statistics',
       chartCardInfo: 'string',
       chartCardFooter:  `<i class="material-icons">access_time</i> based on the total database`,
     }
@@ -122,8 +125,11 @@ export class DashboardComponent implements OnInit {
         this.cards[3].footer = `<span class="text-info"><i class="material-icons">people_outline</i></span>total customers: ${data[2].customerNr}`;
 
         this.pieCharts[0].pieChartData = [data[2].activeCustomerNr, data[2].inactiveCustomerNr];
+        this.pieCharts[0].chartCardInfo = `<span class="text-danger">We have ${data[2].inactiveCustomerNr} inactive customers!</span>`;
         this.pieCharts[1].pieChartData = [data[3].newOrderNr, data[3].paidOrderNr, data[3].shippedOrderNr];
+        this.pieCharts[1].chartCardInfo = `<span class="text-warning">waiting for ${data[3].shippedOrderNr} payments; </span><span class="text-info">${data[3].newOrderNr} orders have to be fulfilled</span>`;
         this.pieCharts[2].pieChartData = [data[3].newOrderAmount, data[3].paidOrderAmount, data[3].shippedOrderAmount];
+        this.pieCharts[2].chartCardInfo = `<span class="text-success">We have ${data[3].newOrderNr} new orders!</span>`;
       }
     );
     this.billService.getAll();
