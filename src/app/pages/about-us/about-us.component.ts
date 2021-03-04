@@ -24,10 +24,10 @@ export class AboutUsComponent implements OnInit {
     },
     {
       name: "Anna Kiss",
-      title: "angular master pro elite",
-      imgSrc: "./assets/img/faces/anna_foto.jpg",
+      title: "angular student",
+      imgSrc: "./assets/img/faces/ka.jpg",
       href: "#",
-      description: "Working on everything."
+      description: "Just learning Angular universe."
     },
     {
       name: "Kalman Kovacsics",
