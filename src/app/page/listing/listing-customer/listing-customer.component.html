@@ -46,7 +46,6 @@
         </th>
         <th></th>
         <th></th>
-        <th></th>
         <th>Műveletek</th>
       </tr>
     </thead>
@@ -66,11 +65,12 @@
           {{ customer.email }}
         </td>
         <td>
-          {{ customer.address.zip }} {{ customer.address.country }} {{ customer.address.city }} {{ customer.address.street }}
+          {{ customer.address.zip }} {{ customer.address.country }} {{ customer.address.city }} {{
+          customer.address.street }}
         </td>
         <td>
           <input class="form-control form-control-sm" [(ngModel)]="customer.active" type="checkbox" disabled>
-      </td>
+        </td>
         <td></td>
         <td></td>
         <td>
