@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Product } from 'src/app/models/product';
 import { ConfigService, ITableCol } from 'src/app/services/config.service';
 import { ProductService } from 'src/app/services/product.service'
@@ -22,6 +22,10 @@ export class ListProductComponent implements OnInit {
   selectedItemToDelete: Product = new Product();
   sortby: string = '';
   waiting = true;
+  colspan: number = this.cols.length + 1;
+  statProductscription: Subscription = new Subscription();
+  statProductsText: string = '';
+
   constructor(
     private productService: ProductService,
     private configService: ConfigService,
@@ -32,7 +36,14 @@ export class ListProductComponent implements OnInit {
     let time = (Math.floor(Math.random() * 4) + 1) * 1000;
     this.productList$.subscribe(
       () => setTimeout(() => { this.waiting = false }, time)
-    )
+    );
+    this.statProductscription = this.productService.productStats$.subscribe(
+      data => {
+        this.statProductsText = `<span class="text-info">Selling total ${data.totalNr} products; </span>
+        <span class="text-success">${data.activeNr} products are active; </span>
+        <span class="text-warning">there are ${data.featuredNr} featured products`;
+      }
+    );
   }
 
   changeOrder(param: string): void {
@@ -73,6 +84,10 @@ export class ListProductComponent implements OnInit {
         this.configService.showSuccess('Deleted successfuly.', `Product #${deletedId}`);
       }
     );
+  }
+
+  ngOnDestroy(): void {
+    this.statProductscription.unsubscribe();
   }
 
 }
