@@ -74,7 +74,7 @@ export class ListingOrderComponent implements OnInit {
   }
 
   onRemove(order: Order): void {
-    if (!confirm(`Biztosan törli ezt a számlát?
+    if (!confirm(`Biztosan törli ezt a rendelést?
     (id: ${order.id} vásárlóID: ${order.customerID} mennyiség: ${order.amount})`)) {
       return
     }
