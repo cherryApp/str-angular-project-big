@@ -1,26 +1,26 @@
 <div class="row" *ngIf="order">
     <div class="col-12 col-xl-10 offset-xl-1">
         <div class="card">
-  
+
             <!-- CARD HEADER -->
             <div class="card-header card-header-success">
                 <h4 class="card-title ">{{ title }}: {{ id }}</h4>
             </div>
-  
+
             <!-- CARD BODY -->
             <div class="card-body">
                 <form class="form__border" #orderForm="ngForm" (ngSubmit)="onFormSubmit(orderForm, order)">
-  
+
                     <div class="form__column">
                         <div class="form-group form__group" *ngIf="id > 0" title="ID is not editable.">
                             <label>ID</label>
-                            <input [(ngModel)]="order.id" name="id" type="number"  
+                            <input [(ngModel)]="order.id" name="id" type="number"
                                 class="form-control" pattern="" disabled>
-                        </div>  
+                        </div>
 
                         <div class="form-group form__group">
                             <label>Customer ID</label>
-                              <input [(ngModel)]="order.customerID" name="customerID" type="number" 
+                              <input [(ngModel)]="order.customerID" name="customerID" type="number"
                                   class="form-control" pattern="[0-9]*" required>
                               <i class="fa fa-exclamation-triangle alert__triangle" aria-hidden="true" [hidden]="orderForm.controls.customerID?.valid"></i>
                               <div [hidden]="orderForm.controls.customerID?.valid || orderForm.controls.customerID?.pristine" class="alert alert-danger alert__anim">
@@ -30,7 +30,7 @@
 
                           <div class="form-group form__group">
                             <label>Product ID</label>
-                              <input [(ngModel)]="order.productID" name="productID" type="number" 
+                              <input [(ngModel)]="order.productID" name="productID" type="number"
                                   class="form-control" pattern="[0-9]*" required>
                               <i class="fa fa-exclamation-triangle alert__triangle" aria-hidden="true" [hidden]="orderForm.controls.productID?.valid"></i>
                               <div [hidden]="orderForm.controls.productID?.valid || orderForm.controls.productID?.pristine" class="alert alert-danger alert__anim">
@@ -38,38 +38,39 @@
                               </div>
                           </div>
                     </div>
-  
-  
+
+
                     <div class="form__column">
-                
+
                         <div class="form-group form__group">
                             <label>Amount</label>
-                              <input [(ngModel)]="order.amount" name="amount" type="number" 
+                              <input [(ngModel)]="order.amount" name="amount" type="number"
                                   class="form-control" pattern="[0-9]*" required>
                               <i class="fa fa-exclamation-triangle alert__triangle" aria-hidden="true" [hidden]="orderForm.controls.amount?.valid"></i>
                               <div [hidden]="orderForm.controls.amount?.valid || orderForm.controls.amount?.pristine" class="alert alert-danger alert__anim">
                                 Please get a number!
                               </div>
                           </div>
-                
+
                         <div class="form-group form__group">
                             <label>Status</label>
-                            <select class="form-control" name="status" [(ngModel)]="order.status" >
+                            <select class="form-control" size="3" name="status" [(ngModel)]="order.status" >
                               <option value="new">New</option>
                               <option value="paid">Paid</option>
+                              <option value="shipped">Shipped</option>
                             </select>
                         </div>
-  
+
                     </div>
-                    
+
                     <button [disabled]="orderForm.invalid || updating" class="btn btn-block btn-success">
                       <i *ngIf="!updating" class="fa fa-save"></i>
                       <i *ngIf="updating" class="fa fa-refresh"></i>
                     </button>
-  
+
                 </form>
             </div>
-  
+
         </div>
     </div>
   </div>
