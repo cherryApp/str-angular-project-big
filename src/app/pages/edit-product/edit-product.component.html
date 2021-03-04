@@ -1,89 +1,97 @@
-<div class="row">
-    <div class="col-md-12">
-      <div class="card">
+<div class="row" *ngIf="product">
+    <div class="col-12 col-xl-10 offset-xl-1">
+        <div class="card">
 
-        <div class="card-header card-header-primary">
-          <h4 class="card-title ">Product Editor - ID: {{ product.id }} Name: {{ product.name }}</h4>
+            <!-- CARD HEADER -->
+            <div class="card-header card-header-danger">
+                <h4 class="card-title ">{{ title }}: {{ id }}</h4>
+            </div>
+
+            <!-- CARD BODY -->
+            <div class="card-body">
+                <form class="form__border" #productForm="ngForm" (ngSubmit)="onFormSubmit(productForm, product)">
+
+                    <div class="form__column">
+                        <div class="form-group form__group" *ngIf="id > 0" title="ID is not editable.">
+                            <label>ID</label>
+                            <input [(ngModel)]="product.id" name="id" type="number"  
+                                class="form-control" pattern="" disabled>
+                        </div>        
+                
+                        <div class="form-group form__group">
+                            <label>Name</label>
+                            <input [(ngModel)]="product.name" name="name" type="text" 
+                                class="form-control" pattern=".{3,30}" required>
+                            <i class="fa fa-exclamation-triangle alert__triangle" aria-hidden="true" [hidden]="productForm.controls.name?.valid"></i>
+                            <div [hidden]="productForm.controls.name?.valid || productForm.controls.name?.pristine" class="alert alert-danger alert__anim">
+                                The Name must be a minimum of 3 and a maximum of 30 characters long! 
+                            </div>
+                        </div>
+                
+                        <div class="form-group form__group">
+                            <label>Type</label>
+                            <input [(ngModel)]="product.type" name="type" type="text" 
+                                class="form-control" pattern=".{3,30}" required>
+                            <i class="fa fa-exclamation-triangle alert__triangle" aria-hidden="true" [hidden]="productForm.controls.type?.valid"></i>
+                            <div [hidden]="productForm.controls.type?.valid || productForm.controls.type?.pristine" class="alert alert-danger alert__anim">
+                                The type must be a minimum of 3 and a maximum of 30 characters long! 
+                            </div>
+                        </div>
+                
+                        <div class="form-group form__group">
+                            <label>catID</label>
+                            <input [(ngModel)]="product.catID" name="catID" type="number" 
+                                class="form-control" pattern="[0-9]{1,4}+$" required>
+                            <i class="fa fa-exclamation-triangle alert__triangle" aria-hidden="true" [hidden]="productForm.controls.catID?.valid"></i>
+                            <div [hidden]="productForm.controls.catID?.valid || productForm.controls.catID?.pristine" class="alert alert-danger alert__anim">
+                                Please get a number!
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="form__column">
+                        <div class="form-group form__group">
+                            <label>Description</label>
+                            <input [(ngModel)]="product.description" name="description" type="text" 
+                                class="form-control" pattern=".{4,100}" required>
+                            <i class="fa fa-exclamation-triangle alert__triangle" aria-hidden="true" [hidden]="productForm.controls.description?.valid"></i>
+                            <div [hidden]="productForm.controls.description?.valid || productForm.controls.description?.pristine" class="alert alert-danger alert__anim">
+                                The description must be a minimum of 4 and a maximum of 100 characters long! 
+                            </div>
+                        </div>
+
+                        <div class="form-group form__group">
+                            <label>Price</label>
+                            <input [(ngModel)]="product.price" name="price" type="number" 
+                                class="form-control" pattern="[0-9]{1,20}" required>
+                            <i class="fa fa-exclamation-triangle alert__triangle" aria-hidden="true" [hidden]="productForm.controls.price?.valid"></i>
+                            <div [hidden]="productForm.controls.price?.valid || productForm.controls.price?.pristine" class="alert alert-danger alert__anim">
+                                Please get a number!
+                            </div>
+                        </div>
+                
+                        <div class="form-group form__group">
+                            <label>Featured</label>
+                            <input [(ngModel)]="product.featured" name="featured" type="checkbox" 
+                                class="form-check-input ml-2">
+                        </div>
+
+                        <div class="form-group form__group">
+                            <label>Active</label>
+                            <input [(ngModel)]="product.active" name="active" type="checkbox" 
+                                class="form-check-input ml-2">
+                        </div>
+                
+                    </div>
+                    
+                    <button [disabled]="productForm.invalid || updating" class="btn btn-block btn-success">
+                      <i *ngIf="!updating" class="fa fa-save"></i>
+                      <i *ngIf="updating" class="fa fa-refresh"></i>
+                    </button>
+
+                </form>
+            </div>
+
         </div>
-
-        <div class="card-body">
-            <form #productForm="ngForm" (ngSubmit)="onFormSubmit(productForm)">
-        
-                <div class="form-group">
-                    <label>ID</label>
-                    <input name="id" [(ngModel)]="product.id" type="number" 
-                        class="form-control" pattern="" required>
-                    <div [hidden]="productForm.controls.id?.valid" class="error-message">
-                        The id must contain numbers! 
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Name</label>
-                    <input name="name" [(ngModel)]="product.name" type="text" 
-                        class="form-control" pattern=".{2,20}" required>
-                    <div [hidden]="productForm.controls.name?.valid" class="error-message">
-                        The name must contain at least 2 and maximum of 20 characters!
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Type</label>
-                    <input name="type" [(ngModel)]="product.type" type="text"
-                        class="form-control" pattern=".{2,20}" required>
-                    <div [hidden]="productForm.controls.type?.valid" class="error-message">
-                        The type must contain at least 2 and maximum of 20 characters!
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>CatID</label>
-                    <input name="catID" [(ngModel)]="product.catID" type="number" 
-                        class="form-control" pattern="" required>
-                    <div [hidden]="productForm.controls.catID?.valid" class="error-message">
-                        The catID must contain numbers!
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Description</label>
-                    <input name="description" [(ngModel)]="product.description" type="text" 
-                        class="form-control" pattern=".{5,50}" required>
-                    <div [hidden]="productForm.controls.description?.valid" class="error-message">
-                        The Description must contain at least 5 and maximum of 50 characters! 
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Price</label>
-                    <input name="price" [(ngModel)]="product.price" type="number" 
-                        class="form-control" pattern="" required>
-                    <div [hidden]="productForm.controls.price?.valid" class="error-message">
-                        The price must contain numbers!
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Featured</label>
-                    <input name="featured" [(ngModel)]="product.featured" type="checkbox" 
-                        class="form-control">
-                </div>
-
-                <div class="form-group">
-                    <label>Active</label>
-                    <input name="active" [(ngModel)]="product.active" type="checkbox" 
-                        class="form-control">
-                </div>
-        
-                                        
-                <button [disabled]="productForm.invalid || updating" class="btn btn-block btn-primary">
-                  <i *ngIf="!updating" class="fa fa-save"></i>
-                  <i *ngIf="updating" class="fa fa-refresh"></i>
-                </button>
-
-            </form>
-        </div>
-        
     </div>
-</div>
 </div>

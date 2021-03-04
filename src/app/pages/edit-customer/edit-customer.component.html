@@ -1,5 +1,5 @@
 <div class="row" *ngIf="customer">
-    <div class="col-md-10 offset-md-1">
+    <div class="col-12 col-xl-10 offset-xl-1">
         <div class="card">
 
             <!-- CARD HEADER -->
@@ -9,46 +9,46 @@
 
             <!-- CARD BODY -->
             <div class="card-body">
-                <form class="form__border d-flex flex-lg-wrap" #customerForm="ngForm" (ngSubmit)="onFormSubmit(customerForm, customer)">
+                <form class="form__border" #customerForm="ngForm" (ngSubmit)="onFormSubmit(customerForm, customer)">
 
                     <div class="form__column">
-                        <div class="form-group" *ngIf="cusId > 0" title="ID is not editable.">
+                        <div class="form-group form__group" *ngIf="cusId > 0" title="ID is not editable.">
                             <label>ID</label>
                             <input [(ngModel)]="customer.id" name="id" type="number"  
                                 class="form-control" pattern="" disabled>
                         </div>        
                 
-                        <div class="form-group">
+                        <div class="form-group form__group">
                             <label>First name</label>
                             <input [(ngModel)]="customer.firstName" name="firstname" type="text" 
                                 class="form-control" pattern=".{3,30}" required>
-                            <i class="fa fa-exclamation-triangle" aria-hidden="true" [hidden]="customerForm.controls.firstname?.valid"></i>
-                            <div [hidden]="customerForm.controls.firstname?.valid || customerForm.controls.firstname?.pristine" class="alert alert-danger">
+                            <i class="fa fa-exclamation-triangle alert__triangle" aria-hidden="true" [hidden]="customerForm.controls.firstname?.valid"></i>
+                            <div [hidden]="customerForm.controls.firstname?.valid || customerForm.controls.firstname?.pristine" class="alert alert-danger alert__anim">
                                 The first name must be a minimum of 3 and a maximum of 30 characters long! 
                             </div>
                         </div>
                 
-                        <div class="form-group">
+                        <div class="form-group form__group">
                             <label>Last name</label>
                             <input [(ngModel)]="customer.lastName" name="lastname" type="text" 
                                 class="form-control" pattern=".{3,30}" required>
-                            <i class="fa fa-exclamation-triangle" aria-hidden="true" [hidden]="customerForm.controls.lastname?.valid"></i>
-                            <div [hidden]="customerForm.controls.lastname?.valid || customerForm.controls.lastname?.pristine" class="alert alert-danger">
+                            <i class="fa fa-exclamation-triangle alert__triangle" aria-hidden="true" [hidden]="customerForm.controls.lastname?.valid"></i>
+                            <div [hidden]="customerForm.controls.lastname?.valid || customerForm.controls.lastname?.pristine" class="alert alert-danger alert__anim">
                                 The last name must be a minimum of 3 and a maximum of 30 characters long! 
                             </div>
                         </div>
                 
-                        <div class="form-group">
+                        <div class="form-group form__group">
                             <label>email</label>
                             <input [(ngModel)]="customer.email" name="email" type="text" 
                                 class="form-control" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" required>
-                            <i class="fa fa-exclamation-triangle" aria-hidden="true" [hidden]="customerForm.controls.email?.valid"></i>
-                            <div [hidden]="customerForm.controls.email?.valid || customerForm.controls.email?.pristine" class="alert alert-danger">
+                            <i class="fa fa-exclamation-triangle alert__triangle" aria-hidden="true" [hidden]="customerForm.controls.email?.valid"></i>
+                            <div [hidden]="customerForm.controls.email?.valid || customerForm.controls.email?.pristine" class="alert alert-danger alert__anim">
                                 Please use email address format!
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group form__group">
                             <label>active</label>
                             <input [(ngModel)]="customer.active" name="active" type="checkbox" 
                                 class="form-check-input ml-2">
@@ -56,52 +56,52 @@
                     </div>
         
                     <div class="form__column">
-                        <div class="form-group">
+                        <div class="form-group form__group">
                             <label>zip</label>
                             <input [(ngModel)]="customer.address.zip" name="address_zip" type="text" 
                                 class="form-control" pattern=".{4,20}" required>
-                            <i class="fa fa-exclamation-triangle" aria-hidden="true" [hidden]="customerForm.controls.address_zip?.valid"></i>
-                            <div [hidden]="customerForm.controls.address_zip?.valid || customerForm.controls.address_zip?.pristine" class="alert alert-danger">
+                            <i class="fa fa-exclamation-triangle alert__triangle" aria-hidden="true" [hidden]="customerForm.controls.address_zip?.valid"></i>
+                            <div [hidden]="customerForm.controls.address_zip?.valid || customerForm.controls.address_zip?.pristine" class="alert alert-danger alert__anim">
                                 The zip must be a minimum of 5 and a maximum of 20 characters long! 
                             </div>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group form__group">
                             <label>country</label>
                             <input [(ngModel)]="customer.address.country" name="country" type="text" 
                                 class="form-control" pattern=".{5,50}" required>
-                            <i class="fa fa-exclamation-triangle" aria-hidden="true" [hidden]="customerForm.controls.country?.valid"></i>
-                            <div [hidden]="customerForm.controls.country?.valid || customerForm.controls.country?.pristine" class="alert alert-danger">
+                            <i class="fa fa-exclamation-triangle alert__triangle" aria-hidden="true" [hidden]="customerForm.controls.country?.valid"></i>
+                            <div [hidden]="customerForm.controls.country?.valid || customerForm.controls.country?.pristine" class="alert alert-danger alert__anim">
                                 The country must be a minimum of 5 and a maximum of 50 characters long! 
                             </div>
                         </div>
                 
-                        <div class="form-group">
+                        <div class="form-group form__group">
                             <label>city</label>
                             <input [(ngModel)]="customer.address.city" name="city" type="text" 
                                 class="form-control" pattern=".{5,50}" required>
-                            <i class="fa fa-exclamation-triangle" aria-hidden="true" [hidden]="customerForm.controls.city?.valid"></i>
-                            <div [hidden]="customerForm.controls.city?.valid || customerForm.controls.city?.pristine" class="alert alert-danger">
+                            <i class="fa fa-exclamation-triangle alert__triangle" aria-hidden="true" [hidden]="customerForm.controls.city?.valid"></i>
+                            <div [hidden]="customerForm.controls.city?.valid || customerForm.controls.city?.pristine" class="alert alert-danger alert__anim">
                                 The city must be a minimum of 5 and a maximum of 50 characters long! 
                             </div>
                         </div>
                 
-                        <div class="form-group">
+                        <div class="form-group form__group">
                             <label>street</label>
                             <input [(ngModel)]="customer.address.street" name="street" type="text" 
                                 class="form-control" pattern=".{5,100}" required>
-                            <i class="fa fa-exclamation-triangle" aria-hidden="true" [hidden]="customerForm.controls.street?.valid"></i>
-                            <div [hidden]="customerForm.controls.street?.valid || customerForm.controls.street?.pristine" class="alert alert-danger">
+                            <i class="fa fa-exclamation-triangle alert__triangle" aria-hidden="true" [hidden]="customerForm.controls.street?.valid"></i>
+                            <div [hidden]="customerForm.controls.street?.valid || customerForm.controls.street?.pristine" class="alert alert-danger alert__anim">
                                 The street must be a minimum of 5 and a maximum of 100 characters long! 
                             </div>
                         </div>
                 
-                        <div class="form-group">
+                        <div class="form-group form__group">
                             <label>notes</label>
                             <input [(ngModel)]="customer.address.notes" name="notes" type="text" 
                                 class="form-control" pattern=".{5,100}" required>
-                            <i class="fa fa-exclamation-triangle" aria-hidden="true" [hidden]="customerForm.controls.notes?.valid"></i>
-                            <div [hidden]="customerForm.controls.notes?.valid || customerForm.controls.notes?.pristine" class="alert alert-danger">
+                            <i class="fa fa-exclamation-triangle alert__triangle" aria-hidden="true" [hidden]="customerForm.controls.notes?.valid"></i>
+                            <div [hidden]="customerForm.controls.notes?.valid || customerForm.controls.notes?.pristine" class="alert alert-danger alert__anim">
                                 The address notes must be a minimum of 5 and a maximum of 100 characters long! 
                             </div>
                         </div>
