@@ -104,6 +104,10 @@ export class ListingBillComponent implements OnInit {
     this.phrase = (event.target as HTMLInputElement).value;
   }
 
+  onChangeHunformat() {
+
+  }
+
 
 
 }
