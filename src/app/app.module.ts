@@ -51,7 +51,8 @@ import { SorterPipe } from './pipe/sorter.pipe';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ChartsModule
+    ChartsModule,
+    MatProgressBarModule, MatProgressSpinnerModule, BrowserAnimationsModule,
 
   ],
   providers: [],
