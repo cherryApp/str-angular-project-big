@@ -28,6 +28,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InprogressComponent } from './inprogress/inprogress.component';
+import { PieChartComponent } from './common/pie-chart/pie-chart.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +50,7 @@ import { InprogressComponent } from './inprogress/inprogress.component';
     InfoCardComponent,
     SorterPipe,
     InprogressComponent,
+    PieChartComponent,
   ],
   imports: [
     BrowserModule,
