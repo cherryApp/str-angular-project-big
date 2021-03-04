@@ -31,7 +31,6 @@ export class ListingCustomerComponent implements OnInit {
   phrase: string = '';
   cols: ITableCol[] = this.config.customerTableCols;
 
-
   filterKey: string = 'id';
   filterKeys: string[] = Object.keys(new Customer());
   currentSelectProperty: string = 'name';
