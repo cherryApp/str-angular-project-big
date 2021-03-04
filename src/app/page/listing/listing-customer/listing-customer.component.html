@@ -69,8 +69,8 @@
           {{ customer.address.zip }} {{ customer.address.country }} {{ customer.address.city }} {{ customer.address.street }}
         </td>
         <td>
-          {{ customer.active }}
-        </td>
+          <input class="form-control form-control-sm" [(ngModel)]="customer.active" type="checkbox" disabled>
+      </td>
         <td></td>
         <td></td>
         <td>
