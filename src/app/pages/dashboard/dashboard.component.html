@@ -1,12 +1,8 @@
 <div class="row">
+
   <div *ngFor="let card of cards" class="col-lg-3 col-md-6 col-sm-6">
-    <app-info-card
-      [cardClass]="card.cardClass"
-      [iconClass]="card.iconClass"
-      [iconText]="card.iconText"
-      [title]="card.title"
-      [content]="card.content"
-      [footer]="card.footer"></app-info-card>
+    <app-info-card [cardClass]="card.cardClass" [iconClass]="card.iconClass" [iconText]="card.iconText"
+      [title]="card.title" [content]="card.content" [footer]="card.footer"></app-info-card>
   </div>
 
   <div class="row">

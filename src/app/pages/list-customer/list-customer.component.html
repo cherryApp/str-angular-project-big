@@ -1,12 +1,17 @@
 <div class="row">
-    <div class="col-md-12">
+  <div class="col-md-12">
+    <div *ngIf="waiting">
+      <app-inprogress></app-inprogress>
+    </div>
+    <div *ngIf="!waiting">
       <div class="card">
         <div class="card-header card-header-info">
           <h4 class="card-title ">Customer Table</h4>
           <div class="d-flex p-2 mb-3 filter__group">
-            <input [(ngModel)]="filterPhrase" class="form-control mr-sm-2 filter__input px-3" type="text" placeholder="Filter..." style="width: 200px;">
+            <input [(ngModel)]="filterPhrase" class="form-control mr-sm-2 filter__input px-3" type="text"
+              placeholder="Filter..." style="width: 200px;">
             <select [(ngModel)]="filterKey" class="form-control mr-3 filter__select px-3" style="width: 150px;">
-                <option *ngFor="let fkey of filterKeys" [value]="fkey">{{ fkey }}</option>
+              <option *ngFor="let fkey of filterKeys" [value]="fkey">{{ fkey }}</option>
             </select>
           </div>
         </div>
@@ -15,7 +20,7 @@
             <table class="table">
               <thead class=" text-primary">
                 <th *ngFor="let col of cols" [id]="'thead_'+col.key" class="th" (click)="changeOrder(col.key)">
-                  {{ col.text }} 
+                  {{ col.text }}
                   <span [id]="'arrow_up_'+col.key" class="arrow material-icons md-18">keyboard_arrow_up</span>
                   <span [id]="'arrow_down_'+col.key" class="arrow material-icons md-18">keyboard_arrow_down</span>
                 </th>
@@ -27,23 +32,27 @@
               </thead>
 
               <tbody>
-                <tr *ngFor="let customer of customerList$ | async | filter:filterPhrase:filterKey | sorter:sortby:sorterDirection">
+                <tr
+                  *ngFor="let customer of customerList$ | async | filter:filterPhrase:filterKey | sorter:sortby:sorterDirection">
                   <td *ngFor="let col of cols">
-                    <input *ngIf="col.type === 'check'" [(ngModel)]="customer[col.key]" type="checkbox" class="form-control-sm text-right" disabled>
+                    <input *ngIf="col.type === 'check'" [(ngModel)]="customer[col.key]" type="checkbox"
+                      class="form-control-sm text-right" disabled>
                     <span *ngIf="col.type != 'check' && col.key != 'address'">{{customer[col.key]}}</span>
                   </td>
                   <td>
                     <div class="btn-group" role="group">
-                      <button type="button" [routerLink]="'/customer/'+customer.id" rel="tooltip" title="Edit this Customer" class="btn btn-primary btn-link btn-sm">
+                      <button type="button" [routerLink]="'/customer/'+customer.id" rel="tooltip"
+                        title="Edit this Customer" class="btn btn-primary btn-link btn-sm">
                         <i class="material-icons">edit</i>
                       </button>
-                      <button type="button" (click)="deleteItem(customer)" rel="tooltip" title="Remove this Customer" class="btn btn-danger btn-link btn-sm">
+                      <button type="button" (click)="deleteItem(customer)" rel="tooltip" title="Remove this Customer"
+                        class="btn btn-danger btn-link btn-sm">
                         <i class="material-icons">close</i>
                       </button>
                     </div>
                   </td>
                 </tr>
-              
+
               </tbody>
 
             </table>
@@ -51,4 +60,6 @@
         </div>
       </div>
     </div>
-   
+
+  </div>
+</div>

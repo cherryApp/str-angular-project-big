@@ -22,14 +22,18 @@ export class ListCategoryComponent implements OnInit {
   filterKeys: string[] = Object.keys(new Category());
   sorterDirection: number = 1;
   sortby: string = '';
-
+  waiting = true;
   constructor(
     private categoryService: CategoryService,
     private configService: ConfigService,
-    ) { }
- 
+  ) { }
+
   ngOnInit(): void {
-    this.categoryService.getAll()
+    this.categoryService.getAll();
+    let time = (Math.floor(Math.random() * 4) + 1) * 1000;
+    this.categoryList$.subscribe(
+      () => setTimeout(() => { this.waiting = false }, time)
+    )
   }
 
   changeOrder(param: string): void {
@@ -37,21 +41,21 @@ export class ListCategoryComponent implements OnInit {
       this.sorterDirection = 1;
     }
     if (this.sortby === param) {
-      if (this.sorterDirection === 1)  this.sorterDirection = 2;
+      if (this.sorterDirection === 1) this.sorterDirection = 2;
       else this.sorterDirection = 1;
     }
     this.sortby = param;
     let allArrow = document.querySelectorAll('.arrow');
-    allArrow.forEach( element => {
+    allArrow.forEach(element => {
       element.classList.remove('arrow__active');
     });
     let allTHead = document.querySelectorAll('.th');
-    allTHead.forEach( element => {
+    allTHead.forEach(element => {
       element.classList.remove('th__active');
     });
-    document.querySelector('#thead_'+param)?.classList.add('th__active');
-    if (this.sorterDirection == 1) document.querySelector('#arrow_up_'+param)?.classList.add('arrow__active');
-    else document.querySelector('#arrow_down_'+param)?.classList.add('arrow__active');
+    document.querySelector('#thead_' + param)?.classList.add('th__active');
+    if (this.sorterDirection == 1) document.querySelector('#arrow_up_' + param)?.classList.add('arrow__active');
+    else document.querySelector('#arrow_down_' + param)?.classList.add('arrow__active');
   }
 
 

@@ -1,12 +1,18 @@
 <div class="row">
-    <div class="col-md-10 offset-1">
+  <div class="col-md-10 offset-1">
+    <div *ngIf="waiting">
+      <app-inprogress></app-inprogress>
+    </div>
+
+    <div *ngIf="!waiting">
       <div class="card">
         <div class="card-header card-header-warning">
           <h4 class="card-title ">Category Table</h4>
           <div class="d-flex p-2 mb-3 filter__group">
-            <input [(ngModel)]="filterPhrase" class="form-control mr-sm-2 filter__input px-3" type="text" placeholder="Filter..." style="width: 200px;">
+            <input [(ngModel)]="filterPhrase" class="form-control mr-sm-2 filter__input px-3" type="text"
+              placeholder="Filter..." style="width: 200px;">
             <select [(ngModel)]="filterKey" class="form-control mr-3 filter__select px-3" style="width: 150px;">
-                <option *ngFor="let fkey of filterKeys" [value]="fkey">{{ fkey }}</option>
+              <option *ngFor="let fkey of filterKeys" [value]="fkey">{{ fkey }}</option>
             </select>
           </div>
         </div>
@@ -16,7 +22,7 @@
 
               <thead class=" text-primary">
                 <th *ngFor="let col of cols" [id]="'thead_'+col.key" class="th" (click)="changeOrder(col.key)">
-                  {{ col.text }} 
+                  {{ col.text }}
                   <span [id]="'arrow_up_'+col.key" class="arrow material-icons md-18">keyboard_arrow_up</span>
                   <span [id]="'arrow_down_'+col.key" class="arrow material-icons md-18">keyboard_arrow_down</span>
                 </th>
@@ -28,22 +34,25 @@
               </thead>
 
               <tbody>
-                <tr *ngFor="let category of categoryList$ | async | filter:filterPhrase:filterKey | sorter:sortby:sorterDirection">
+                <tr
+                  *ngFor="let category of categoryList$ | async | filter:filterPhrase:filterKey | sorter:sortby:sorterDirection">
                   <td *ngFor="let col of cols">
                     <span>{{ category[col.key] }}</span>
                   </td>
                   <td>
                     <div class="btn-group" role="group">
-                      <button type="button" [routerLink]="'/category/'+category.id" rel="tooltip" title="Edit this Category" class="btn btn-primary btn-link btn-sm">
+                      <button type="button" [routerLink]="'/category/'+category.id" rel="tooltip"
+                        title="Edit this Category" class="btn btn-primary btn-link btn-sm">
                         <i class="material-icons">edit</i>
                       </button>
-                      <button type="button" (click)="deleteItem(category)" rel="tooltip" title="Remove this Category" class="btn btn-danger btn-link btn-sm">
+                      <button type="button" (click)="deleteItem(category)" rel="tooltip" title="Remove this Category"
+                        class="btn btn-danger btn-link btn-sm">
                         <i class="material-icons">close</i>
                       </button>
                     </div>
                   </td>
                 </tr>
-              
+
               </tbody>
 
             </table>
@@ -51,4 +60,5 @@
         </div>
       </div>
     </div>
-   
+  </div>
+</div>
