@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from 'src/app/services/customer.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { Customer } from 'src/app/models/customer';
 import { Router } from '@angular/router';
@@ -36,6 +36,10 @@ export class ListCustomerComponent implements OnInit {
   selectedItemToDelete: Customer = new Customer();
   sortby: string = '';
   waiting = true;
+  colspan: number = this.cols.length + 1;
+  statCustomerSubscription: Subscription = new Subscription();
+  statCustomerText: string = '';
+
   constructor(
     private customerService: CustomerService,
     private configService: ConfigService,
@@ -47,7 +51,14 @@ export class ListCustomerComponent implements OnInit {
     let time = (Math.floor(Math.random() * 4) + 1) * 1000;
     this.customerList$.subscribe(
       () => setTimeout(() => { this.waiting = false }, time)
-    )
+    );
+    this.statCustomerSubscription = this.customerService.customerStats$.subscribe(
+      data => {
+        this.statCustomerText = `<span class="text-info">Total ${data.customerNr} customers; </span>
+        <span class="text-success">${data.activeCustomerNr} customers are active; </span>
+        <span class="text-danger">${data.inactiveCustomerNr} customers are inactive</span>`;
+      }
+    );
   }
 
   changeOrder(param: string): void {
@@ -94,4 +105,7 @@ export class ListCustomerComponent implements OnInit {
     );
   }
   
+  ngOnDestroy(): void {
+    this.statCustomerSubscription.unsubscribe();
+  }
 }
