@@ -17,20 +17,12 @@
                     </div>
                     <div class="card-body col-12 col-md-6 d-flex">
                         <input id="phrase" name="phrase" (keyup)="onChangePhrase($event)" class="form-control"
-                            type="text" placeholder="Enter phrase..."
-                            [disabled]="filterKey==='paid' || filterKey==='shipped' || filterKey==='new'">
+                            type="text" placeholder="Enter phrase...">
                         <select class="custom-select ml-2" (change)="onChangeKey($event)">
                             <ng-container *ngFor="let attribute of attributes | keyvalue:originalOrder">
-                                <option *ngIf="attribute.key!=='paid' && attribute.key!=='shipped' && attribute.key!=='new'"
-                                    [value]="attribute.key" [selected]="setDefault(attribute.key)">Filter by
+                                <option [value]="attribute.key" [selected]="setDefault(attribute.key)">Filter by
                                     {{attribute.value}}
                                 </option>
-                                <option *ngIf="attribute.key==='paid'" [value]="attribute.key">Show
-                                    {{attribute.value}} only</option>
-                                <option *ngIf="attribute.key==='shipped'" [value]="attribute.key">Show
-                                    {{attribute.value}} only</option>
-                                <option *ngIf="attribute.key==='new'" [value]="attribute.key">Show
-                                    {{attribute.value}} only</option>
                             </ng-container>
                         </select>
                     </div>
@@ -55,21 +47,7 @@
                                 <tbody>
                                     <tr *ngFor="let order of orderList | filter:phrase:filterKey | sorter:sorterKey:sortDirection">
                                             <ng-container *ngFor="let attribute of attributes | keyvalue:originalOrder">
-                                                <td
-                                                    *ngIf="attribute.key!=='paid' && attribute.key!=='shipped' && attribute.key!=='new'">
-                                                    {{order[attribute.key]}}</td>
-                                                <td *ngIf="attribute.key==='paid' && order[attribute.key]"><i
-                                                        class="fa fa-check"></i></td>
-                                                <td *ngIf="attribute.key==='paid' && !order[attribute.key]"><i
-                                                        class="fa fa-times"></i></td>
-                                                <td *ngIf="attribute.key==='shipped' && order[attribute.key]"><i
-                                                        class="fa fa-check"></i></td>
-                                                <td *ngIf="attribute.key==='shipped' && !order[attribute.key]"><i
-                                                        class="fa fa-times"></i></td>
-                                                <td *ngIf="attribute.key==='new' && order[attribute.key]"><i
-                                                        class="fa fa-check"></i></td>
-                                                <td *ngIf="attribute.key==='new' && !order[attribute.key]"><i
-                                                        class="fa fa-times"></i></td>
+                                                <td>{{order[attribute.key]}}</td>
                                             </ng-container>
                                             <td>
                                                 <div class="btn-group">

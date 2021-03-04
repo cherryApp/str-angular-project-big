@@ -32,7 +32,6 @@ export class OrderService {
       order
     ).pipe(
       tap(() => {
-        this.getAll();
         this.toastr.info(`#${order.id} order has been updated.`, 'UPDATED');
       })
     );
@@ -66,7 +65,11 @@ export class OrderService {
 export class ColumnSortOrder {
   id = "none";
   customerID = "none";
+  firstName = "none";
+  lastName = "none";
   productID = "none";
   amount = "none";
+  orderDate = "none";
+  paymentDueDate = "none";
   status = "none";
 }
