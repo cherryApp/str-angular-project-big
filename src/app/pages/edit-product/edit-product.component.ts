@@ -50,15 +50,18 @@ export class EditProductComponent implements OnInit {
             () => this.router.navigate(['/products'])
           );
           // toaster üzenet sikeres létrehozásról
+          this.configService.showSuccess('Created successfuly.', 'New Product');
         }
         else {
           this.productService.update(element).subscribe(
             () => this.router.navigate(['/products'])
           );
           // toaster üzenet sikeres módosításról
+          this.configService.showSuccess('Updated successfuly.', `Product #${ element.id}`);
         }
       } catch (error) {
         // toaster üzenet hibáról
+        this.configService.showError('Something went wrong .', `Product editor`);
       }
     }
 

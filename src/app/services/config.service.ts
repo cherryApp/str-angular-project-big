@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 export enum TableCellType {
   Number = 'number',
@@ -71,5 +72,15 @@ export class ConfigService {
     {key: 'active', text: 'Active', type: TableCellType.Check},
   ]
 
-  constructor() { }
+  constructor(
+    private toastr: ToastrService
+  ) { }
+
+  showSuccess(text: string, title: string) {
+    this.toastr.success(text, title, {timeOut: 3000});
+  }
+
+  showError(text: string, title: string) {
+    this.toastr.error(text, title, {timeOut: 3000});
+  }
 }
