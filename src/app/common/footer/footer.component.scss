@@ -1,0 +1,13 @@
+footer {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: block;
+    width: 100%;
+    background-color: rgba(0, 0, 0, .05);
+    backdrop-filter: blur(.2rem);
+}
+
+.container-fluid {
+    text-align: center;
+}
