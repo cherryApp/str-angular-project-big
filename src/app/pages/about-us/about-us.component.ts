@@ -38,10 +38,10 @@ export class AboutUsComponent implements OnInit {
     },
     {
       name: "Gyorgy Liptak",
-      title: "angular master pro elite",
-      imgSrc: "./assets/img/faces/lgy.png",
+      title: "Teacher/Copy Editor",
+      imgSrc: "./assets/img/faces/lgy.jpg",
       href: "#",
-      description: "Working on everything."
+      description: "Teaching English, learning Angular."
     },
     {
       name: "Laszlo Szollosi",
