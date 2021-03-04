@@ -47,14 +47,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FooterComponent,
     FilterPipe,
     InfoCardComponent,
-    SorterPipe,
+    SorterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ChartsModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
