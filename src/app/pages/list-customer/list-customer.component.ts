@@ -33,6 +33,7 @@ export class ListCustomerComponent implements OnInit {
   filterKey: string = 'firstName';
   filterKeys: string[] = Object.keys(new Customer());
   sorterDirection: number = 1;
+  selectedItemToDelete: Customer = new Customer();
   sortby: string = '';
   waiting = true;
   constructor(
@@ -79,8 +80,14 @@ export class ListCustomerComponent implements OnInit {
     return `${item.address.zip} ${item.address.country} ${item.address.city} ${item.address.street}\n${item.address.notes}`;
   }
 
-  deleteItem(item: Customer): void {
-    this.customerService.remove(item).subscribe();
+  setToDelete(item: Customer): void {
+    this.selectedItemToDelete = item;
+  }
+
+  deleteItem(): void {
+    const deletedId: string = `${this.selectedItemToDelete.id}`;
+    this.customerService.remove(this.selectedItemToDelete);
+    this.configService.showSuccess('Deleted successfuly.', `Customer #${deletedId}`);
   }
 
 }

@@ -21,8 +21,10 @@ export class ListCategoryComponent implements OnInit {
   filterKey: string = 'name';
   filterKeys: string[] = Object.keys(new Category());
   sorterDirection: number = 1;
+  selectedItemToDelete: Category = new Category();
   sortby: string = '';
   waiting = true;
+
   constructor(
     private categoryService: CategoryService,
     private configService: ConfigService,
@@ -58,9 +60,14 @@ export class ListCategoryComponent implements OnInit {
     else document.querySelector('#arrow_down_' + param)?.classList.add('arrow__active');
   }
 
+  setToDelete(order: Category): void {
+    this.selectedItemToDelete = order;
+  }
 
-  deleteItem(item: Category): void {
-    this.categoryService.remove(item);
+  deleteItem(): void {
+    const deletedId: string = `${this.selectedItemToDelete.id}`;
+    this.categoryService.remove(this.selectedItemToDelete);
+    this.configService.showSuccess('Deleted successfuly.', `Category #${deletedId}`);
   }
 
 }

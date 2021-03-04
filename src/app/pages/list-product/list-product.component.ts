@@ -20,6 +20,7 @@ export class ListProductComponent implements OnInit {
   filterKey: string = 'name';
   filterKeys: string[] = Object.keys(new Product());
   sorterDirection: number = 1;
+  selectedItemToDelete: Product = new Product();
   sortby: string = '';
   waiting = true;
   constructor(
@@ -61,8 +62,14 @@ export class ListProductComponent implements OnInit {
     return 0;
   }
 
-  deleteItem(item: Product): void {
-    this.productService.remove(item);
+  setToDelete(order: Product): void {
+    this.selectedItemToDelete = order;
+  }
+
+  deleteItem(): void {
+    const deletedId: string = `${this.selectedItemToDelete.id}`;
+    this.productService.remove(this.selectedItemToDelete);
+    this.configService.showSuccess('Deleted successfuly.', `Product #${deletedId}`);
   }
 
 }

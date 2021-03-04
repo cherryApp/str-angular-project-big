@@ -14,18 +14,19 @@ export class ListBillComponent implements OnInit {
 
   billList$: Observable<Bill[]> = this.billService.billList$;
 
-  cols: ITableCol[] = this.config.tableColsBillList;
+  cols: ITableCol[] = this.configService.tableColsBillList;
 
   filterPhrase: string = '';
   filterKey: string = 'status';
   filterKeys: string[] = Object.keys(new Bill());
   sorterDirection: number = 1;
+  selectedItemToDelete: Bill = new Bill();
   sortby: string = '';
   waiting = true;
 
   constructor(
     private billService: BillService,
-    private config: ConfigService
+    private configService: ConfigService,
   ) { }
 
   ngOnInit(): void {
@@ -62,8 +63,14 @@ export class ListBillComponent implements OnInit {
     return 0;
   }
 
-  deleteItem(customer: Bill): void {
-    this.billService.remove(customer);
+  setToDelete(order: Bill): void {
+    this.selectedItemToDelete = order;
+  }
+
+  deleteItem(): void {
+    const deletedId: string = `${this.selectedItemToDelete.id}`;
+    this.billService.remove(this.selectedItemToDelete);
+    this.configService.showSuccess('Deleted successfuly.', `Bill #${deletedId}`);
   }
 
 }

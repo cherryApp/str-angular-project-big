@@ -19,8 +19,10 @@ export class ListOrderComponent implements OnInit {
   filterKey: string = 'status';
   filterKeys: string[] = Object.keys(new Order());
   sorterDirection: number = 1;
+  selectedItemToDelete: Order = new Order();
   sortby: string = '';
   waiting = true;
+
   constructor(
     private orderService: OrderService,
     private configService: ConfigService,
@@ -60,8 +62,14 @@ export class ListOrderComponent implements OnInit {
     return 0;
   }
 
-  deleteItem(item: Order): void {
-    this.orderService.remove(item);
+  setToDelete(order: Order): void {
+    this.selectedItemToDelete = order;
+  }
+
+  deleteItem(): void {
+    const deletedId: string = `${this.selectedItemToDelete.id}`;
+    this.orderService.remove(this.selectedItemToDelete);
+    this.configService.showSuccess('Deleted successfuly.', `Order #${deletedId}`);
   }
 
 }
