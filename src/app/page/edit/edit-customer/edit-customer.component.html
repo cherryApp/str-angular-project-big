@@ -1,0 +1,76 @@
+<div class="row">
+    <div *ngIf="customer" class="col-6 offset-3">
+      <form #customerForm="ngForm" (ngSubmit)="onUpdate(customer)">
+        <div class="form-group">
+          <label for="">Keresztnév</label>
+          <input name="firstName" [(ngModel)]="customer.firstName" type="text" class="form-control" pattern="^[A-ZÁÉÓÖŐÜÚŰ][a-záéüöóőú]{1,10}" required>
+          <div [hidden]="customerForm.controls.firstName?.valid || customerForm.controls.firstName?.pristine" class="error-message">
+            Hiányzó adat! A keresztnévnek nagy betűvel kell kezdődnie!
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="">Vezetéknév</label>
+          <input name="lastName" [(ngModel)]="customer.lastName" type="text" class="form-control" pattern="^[A-ZÁÉÓÖŐÜÚŰ][a-záéüöóőú]{1,10}" required>   
+          <div [hidden]="customerForm.controls.lastName?.valid || customerForm.controls.lastName?.pristine" class="error-message">
+            Hiányzó adat! A vezetéknévnek nagy betűvel kell kezdődnie!
+          </div>       
+        </div>
+        <div class="form-group">
+          <label for="">Email</label>
+          <input name="email" [(ngModel)]="customer.email" type="email" class="form-control" required> 
+          <div [hidden]="customerForm.controls.email?.valid || customerForm.controls.email?.pristine" class="error-message">
+            Hiányzó adat!
+          </div>       
+        </div>
+        <div class="form-group">
+          <label for="">Irányítószám</label>
+          <input name="zip" [(ngModel)]="customer.address.zip" type="number" class="form-control" pattern="[0-9]{4}" required>
+          <div [hidden]="customerForm.controls.zip?.valid || customerForm.controls.zip?.pristine" class="error-message">
+            Hiányzó adat!
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="">Ország</label>
+          <input name="country" [(ngModel)]="customer.address.country" type="text" class="form-control" pattern="[A-Z][a-záéóöőúüű]{3,15}" required>
+          <div [hidden]="customerForm.controls.country?.valid || customerForm.controls.country?.pristine" class="error-message">
+            Hiányzó adat! Nagy betűvel kell kezdődnie!
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="">Város</label>
+          <input name="city" [(ngModel)]="customer.address.city" type="text" class="form-control" pattern="[A-Z][a-záéóöőúüű]{2,15}" required>   
+          <div [hidden]="customerForm.controls.city?.valid || customerForm.controls.city?.pristine" class="error-message">
+            Hiányzó adat! Nagy betűvel kell kezdődnie!
+          </div>       
+        </div>
+        <div class="form-group">
+          <label for="">Utca</label>
+          <input name="street" [(ngModel)]="customer.address.street" type="text" class="form-control" required>
+          <div [hidden]="customerForm.controls.street?.valid || customerForm.controls.street?.pristine" class="error-message">
+            Hiányzó adat!
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="">Megjegyzés</label>
+          <input name="notes" [(ngModel)]="customer.address.notes" type="text" class="form-control" required>
+          <div [hidden]="customerForm.controls.notes?.valid || customerForm.controls.notes?.pristine" class="error-message">
+            Hiányzó adat!
+          </div>
+        </div>
+        <div class="form-check my-3">
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" name="active" [(ngModel)]="customer.active">Aktív
+            <span class="form-check-sign">
+              <span class="check"></span>
+            </span>
+          </label>
+        </div>
+        <div class="btn-group">
+        </div>
+        <button [disabled]="customerForm.invalid || updating" type="submit" class="btn btn-primary btn-block btn-lg">
+          <i *ngIf="!updating" class="fa fa-floppy-o"></i>
+          <i *ngIf="updating" class="fa fa-refresh"></i>
+        </button>
+      </form>
+    </div>
+  </div>

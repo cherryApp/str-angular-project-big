@@ -1,0 +1,22 @@
+.navbar {
+  box-sizing: border-box;
+  display: block;
+  width: calc(100%-320px);
+  margin-left: 288px;
+  margin-right: 32px;
+  border-radius: 7px;
+  padding-left: 26px;
+  padding-top: 14px;
+  padding-bottom: 10px;
+}
+
+@media only screen and (max-width: 991px) {
+.navbar {
+    width: calc(100%-64px);
+  margin-left: 32px;
+}
+}
+
+.headerText {
+  user-select: none;
+}

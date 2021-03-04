@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+.table {
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+
+.bg-dark:hover {
+  cursor: pointer,
+}
+.material-icons {
+  font-size: 24px,
+}
+#arrow {
+  display: flex;
+  justify-content: flex-end,
+}
+
+.icon-white {
+  color: red;
+  font-size: 50px;
+  padding-right: 4px;
+
+}
+
+th {
+  user-select: none;
+}
+
+
+
+
+
+
+
+

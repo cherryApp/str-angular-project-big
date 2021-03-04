@@ -1,0 +1,16 @@
+.error-message {
+  font-style: italic;
+  font-size: 0.8em;
+  color: rgb(155, 4, 4);
+  animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
