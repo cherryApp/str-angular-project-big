@@ -50,15 +50,18 @@ export class EditCustomerComponent implements OnInit {
           () => this.router.navigate(['/customers'])
         );
         // toaster üzenet sikeres létrehozásról
+        this.configService.showSuccess('Created successfuly.', 'New Customer');
       }
       else {
         this.customerService.update(element).subscribe(
           () => this.router.navigate(['/customers'])
         );
         // toaster üzenet sikeres módosításról
+        this.configService.showSuccess('Updated successfuly.', `Customer #${ element.id}`);
       }
     } catch (error) {
       // toaster üzenet hibáról
+      this.configService.showError('Something went wrong .', `Customer editor`);
     }
   }
 
