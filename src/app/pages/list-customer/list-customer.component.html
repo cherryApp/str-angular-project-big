@@ -45,21 +45,41 @@
                         title="Edit this Customer" class="btn btn-primary btn-link btn-sm">
                         <i class="material-icons">edit</i>
                       </button>
-                      <button type="button" (click)="deleteItem(customer)" rel="tooltip" title="Remove this Customer"
+                      <button type="button" (click)="setToDelete(customer)" rel="tooltip" title="Remove this Customer" data-toggle="modal" data-target="#myModal"
                         class="btn btn-danger btn-link btn-sm">
                         <i class="material-icons">close</i>
                       </button>
                     </div>
                   </td>
                 </tr>
-
               </tbody>
-
             </table>
           </div>
         </div>
       </div>
     </div>
+  </div>
+</div>
 
+
+<!-- MODAL -->
+<div id="myModal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirm delete</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure to delete this Customer?</p>
+        <p>#{{selectedItemToDelete.id}}</p>
+      </div>
+      <div class="modal-footer">
+        <button (click)="deleteItem()"  type="button" class="btn btn-danger" data-dismiss="modal">Yes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+      </div>
+    </div>
   </div>
 </div>

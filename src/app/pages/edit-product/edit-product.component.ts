@@ -12,6 +12,8 @@ import { ProductService } from 'src/app/services/product.service';
 })
 export class EditProductComponent implements OnInit {
 
+  title: string = '';
+  id: number = 0;
   product: Product = new Product();
   updating: boolean = false;
   cols: ITableCol[] = this.configService.tableColsProductList;
@@ -23,22 +25,44 @@ export class EditProductComponent implements OnInit {
     private configService: ConfigService,
     ) { }
 
-  ngOnInit(): void {
-    this.activatedRoute.params.subscribe(
-      params =>
-      this.productService.getOneById(params.id).subscribe(
-        product => {
-          this.product = product || new Product();
+    ngOnInit(): void {
+      this.activatedRoute.params.subscribe(
+        params =>{
+          if(params.id == 0){
+            this.title = 'Create New Product';
+            this.product = new Product();
+          }
+          else
+            this.productService.getOneById(params.id).subscribe(
+              item => {
+                this.id = params.id;
+                this.title = 'Edit this Product';
+                this.product = item;
+              })
         }
       )
-    );
-  }
+    }
 
-  onFormSubmit(form: NgForm): void {
-    this.updating = true;
-    this.productService.update(this.product).subscribe(
-      () => this.router.navigate(['products'])
-    );
-  }
+    onFormSubmit(form: NgForm, element: Product): void {
+      try {
+        if (element.id == 0) {
+          this.productService.create(element).subscribe(
+            () => this.router.navigate(['/products'])
+          );
+          // toaster üzenet sikeres létrehozásról
+          this.configService.showSuccess('Created successfuly.', 'New Product');
+        }
+        else {
+          this.productService.update(element).subscribe(
+            () => this.router.navigate(['/products'])
+          );
+          // toaster üzenet sikeres módosításról
+          this.configService.showSuccess('Updated successfuly.', `Product #${ element.id}`);
+        }
+      } catch (error) {
+        // toaster üzenet hibáról
+        this.configService.showError('Something went wrong .', `Product editor`);
+      }
+    }
 
 }
