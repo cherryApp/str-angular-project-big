@@ -24,9 +24,6 @@ import { FooterComponent } from './common/footer/footer.component';
 import { FilterPipe } from './pipe/filter.pipe';
 import { InfoCardComponent } from './common/info-card/info-card.component';
 import { SorterPipe } from './pipe/sorter.pipe';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -54,7 +51,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ChartsModule
+    ChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
