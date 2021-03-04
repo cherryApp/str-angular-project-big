@@ -44,14 +44,14 @@ import { SorterPipe } from './pipe/sorter.pipe';
     FooterComponent,
     FilterPipe,
     InfoCardComponent,
-    SorterPipe,
+    SorterPipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ChartsModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
