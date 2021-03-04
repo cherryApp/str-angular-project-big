@@ -40,6 +40,23 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="orderDate">{{ attributes.orderDate }}<span class="star"> *</span></label>
+                                    <input name="orderDate" [(ngModel)]="order.orderDate" class="form-control" type="date" required>
+                                    <div [hidden]="orderForm.controls.orderDate?.valid || orderForm.controls.orderDate?.pristine" class="error-message">
+                                        {{attributes.orderDate}} is required and can only be a number.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="paymentDueDate">{{ attributes.paymentDueDate }}<span class="star"> *</span></label>
+                                    <div class="input-group">
+                                        <input name="paymentDueDate" [(ngModel)]="order.paymentDueDate"
+                                        class="form-control" type="date" required>
+                                        <div [hidden]="orderForm.controls.paymentDueDate?.valid || orderForm.controls.paymentDueDate?.pristine" class="error-message">
+                                        {{attributes.paymentDueDate}} is required and can only be a number.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label for="status">{{ attributes.status }}<span class="star"> *</span></label>
                                     <select name="status" class="custom-select" [(ngModel)]="order.status" required>
                                         <option>new</option>
