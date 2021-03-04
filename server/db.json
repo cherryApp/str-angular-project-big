@@ -12,7 +12,7 @@
         "street": "Kis utca",
         "notes": "Something note."
       },
-      "active": false
+      "active": true
     },
     {
       "id": 2,
@@ -54,7 +54,7 @@
         "street": "Kertes utca",
         "notes": "Something note."
       },
-      "active": false
+      "active": true
     },
     {
       "id": 5,
@@ -1688,8 +1688,8 @@
   "orders": [
     {
       "id": 1,
-      "customerID": 50,
-      "productID": 50,
+      "customerID": 47,
+      "productID": 47,
       "amount": 50,
       "status": "paid"
     },
@@ -1716,7 +1716,7 @@
     },
     {
       "id": 6,
-      "customerID": 1,
+      "customerID": 13,
       "productID": 31,
       "amount": 84,
       "status": "paid"
@@ -1725,8 +1725,8 @@
       "id": 7,
       "customerID": 13,
       "productID": 50,
-      "amount": 6,
-      "status": "new"
+      "amount": 12,
+      "status": "paid"
     },
     {
       "id": 8,
@@ -2045,7 +2045,7 @@
     },
     {
       "id": 53,
-      "customerID": 0,
+      "customerID": 12,
       "productID": 1,
       "amount": 1,
       "status": "new"
@@ -2060,24 +2060,14 @@
     {
       "id": 55,
       "customerID": 14,
-      "productID": {
-        "id": 47,
-        "name": "A massza",
-        "type": "film",
-        "catId": 1,
-        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate, numquam sunt obcaecati quas minus deserunt excepturi eum perferendis earum quo ducimus officia. Odio itaque officia aspernatur aut a fuga cum?",
-        "price": 1478,
-        "featured": true,
-        "active": true,
-        "image": "https://www.mafab.hu/static/profiles/2014/293/03/17082_53.jpg"
-      },
+      "productID": 59,
       "amount": 17,
       "status": "new"
     },
     {
       "id": 56,
-      "customerID": 14,
-      "productID": 0,
+      "customerID": 3,
+      "productID": 20,
       "amount": 17,
       "status": "new"
     },
@@ -2107,6 +2097,27 @@
       "customerID": 13,
       "productID": 32,
       "amount": 12,
+      "status": "new"
+    },
+    {
+      "id": 61,
+      "customerID": 14,
+      "productID": 29,
+      "amount": 11,
+      "status": "new"
+    },
+    {
+      "id": 62,
+      "customerID": 3,
+      "productID": 46,
+      "amount": 99,
+      "status": "new"
+    },
+    {
+      "id": 63,
+      "customerID": 17,
+      "productID": 44,
+      "amount": 11,
       "status": "new"
     }
   ],
