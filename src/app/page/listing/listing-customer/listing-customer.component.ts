@@ -19,6 +19,9 @@ export class ListingCustomerComponent implements OnInit {
 
   phrase: string = '';
   cols: ITableCol[] = this.configService.customerTableCols;
+  cols2= {
+    "id":"#",
+  }
 
   constructor(
     private customerService: CustomerService,
