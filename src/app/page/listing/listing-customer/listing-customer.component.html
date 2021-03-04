@@ -37,7 +37,7 @@
     <thead class="bg-dark text-light">
       <tr>
         <th (click)="onColumnSelect(col.key)" *ngFor="let col of cols">
-          <span *ngIf='col.key === sortedColumn'>
+          <span *ngIf='col.key === sortedColumn && !firstSorting'>
             <i *ngIf="!direction" class="fa fa-sort-alpha-desc"></i>
             <i *ngIf="direction" class="fa fa-sort-alpha-asc"></i>
           </span>

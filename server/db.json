@@ -12,7 +12,7 @@
         "street": "Kis utca",
         "notes": "Something note."
       },
-      "active": false
+      "active": true
     },
     {
       "id": 2,
@@ -54,7 +54,7 @@
         "street": "Kertes utca",
         "notes": "Something note."
       },
-      "active": false
+      "active": true
     },
     {
       "id": 5,
