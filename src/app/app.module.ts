@@ -45,14 +45,14 @@ import { InprogressComponent } from './inprogress/inprogress.component';
     FilterPipe,
     InfoCardComponent,
     SorterPipe,
-    InprogressComponent
+    InprogressComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    MatProgressBarModule, MatProgressSpinnerModule, BrowserAnimationsModule
+    MatProgressBarModule, MatProgressSpinnerModule, BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
