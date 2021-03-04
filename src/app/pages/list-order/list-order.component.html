@@ -1,21 +1,26 @@
 <div class="row">
   <div class="col-md-8 offset-md-2">
-    <div class="card">
-      <div class="card-header card-header-success">
-        <h4 class="card-title ">Order Table</h4>
-        <div class="d-flex p-2 mb-3 filter__group">
-          <input [(ngModel)]="filterPhrase" class="form-control mr-sm-2 filter__input px-3" type="text" placeholder="Filter..." style="width: 200px;">
-          <select [(ngModel)]="filterKey" class="form-control mr-3 filter__select px-3" style="width: 150px;">
+    <div *ngIf="waiting">
+      <app-inprogress></app-inprogress>
+    </div>
+    <div *ngIf="!waiting">
+      <div class="card">
+        <div class="card-header card-header-success">
+          <h4 class="card-title ">Order Table</h4>
+          <div class="d-flex p-2 mb-3 filter__group">
+            <input [(ngModel)]="filterPhrase" class="form-control mr-sm-2 filter__input px-3" type="text"
+              placeholder="Filter..." style="width: 200px;">
+            <select [(ngModel)]="filterKey" class="form-control mr-3 filter__select px-3" style="width: 150px;">
               <option *ngFor="let fkey of filterKeys" [value]="fkey">{{ fkey }}</option>
-          </select>
+            </select>
+          </div>
         </div>
-      </div>
-      <div class="card-body">
-        <div class="table-responsive">
-          <table class="table">
-            <thead class="text-primary">
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="text-primary">
                 <th *ngFor="let col of cols" [id]="'thead_'+col.key" class="th" (click)="changeOrder(col.key)">
-                  {{ col.text }} 
+                  {{ col.text }}
                   <span [id]="'arrow_up_'+col.key" class="arrow material-icons md-18">keyboard_arrow_up</span>
                   <span [id]="'arrow_down_'+col.key" class="arrow material-icons md-18">keyboard_arrow_down</span>
                 </th>
@@ -24,27 +29,32 @@
                     <i class="fa fa-plus" aria-hidden="true"></i> New Order
                   </button>
                 </th>
-            </thead>
-            <tbody>
-              <tr *ngFor="let order of orderList$ | async | filter:filterPhrase:filterKey | sorter:sortby:sorterDirection">
-                <td *ngFor="let col of cols">
-                  <span>{{ order[col.key] }}</span>
-                </td>
-                <td>
-                  <div class="btn-group" role="group">
-                    <button type="button" [routerLink]="'/order/'+order.id" rel="tooltip" title="Edit this Order" class="btn btn-primary btn-link btn-sm">
-                      <i class="material-icons">edit</i>
-                    </button>
-                    <button type="button" (click)="deleteItem(order)" rel="tooltip" title="Remove this Order" class="btn btn-danger btn-link btn-sm">
-                      <i class="material-icons">close</i>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="let order of orderList$ | async | filter:filterPhrase:filterKey | sorter:sortby:sorterDirection">
+                  <td *ngFor="let col of cols">
+                    <span>{{ order[col.key] }}</span>
+                  </td>
+                  <td>
+                    <div class="btn-group" role="group">
+                      <button type="button" [routerLink]="'/order/'+order.id" rel="tooltip" title="Edit this Order"
+                        class="btn btn-primary btn-link btn-sm">
+                        <i class="material-icons">edit</i>
+                      </button>
+                      <button type="button" (click)="deleteItem(order)" rel="tooltip" title="Remove this Order"
+                        class="btn btn-danger btn-link btn-sm">
+                        <i class="material-icons">close</i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
+
   </div>
 </div>

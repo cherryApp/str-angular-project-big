@@ -13,12 +13,12 @@ import { ConfigService, ITableCol } from 'src/app/services/config.service';
 })
 export class ListCustomerComponent implements OnInit {
 
-  customerProperties: {count: number} = {
+  customerProperties: { count: number } = {
     count: 0,
   };
 
   customerList$: Observable<Customer[]> = this.customerService.customerList$.pipe(
-    tap( customers => {
+    tap(customers => {
       this.customerProperties.count = customers.length;
       customers.forEach(element => {
         // address modification
@@ -34,15 +34,19 @@ export class ListCustomerComponent implements OnInit {
   filterKeys: string[] = Object.keys(new Customer());
   sorterDirection: number = 1;
   sortby: string = '';
-
+  waiting = true;
   constructor(
     private customerService: CustomerService,
     private configService: ConfigService,
     private router: Router,
-    ) { }
+  ) { }
 
   ngOnInit(): void {
-    this.customerService.getAll()
+    this.customerService.getAll();
+    let time = (Math.floor(Math.random() * 4) + 1) * 1000;
+    this.customerList$.subscribe(
+      () => setTimeout(() => { this.waiting = false }, time)
+    )
   }
 
   changeOrder(param: string): void {
@@ -50,31 +54,31 @@ export class ListCustomerComponent implements OnInit {
       this.sorterDirection = 1;
     }
     if (this.sortby === param) {
-      if (this.sorterDirection === 1)  this.sorterDirection = 2;
+      if (this.sorterDirection === 1) this.sorterDirection = 2;
       else this.sorterDirection = 1;
     }
     this.sortby = param;
     let allArrow = document.querySelectorAll('.arrow');
-    allArrow.forEach( element => {
+    allArrow.forEach(element => {
       element.classList.remove('arrow__active');
     });
     let allTHead = document.querySelectorAll('.th');
-    allTHead.forEach( element => {
+    allTHead.forEach(element => {
       element.classList.remove('th__active');
     });
-    document.querySelector('#thead_'+param)?.classList.add('th__active');
-    if (this.sorterDirection == 1) document.querySelector('#arrow_up_'+param)?.classList.add('arrow__active');
-    else document.querySelector('#arrow_down_'+param)?.classList.add('arrow__active');
+    document.querySelector('#thead_' + param)?.classList.add('th__active');
+    if (this.sorterDirection == 1) document.querySelector('#arrow_up_' + param)?.classList.add('arrow__active');
+    else document.querySelector('#arrow_down_' + param)?.classList.add('arrow__active');
   }
 
-  originalOrder = (a:any, b:any): number => {
+  originalOrder = (a: any, b: any): number => {
     return 0;
   }
-  
+
   getAddress(item: Customer): string {
     return `${item.address.zip} ${item.address.country} ${item.address.city} ${item.address.street}\n${item.address.notes}`;
   }
-  
+
   deleteItem(item: Customer): void {
     this.customerService.remove(item).subscribe();
   }

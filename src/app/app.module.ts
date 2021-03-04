@@ -4,6 +4,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
+import { ChartsModule } from 'ng2-charts';
+
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ListCategoryComponent } from './pages/list-category/list-category.component';
 import { EditCategoryComponent } from './pages/edit-category/edit-category.component';
@@ -21,7 +24,10 @@ import { FooterComponent } from './common/footer/footer.component';
 import { FilterPipe } from './pipe/filter.pipe';
 import { InfoCardComponent } from './common/info-card/info-card.component';
 import { SorterPipe } from './pipe/sorter.pipe';
-
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InprogressComponent } from './inprogress/inprogress.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,13 +47,16 @@ import { SorterPipe } from './pipe/sorter.pipe';
     FooterComponent,
     FilterPipe,
     InfoCardComponent,
-    SorterPipe
+    SorterPipe,
+    InprogressComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ChartsModule,
+    MatProgressBarModule, MatProgressSpinnerModule, BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
