@@ -22,6 +22,7 @@ export class CustomerListComponent implements OnInit {
   sorterKey = '';
   sorterSubKey = '';
   sortDirection = '';
+  
 
   attributes = CustomerAttributesArray;
   attributes_count: number = 0;
@@ -33,6 +34,7 @@ export class CustomerListComponent implements OnInit {
   ngOnInit(): void {
     this.customerService.getAll();
     this.updatingValues();
+    this.setSortParams();
   }
 
   updatingValues() {
@@ -98,6 +100,15 @@ export class CustomerListComponent implements OnInit {
         item.order = '';
       }
     })
+  }
+  setSortParams(): void {
+    this.attributes.forEach(item => {
+      if(item.order){   // sorting is set
+        this.sorterKey = item.key;
+        this.sorterSubKey = item.obj;
+        this.sortDirection = item.order;
+      }
+    })    
   }
 
 
