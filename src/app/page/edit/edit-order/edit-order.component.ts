@@ -87,7 +87,8 @@ this.productService.get(this.order.productID).subscribe((product) => {
     if (!customer.id) {
       return '';
     }
-    return `(${customer.id}) ${customer.firstName} ${customer.lastName}`;
+    // return `(${customer.id}) ${customer.firstName} ${customer.lastName}`;
+    return `${customer.firstName} ${customer.lastName}`;
   }
 
   productResultFormatter(product: Product): string {
@@ -98,7 +99,8 @@ this.productService.get(this.order.productID).subscribe((product) => {
     if (!product.id) {
       return '';
     }
-    return `(${product.id}) ${product.name}`;
+    // return `(${product.id}) ${product.name}`;
+    return product.name;
   }
 
   // like(key: string, value: string, limit: number = 10): Observable<Customer[]> {
