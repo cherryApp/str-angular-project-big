@@ -68,9 +68,13 @@ export class ListBillComponent implements OnInit {
   }
 
   deleteItem(): void {
-    const deletedId: string = `${this.selectedItemToDelete.id}`;
-    this.billService.remove(this.selectedItemToDelete);
-    this.configService.showSuccess('Deleted successfuly.', `Bill #${deletedId}`);
+    const deletedId: number = this.selectedItemToDelete.id;
+    this.billService.remove(this.selectedItemToDelete).subscribe(
+      () => {
+        this.billService.getAll();
+        this.configService.showSuccess('Deleted successfuly.', `Bill #${deletedId}`);
+      }
+    );
   }
 
 }

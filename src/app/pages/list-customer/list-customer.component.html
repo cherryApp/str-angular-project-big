@@ -11,7 +11,7 @@
             <input [(ngModel)]="filterPhrase" class="form-control mr-sm-2 filter__input px-3" type="text"
               placeholder="Filter..." style="width: 200px;">
             <select [(ngModel)]="filterKey" class="form-control mr-3 filter__select px-3" style="width: 150px;">
-              <option *ngFor="let fkey of filterKeys" [value]="fkey">{{ fkey }}</option>
+              <option *ngFor="let col of cols" [value]="col.key">{{ col.text }}</option>
             </select>
           </div>
         </div>
@@ -32,7 +32,7 @@
               </thead>
 
               <tbody>
-                <tr
+                <tr class="table__row" 
                   *ngFor="let customer of customerList$ | async | filter:filterPhrase:filterKey | sorter:sortby:sorterDirection">
                   <td *ngFor="let col of cols">
                     <input *ngIf="col.type === 'check'" [(ngModel)]="customer[col.key]" type="checkbox"
