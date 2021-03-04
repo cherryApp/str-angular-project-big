@@ -1688,8 +1688,8 @@
   "orders": [
     {
       "id": 1,
-      "customerID": 50,
-      "productID": 50,
+      "customerID": 47,
+      "productID": 47,
       "amount": 50,
       "status": "paid"
     },
@@ -1725,8 +1725,8 @@
       "id": 7,
       "customerID": 13,
       "productID": 50,
-      "amount": 6,
-      "status": "new"
+      "amount": 12,
+      "status": "paid"
     },
     {
       "id": 8,
@@ -2103,6 +2103,20 @@
       "id": 61,
       "customerID": 14,
       "productID": 29,
+      "amount": 11,
+      "status": "new"
+    },
+    {
+      "id": 62,
+      "customerID": 3,
+      "productID": 46,
+      "amount": 99,
+      "status": "new"
+    },
+    {
+      "id": 63,
+      "customerID": 17,
+      "productID": 44,
       "amount": 11,
       "status": "new"
     }
