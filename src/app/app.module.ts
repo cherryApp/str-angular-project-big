@@ -53,7 +53,6 @@ import { SorterPipe } from './pipe/sorter.pipe';
     FormsModule,
     ChartsModule,
     MatProgressBarModule, MatProgressSpinnerModule, BrowserAnimationsModule,
-
   ],
   providers: [],
   bootstrap: [AppComponent]
