@@ -26,7 +26,6 @@ export class EditCustomerComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
     this.activatedRoute.params.subscribe(
       params =>{
         if(params.id == 0){

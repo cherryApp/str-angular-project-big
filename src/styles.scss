@@ -1,3 +1,6 @@
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
 .filter {
     &__group {
         background-color: rgba(255, 255, 255, .7);
@@ -58,5 +61,74 @@
 }
 
 .action { width: 200px; }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.form {
+    &__border {
+        border-radius: .2rem;
+        margin: 1rem 2rem;
+        padding: 1rem 2rem;
+        background-color: rgba(255, 255, 255, 1);
+        border: 1px solid rgba(0, 0, 0, .1);
+        @media screen and (min-width: 992px) {
+            display: flex;
+            flex-wrap: wrap;
+        }
+    }
+
+    &__column {
+        width: 100%;
+        padding: 0 1rem;
+        @media screen and (min-width: 992px) {
+            width: 50%;
+        }
+    }
+
+    &__group {
+        position: relative;
+        margin: 0;
+        padding: .7rem 2rem;
+        border-radius: none;
+        border: 1px solid rgba(0, 0, 0, 0);
+        border-bottom: 1px dotted rgba(0, 0, 0, .2);
+        &:focus-within {
+            border-radius: .2rem;
+            border: 1px solid rgba(156, 39, 176, .5);
+            & label  {
+                font-weight: 600;
+                color: rgba(156, 39, 176, 1);
+            }
+        }
+    }
+}
+
+
+.alert {
+    &__anim {
+        position: absolute;
+        top: -14px;
+        right: .5rem;
+        opacity: 1;
+        padding: .5rem 1rem;
+        animation: alert-animation .3s;
+        font-size: .8rem;
+        width: 80%;
+    }
+
+    &__triangle {
+        color: #ef5350;
+        position: absolute;
+        top: 1rem;
+        left: .6rem;
+    }
+}
+
+@keyframes alert-animation {
+    0% {
+        top: 0px;
+        opacity: 0;
+    }
+    100% {
+        top: -14px;
+        opacity: 1;
+    }
+}
