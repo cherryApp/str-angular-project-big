@@ -52,10 +52,10 @@ export class AboutUsComponent implements OnInit {
     },
     {
       name: "Gyozo Urbancsok",
-      title: "angular master pro elite",
-      imgSrc: "./assets/img/faces/marc.jpg",
+      title: "intrigued",
+      imgSrc: "./assets/img/faces/gyozo.jpg",
       href: "#",
-      description: "Working on everything."
+      description: "Wondering how all this works."
     },
   ]
 
