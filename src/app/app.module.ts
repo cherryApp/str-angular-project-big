@@ -50,8 +50,7 @@ import { SorterPipe } from './pipe/sorter.pipe';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
-    ChartsModule
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
