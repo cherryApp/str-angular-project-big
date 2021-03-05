@@ -13,7 +13,7 @@ export class AboutUsComponent implements OnInit {
       title: "aspiring developer",
       imgSrc: "./assets/img/faces/bp.png",
       href: "#",
-      description: "Tries hard and usually succeeds. One way or the other."
+      description: "Still learning and has a lot to learn."
     },
     {
       name: "Peter Gyorffy",
