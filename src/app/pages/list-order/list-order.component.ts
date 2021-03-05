@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subscription } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { Order } from 'src/app/models/order';
 import { ConfigService, ITableCol } from 'src/app/services/config.service';
 import { OrderService } from 'src/app/services/order.service';
@@ -11,9 +12,18 @@ import { OrderService } from 'src/app/services/order.service';
 })
 export class ListOrderComponent implements OnInit {
 
-  orderList$: BehaviorSubject<Order[]> = this.orderService.orderList$;
+  orderProperties: { count: number } = {
+    count: 0,
+  };
 
   cols: ITableCol[] = this.configService.tableColsOrderList;
+
+  // Paging
+  firstItem: number = 0;
+  lastItem: number = 0;
+  pages: number = 0;
+  itemsPerPage:  number = 10;
+  currentPage: number = 1;
 
   filterPhrase: string = '';
   filterKey: string = 'status';
@@ -25,6 +35,15 @@ export class ListOrderComponent implements OnInit {
   colspan: number = this.cols.length + 1;
   statOrdersSubscription: Subscription = new Subscription();
   statOrderText: string = '';
+
+  orderList$: Observable<Order[]> = this.orderService.orderList$.pipe(
+    tap(orders => {
+      this.orderProperties.count = orders.length;
+      this.firstItem =  (this.currentPage - 1) * this.itemsPerPage;
+      this.lastItem =  this.firstItem + this.itemsPerPage;
+      this.pages = Math.ceil(this.orderProperties.count / this.itemsPerPage);
+    })
+  );
 
   constructor(
     private orderService: OrderService,
@@ -46,6 +65,17 @@ export class ListOrderComponent implements OnInit {
       }
     );
   }
+
+  // Beállítja az aktuális oldalszámot
+  changePageNumber(page: number): void {
+    this.currentPage = page;
+    this.firstItem =  (this.currentPage - 1) * this.itemsPerPage;
+    this.lastItem =  this.firstItem + this.itemsPerPage;
+  }
+
+  numSequence(n: number): Array<number> { 
+    return Array(n); 
+  } 
 
   changeOrder(param: string): void {
     if (this.sortby === '' || this.sortby != param) {

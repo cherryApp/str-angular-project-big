@@ -32,7 +32,7 @@
               </thead>
               <tbody>
                 <tr class="table__row" 
-                  *ngFor="let order of orderList$ | async | filter:filterPhrase:filterKey | sorter:sortby:sorterDirection">
+                  *ngFor="let order of orderList$ | async | filter:filterPhrase:filterKey | sorter:sortby:sorterDirection | slice:firstItem:lastItem">
                   <td *ngFor="let col of cols">
                     <span>{{ order[col.key] }}</span>
                   </td>
@@ -58,6 +58,15 @@
             </table>
           </div>
         </div>
+
+        <nav aria-label="Page navigation example">
+          <ul class="pagination d-flex align-item-center justify-content-center">
+              <li class="page-item" *ngFor="let n of numSequence(pages); let j = index;">
+                <a class="page-link" (click)="changePageNumber(j+1)">{{ j + 1 }}</a>
+              </li>
+          </ul>
+        </nav>
+
       </div>
     </div>
   </div>

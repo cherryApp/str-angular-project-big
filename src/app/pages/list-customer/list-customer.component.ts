@@ -17,28 +17,44 @@ export class ListCustomerComponent implements OnInit {
     count: 0,
   };
 
+  cols: ITableCol[] = this.configService.tableColsCustomerList;
+  
+  // Filter
+  filterPhrase: string = '';
+  filterKey: string = 'firstName';
+  filterKeys: string[] = Object.keys(new Customer());
+  
+  // Sorter
+  sorterDirection: number = 1;
+  sortby: string = '';
+  
+  // Paging
+  firstItem: number = 0;
+  lastItem: number = 0;
+  pages: number = 0;
+  itemsPerPage:  number = 10;
+  currentPage: number = 1;
+  
+  // Stat
+  statCustomerSubscription: Subscription = new Subscription();
+  statCustomerText: string = '';
+  
+  waiting = true;
+  colspan: number = this.cols.length + 1;
+  selectedItemToDelete: Customer = new Customer();
+
   customerList$: Observable<Customer[]> = this.customerService.customerList$.pipe(
     tap(customers => {
       this.customerProperties.count = customers.length;
+      this.firstItem =  (this.currentPage - 1) * this.itemsPerPage;
+      this.lastItem =  this.firstItem + this.itemsPerPage;
+      this.pages = Math.ceil(this.customerProperties.count / this.itemsPerPage);
       customers.forEach(element => {
         // address modification
         element.fullAddress = this.getAddress(element);
       })
     })
   );
-
-  cols: ITableCol[] = this.configService.tableColsCustomerList;
-
-  filterPhrase: string = '';
-  filterKey: string = 'firstName';
-  filterKeys: string[] = Object.keys(new Customer());
-  sorterDirection: number = 1;
-  selectedItemToDelete: Customer = new Customer();
-  sortby: string = '';
-  waiting = true;
-  colspan: number = this.cols.length + 1;
-  statCustomerSubscription: Subscription = new Subscription();
-  statCustomerText: string = '';
 
   constructor(
     private customerService: CustomerService,
@@ -60,6 +76,17 @@ export class ListCustomerComponent implements OnInit {
       }
     );
   }
+
+  // Beállítja az aktuális oldalszámot
+  changePageNumber(page: number): void {
+    this.currentPage = page;
+    this.firstItem =  (this.currentPage - 1) * this.itemsPerPage;
+    this.lastItem =  this.firstItem + this.itemsPerPage;
+  }
+
+  numSequence(n: number): Array<number> { 
+    return Array(n); 
+  } 
 
   changeOrder(param: string): void {
     if (this.sortby === '' || this.sortby != param) {

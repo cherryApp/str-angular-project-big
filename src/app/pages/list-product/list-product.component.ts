@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { Product } from 'src/app/models/product';
 import { ConfigService, ITableCol } from 'src/app/services/config.service';
 import { ProductService } from 'src/app/services/product.service'
@@ -11,7 +12,9 @@ import { ProductService } from 'src/app/services/product.service'
 })
 export class ListProductComponent implements OnInit {
 
-  productList$: Observable<Product[]> = this.productService.productList$;
+  productProperties: { count: number } = {
+    count: 0,
+  };
 
   cols: ITableCol[] = this.configService.tableColsProductList;
 
@@ -25,6 +28,22 @@ export class ListProductComponent implements OnInit {
   colspan: number = this.cols.length + 1;
   statProductscription: Subscription = new Subscription();
   statProductsText: string = '';
+
+  // Paging
+  firstItem: number = 0;
+  lastItem: number = 0;
+  pages: number = 0;
+  itemsPerPage:  number = 10;
+  currentPage: number = 1;
+
+  productList$: Observable<Product[]> = this.productService.productList$.pipe(
+    tap(products => {
+      this.productProperties.count = products.length;
+      this.firstItem =  (this.currentPage - 1) * this.itemsPerPage;
+      this.lastItem =  this.firstItem + this.itemsPerPage;
+      this.pages = Math.ceil(this.productProperties.count / this.itemsPerPage);
+    })
+  );
 
   constructor(
     private productService: ProductService,
@@ -45,6 +64,17 @@ export class ListProductComponent implements OnInit {
       }
     );
   }
+
+  // Beállítja az aktuális oldalszámot
+  changePageNumber(page: number): void {
+    this.currentPage = page;
+    this.firstItem =  (this.currentPage - 1) * this.itemsPerPage;
+    this.lastItem =  this.firstItem + this.itemsPerPage;
+  }
+
+  numSequence(n: number): Array<number> { 
+    return Array(n); 
+  } 
 
   changeOrder(param: string): void {
     if (this.sortby === '' || this.sortby != param) {
