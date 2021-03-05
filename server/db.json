@@ -29,48 +29,6 @@
       "active": true
     },
     {
-      "id": 3,
-      "firstName": "Rutger",
-      "lastName": "Barzen",
-      "email": "rbarzen2@go.com",
-      "address": {
-        "zip": 1024,
-        "country": "Hungary",
-        "city": "Budapest",
-        "street": "Dobó utca",
-        "notes": "Something note."
-      },
-      "active": false
-    },
-    {
-      "id": 4,
-      "firstName": "Celinda",
-      "lastName": "Tritton",
-      "email": "ctritton3@gnu.org",
-      "address": {
-        "zip": 1145,
-        "country": "Hungary",
-        "city": "Budapest",
-        "street": "Kertes utca",
-        "notes": "Something note."
-      },
-      "active": true
-    },
-    {
-      "id": 5,
-      "firstName": "Gabby",
-      "lastName": "Endon",
-      "email": "gendon4@themeforest.net",
-      "address": {
-        "zip": 1230,
-        "country": "Hungary",
-        "city": "Budapest",
-        "street": "Nagy körút",
-        "notes": "Something note.."
-      },
-      "active": false
-    },
-    {
       "id": 6,
       "firstName": "Jill",
       "lastName": "Norton",
@@ -1692,27 +1650,6 @@
       "productID": 43,
       "amount": 13,
       "status": "paid"
-    },
-    {
-      "id": 7,
-      "customerID": 13,
-      "productID": 50,
-      "amount": 12,
-      "status": "paid"
-    },
-    {
-      "id": 8,
-      "customerID": 50,
-      "productID": 16,
-      "amount": 74,
-      "status": "paid"
-    },
-    {
-      "id": 9,
-      "customerID": 31,
-      "productID": 21,
-      "amount": 76,
-      "status": "new"
     },
     {
       "id": 10,
