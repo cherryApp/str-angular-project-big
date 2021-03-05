@@ -3,7 +3,7 @@
       <form #billForm="ngForm" (ngSubmit)="onUpdate(bill)">
         <div class="form-group">
           <label for="orderId">Rendelés ID</label>
-          <input name="orderId" id="orderId" [(ngModel)]="bill.orderID" type="number" class="form-control" required>
+          <input name="orderId" id="orderId" [(ngModel)]="bill.orderID" type="number" class="form-control" autofocus required>
           <div [hidden]="billForm.controls.orderId?.valid || billForm.controls.orderId?.pristine" class="error-message">
             Hiányzó id!
           </div>

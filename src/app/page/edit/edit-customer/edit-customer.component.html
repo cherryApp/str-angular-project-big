@@ -3,8 +3,8 @@
       <form #customerForm="ngForm" (ngSubmit)="onUpdate(customer)">
         <div class="form-group">
           <label for="">Keresztnév</label>
-          <input name="firstName" [(ngModel)]="customer.firstName" type="text" class="form-control" pattern="^[A-ZÁÉÓÖŐÜÚŰ][a-záéüöóőú]{1,10}" required>
-          <div [hidden]="customerForm.controls.firstName?.valid || customerForm.controls.firstName?.pristine" class="error-message">
+          <input name="firstName" [(ngModel)]="customer.firstName" type="text" class="form-control" autofocus pattern="^[A-ZÁÉÓÖŐÜÚŰ][a-záéüöóőú]{1,10}" required>
+          <div [hidden]="customerForm.controls.firstName?.valid || customerForm.controls.firstName?.pristine"  class="error-message">
             Hiányzó adat! A keresztnévnek nagy betűvel kell kezdődnie!
           </div>
         </div>
