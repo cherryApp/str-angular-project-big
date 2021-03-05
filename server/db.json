@@ -1694,27 +1694,6 @@
       "status": "paid"
     },
     {
-      "id": 7,
-      "customerID": 13,
-      "productID": 50,
-      "amount": 12,
-      "status": "paid"
-    },
-    {
-      "id": 8,
-      "customerID": 50,
-      "productID": 16,
-      "amount": 74,
-      "status": "paid"
-    },
-    {
-      "id": 9,
-      "customerID": 31,
-      "productID": 21,
-      "amount": 76,
-      "status": "new"
-    },
-    {
       "id": 10,
       "customerID": 17,
       "productID": 42,
