@@ -1,0 +1,163 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title ">Customers</h4>
+                        <p class="card-category">List of customers.</p>
+                    </div>
+                    <div class="card my-0 px-3">
+                        <button [routerLink]="['/customer/0']"
+                            class="btn btn-primary my-3">
+                            Create new customer
+                        </button>
+                    </div>
+                    <div class="card-body col-12 d-flex filterBlock">
+                        <input name="phrase" (keyup)="onChangePhrase($event)"
+                            [value]="phrase"
+                            [ngClass]="{'hidden': phraseHidden}"
+                            class="form-control" type="text"
+                            placeholder="Enter filtering phrase...">
+                        <select class="custom-select mx-2"
+                            (change)="onChangeKey($event)">
+                            <ng-container *ngFor="let attribute of attributes">
+                                <option *ngIf="attribute.type!='check'"
+                                    [value]="attribute.key"
+                                    [selected]="setDefault(attribute.key)">
+                                    Filter by {{attribute.title}}</option>
+                                <option *ngIf="attribute.type==='check'"
+                                    [value]="attribute.key+',1'"
+                                    [selected]="setDefault(attribute.key)">
+                                    {{attribute.title}}</option>
+                                <option *ngIf="attribute.type==='check'"
+                                    [value]="attribute.key+',0'"
+                                    [selected]="setDefault(attribute.key)">
+                                    Not {{attribute.title}}</option>
+                            </ng-container>
+                        </select>
+
+                        <label for="search" class="mx-2">Pagesize: </label>
+                        <select class="custom-select width-3rem"
+                            [value]="pagination.pageSize"
+                            (change)="pagination.onChangePageSize($event)">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                        </select>
+                        <label for="page" class="mx-2">Page: </label>
+                        <a class="page-link" [ngClass]="{'disabled': pagination.page===1}"
+                            (click)="pagination.onNextPage(0)"
+                            title="first"><span
+                                class="material-icons">first_page</span></a>
+                        <a class="page-link" [ngClass]="{'disabled': pagination.page===1}"
+                            (click)="pagination.onNextPage(-1)"
+                            title="previous"><span
+                                class="material-icons">chevron_left</span></a>
+                        <select id="page" class="custom-select width-3rem"
+                            [value]="pagination.page"
+                            (change)="pagination.onChangePage($event)">
+                            <option *ngFor="let i of pagination.pages"
+                                [value]="i">{{ i }}</option>
+                        </select>
+                        <a class="page-link" [ngClass]="{'disabled': pagination.page===pagination.pages.length}"
+                            (click)="pagination.onNextPage(1)"
+                            title="next"><span
+                                class="material-icons">chevron_right</span></a>
+                        <a class="page-link" [ngClass]="{'disabled': pagination.page===pagination.pages.length}"
+                            (click)="pagination.onNextPage(9999)"
+                            title="last"><span
+                                class="material-icons">last_page</span></a>
+                    </div>
+                    <div *ngIf="updating" class="d-flex justify-content-center">
+                        <mat-spinner></mat-spinner>
+                    </div>
+                    <div *ngIf="!updating" class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="text-primary">
+                                    <th *ngFor="let attribute of attributes"
+                                        (click)="onColumnSelect(attribute.key)">
+                                        <span draggable="true"
+                                            (dragstart)="drag($event)"
+                                            (dragover)="allowDrop($event)"
+                                            (drop)="drop($event)">{{attribute.title}}</span>
+                                        <span
+                                            *ngIf="attribute.order === 'ascending'"
+                                            class="material-icons"><i
+                                                class="fa fa-angle-up"></i></span>
+                                        <span
+                                            *ngIf="attribute.order === 'descending'"
+                                            class="material-icons"><i
+                                                class="fa fa-angle-down"></i></span>
+                                    </th>
+                                    <th>Actions</th>
+                                </thead>
+                                <tbody>
+                                    <tr
+                                        *ngFor="let customer of customerList$ | async | filter:phrase:filterKey:filterSubKey:pagination | sorter:sorterKey:sortDirection:sorterSubKey | slice:((pagination.page-1)*pagination.pageSize):(pagination.page*pagination.pageSize)">
+                                        <td
+                                            *ngFor="let attribute of attributes">
+                                            <span
+                                                *ngIf="attribute.type==='text' && !attribute.obj">{{customer[attribute.key]}}</span>
+                                            <span
+                                                *ngIf="attribute.type==='text' && attribute.obj">{{customer[attribute.obj][attribute.key]}}</span>
+                                            <span
+                                                *ngIf="attribute.type==='check' && customer[attribute.key]"
+                                                class="material-icons">check</span>
+                                        </td>
+                                        <td>
+                                            <div class="btn-group special">
+                                                <button
+                                                    [routerLink]="['/customer', customer.id]"
+                                                    class="btn btn-info">
+                                                    <i class="fa fa-pencil"></i>
+                                                </button>
+                                                <!-- <button class="btn btn-danger"
+                                                    (click)="onDelete(customer)">
+                                                    <i class="fa fa-trash"></i>
+                                                </button> -->
+                                                <button class="btn btn-danger" data-toggle="modal"
+                                                    data-target="#confirmationDialog"
+                                                    (click)="setCustomerDelete(customer)">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="confirmationDialog" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger font-weight-bold">
+                    CONFIRMATION REQUIRED</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Are you sure you want to delete <span class="text-primary">{{customer.firstName}} {{customer.lastName}}</span>?</strong>
+                </p>
+                <p>All information associated to this customer will be permanently deleted.</p>
+                <p><span class="text-danger">This operation can not be undone.</span></p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary" id="cancelButton"
+                    data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" (click)="onDelete(customer)"
+                    data-dismiss="modal">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

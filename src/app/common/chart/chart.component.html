@@ -1,0 +1,22 @@
+<div class="card-header" class="{{ cardClass }}">
+  <div class="chart">
+    <div style="display: block;" class="chartContainer">
+      <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels"
+        [options]="barChartOptions" [plugins]="barChartPlugins"
+        [legend]="barChartLegend" [chartType]="barChartType"
+        [colors]="chartColors">
+      </canvas>
+    </div>
+  </div>
+</div>
+<div class="card-body">
+  <h4 class="card-title">{{ title }}</h4>
+  <p class="card-category">
+    {{ content }}
+  </p>
+</div>
+<div class="card-footer">
+  <div class="stats">
+    <i class="material-icons">{{ icon }}</i>{{ footer }}
+  </div>
+</div>

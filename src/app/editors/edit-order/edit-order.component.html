@@ -1,0 +1,97 @@
+<div class="main-content">
+    <div class="card my-0 px-3">
+        <button (click)="backClicked()" class="btn btn-primary my-3">
+            Back to previous page
+        </button>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card d-flex">
+                    <div class="card-header card-header-primary mb-4 w-50 mx-auto">
+                        <ng-container *ngIf="(order$ | async) as order">
+                            <h4 *ngIf="order.id == 0" class="card-title">Create new order</h4>
+                            <h4 *ngIf="order.id != 0" class="card-title">Edit order</h4>
+                        </ng-container>
+                    </div>
+                    <div class="row">
+                        <div *ngIf="(order$ | async) as order" class="col-6 offset-3">
+                            <form #orderForm="ngForm" (ngSubmit)="onUpdate(orderForm, order)">
+                                <div class="form-group">
+                                    <label for="customerID">{{ attributes.customerID }}<span class="star"> *</span></label>
+                                    <input name="customerID" [(ngModel)]="order.customerID" type="number" class="form-control"
+                                    pattern="^[1-9]\d*$" required>
+                                    <div [hidden]="orderForm.controls.customerID?.valid || orderForm.controls.customerID?.pristine" class="error-message">
+                                        {{attributes.customerID}} is required and can only be a number.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="firstName">{{ attributes.firstName }}<span class="star"> *</span></label>
+                                    <input name="firstName" [(ngModel)]="order.firstName" type="text" class="form-control"
+                                    pattern="[A-ZÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ](.{2,19})" required>
+                                    <div [hidden]="orderForm.controls.firstName?.valid || orderForm.controls.firstName?.pristine" class="error-message">
+                                        {{attributes.firstName}} must be between 3-20 characters and must start with a capital letter.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastName">{{ attributes.lastName }}<span class="star"> *</span></label>
+                                    <input name="lastName" [(ngModel)]="order.lastName" type="text" class="form-control"
+                                    pattern="[A-ZÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ](.{2,19})" required>
+                                    <div [hidden]="orderForm.controls.lastName?.valid || orderForm.controls.lastName?.pristine" class="error-message">
+                                        {{attributes.lastName}} must be between 3-20 characters and must start with a capital letter.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="productID">{{ attributes.productID }}<span class="star"> *</span></label>
+                                    <input name="productID" [(ngModel)]="order.productID" type="number" class="form-control" pattern="^[1-9]\d*$" required>
+                                    <div [hidden]="orderForm.controls.productID?.valid || orderForm.controls.productID?.pristine" class="error-message">
+                                        {{attributes.productID}} is required and can only be a number.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="amount">{{ attributes.amount }}<span class="star"> *</span></label>
+                                    <input name="amount" [(ngModel)]="order.amount" type="number" class="form-control" pattern="^[1-9]\d*$" required>
+                                    <div [hidden]="orderForm.controls.amount?.valid || orderForm.controls.amount?.pristine" class="error-message">
+                                        {{attributes.amount}} is required and can only be a number.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="orderDate">{{ attributes.orderDate }}<span class="star"> *</span></label>
+                                    <div class="input-group">
+                                     <input name="orderDate" [(ngModel)]="order.orderDate"
+                                     class="form-control" type="date" required>
+                                        <div [hidden]="orderForm.controls.orderDate?.valid || orderForm.controls.orderDate?.pristine"           class="error-message">
+                                            {{attributes.orderDate}} is required and please use the date picker for the correct date.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="paymentDueDate">{{ attributes.paymentDueDate }}<span class="star"> *</span></label>
+                                    <div class="input-group">
+                                        <input name="paymentDueDate" [(ngModel)]="order.paymentDueDate"
+                                        class="form-control" type="date" required>
+                                        <div [hidden]="orderForm.controls.paymentDueDate?.valid || orderForm.controls.paymentDueDate?.pristine" class="error-message">
+                                        {{attributes.paymentDueDate}} is required and please use the date picker for the correct date.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="status">{{ attributes.status }}<span class="star"> *</span></label>
+                                    <select name="status" class="custom-select" [(ngModel)]="order.status" required>
+                                        <option>new</option>
+                                        <option>paid</option>
+                                        <option>shipped</option>
+                                    </select>
+                                </div>
+                                <button [disabled]="orderForm.invalid" [disabled]="clicked" type="submit"
+                                    class="btn btn-primary btn-block btn-lg">
+                                    <i id="saveicon" class="fa fa-save"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

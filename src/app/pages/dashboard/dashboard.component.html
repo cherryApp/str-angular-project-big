@@ -1,0 +1,40 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div *ngFor="let card of cards" class="col-xl-3 col-sm-6">
+                <app-info-card [cardClass]="card.cardClass" [icon]="card.icon"
+                    [title]="card.title" [content]="card.content"
+                    [footer]="card.footer">
+                </app-info-card>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-around">
+            <div *ngFor="let chart of charts" class="card card-chart col-sm-5">
+                <app-chart [cardClass]="chart.cardClass" [icon]="chart.icon"
+                    [title]="chart.title" [content]="chart.content"
+                    [footer]="chart.footer"
+                    [barChartLabels]="chart.barChartLabels"
+                    [barChartData]="chart.barChartData"
+                    [chartColors]="chart.chartColors"
+                    [barChartType]="chart.barChartType"></app-chart>
+            </div>
+        </div>
+        <div class="row d-flex justify-content-around">
+            <div class="card">
+                <div class="card-header-tabs card-header-primary">
+                    <div class="card-icon card-header-warning">
+                        <i class="material-icons">location_on</i>
+                    </div>
+                    <p class="card-category">Find a store near You!</p>
+                </div>
+                <h3 class="card-title mt-3 mx-3">
+                    <app-google-map></app-google-map>
+                </h3>
+                <div class="card-footer">
+                    <div class="stats">The map contains Your position too.</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

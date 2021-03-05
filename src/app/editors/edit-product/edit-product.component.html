@@ -1,0 +1,90 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card d-flex">
+                    <div class="card-header card-header-primary mb-4 w-50 mx-auto">
+                        <ng-container *ngIf="(product$ | async) as product">
+                            <h4 *ngIf="product.id==0" class="card-title">Create new product</h4>
+                            <h4 *ngIf="product.id!=0" class="card-title">Edit product</h4>
+                        </ng-container>
+                    </div>
+                    <div class="row">
+                        <div *ngIf="(product$ | async) as product" class="col-6 offset-3">
+                            <form #productForm="ngForm" (ngSubmit)="onUpdate(productForm, product)">
+                                <div class="form-group">
+                                    <label for="name">{{attributes.name}}</label>
+                                    <input name="name" [(ngModel)]="product.name" type="text" class="form-control"
+                                        pattern="[A-ZÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ](.{3,99})" required>
+                                    <div [hidden]="productForm.controls.name?.valid || productForm.controls.name?.pristine"
+                                        class="error-message">
+                                        {{attributes.name}} must be between 4-100 characters and must start with a
+                                        capital letter.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="type">{{attributes.type}}</label>
+                                    <input name="type" [(ngModel)]="product.type" type="text" class="form-control"
+                                        pattern="[A-ZÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ](.{3,49})" required>
+                                    <div [hidden]="productForm.controls.type?.valid || productForm.controls.type?.pristine"
+                                        class="error-message">
+                                        {{attributes.type}} must be between 4-50 characters and must start with a
+                                        capital letter.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="catID">{{attributes.catID}}</label>
+                                    <select class="custom-select" [(ngModel)]="product.catID" name="catID">
+                                        <option *ngFor="let category of categoryList$ | async" [value]="category.id">{{category.id}} - {{category.name}}: {{category.description}} </option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="stock">{{attributes.stock}}</label>
+                                    <input name="stock" [(ngModel)]="product.stock" type="number" class="form-control"
+                                        required>
+                                    <div [hidden]="productForm.controls.stock?.valid || productForm.controls.stock?.pristine"
+                                        class="error-message">
+                                        {{attributes.stock}} is required and can only be a number.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">{{attributes.description}}</label>
+                                    <input name="description" [(ngModel)]="product.description" type="text"
+                                        class="form-control" pattern=".{10,255}" required>
+                                    <div [hidden]="productForm.controls.description?.valid || productForm.controls.description?.pristine"
+                                        class="error-message">
+                                        {{attributes.description}} must be between 10-255 characters.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="price">{{attributes.price}} in Forints</label>
+                                    <input name="price" [(ngModel)]="product.price" type="number" class="form-control"
+                                        required>
+                                    <div [hidden]="productForm.controls.price?.valid || productForm.controls.price?.pristine"
+                                        class="error-message">
+                                        {{attributes.price}} is required and can only be a number.
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="mr-2" for="featured">Product is {{attributes.featured}}</label>
+                                    <input class="regular-checkbox" name="featured" [(ngModel)]="product.featured"
+                                        type="checkbox">
+                                </div>
+                                <div class="form-group">
+                                    <label class="mr-2" for="active">Product is {{attributes.active}}</label>
+                                    <input class="regular-checkbox" name="active" [(ngModel)]="product.active"
+                                        type="checkbox">
+                                </div>
+                                <button [disabled]="productForm.invalid" [disabled]="clicked" type="submit"
+                                    class="btn btn-primary btn-block btn-lg">
+                                    <i id="saveicon" class="fa fa-save"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

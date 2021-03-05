@@ -1,0 +1,70 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+    
+            <div class="col-md-12">
+                <div class="card">
+                  <div class="card-header card-header-warning">
+                    <h4 [hidden]="currentCategory.id==0" class="card-title"><i class="fa fa-cog fa-spin"></i> Category Editor</h4>
+                    <h4 [hidden]="currentCategory.id>0" class="card-title"><i class="fa fa-cog fa-spin"></i> New Category</h4>
+                   
+                    <p class="card-category">Category Profile</p>
+                  </div>
+                  <div class="card-body">
+                    <form #categoryForm="ngForm" (ngSubmit)=" onFormSubmit(categoryForm)">
+                      <div class="form-group">
+                        <div class="row">
+                          <div class="col-md-5 mb-4">
+
+                            <label  for="name">Name</label>
+                            <input  name="name" type="text" id="name" #catName="ngModel"
+                            [(ngModel)]="currentCategory.name" placeholder="Category name"
+                            pattern="^[A-z][A-Za-z\s,:\.0-9]+$" required=""
+                            class="form-control ng-pristine ng-invalid ng-touched"
+                            >
+                            <!-- {{catName.value}} -->
+                            <small [hidden]="catName.valid || catName.pristine" class="">
+                              Please add a category name beginning with an uppercase letter!
+                            </small>
+
+                          </div>
+                          <div class="col-md-5 mb-4">
+
+                            <label  class=" bmd-label-floating" for="description">Description</label>
+                            <input  name="description" type="text" id="description" #CatDesc="ngModel"
+                            [(ngModel)]="currentCategory.description" placeholder="Category description"
+                            pattern="^[A-Z][A-Za-z\s,:\.0-9\-]+$" required="" class="form-control ng-pristine ng-invalid ng-touched"
+                            >
+                            <!-- {{CatDesc.value}} -->
+                            <small [hidden]="CatDesc.valid || CatDesc.pristine" class="">
+                              Please add a description beginning with an uppercase letter!
+                            </small>
+                          </div>
+                          <div class="col-md-2" [class]="currentCategory.id==0 ? 'valami' : 'nemvalami'">
+                            <button type="submit" [disabled]="!categoryForm.valid" 
+                            [class]="!categoryForm.valid ? 'btn-danger' : 'btn-success'"
+                            [hidden]="currentCategory.id==0" 
+                            class="btn  pull-right">Category update                            
+                            </button></div>
+
+                            <div class="col-md-2" >
+                            <button type="submit" [disabled]="!categoryForm.valid" 
+                            [hidden]="currentCategory.id>0"
+                            [class]="!categoryForm.valid ? 'btn-danger' : 'btn-success'"
+                            class="btn  pull-right">New Category                            
+                            </button></div>
+                        </div>
+                      </div>
+                      
+                     <!-- {{categoryForm.valid}} -->
+                     
+                    </form>
+                    <button (click)="backToCategory()" type="button" class="btn btn-info back"><i class="fa fa-caret-left"></i></button>
+
+                   
+                  </div> 
+                </div>
+              </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,97 @@
+input, select {
+	min-width: 50px;
+}
+
+select {
+	padding: 0 .5em;
+}
+
+.filterBlock {
+	max-width: 900px;
+}
+
+th {
+    cursor: pointer;
+    user-select: none;
+    word-break: break-all;
+}
+td span {
+    /*word-wrap: break-word;*/
+    word-break: break-all;
+}
+table {
+    table-layout: 1fixed;
+}
+.btn-group.special {
+    display: flex;
+}
+.special .btn {
+    flex: 1;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.hidden {
+	visibility: hidden;
+}
+.width-3rem {
+	width: 3rem;
+}
+.page-link {
+	cursor: pointer;
+	padding: 8px 4px;
+	user-select: none;
+}
+.page-link.disabled {
+	cursor: default;
+	opacity: .3;
+}
+
+@media only screen and (max-width: 768px)  {
+
+	select, input {
+		margin-bottom: 1em;
+	}
+
+	.filterBlock {
+		flex-wrap: wrap;
+	}
+
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	td {
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+        text-align: start;
+        margin-top: 10px;
+	}
+	
+	td:before {
+        font-size: .8em;
+        font-style: italic;
+        color: rgb(128, 0, 128);
+		position: absolute;
+		top: 2px;
+		left: 2px;
+		width: 20%; 
+		padding-right: 10px;
+        margin-top: -10px;
+		white-space: nowrap;
+	}
+	
+	td:nth-of-type(1):before { content: "ID"; }
+	td:nth-of-type(2):before { content: "Firstname"; }
+	td:nth-of-type(3):before { content: "Lastname"; }
+	td:nth-of-type(4):before { content: "Email"; }
+	td:nth-of-type(5):before { content: "Zip"; }
+	td:nth-of-type(6):before { content: "Country"; }
+	td:nth-of-type(7):before { content: "City"; }
+	td:nth-of-type(8):before { content: "Street"; }
+	td:nth-of-type(9):before { content: "Notes"; }
+	td:nth-of-type(10):before { content: "Active"; }
+	td:nth-of-type(11):before { content: "Options"; }
+}

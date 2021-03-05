@@ -1,0 +1,118 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header card-header-info">
+                        <h4 class="card-title ">Orders</h4>
+                        <p class="card-category">List of current orders.</p>
+                    </div>
+                    <div class="card my-0 px-3">
+                        <button [routerLink]="['/order/0']" class="btn btn-primary my-3">
+                            Create new order
+                        </button>
+                    </div>
+                    <div class="card-body col-6 d-flex my-0">
+                        <button class="btn btn-primary" (click)="scroll('summaries')">Scroll To Summaries</button>
+                    </div>
+                    <div class="card-body col-12 col-md-6 d-flex">
+                        <input id="phrase" name="phrase" (keyup)="onChangePhrase($event)" class="form-control"
+                            type="text" placeholder="Enter phrase...">
+                        <select class="custom-select ml-2" (change)="onChangeKey($event)">
+                            <ng-container *ngFor="let attribute of attributes | keyvalue:originalOrder">
+                                <option [value]="attribute.key" [selected]="setDefault(attribute.key)">Filter by
+                                    {{attribute.value}}
+                                </option>
+                            </ng-container>
+                        </select>
+                    </div>
+                    <div *ngIf="updating" class="d-flex justify-content-center">
+                        <mat-spinner></mat-spinner>
+                    </div>
+                    <div *ngIf="!updating" class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class="text-primary">
+                                    <th *ngFor="let attribute of attributes | keyvalue:originalOrder"
+                                        (click)="onColumnSelect(attribute.key)">
+                                        {{attribute.value}}
+                                        <span
+                                            *ngIf="(sortOrder[attribute.key] === 'ascending' )"><i
+                                                class="fa fa-angle-up"></i></span>
+                                        <span
+                                            *ngIf="(sortOrder[attribute.key] === 'descending' )"><i
+                                                class="fa fa-angle-down"></i></span>
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let order of orderList | filter:phrase:filterKey | sorter:sorterKey:sortDirection">
+                                            <ng-container *ngFor="let attribute of attributes | keyvalue:originalOrder">
+                                                <td>{{order[attribute.key]}}</td>
+                                            </ng-container>
+                                            <td>
+                                                <div class="btn-group">
+                                                    <button [routerLink]="['/order', order.id]" class="btn btn-info">
+                                                        <i class="fa fa-pencil"></i>
+                                                    </button>
+                                                    <button class="btn btn-danger" data-toggle="modal"
+                                                        data-target="#confirmationDialog"
+                                                        (click)=setOrdertoDelete(order)>
+                                                        <i class="fa fa-trash" [id]="order.id"></i>
+                                                    </button>
+                                                </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <hr>
+                        <div class="table-responsive">
+                            <table class="table" id="summaries">
+                                <thead class="text-primary">
+                                    <th>Total # of Different Orders</th>
+                                    <th>Total # of Paid Orders</th>
+                                    <th>Total # of New Orders</th>
+                                    <th>Total # of Shipped Orders</th>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{orderSummaryData.totalOrders}}</td>
+                                        <td>{{orderSummaryData.totalPaid}}</td>
+                                        <td>{{orderSummaryData.totalNew}}</td>
+                                        <td>{{orderSummaryData.totalShipped}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="confirmationDialog" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger font-weight-bold">CONFIRMATION REQUIRED</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Are you sure you want to delete <span class="text-primary">{{order.id}}</span>?</strong>
+                </p>
+                <p>All information associated to this order will be permanently deleted.
+                    <span class="text-danger">This operation cannot be undone.</span>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-primary" id="cancelButton"
+                    data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" (click)="onDelete(order)"
+                    data-dismiss="modal">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

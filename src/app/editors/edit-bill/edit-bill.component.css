@@ -1,0 +1,13 @@
+h4 {
+    text-align: center;
+}
+
+.star {
+    color: red;
+}
+
+.error-message {
+    margin-top: 5px;
+    font-style: italic;
+    color: rgb(155, 4, 4);
+}
