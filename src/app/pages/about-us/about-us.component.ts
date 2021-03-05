@@ -12,7 +12,7 @@ export class AboutUsComponent implements OnInit {
       name: "Peter Bonyai",
       title: "aspiring developer",
       imgSrc: "./assets/img/faces/bp.png",
-      href: "#",
+      href: "https://www.youtube.com/watch?v=dQw4w9WgXcQ&ab_channel=RickAstleyVEVO",
       description: "Still learning and has a lot to learn."
     },
     {
