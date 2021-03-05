@@ -9,6 +9,10 @@
   width: 23rem;
 }
 
+.card-title {
+  user-select: none;
+}
+
 // Overwrite Bootstrap rule
 .col {
   flex-grow: unset;
