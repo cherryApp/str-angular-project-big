@@ -5,15 +5,27 @@
 }
 
 
-th {
-  justify-content: center;
-    text-align: center;
-    user-select: none;
+// th {
+//   justify-content: center;
+//     text-align: center;
+//     user-select: none;
+// }
+
+// td {
+//   text-align: center; 
+//   vertical-align: middle;
+// }
+
+th{
+  user-select: none;
+  
 }
 
-td {
-  text-align: center; 
-  vertical-align: middle;
+tbody > tr > td {
+  height:20px;
+  padding:0px;
+  border-top: 0px;
+  padding-left: 20px;
 }
 
 .material-icons {
@@ -32,3 +44,8 @@ td {
   bottom: 50px;
   right: 0px;
 }
+
+.create{
+  margin-top: 0;
+  margin-bottom: 0;
+ }
