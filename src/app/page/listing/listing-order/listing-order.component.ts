@@ -43,7 +43,7 @@ export class ListingOrderComponent implements OnInit {
     'Biztosan törölni kívánja a(z) ',
     '(rendelésszám)',
     '. számú rendelés adatait?',
-    'A rendeléshez tartozó valemennyi adat véglegesen törlődik!',
+    'A rendeléshez tartozó valamennyi adat véglegesen törlődik!',
     'Visszafordíthatatlan művelet!!!',
   ];
   // ******************
