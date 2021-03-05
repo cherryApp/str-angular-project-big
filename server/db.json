@@ -1687,38 +1687,10 @@
   ],
   "orders": [
     {
-      "id": 1,
-      "customerID": 47,
-      "productID": 47,
-      "amount": 50,
-      "status": "paid"
-    },
-    {
-      "id": 3,
-      "customerID": 13,
-      "productID": 29,
-      "amount": 9,
-      "status": "paid"
-    },
-    {
       "id": 4,
       "customerID": 11,
       "productID": 43,
       "amount": 13,
-      "status": "paid"
-    },
-    {
-      "id": 5,
-      "customerID": 22,
-      "productID": 7,
-      "amount": 89,
-      "status": "paid"
-    },
-    {
-      "id": 6,
-      "customerID": 13,
-      "productID": 31,
-      "amount": 84,
       "status": "paid"
     },
     {
