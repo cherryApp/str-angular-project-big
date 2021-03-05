@@ -10,10 +10,10 @@ export class AboutUsComponent implements OnInit {
   teamMembers = [
     {
       name: "Peter Bonyai",
-      title: "angular master pro elite",
+      title: "aspiring developer",
       imgSrc: "./assets/img/faces/bp.png",
       href: "#",
-      description: "Working on everything."
+      description: "Still learning and has a lot to learn."
     },
     {
       name: "Peter Gyorffy",
