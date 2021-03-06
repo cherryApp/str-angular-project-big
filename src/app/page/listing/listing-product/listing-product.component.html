@@ -1,3 +1,25 @@
+<!-- ez itt a modal kódja ***************** -->
+<ng-template #content let-modal class="shadow-lg">
+    <div class="modal-header">
+        <h3 class="modal-title ml-3 my-1" id="modal-title">{{ modalTitle }}</h3>
+    </div>
+    <div class="modal-body ml-3 mt-2">
+        <p><strong>{{ modalText[0] }}<span class="text-primary">{{ modalText[1] }}</span>{{ modalText[2] }}</strong></p>
+        <p>{{ modalText[3] }}
+            <br>
+            <br>
+            <strong><span class="text-danger">{{ modalText[4] }}</span></strong>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss(false)">Cancel</button>
+        <!-- <button type="button" class="btn btn-danger" (click)="modal.close(true)">Ok</button> -->
+        <button type="button" class="btn btn-danger" (click)="modal.close(true)"
+            (click)="onRemove(productToRemove)">Ok</button>
+    </div>
+</ng-template>
+<!-- modal vége ***************** -->
+
 <div class="container" id="top">
     <a class="jump-top" (click)="navigateToHeader(500)"><i class="fa fa-arrow-circle-up"></i></a>
     <div class="row d-flex justify-content-center">
@@ -113,8 +135,8 @@
                                 [routerLink]="[product.id]">
                                 <i class="material-icons">edit</i>
                             </button>
-                            <button type="button" rel="tooltip" class="btn btn-danger btn-round"
-                                (click)="onRemove(product)">
+                            <button type="button" rel="tooltip" class="btn btn-danger btn-round" (click)="log(product)"
+                                (click)="open(content)">
                                 <i class="material-icons">close</i>
                             </button>
                         </td>
