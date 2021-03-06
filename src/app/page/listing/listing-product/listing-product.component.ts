@@ -7,6 +7,9 @@ import { ProductService } from 'src/app/service/product.service';
 import { ToastrService } from 'ngx-toastr';
 import { StatisticsService } from 'src/app/service/statistics.service';
 
+// @ts-ignore
+import tableDragger from 'table-dragger';
+
 @Component({
   selector: 'app-listing-product',
   templateUrl: './listing-product.component.html',
@@ -50,6 +53,11 @@ export class ListingProductComponent implements OnInit {
   ngOnInit(): void {
     this.productService.getAll();
     this.statisticsService.subscribeForData();
+
+    // For Table dragger
+    const id = document.querySelector('#table');
+    tableDragger(id, { mode: 'column', onlyBody: true, animation: 300 });
+    
   }
 
   onRemove(product: Product): void {
