@@ -6,6 +6,7 @@ import { ConfigService, ITableCol } from 'src/app/service/config.service';
 import { ProductService } from 'src/app/service/product.service';
 import { ToastrService } from 'ngx-toastr';
 import { StatisticsService } from 'src/app/service/statistics.service';
+import { NgAnimateScrollService } from 'ng-animate-scroll';
 
 // @ts-ignore
 import tableDragger from 'table-dragger';
@@ -21,7 +22,8 @@ export class ListingProductComponent implements OnInit {
     private router: Router,
     private config: ConfigService,
     private toastr: ToastrService,
-    private statisticsService: StatisticsService
+    private statisticsService: StatisticsService,
+    private animateScrollService: NgAnimateScrollService
   ) { }
 
   scroll(id: string) {
@@ -89,4 +91,10 @@ export class ListingProductComponent implements OnInit {
   onChangePhrase(event: any): void {
     this.phrase = (event.target as HTMLInputElement).value;
   }
+
+  // FOR SCROLL ANIMATION
+  navigateToHeader(duration?:number): void {
+    this.animateScrollService.scrollToElement('top', duration);
+  }
+
 }
