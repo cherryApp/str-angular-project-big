@@ -8,6 +8,10 @@ import { ToastrService } from 'ngx-toastr';
 import { StatisticsService } from 'src/app/service/statistics.service';
 import { NgAnimateScrollService } from 'ng-animate-scroll';
 
+// *********** FOR MODAL
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+// ************ FOR MODAL
+
 // @ts-ignore
 import tableDragger from 'table-dragger';
 
@@ -23,13 +27,28 @@ export class ListingProductComponent implements OnInit {
     private config: ConfigService,
     private toastr: ToastrService,
     private statisticsService: StatisticsService,
-    private animateScrollService: NgAnimateScrollService
+    private animateScrollService: NgAnimateScrollService,
+    private modalService: NgbModal
   ) { }
 
   scroll(id: string) {
     const elmnt = document.getElementById(id);
     elmnt?.scrollIntoView(false);
   }
+
+    // ***************** FOR MODAL
+    closeResult: Boolean = false;
+    closeReason = '';
+    productToRemove: Product = new Product();
+    modalTitle = 'Termék törlése';
+    modalText: Array<string> = [
+      'Biztosan törölni kívánja a(z) ',
+      '(termékszám)',
+      '. számú termék adatait?',
+      'A termékhez tartozó valamennyi adat véglegesen törlődik!',
+      'Visszafordíthatatlan művelet!!!',
+    ];
+    // ****************** FOR MODAL
 
   productList: BehaviorSubject<Product[]> = this.productService.list$;
   cols: ITableCol[] = this.config.productTableCols;
@@ -59,15 +78,9 @@ export class ListingProductComponent implements OnInit {
     // For Table dragger
     const id = document.querySelector('#table');
     tableDragger(id, { mode: 'column', onlyBody: true, animation: 300 });
-    
   }
 
   onRemove(product: Product): void {
-
-    if (!confirm(`Biztosan törli ezt a terméket? (id: ${product.id} Termék név: ${product.name} Ár: ${product.price})`)) {
-      return
-    }
-
     this.productService.remove(product).subscribe(
       () => {
         this.toastr.success('Sikeresen törölted a terméket!', 'Törlés!', { timeOut: 3000 });
@@ -96,5 +109,34 @@ export class ListingProductComponent implements OnInit {
   navigateToHeader(duration?:number): void {
     this.animateScrollService.scrollToElement('top', duration);
   }
+
+  // ************************ FOR MODAL
+  open(content: any) {
+    this.modalService
+      .open(content, { ariaLabelledBy: 'modal-basic-title' })
+      .result.then(
+        (result) => {
+          this.closeResult = result;
+        },
+        (reason) => {
+          this.closeReason = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
+
+  log(product: Product) {
+    this.productToRemove = product;
+    this.modalText[1] = '' + product.id;
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  } // ************************
 
 }
