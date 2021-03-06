@@ -8,6 +8,7 @@ import { ConfigService, ITableCol } from 'src/app/service/config.service';
 import { StatisticsService } from 'src/app/service/statistics.service';
 // ***********
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgAnimateScrollService } from 'ng-animate-scroll';
 // ************
 
 @Component({
@@ -54,9 +55,14 @@ export class ListingOrderComponent implements OnInit {
     private configService: ConfigService,
     private toastr: ToastrService,
     private statisticsService: StatisticsService,
+    private animateScrollService: NgAnimateScrollService,
     // ****************
     private modalService: NgbModal // *****************
   ) {}
+
+  navigateToHeader(duration?:number) {
+    this.animateScrollService.scrollToElement('header', duration)
+}
 
   scroll(id: string) {
     const elmnt = document.getElementById(id);
