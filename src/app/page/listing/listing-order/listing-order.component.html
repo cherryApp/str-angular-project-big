@@ -1,28 +1,51 @@
 <!-- ez itt a modal kódja ***************** -->
 
-<ng-template #content let-modal  class="shadow-lg">
-   <div class="modal-header">
+<ng-template #content let-modal class="shadow-lg">
+  <div class="modal-header">
     <h3 class="modal-title ml-3 my-1" id="modal-title">{{ modalTitle }}</h3>
   </div>
   <div class="modal-body ml-3 mt-2">
-    <p><strong>{{ modalText[0] }}<span class="text-primary">{{ modalText[1] }}</span>{{ modalText[2] }}</strong></p>
-    <p>{{ modalText[3] }}
-      <br>
-      <br>
-     <strong><span class="text-danger">{{ modalText[4] }}</span></strong>
+    <p>
+      <strong
+        >{{ modalText[0] }}<span class="text-primary">{{ modalText[1] }}</span
+        >{{ modalText[2] }}</strong
+      >
+    </p>
+    <p>
+      {{ modalText[3] }}
+      <br />
+      <br />
+      <strong
+        ><span class="text-danger">{{ modalText[4] }}</span></strong
+      >
     </p>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss(false)">Cancel</button>
+    <button
+      type="button"
+      class="btn btn-outline-secondary"
+      (click)="modal.dismiss(false)"
+    >
+      Cancel
+    </button>
     <!-- <button type="button" class="btn btn-danger" (click)="modal.close(true)">Ok</button> -->
-    <button type="button" class="btn btn-danger" (click)="modal.close(true)" (click)="onRemove(orderToRemove)">Ok</button>
+    <button
+      type="button"
+      class="btn btn-danger"
+      (click)="modal.close(true)"
+      (click)="onRemove(orderToRemove)"
+    >
+      Ok
+    </button>
   </div>
 </ng-template>
 
 <!-- modal vége ***************** -->
 <header id="header"></header>
-<div class="container top">
-  <a (click)="navigateToHeader(500)" class="jump-top" href="orders#top"><i class="fa fa-arrow-circle-up"></i></a>
+<div class="container" id="top">
+  <a (click)="navigateToHeader(500)" class="jump-top" href="orders#top"
+    ><i class="fa fa-arrow-circle-up"></i
+  ></a>
   <div class="row">
     <div class="col-4 offset-4 text-center mb-3 mt-0">
       <h2>RENDELÉSEK</h2>
@@ -77,105 +100,123 @@
       </button>
     </div>
   </div>
-  <table class="table table-striped">
-    <thead class="bg-dark text-light">
-      <tr>
-        <th (click)="onColumnSelect(col.key)" *ngFor="let col of cols"><b>
-          <span *ngIf="col.key === sortedColumn && !firstSorting">
-            <i *ngIf="!direction" class="fa fa-sort-alpha-desc"></i>
-            <i *ngIf="direction" class="fa fa-sort-alpha-asc"></i>
-          </span>
-
-          {{ col.text }}
-        </b></th>
-
-        <th class="d-flex justify-content-center"><b>Műveletek</b></th>
-        <!-- <th (click)="onColumnSelect('id')"><b>#</b></th>
-          <th (click)="onColumnSelect('customerID')"><b style="font-size: 18px">Vásárlók</b></th>
-          <th (click)="onCnolumnSelect('productID')"><b style="font-size: 18px">Termékek</b></th>
-          <th (click)="onColumnSelect('amount')"><b style="font-size: 18px">Mennyiség</b></th>
-          <th (click)="onColumnSelect('status')"><b style="font-size: 18px">Státusz</b></th> -->
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="tablerow" style="padding-bottom: 1px;"
-        *ngFor="
-          let order of orderList$
-            | async
-            | filter: filterKey:phrase
-            | sorter: sortedColumn:sortedOrder
-            | orderBindings
-        "
-      >
-        <td >{{ order.id }}</td>
-        <td>{{ order.customerID }}</td>
-        <td>{{ order.productID }}</td>
-        <td>{{ order.amount }}</td>
-        <td>{{ order.status }}</td>
-        <td>
-          <div class="btn-group d-flex justify-content-end">
-            <button [routerLink]="[order.id]" class="btn btn-info">
-              <i class="material-icons">edit</i>
-            </button>
-            <button (click)="log(order)" (click)="open(content)" class="btn btn-danger">
-        <!-- captured click from delete button *************** -->
-            <!-- <button (click)="open(content)" class="btn btn-danger"> -->
-        <!-- capture end ***************** -->
-              <i class="material-icons">delete_outline</i>
-            </button>
-
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <div>
-    <table class="table" id="summaries">
-      <thead class="bg-dark text-light">
-        <tr>
-          <!-- <th></th>
-          <th></th>
-          <th></th>
-          <th></th> -->
-          <div class="row mt-4 d-flex justify-content-space-evenly">
-            <th></th>
-            <div *ngIf="numberOfAllOrders$ | async">
-              <p>
-
-                <b class="mx-5" style="font-size: 18px">
-                  ͏͏͏͏͏͏͏Összes rendelések száma: {{ numberOfAllOrders$ | async }}</b
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-striped table-responsive" id="table">
+        <thead class="bg-dark text-light">
+          <tr>
+            <!-- <th (click)="onColumnSelect(col.key)" *ngFor="let col of cols"><b> -->
+            <th (click)="onColumnSelect('id')" style="width: 15%">
+              <b>
+                <span *ngIf="'id' === sortedColumn && !firstSorting">
+                  <i *ngIf="!direction" class="fa fa-sort-alpha-desc"></i>
+                  <i *ngIf="direction" class="fa fa-sort-alpha-asc"></i>
+                </span>
+                #
+                <!-- {{ col.text }} -->
+              </b>
+            </th>
+            <th (click)="onColumnSelect('customerID')" style="width: 25%">
+              <b>
+                <span *ngIf="'customerID' === sortedColumn && !firstSorting">
+                  <i *ngIf="!direction" class="fa fa-sort-alpha-desc"></i>
+                  <i *ngIf="direction" class="fa fa-sort-alpha-asc"></i>
+                </span>
+                VásárlóID
+              </b>
+            </th>
+            <th (click)="onColumnSelect('productID')" style="width: 20%">
+              <b>
+                <span *ngIf="'productID' === sortedColumn && !firstSorting">
+                  <i *ngIf="!direction" class="fa fa-sort-alpha-desc"></i>
+                  <i *ngIf="direction" class="fa fa-sort-alpha-asc"></i>
+                </span>
+                TermékID
+              </b>
+            </th>
+            <th (click)="onColumnSelect('amount')" style="width: 20%">
+              <b>
+                <span *ngIf="'productID' === sortedColumn && !firstSorting">
+                  <i *ngIf="!direction" class="fa fa-sort-alpha-desc"></i>
+                  <i *ngIf="direction" class="fa fa-sort-alpha-asc"></i>
+                </span>
+                Mennyiség
+              </b>
+            </th>
+            <th (click)="onColumnSelect('status')" style="width: 20%">
+              <b>
+                <span *ngIf="'status' === sortedColumn && !firstSorting">
+                  <i *ngIf="!direction" class="fa fa-sort-alpha-desc"></i>
+                  <i *ngIf="direction" class="fa fa-sort-alpha-asc"></i>
+                </span>
+                Státusz
+              </b>
+            </th>
+            <th class="d-flex justify-content-center"><b>Műveletek</b></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            class="tablerow"
+            style="padding-bottom: 1px"
+            *ngFor="
+              let order of orderList$
+                | async
+                | filter: filterKey:phrase
+                | sorter: sortedColumn:sortedOrder
+                | orderBindings
+            "
+          >
+            <td>{{ order.id }}</td>
+            <td>{{ order.customerID }}</td>
+            <td>{{ order.productID }}</td>
+            <td>{{ order.amount }}</td>
+            <td>{{ order.status }}</td>
+            <td>
+              <div class="btn-group d-flex justify-content-end">
+                <button [routerLink]="[order.id]" class="btn btn-info">
+                  <i class="material-icons">edit</i>
+                </button>
+                <button
+                  (click)="log(order)"
+                  (click)="open(content)"
+                  class="btn btn-danger"
                 >
-              </p>
-            </div>
-            <!-- <th></th>
-            <th></th>
-            <th></th> -->
-            <div *ngIf="numberOfShippedOrders$ | async">
-              <p>
-                <b class="mx-5" style="font-size: 18px"
-                  >Kiszállított rendelések száma:
-                  {{ numberOfShippedOrders$ | async }}</b
-                >
-              </p>
-            </div>
-            <!-- <th></th>
-            <th></th>
-            <th></th> -->
-            <div *ngIf="numberOfUnpaidOrders$ | async">
-              <p>
-                <b class="mx-5"style="font-size: 18px">
-                  ͏͏͏͏͏͏͏Még nem fizetett rendelések száma:
-                  {{ numberOfUnpaidOrders$ | async }}</b
-                >
-              </p>
-            </div>
-            <!-- <th></th>
-            <th></th> -->
-          </div>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+                  <!-- captured click from delete button *************** -->
+                  <!-- <button (click)="open(content)" class="btn btn-danger"> -->
+                  <!-- capture end ***************** -->
+                  <i class="material-icons">delete_outline</i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot class="bg-dark text-light" id="tfoot">
+          <tr>
+            <td colspan="9">
+              <div class="d-flex justify-content-around">
+                <span *ngIf="numberOfAllOrders$ | async">
+                  <b style="font-size: 18px">
+                    ͏͏͏͏͏͏͏Összes rendelések száma: {{ numberOfAllOrders$ | async }}</b
+                  >
+                </span>
+                <span *ngIf="numberOfShippedOrders$ | async">
+                  <b style="font-size: 18px"
+                    >Kiszállított rendelések száma:
+                    {{ numberOfShippedOrders$ | async }}</b
+                  >
+                </span>
+                <span *ngIf="numberOfUnpaidOrders$ | async">
+                  <b style="font-size: 18px">
+                    ͏͏͏͏͏͏͏Még nem fizetett rendelések száma:
+                    {{ numberOfUnpaidOrders$ | async }}</b
+                  >
+                </span>
+              </div>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
   </div>
 </div>
-
