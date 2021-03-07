@@ -11,6 +11,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 // @ts-ignore
 import tableDragger from 'table-dragger';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-listing-bill',
@@ -30,7 +31,8 @@ export class ListingBillComponent implements OnInit {
     private toastr: ToastrService,
     private statisticsService: StatisticsService,
     private animateScrollService: NgAnimateScrollService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    public spinner: NgxSpinnerService
   ) { }
 
   scroll(id: string) {
@@ -70,6 +72,7 @@ export class ListingBillComponent implements OnInit {
   column: string = '';
   direction: boolean = false;
   columnKey: string = '';
+  loaded = false;
 
   sumOfUnpaidBills$ = this.statisticsService.sumOfUnpaidBills$;
   numberOfAllBills$ = this.statisticsService.numberOfAllBills$;
@@ -80,6 +83,10 @@ export class ListingBillComponent implements OnInit {
 
     const id = document.querySelector('#table');
     tableDragger(id, { mode: 'column', onlyBody: true, animation: 300 });
+
+    // FOR LOADING BOX
+    this.spinner.show();
+    this.billList$.subscribe(billList => this.loaded = billList.length ? true : false);
   }
 
   onRemove(bill: Bill): void {
