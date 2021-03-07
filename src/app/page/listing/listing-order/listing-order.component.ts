@@ -14,7 +14,6 @@ import { NgAnimateScrollService } from 'ng-animate-scroll';
 import tableDragger from 'table-dragger';
 
 import { NgxSpinnerService } from "ngx-spinner";
-import { OrderBindingsPipe } from 'src/app/pipe/order-bindings.pipe';
 
 @Component({
   selector: 'app-listing-order',
@@ -65,7 +64,6 @@ export class ListingOrderComponent implements OnInit {
     // ****************
     private modalService: NgbModal, // *****************
     private spinner: NgxSpinnerService,
-    private orderBindings: OrderBindingsPipe,
   ) {}
 
   navigateToHeader(duration?:number) {
@@ -102,14 +100,17 @@ export class ListingOrderComponent implements OnInit {
     this.spinner.show();
     this.orderList$.subscribe(
       orderlist => {
-        of(this.orderBindings.transform(orderlist)).subscribe(
-          nol => {
-            this.newOrderList = [...nol];
-            if (this.newOrderList.length) {
-              this.loaded = true;
-            }
-          }
-        )
+        if (orderlist.length > 0) {
+          this.loaded = true;
+        }
+
+
+        // of(this.orderBindings.transform(orderlist)).subscribe(
+        //   nol => {
+        //     this.newOrderList = [...nol];
+            
+        //   }
+        // )
       }
     );
   }
