@@ -1,10 +1,13 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Injectable, Pipe, PipeTransform } from '@angular/core';
 import { Order } from '../model/order';
 import { CustomerService } from '../service/customer.service';
 import { ProductService } from '../service/product.service';
 
 @Pipe({
   name: 'orderBindings',
+})
+@Injectable({
+  providedIn: 'root',
 })
 export class OrderBindingsPipe implements PipeTransform {
   transform(orders: any[]): Order[] {
