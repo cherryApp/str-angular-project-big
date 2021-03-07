@@ -44,12 +44,12 @@ export class ListingBillComponent implements OnInit {
   closeResult: Boolean = false;
   closeReason = '';
   billToRemove: Bill = new Bill();
-  modalTitle = 'Termék törlése';
+  modalTitle = 'Számla törlése';
   modalText: Array<string> = [
     'Biztosan törölni kívánja a(z) ',
-    '(termékszám)',
-    '. számú termék adatait?',
-    'A termékhez tartozó valamennyi adat véglegesen törlődik!',
+    '(rendelésszám)',
+    '. számú számla adatait?',
+    'A számlához tartozó valamennyi adat véglegesen törlődik!',
     'Visszafordíthatatlan művelet!!!',
   ];
 
@@ -81,7 +81,7 @@ export class ListingBillComponent implements OnInit {
     this.billService.getAll();
     this.statisticsService.subscribeForData();
 
-    const id = document.querySelector('#table');
+    const id = document.querySelector('#table4');
     tableDragger(id, { mode: 'column', onlyBody: true, animation: 300 });
 
     // FOR LOADING BOX
