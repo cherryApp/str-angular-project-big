@@ -81,7 +81,7 @@ export class ListingBillComponent implements OnInit {
     this.billService.getAll();
     this.statisticsService.subscribeForData();
 
-    const id = document.querySelector('#table');
+    const id = document.querySelector('#table4');
     tableDragger(id, { mode: 'column', onlyBody: true, animation: 300 });
 
     // FOR LOADING BOX
