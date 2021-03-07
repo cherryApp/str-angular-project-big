@@ -129,9 +129,11 @@
         </thead>
         <tbody>
           <tr class="tablerow" style="padding-bottom: 1px" *ngFor="
-              let order of newOrderList
+              let order of orderList$
+                | async
                 | filter: filterKey:phrase
                 | sorter: sortedColumn:sortedOrder
+                | orderBindings
             ">
             <td>{{ order.id }}</td>
             <td>{{ order.customerID }}</td>
