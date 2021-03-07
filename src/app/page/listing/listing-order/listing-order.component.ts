@@ -1,7 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, of } from 'rxjs';
 import { Order } from 'src/app/model/order';
 import { OrderService } from 'src/app/service/order.service';
 import { ConfigService, ITableCol } from 'src/app/service/config.service';
@@ -12,6 +12,9 @@ import { NgAnimateScrollService } from 'ng-animate-scroll';
 // ************
 //@ts-ignore
 import tableDragger from 'table-dragger';
+
+import { NgxSpinnerService } from "ngx-spinner";
+import { OrderBindingsPipe } from 'src/app/pipe/order-bindings.pipe';
 
 @Component({
   selector: 'app-listing-order',
@@ -36,6 +39,7 @@ export class ListingOrderComponent implements OnInit {
     amount: 'Mennyiség',
     status: 'Státusz',
   };
+  loaded = false;
 
   // *****************
   closeResult: Boolean = false;
@@ -59,7 +63,9 @@ export class ListingOrderComponent implements OnInit {
     private statisticsService: StatisticsService,
     private animateScrollService: NgAnimateScrollService,
     // ****************
-    private modalService: NgbModal // *****************
+    private modalService: NgbModal, // *****************
+    private spinner: NgxSpinnerService,
+    private orderBindings: OrderBindingsPipe,
   ) {}
 
   navigateToHeader(duration?:number) {
@@ -82,6 +88,7 @@ export class ListingOrderComponent implements OnInit {
   direction: boolean = false;
   columnKey: string = '';
   firstSorting = true;
+  newOrderList : Order[] = [];
 
   ngOnInit(): void {
     this.orderService.getAll();
@@ -90,6 +97,21 @@ export class ListingOrderComponent implements OnInit {
      // For Table dragger
      const id = document.querySelector('#table');
      tableDragger(id, { mode: 'column', onlyBody: true, animation: 300 });
+
+     // FOR LOADING BOX
+    this.spinner.show();
+    this.orderList$.subscribe(
+      orderlist => {
+        of(this.orderBindings.transform(orderlist)).subscribe(
+          nol => {
+            this.newOrderList = [...nol];
+            if (this.newOrderList.length) {
+              this.loaded = true;
+            }
+          }
+        )
+      }
+    );
   }
 
   onColumnSelect(columnName: string): void {
@@ -105,12 +127,6 @@ export class ListingOrderComponent implements OnInit {
   }
 
   onRemove(order: Order): void {
-    // if (
-    // !confirm(`Biztosan törli ezt a rendelést?
-    // (id: ${order.id} vásárlóID: ${order.customerID} mennyiség: ${order.amount})`)
-    // ) {
-    //   return;
-    // }
     this.orderService.remove(order.id).subscribe(
       () => {
         this.toastr.success('Sikeresen törölted a terméket!', 'Törlés!', {
@@ -137,12 +153,10 @@ export class ListingOrderComponent implements OnInit {
         (result) => {
           this.closeResult = result;
           // ****************
-          console.log(this.closeResult);
           // ****************
         },
         (reason) => {
           this.closeReason = `Dismissed ${this.getDismissReason(reason)}`;
-          console.log(this.closeReason);
         }
       );
   }
