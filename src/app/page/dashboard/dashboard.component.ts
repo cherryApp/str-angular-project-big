@@ -58,14 +58,14 @@ export class DashboardComponent implements OnInit {
   ];
 
   // charts: InfoChart[] = [  ];
-  charts: any[] = [
-"here come chart1 data",
-"here come chart2 data",
-"here come chart3 data",
-"here come chart4 data",
-"here come chart5 data",
-"here come chart6 data",
-  ];
+//   charts: any[] = [
+// "here come chart1 data",
+// "here come chart2 data",
+// "here come chart3 data",
+// "here come chart4 data",
+// "here come chart5 data",
+// "here come chart6 data",
+//   ];
 
   statistics: BehaviorSubject<number>[] = [
     this.statisticsService.numberOfActiveProducts$,
