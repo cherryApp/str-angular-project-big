@@ -1,3 +1,11 @@
+<!-- LOADING BOX -->
+<div class="loading-box" [hidden]="loaded">
+    <ngx-spinner size="large" color="grey" type="ball-spin-clockwise" [fullScreen]="false">
+      <p>Kis türelmet...</p>
+    </ngx-spinner>
+</div>
+<!-- LOADING BOX -->
+
 <!-- ez itt a modal kódja ***************** -->
 <ng-template #content let-modal class="shadow-lg">
     <div class="modal-header">
@@ -20,7 +28,7 @@
 </ng-template>
 <!-- modal vége ***************** -->
 
-<div class="container" id="top">
+<div class="container" id="top" [hidden]="!loaded">
     <a class="jump-top" (click)="navigateToHeader(500)"><i class="fa fa-arrow-circle-up"></i></a>
     <div class="row d-flex justify-content-center">
         <h2>TERMÉKEK</h2>

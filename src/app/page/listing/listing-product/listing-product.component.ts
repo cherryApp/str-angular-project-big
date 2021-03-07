@@ -12,8 +12,12 @@ import { NgAnimateScrollService } from 'ng-animate-scroll';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 // ************ FOR MODAL
 
+// FOR LOADING BOX
+import { NgxSpinnerService } from "ngx-spinner";
+
 // @ts-ignore
 import tableDragger from 'table-dragger';
+
 
 @Component({
   selector: 'app-listing-product',
@@ -28,7 +32,8 @@ export class ListingProductComponent implements OnInit {
     private toastr: ToastrService,
     private statisticsService: StatisticsService,
     private animateScrollService: NgAnimateScrollService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    public spinner: NgxSpinnerService
   ) { }
 
   scroll(id: string) {
@@ -66,6 +71,7 @@ export class ListingProductComponent implements OnInit {
   direction: boolean = false;
   columnKey: string = ''
   firstSorting = true;
+  loaded = false;
 
   numberOfActiveProducts$ = this.statisticsService.numberOfActiveProducts$;
   numberOfAllProducts$ = this.statisticsService.numberOfAllProducts$;
@@ -78,6 +84,11 @@ export class ListingProductComponent implements OnInit {
     // For Table dragger
     const id = document.querySelector('#table');
     tableDragger(id, { mode: 'column', onlyBody: true, animation: 300 });
+    
+    // FOR LOADING BOX
+    this.spinner.show();
+    this.productList.subscribe(productList => this.loaded = productList.length ? true : false);
+    
   }
 
   onRemove(product: Product): void {

@@ -38,3 +38,15 @@ tfoot * {
 .jump-top i:hover {
   opacity: 1;
 }
+
+.loading-box {
+  position: relative;
+  top: 10rem;
+}
+
+.loading-box p {
+  position: relative;
+  top: 8rem;
+  font-size: 2rem;
+  color: black;
+}
