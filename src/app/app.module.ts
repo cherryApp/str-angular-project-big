@@ -33,6 +33,7 @@ import { TostringPipe } from './pipe/tostring.pipe';
 import { HunFormatPipe } from './pipe/hun-format.pipe';
 import { ChartNewComponent } from './common/chart-new/chart-new.component';
 import { ChartContainerComponent } from './widget/chart-container/chart-container.component';
+import { ModalComponent } from './widget/modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { ChartContainerComponent } from './widget/chart-container/chart-containe
     HunFormatPipe,
     ChartNewComponent,
     ChartContainerComponent,
+    ModalComponent,
   ],
   imports: [
     BrowserModule,

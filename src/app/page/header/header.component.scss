@@ -20,3 +20,13 @@
 .headerText {
   user-select: none;
 }
+
+.navbar-toggler{
+  display: none;
+}
+
+@media only screen and (max-width: 991px) {
+  .navbar-toggler {
+     display: block;
+  }
+}
