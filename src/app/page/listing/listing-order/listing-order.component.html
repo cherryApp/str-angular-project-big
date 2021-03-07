@@ -74,7 +74,7 @@
   </div>
   <div class="row">
     <div class="col-12">
-      <table class="table table-striped table-responsive" id="table">
+      <table class="table table-striped table-responsive" id="table3">
         <thead class="bg-dark text-light">
           <tr>
             <!-- <th (click)="onColumnSelect(col.key)" *ngFor="let col of cols"><b> -->
@@ -124,7 +124,7 @@
                 Státusz
               </b>
             </th>
-            <th style="width: 22%">Műveletek</th>
+            <th class="text-right mr-5" style="width: 22%">Műveletek</th>
           </tr>
         </thead>
         <tbody>
@@ -140,7 +140,7 @@
             <td>{{ order.productID }}</td>
             <td>{{ order.amount }}</td>
             <td>{{ order.status }}</td>
-            <td class="td-actions text-center">
+            <td class="td-actions text-right mr-5">
               <button type="button" rel="tooltip" class="btn btn-success btn-round mr-1" [routerLink]="[order.id]">
                 <i class="material-icons">edit</i>
               </button>
