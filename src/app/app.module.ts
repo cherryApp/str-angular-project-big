@@ -7,6 +7,7 @@ import { ToastrModule } from 'ngx-toastr';
 
 import { ChartsModule } from 'ng2-charts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerModule } from "ngx-spinner";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -73,6 +74,7 @@ import { ModalComponent } from './widget/modal/modal.component';
     ToastrModule.forRoot(),
     NgbModule,
     ChartsModule,
+    NgxSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
