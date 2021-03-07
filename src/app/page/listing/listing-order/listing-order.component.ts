@@ -93,7 +93,7 @@ export class ListingOrderComponent implements OnInit {
     this.statisticsService.subscribeForData();
 
      // For Table dragger
-     const id = document.querySelector('#table');
+     const id = document.querySelector('#table3');
      tableDragger(id, { mode: 'column', onlyBody: true, animation: 300 });
 
      // FOR LOADING BOX
@@ -108,7 +108,7 @@ export class ListingOrderComponent implements OnInit {
         // of(this.orderBindings.transform(orderlist)).subscribe(
         //   nol => {
         //     this.newOrderList = [...nol];
-            
+
         //   }
         // )
       }
