@@ -6,10 +6,15 @@ import { Customer } from 'src/app/model/customer';
 import { CustomerService } from 'src/app/service/customer.service';
 import { ConfigService, ITableCol } from 'src/app/service/config.service';
 import { StatisticsService } from 'src/app/service/statistics.service';
-
 // ***********
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgAnimateScrollService } from 'ng-animate-scroll';
 // ************
+//@ts-ignore
+import tableDragger from 'table-dragger';
+
+import { NgxSpinnerService } from "ngx-spinner";
+
 
 @Component({
   selector: 'app-listing-customer',
@@ -17,7 +22,22 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./listing-customer.component.scss'],
 })
 export class ListingCustomerComponent implements OnInit {
-  // *****************
+  constructor(
+    private customerService: CustomerService,
+    private router: Router,
+    private config: ConfigService,
+    private toastr: ToastrService,
+    private statisticsService: StatisticsService,
+    private animateScrollService: NgAnimateScrollService,
+    private modalService: NgbModal,
+    public spinner: NgxSpinnerService
+  ) { }
+
+  scroll(id: string) {
+    const elmnt = document.getElementById(id);
+    elmnt?.scrollIntoView(false);
+  }
+
   closeResult: Boolean = false;
   closeReason = '';
   whatToRemove: Customer = new Customer();
@@ -29,24 +49,11 @@ export class ListingCustomerComponent implements OnInit {
     'A vásárló valamennyi adata véglegesen törlődik!',
     'Visszafordíthatatlan művelet!!!',
   ];
-  // ******************
 
-  constructor(
-    private customerService: CustomerService,
-    private router: Router,
-    private config: ConfigService,
-    private toastr: ToastrService,
-    private statisticsService: StatisticsService,
-    // ****************
-    private modalService: NgbModal // *****************
-  ) {}
-  scroll(id: string) {
-    const elmnt = document.getElementById(id);
-    elmnt?.scrollIntoView(false);
-  }
   customerList$: BehaviorSubject<Customer[]> = this.customerService.list$;
-  phrase: string = '';
   cols: ITableCol[] = this.config.customerTableCols;
+
+  phrase: string = '';
   filterKey: string = 'id';
   filterKeys: string[] = Object.keys(new Customer());
   currentSelectProperty: string = 'name';
@@ -58,35 +65,33 @@ export class ListingCustomerComponent implements OnInit {
   direction: boolean = false;
   columnKey: string = '';
   firstSorting = true;
+  loaded = false;
+
   numberOfAllCustomers$ = this.statisticsService.numberOfAllCustomers$;
   numberOfActiveCustomers$ = this.statisticsService.numberOfActiveCustomers$;
-  numberOfPassiveCustomers$ = this.statisticsService.numberOfPassiveCustomers$;
+  numberOfPassiveCustomers$ = this.statisticsService.numberOfPassiveCustomers$
+
   ngOnInit(): void {
     this.customerService.getAll();
     this.statisticsService.subscribeForData();
+
+    const id = document.querySelector('#table2');
+    tableDragger(id, { mode: 'column', onlyBody: true, animation: 300 });
+
+    this.spinner.show();
+    this.customerList$.subscribe(customerList => this.loaded = customerList.length ? true : false);
   }
   onRemove(customer: Customer): void {
-    // if (
-    //   !confirm(
-    //     `Biztosan törli a vásárlót? (id: ${customer.id} Keresztnév: ${customer.firstName} Vezetéknév: ${customer.lastName} Email: ${customer.email})`
-    //   )
-    // ) {
-    //   return;
-    // }
     this.customerService.remove(customer).subscribe(
       () => {
-        this.toastr.success('Sikeresen törölted a vásárlót!', 'Törlés!', {
-          timeOut: 3000,
-        });
+        this.toastr.success('Sikeresen törölted a vásárlót!', 'Törlés!', { timeOut: 3000, });
         this.customerService.getAll();
         this.router.navigate(['customers']);
       },
-      (error) =>
-        this.toastr.error('Hiba történt a vásárló törlésekor!', 'Hiba!', {
-          timeOut: 3000,
-        })
-    );
+      (error) => this.toastr.error('Hiba történt a vásárló törlésekor!', 'Hiba!', { timeOut: 3000, })
+    )
   }
+
   onColumnSelect(columnName: string): void {
     if (this.firstSorting) {
       this.sortedOrder = 'ASC';
@@ -102,20 +107,19 @@ export class ListingCustomerComponent implements OnInit {
     this.phrase = (event.target as HTMLInputElement).value;
   }
 
-  // ************************
+  navigateToHeader(duration?: number): void {
+    this.animateScrollService.scrollToElement('top', duration);
+  }
+
   open(content: any) {
     this.modalService
       .open(content, { ariaLabelledBy: 'modal-basic-title' })
       .result.then(
         (result) => {
           this.closeResult = result;
-          // ****************
-          console.log(this.closeResult);
-          // ****************
         },
         (reason) => {
           this.closeReason = `Dismissed ${this.getDismissReason(reason)}`;
-          console.log(this.closeReason);
         }
       );
   }
@@ -133,5 +137,5 @@ export class ListingCustomerComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
-  } // ************************
+  }
 }

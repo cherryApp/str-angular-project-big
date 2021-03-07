@@ -6,17 +6,14 @@ import { ConfigService, ITableCol } from 'src/app/service/config.service';
 import { ProductService } from 'src/app/service/product.service';
 import { ToastrService } from 'ngx-toastr';
 import { StatisticsService } from 'src/app/service/statistics.service';
+// ***********
 import { NgAnimateScrollService } from 'ng-animate-scroll';
-
-// *********** FOR MODAL
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-// ************ FOR MODAL
-
-// FOR LOADING BOX
-import { NgxSpinnerService } from "ngx-spinner";
-
-// @ts-ignore
+// ************
+//@ts-ignore
 import tableDragger from 'table-dragger';
+
+import { NgxSpinnerService } from "ngx-spinner";
 
 
 @Component({
@@ -41,19 +38,19 @@ export class ListingProductComponent implements OnInit {
     elmnt?.scrollIntoView(false);
   }
 
-    // ***************** FOR MODAL
-    closeResult: Boolean = false;
-    closeReason = '';
-    productToRemove: Product = new Product();
-    modalTitle = 'Termék törlése';
-    modalText: Array<string> = [
-      'Biztosan törölni kívánja a(z) ',
-      '(termékszám)',
-      '. számú termék adatait?',
-      'A termékhez tartozó valamennyi adat véglegesen törlődik!',
-      'Visszafordíthatatlan művelet!!!',
-    ];
-    // ****************** FOR MODAL
+
+  closeResult: Boolean = false;
+  closeReason = '';
+  productToRemove: Product = new Product();
+  modalTitle = 'Termék törlése';
+  modalText: Array<string> = [
+    'Biztosan törölni kívánja a(z) ',
+    '(termékszám)',
+    '. számú termék adatait?',
+    'A termékhez tartozó valamennyi adat véglegesen törlődik!',
+    'Visszafordíthatatlan művelet!!!',
+  ];
+
 
   productList: BehaviorSubject<Product[]> = this.productService.list$;
   cols: ITableCol[] = this.config.productTableCols;
@@ -81,14 +78,14 @@ export class ListingProductComponent implements OnInit {
     this.productService.getAll();
     this.statisticsService.subscribeForData();
 
-    // For Table dragger
-    const id = document.querySelector('#table');
+
+    const id = document.querySelector('#table1');
     tableDragger(id, { mode: 'column', onlyBody: true, animation: 300 });
-    
-    // FOR LOADING BOX
+
+
     this.spinner.show();
     this.productList.subscribe(productList => this.loaded = productList.length ? true : false);
-    
+
   }
 
   onRemove(product: Product): void {
@@ -116,12 +113,12 @@ export class ListingProductComponent implements OnInit {
     this.phrase = (event.target as HTMLInputElement).value;
   }
 
-  // FOR SCROLL ANIMATION
-  navigateToHeader(duration?:number): void {
+
+  navigateToHeader(duration?: number): void {
     this.animateScrollService.scrollToElement('top', duration);
   }
 
-  // ************************ FOR MODAL
+
   open(content: any) {
     this.modalService
       .open(content, { ariaLabelledBy: 'modal-basic-title' })
@@ -148,6 +145,6 @@ export class ListingProductComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
-  } // ************************
+  }
 
 }
