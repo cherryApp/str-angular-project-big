@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -7,7 +6,9 @@ import { Location } from '@angular/common';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-  headerText: string = 'Filmes webáruház';
+
+  headerText: string = 'Filmes webáruház : ';
+
   @Input() listItemName: string = '';
 
   constructor() {}
