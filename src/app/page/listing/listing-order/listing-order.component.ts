@@ -10,6 +10,8 @@ import { StatisticsService } from 'src/app/service/statistics.service';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { NgAnimateScrollService } from 'ng-animate-scroll';
 // ************
+//@ts-ignore
+import tableDragger from 'table-dragger';
 
 @Component({
   selector: 'app-listing-order',
@@ -84,6 +86,10 @@ export class ListingOrderComponent implements OnInit {
   ngOnInit(): void {
     this.orderService.getAll();
     this.statisticsService.subscribeForData();
+
+     // For Table dragger
+     const id = document.querySelector('#table');
+     tableDragger(id, { mode: 'column', onlyBody: true, animation: 300 });
   }
 
   onColumnSelect(columnName: string): void {
