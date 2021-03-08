@@ -1,19 +1,44 @@
-<div class="container top">
-    <a class="jump-top" href="bills#top"><i class="fa fa-arrow-circle-up"></i></a>
-    <div class="row">
-        <div class="col-4 offset-5 mb-3">
-            <h2>PÉNZTÁR</h2>
-        </div>
+<!-- LOADING BOX -->
+<div class="loading-box" [hidden]="loaded">
+    <ngx-spinner size="large" color="grey" type="ball-spin-clockwise" [fullScreen]="false">
+        <p>Kis türelmet...</p>
+    </ngx-spinner>
+</div>
+<!-- LOADING BOX -->
 
-        <div class="create col-12 my-3">
-            <!-- <div class="col-5"> -->
-            <button class="btn btn-success btn-block mt-3 mb-3" style="font-size:14px" [routerLink]="[0]">
+<ng-template #content let-modal class="shadow-lg">
+    <div class="modal-header">
+        <h3 class="modal-title ml-3 my-1" id="modal-title">{{ modalTitle }}</h3>
+    </div>
+    <div class="modal-body ml-3 mt-2">
+        <p><strong>{{ modalText[0] }}<span class="text-primary">{{ modalText[1] }}</span>{{ modalText[2] }}</strong></p>
+        <p>{{ modalText[3] }}
+            <br>
+            <br>
+            <strong><span class="text-danger">{{ modalText[4] }}</span></strong>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss(false)">Cancel</button>
+        <!-- <button type="button" class="btn btn-danger" (click)="modal.close(true)">Ok</button> -->
+        <button type="button" class="btn btn-danger" (click)="modal.close(true)"
+            (click)="onRemove(billToRemove)">Ok</button>
+    </div>
+</ng-template>
+
+
+<div class="container" id="top" [hidden]="!loaded">
+    <a class="jump-top" (click)="navigateToHeader(500)"><i class="fa fa-arrow-circle-up"></i></a>
+    <div class="row d-flex justify-content-center">
+        <h2>PÉNZTÁR</h2>
+        <div class="create col-12 my-3 mb-3">
+            <button class=" create btn btn-success btn-block mt-3 mb-3" style="font-size:14px" [routerLink]="[0]">
                 <i class="material-icons">add</i>
                 ÚJ SZÁMLA LÉTREHOZÁSA
             </button>
         </div>
 
-        <div class="col-3 mt-0 mb-5">
+        <div class="col-3 mt-0 mb-3">
             <select [(ngModel)]="filterKey" class="custom-select bg-light" style="font-size: 20px">
                 <option *ngFor="let col of cols" [value]="col.key">
                     {{ col.text }}
@@ -21,7 +46,7 @@
             </select>
         </div>
 
-        <div class="col-4 search-bar mt-0 mb-5">
+        <div class="col-4 search-bar mt-0 mb-3">
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="text" placeholder="Keresés" (keyup)="onChangePhrase($event)">
                 <button class="btn btn-success ml-3 my-2 my-sm-0" type="submit">
@@ -31,67 +56,85 @@
             </form>
         </div>
         <div class="col-5 mt-0 mb-5 d-flex justify-content-end">
-            <button class="btn btn-success my-2 my-sm-0" (click)="scroll('summaries')">STATISZTIKA</button>
-            <!-- </div> -->
+            <button class="btn btn-success my-2 my-sm-0" (click)="scroll('tfoot')">STATISZTIKA</button>
         </div>
 
     </div>
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-striped" id="table4">
+                <thead class="bg-dark text-light">
+                    <tr>
+                        <th (click)="onColumnSelect('id')" style="width: 5%">
+                            <span *ngIf='"id" === sortedColumn && ! firstSorting'>
+                                <i *ngIf="!direction" class="fa fa-sort-alpha-desc"></i>
+                                <i *ngIf="direction" class="fa fa-sort-alpha-asc"></i>
+                            </span>
+                            #
+                        </th>
+                        <th (click)="onColumnSelect('orderID')">
+                            <span *ngIf='"orderID" === sortedColumn && !firstSorting'>
+                                <i *ngIf="!direction" class="fa fa-sort-alpha-desc"></i>
+                                <i *ngIf="direction" class="fa fa-sort-alpha-asc"></i>
+                            </span>
+                            Rendelés Id
+                        </th>
+                        <th (click)="onColumnSelect('amount')">
+                            <span *ngIf='"amount" === sortedColumn && !firstSorting'>
+                                <i *ngIf="!direction" class="fa fa-sort-alpha-desc"></i>
+                                <i *ngIf="direction" class="fa fa-sort-alpha-asc"></i>
+                            </span>
+                            Összeg
+                        </th>
+                        <th (click)="onColumnSelect('status')">
+                            <span *ngIf='"status" === sortedColumn && !firstSorting'>
+                                <i *ngIf="!direction" class="fa fa-sort-alpha-desc"></i>
+                                <i *ngIf="direction" class="fa fa-sort-alpha-asc"></i>
+                            </span>
+                            Státusz
+                        </th>
+                        <th class="d-flex justify-content-end mr-2">Műveletek</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-    <table class="table table-striped">
-        <thead class="bg-dark text-light">
-            <tr>
-                <th (click)="onColumnSelect(col.key)" *ngFor="let col of cols">
-                    <span *ngIf='col.key === sortedColumn && ! firstSorting'>
-                        <i *ngIf="!direction" class="fa fa-sort-alpha-desc"></i>
-                        <i *ngIf="direction" class="fa fa-sort-alpha-asc"></i>
-                    </span>
+                    <tr
+                        *ngFor="let bill of billList$ | async | filter:filterKey:phrase | sorter:sortedColumn:sortedOrder">
+                        <td>{{bill.id}}</td>
+                        <td>{{bill.orderID}} </td>
+                        <td>{{bill.amount | hunFormat }}</td>
+                        <td>{{bill.status}}</td>
 
-                    {{ col.text }}
-                </th>
-                <th class="d-flex justify-content-end mr-5">Műveletek</th>
-            </tr>
-        </thead>
-        <tbody>
+                        <td class="td-actions text-right">
 
-            <tr class="tablerow"
-                *ngFor="let bill of billList$ | async | filter:filterKey:phrase | sorter:sortedColumn:sortedOrder">
-                <td>{{bill.id}}</td>
-                <td>{{bill.orderID}} </td>
-                <td>{{bill.amount | hunFormat }}</td>
-                <td>{{bill.status}}</td>
-                <td>
-                    <div class="btn-group d-flex justify-content-end">
-                        <button [routerLink]="[bill.id]" class="btn btn-info">
-                            <i class="material-icons">edit</i>
-                        </button>
-                        <button (click)="onRemove(bill)" class="btn btn-danger">
-                            <i class="material-icons">delete_outline</i>
-                        </button>
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <div class="table-responsive">
-        <table class="table" id="summaries">
-            <thead class="bg-dark text-light">
-                <div class="ml-3" *ngIf="numberOfAllBills$ | async">
-                    ͏͏͏͏͏͏͏<p> <b style="font-size: 18px">Összes számla: {{ numberOfAllBills$ | async }}</b></p>
-                </div>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <div class="ml-3" *ngIf="sumOfUnpaidBills$ | async | hunFormat">
-                    ͏͏͏͏͏͏͏<p>
-                        <b style="font-size: 18px">Fizetetlen számlák összege: {{ sumOfUnpaidBills$ | async | hunFormat
-                            }} Ft
-                        </b>
-                    </p>
-                </div>
-            </thead>
-            <tbody></tbody>
-        </table>
+                            <button type="button" rel="tooltip" class="btn btn-success btn-round mr-2"
+                                [routerLink]="[bill.id]">
+                                <i class="material-icons">edit</i>
+                            </button>
+
+                            <button type="button" rel="tooltip" (click)="log(bill)" (click)="open(content)"
+                                class="btn btn-danger btn-round">
+                                <i class="material-icons">close</i>
+                            </button>
+
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot class="bg-dark text-light" id="tfoot">
+                    <tr>
+                        <td colspan="5">
+                            <div class="d-flex justify-content-around">
+                                <span *ngIf="numberOfAllBills$ | async">
+                                    Összes számla: {{ numberOfAllBills$ | async }}
+                                </span>
+                                <span *ngIf="sumOfUnpaidBills$ | async">
+                                    Fizetetlen számlák összege: {{ sumOfUnpaidBills$ | async | hunFormat}} Ft
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
     </div>
 </div>

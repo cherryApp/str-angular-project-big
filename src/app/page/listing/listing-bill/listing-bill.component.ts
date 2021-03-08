@@ -6,6 +6,12 @@ import { BillService } from 'src/app/service/bill.service';
 import { ConfigService, ITableCol } from 'src/app/service/config.service';
 import { ToastrService } from 'ngx-toastr';
 import { StatisticsService } from 'src/app/service/statistics.service';
+import { NgAnimateScrollService } from 'ng-animate-scroll';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+
+// @ts-ignore
+import tableDragger from 'table-dragger';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-listing-bill',
@@ -23,7 +29,10 @@ export class ListingBillComponent implements OnInit {
     private router: Router,
     private configService: ConfigService,
     private toastr: ToastrService,
-    private statisticsService: StatisticsService
+    private statisticsService: StatisticsService,
+    private animateScrollService: NgAnimateScrollService,
+    private modalService: NgbModal,
+    public spinner: NgxSpinnerService
   ) { }
 
   scroll(id: string) {
@@ -31,6 +40,18 @@ export class ListingBillComponent implements OnInit {
     elmnt?.scrollIntoView(false);
 
   }
+
+  closeResult: Boolean = false;
+  closeReason = '';
+  billToRemove: Bill = new Bill();
+  modalTitle = 'Számla törlése';
+  modalText: Array<string> = [
+    'Biztosan törölni kívánja a(z) ',
+    '(rendelésszám)',
+    '. számú számla adatait?',
+    'A számlához tartozó valamennyi adat véglegesen törlődik!',
+    'Visszafordíthatatlan művelet!!!',
+  ];
 
   filterKey: string = 'id';
   filterKeys: string[] = Object.keys(new Bill());
@@ -51,6 +72,7 @@ export class ListingBillComponent implements OnInit {
   column: string = '';
   direction: boolean = false;
   columnKey: string = '';
+  loaded = false;
 
   sumOfUnpaidBills$ = this.statisticsService.sumOfUnpaidBills$;
   numberOfAllBills$ = this.statisticsService.numberOfAllBills$;
@@ -58,15 +80,20 @@ export class ListingBillComponent implements OnInit {
   ngOnInit(): void {
     this.billService.getAll();
     this.statisticsService.subscribeForData();
+
+    const id = document.querySelector('#table4');
+    tableDragger(id, { mode: 'column', onlyBody: true, animation: 300 });
+
+    // FOR LOADING BOX
+    this.spinner.show();
+    this.billList$.subscribe(billList => this.loaded = billList.length ? true : false);
   }
 
   onRemove(bill: Bill): void {
-    if (!confirm(`Biztosan törli ezt a számlát?
-    (id: ${bill.id} RendelésID: ${bill.orderID} Összeg: ${bill.amount})`)) {
-      return
-    }
-
-
+    // if (!confirm(`Biztosan törli ezt a számlát?
+    // (id: ${bill.id} RendelésID: ${bill.orderID} Összeg: ${bill.amount})`)) {
+    //   return
+    // }
     this.billService.remove(bill).subscribe(
       () => {
         this.toastr.success('Sikeresen törölted a terméket!', 'Törlés!', { timeOut: 3000 });
@@ -91,9 +118,36 @@ export class ListingBillComponent implements OnInit {
   onChangePhrase(event: any): void {
     this.phrase = (event.target as HTMLInputElement).value;
   }
+  navigateToHeader(duration?: number): void {
+    this.animateScrollService.scrollToElement('top', duration);
+  }
 
-  onChangeHunformat() {
+  open(content: any) {
+    this.modalService
+      .open(content, { ariaLabelledBy: 'modal-basic-title' })
+      .result.then(
+        (result) => {
+          this.closeResult = result;
+        },
+        (reason) => {
+          this.closeReason = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
 
+  log(bill: Bill) {
+    this.billToRemove = bill;
+    this.modalText[1] = '' + bill.id;
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
   }
 
 

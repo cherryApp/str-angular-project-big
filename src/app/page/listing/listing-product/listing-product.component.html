@@ -1,4 +1,11 @@
-<!-- ez itt a modal kódja ***************** -->
+<!-- LOADING BOX -->
+<div class="loading-box" [hidden]="loaded">
+    <ngx-spinner size="large" color="grey" type="ball-spin-clockwise" [fullScreen]="false">
+        <p>Kis türelmet...</p>
+    </ngx-spinner>
+</div>
+<!-- LOADING BOX -->
+
 <ng-template #content let-modal class="shadow-lg">
     <div class="modal-header">
         <h3 class="modal-title ml-3 my-1" id="modal-title">{{ modalTitle }}</h3>
@@ -13,14 +20,13 @@
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss(false)">Cancel</button>
-        <!-- <button type="button" class="btn btn-danger" (click)="modal.close(true)">Ok</button> -->
         <button type="button" class="btn btn-danger" (click)="modal.close(true)"
             (click)="onRemove(productToRemove)">Ok</button>
     </div>
 </ng-template>
-<!-- modal vége ***************** -->
 
-<div class="container" id="top">
+
+<div class="container" id="top" [hidden]="!loaded">
     <a class="jump-top" (click)="navigateToHeader(500)"><i class="fa fa-arrow-circle-up"></i></a>
     <div class="row d-flex justify-content-center">
         <h2>TERMÉKEK</h2>
@@ -51,7 +57,7 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <table class="table table-striped table-responsive" id="table">
+            <table class="table table-striped table-responsive" id="table1">
                 <thead class="bg-dark text-light">
                     <tr>
                         <th (click)="onColumnSelect('id')" style="width:5%">
