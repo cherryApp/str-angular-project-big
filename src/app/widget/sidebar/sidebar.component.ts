@@ -14,6 +14,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
     this.setActiveItemOnInit();
+    this.sendListItemNameAtRefresh();
   }
 
   setActiveItemOnInit(): void {
@@ -44,4 +45,17 @@ export class SidebarComponent implements OnInit {
     navItems[0].classList.add('active');
   }
 
+  sendListItemNameAtRefresh(): void {
+    const aTags = document.querySelectorAll("a.nav-link");
+    let location = this.location.path();
+    location === '' ? location = '/' : location;
+    aTags.forEach(aTag => {
+      const currentATagLink = aTag.getAttribute("routerLink");
+      const label = aTag.querySelector("p")?.textContent;
+      if (currentATagLink === location) {
+        this.listItemName.emit('' + label);
+      } 
+    });
+
+  }
 }

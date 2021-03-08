@@ -7,20 +7,21 @@
 .bg-dark:hover {
   cursor: pointer,
 }
+
 .material-icons {
   font-size: 24px,
-}
-#arrow {
-  display: flex;
-  justify-content: flex-end,
 }
 
 th {
   user-select: none;
+  text-align: center;
+}
+
+tr {
+  text-align: center;
 }
 
 tbody > tr > td {
-
   height:20px;
   padding-left:10px;
   border-top: 0px;
@@ -34,16 +35,33 @@ tbody > tr > td {
   font-size: 60px;
   position: fixed;
   bottom: 50px;
-  right: 0px;
+  right: 3%;
   opacity: 0.7;
-
+  z-index: 1;
+  cursor: pointer;
 }
-
 
 .jump-top i:hover {
   opacity: 1;
 }
 
 b {
-text-align: center;
+  text-align: center;
 }
+
+tfoot * {
+  user-select: none;
+  cursor: default;
+}
+
+.loading-box {
+  position: relative;
+  top: 10rem;
+}
+.loading-box p {
+  position: relative;
+  top: 8rem;
+  font-size: 2rem;
+  color: black;
+}
+
